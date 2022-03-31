@@ -1,0 +1,39 @@
+{% section 'page-blue-light' %}
+
+<!-- Related products: Blue Light -->
+<section class="related-products-container mt6 md-dn--mt5 mb4 with-padding"
+         data-section-id="{{ section.id }}"
+         data-section-type="related-products">
+  {% assign pgi_media_aspect_ratio = 2.3 %}
+  <div class="related-products mxn2"
+      data-enable-bis="true"
+      data-product-listing
+      data-related-products="blue-light-glasses">
+      {% for i in (1..4) %}
+        {% assign extra_classes = 'mx2 pt1' %}
+        {% if forloop.index > 1 %}
+          {% assign extra_classes = extra_classes | append: ' md-dn--hide' %}
+        {% endif %}
+        {% render 'product-grid-item-placeholder',
+            pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+            extra_classes: extra_classes
+        %}
+      {% endfor %}
+  </div>
+</section>
+
+<div class="bottom-cta mt3 text-center py3 lg--hide">
+  <a class="btn btn--color-blue-light-page ff--heading fw--bold lg--f3--force uppercase ls03"
+     href="{{ routes.collections_url }}/blue-light-glasses">
+    Shop Blue Light Glasses
+  </a>
+</div>
+
+{% section 'reviews-slideshow--blue-light' %}
+
+<div class="bottom-cta mt3 text-center py3 md-dn--hide">
+  <a class="btn btn--color-blue-light-page btn--color-blue-light-page--with-border ff--heading fw--bold f3--force uppercase ls03"
+     href="{{ routes.collections_url }}/blue-light-glasses">
+    Shop Blue Light Glasses
+  </a>
+</div>

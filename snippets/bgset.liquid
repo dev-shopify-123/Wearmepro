@@ -1,0 +1,8 @@
+{% if image.width >= 200 %}{{ image | img_url: '200x' }} 200w,{% endif %}
+{% if image.width >= 400 %}{{ image | img_url: '400x' }} 400w,{% endif %}
+{% if image.width >= 800 %}{{ image | img_url: '800x' }} 800w,{% endif %}
+{% if image.width >= 1200 %}{{ image | img_url: '1200x' }} 1200w,{% endif %}
+{% if image.width >= 1800 %}{{ image | img_url: '1800x' }} 1800w,{% endif %}
+{% if image.width >= 2400 %}{{ image | img_url: '2400x' }} 2400w,{% endif %}
+{% if image.width >= 3200 %}{{ image | img_url: '3200x' }} 3200w,{% endif %}
+{{ image | img_url: 'master' }} {{ image.width }}w

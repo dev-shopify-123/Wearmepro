@@ -1,0 +1,2446 @@
+{
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/WMP_Gradient.png",
+    "announcement_bar_bold_text": false,
+    "announcement_bar_text_align": "center",
+    "announcement_bar_font_size": 12,
+    "announcement_bar_bg_color": "#efebe4",
+    "announcement_bar_text_color": "#000000",
+    "announcement_bar_textHover_color": "#93b2aa",
+    "announcement_bar_arrow_color": "#3be4f5",
+    "announcement_bar_text_1": "FREE 2 DAY SHIPPING ON ALL US ORDERS OVER $55",
+    "announcement_bar_url_1": "shopify:\/\/collections\/all",
+    "announcement_bar_text_2": "",
+    "announcement_bar_url_2": "",
+    "announcement_bar_text_3": "",
+    "carousel_autoplay": true,
+    "autoplay_speed": "8000",
+    "primary_font": "source_sans_pro_n4",
+    "megamenu_image_1": "shopify:\/\/shop_images\/2_0f6eddb4-b605-4d49-b685-0f75138bac0a.png",
+    "megamenu_image_2": "shopify:\/\/shop_images\/3_4c9b4a71-f04f-4c03-beae-465c23052132.png",
+    "megamenu_image_3": "shopify:\/\/shop_images\/1_d61f8e6f-4225-4edf-98c4-7dc3047c1da4.png",
+    "megamenu_mobile_women_image_1": "shopify:\/\/shop_images\/S5A0570.jpg",
+    "megamenu_mobile_women_image_2": "shopify:\/\/shop_images\/BL001.jpg",
+    "megamenu_mobile_women_image_3": "shopify:\/\/shop_images\/50_OFF.jpg",
+    "megamenu_mobile_women_image_4": "shopify:\/\/shop_images\/IMG_5615.jpg",
+    "megamenu_mobile_women_image_5": "shopify:\/\/shop_images\/DSC08589.jpg",
+    "megamenu_mobile_women_image_6": "shopify:\/\/shop_images\/Aspen_2.jpg",
+    "megamenu_mobile_women_image_7": "shopify:\/\/shop_images\/Lennox_JessicaWebb_3_372b7cd8-9405-4cb7-b964-6a56fcfef2ad.jpg",
+    "megamenu_men_image_1": "shopify:\/\/shop_images\/4_f0d8b026-fd1b-4323-bfd9-831cb92e68d7.png",
+    "megamenu_men_image_2": "shopify:\/\/shop_images\/Untitled_design-6.png",
+    "megamenu_men_image_3": "shopify:\/\/shop_images\/Untitled_design-5.png",
+    "megamenu_mobile_men_image_1": "shopify:\/\/shop_images\/IMG_0665-4.jpg",
+    "megamenu_mobile_men_image_2": "shopify:\/\/shop_images\/DSC05928.jpg",
+    "megamenu_mobile_men_image_3": "shopify:\/\/shop_images\/S5A9753_4.jpg",
+    "megamenu_mobile_men_image_4": "shopify:\/\/shop_images\/367A5918_1.jpg",
+    "megamenu_mobile_men_image_5": "shopify:\/\/shop_images\/DSC06662.jpg",
+    "megamenu_mobile_men_image_6": "shopify:\/\/shop_images\/IMG_1054_1.jpg",
+    "megamenu_mobile_men_image_7": "shopify:\/\/shop_images\/DSC05656.jpg",
+    "megamenu_brand_image_1": "shopify:\/\/shop_images\/BlueBackground_Model-30_1.jpg",
+    "megamenu_brand_image_2": "shopify:\/\/shop_images\/Luna_popular.jpg",
+    "megamenu_brand_image_3": "shopify:\/\/shop_images\/3b8c5888-4ee4-4b4f-b6fd-7f423b1ee78c.jpg",
+    "megamenu_mobile_brand_image_1": "shopify:\/\/shop_images\/BlueBackground_Model-30_1.jpg",
+    "megamenu_mobile_brand_image_2": "shopify:\/\/shop_images\/Luna-Image-for-SMSLandingPage_bcc0683b-8a6b-4340-b153-b9ea70d90a36.png",
+    "megamenu_mobile_brand_image_3": "shopify:\/\/shop_images\/3b8c5888-4ee4-4b4f-b6fd-7f423b1ee78c.jpg",
+    "megamenu_community_image_1": "shopify:\/\/shop_images\/367A5360_1.jpg",
+    "megamenu_community_image_2": "shopify:\/\/shop_images\/edite.jpg",
+    "megamenu_community_image_3": "shopify:\/\/shop_images\/4P6A0554edit.jpg",
+    "megamenu_mobile_community_image_1": "shopify:\/\/shop_images\/367A5360_1.jpg",
+    "megamenu_mobile_community_image_2": "shopify:\/\/shop_images\/edite.jpg",
+    "megamenu_mobile_community_image_3": "shopify:\/\/shop_images\/4P6A0554edit.jpg",
+    "enable_bis": true,
+    "cart_free_pair_enable": true,
+    "cart_free_pair_product": "branded-wmp-zipper-case-1",
+    "cart_free_pair_threshold": 40,
+    "cart_free_shipping_enable": true,
+    "cart_free_shipping_text": "Free 2 DAY EXPRESS US Shipping!",
+    "cart_free_shipping_threshold": 55,
+    "cart_free_shipping_enable2": false,
+    "cart_free_shipping_text2": "Free 2 Day Express Shipping",
+    "cart_product1": "premium-foldable-case",
+    "cart_product2": "protection-plan",
+    "hide_in_rx_cart2": false,
+    "cart_product3": "lens-cleaner-spray",
+    "cart_product4": "branded-wmp-zipper-case",
+    "cart_message_heading": "",
+    "cart_message_text": "",
+    "show_cart_offers": true,
+    "enable_cart_recommendations": false,
+    "cart_recommendations_heading": "Often Purchased With",
+    "cart_recommendations_type_string": "Sunglasses",
+    "cart_recommendations_match_collection": "womens-sunglasses",
+    "cart_recommendations_default_collection": "sunglasses",
+    "show_shipping_notice": false,
+    "shipping_notice": "**Out of concern for our customers and team members, some items may take 1-2 days longer than expected to arrive.",
+    "collection_icons_product_img_1": "shopify:\/\/shop_images\/polarized_lens_cropped.png",
+    "collection_icons_product_text_1": "Polarized lens",
+    "collection_icons_product_img_2": "shopify:\/\/shop_images\/ships_for_free_cropped.png",
+    "collection_icons_product_text_2": "Ships for FREE",
+    "collection_icons_product_img_3": "shopify:\/\/shop_images\/animal_helped_cropped.png",
+    "collection_icons_product_text_3": "1 order = 1 animal helped",
+    "collection_icons_product_img_4": "shopify:\/\/shop_images\/hassle_free_returns_cropped_8e26985b-e988-4802-beaf-d3255cb4648c.png",
+    "collection_icons_product_text_4": "Hassle-free returns",
+    "collection_icons_product_img_5": "shopify:\/\/shop_images\/uv_block_v1_811efdc0-d84f-4303-87de-0482db299806.png",
+    "collection_icons_product_text_5": "100% UV Protection",
+    "collection_icons_product_img_6": "shopify:\/\/shop_images\/ships_for_free_1_e5f4210f-8cfc-4fe1-8da8-e0a9ef7884cb.png",
+    "collection_icons_product_text_6": "Ships for FREE",
+    "collection_icons_product_img_7": "shopify:\/\/shop_images\/animal_helped_1_01c30554-67ed-44f1-a53d-df12738443e6.png",
+    "collection_icons_product_text_7": "1 order = 1 animal helped",
+    "collection_icons_product_img_8": "shopify:\/\/shop_images\/hassle_free_returns_1_copy_b2b4784a-bc8e-440a-b3ca-7fb0f014c170.png",
+    "collection_icons_product_text_8": "Hassle-free returns",
+    "collection_icons_product_img_9": "shopify:\/\/shop_images\/blue_light_block_82442bb2-7e81-41e6-b82e-e55725a6639b.png",
+    "collection_icons_product_text_9": "Blue light blocking lens",
+    "collection_icons_product_img_10": "shopify:\/\/shop_images\/screen_time_48463d30-4d30-49ff-a15f-8df12e56dc03.png",
+    "collection_icons_product_text_10": "Protects eyes from screen time",
+    "collection_icons_product_img_11": "shopify:\/\/shop_images\/hassle_free_returns_1_copy_2ab9d272-ddcb-499e-81c1-7a2100e66010.png",
+    "collection_icons_product_text_11": "Hassle-free returns",
+    "collection_icons_product_img_12": "shopify:\/\/shop_images\/animal_helped_1_01c30554-67ed-44f1-a53d-df12738443e6.png",
+    "collection_icons_product_text_12": "1 order = 1 animal helped",
+    "collection_icons_product_img_13": "shopify:\/\/shop_images\/rx_e535a2a0-65de-45e2-ba19-fb5000080a5c.png",
+    "collection_icons_product_text_13": "Prescription",
+    "collection_icons_product_img_14": "shopify:\/\/shop_images\/lens_warranty.png",
+    "collection_icons_product_text_14": "365 Days Lens Warranty",
+    "collection_icons_product_img_15": "shopify:\/\/shop_images\/animal_helped_1_01c30554-67ed-44f1-a53d-df12738443e6.png",
+    "collection_icons_product_text_15": "1 order = 1 animal helped",
+    "collection_icons_product_img_16": "shopify:\/\/shop_images\/hassle_free_returns_1_copy_2ab9d272-ddcb-499e-81c1-7a2100e66010.png",
+    "collection_icons_product_text_16": "Hassle-free returns",
+    "collection_icons_product_img_17": "shopify:\/\/shop_images\/recycled_1_951e5fdb-7ae0-4a1f-ae35-458783cd9570.png",
+    "collection_icons_product_text_17": "6 bottles = 1 pair of sunglasses",
+    "collection_icons_product_img_18": "shopify:\/\/shop_images\/polarized_lens_1_a3208a14-80c5-495b-b0b7-14c613ceb367.png",
+    "collection_icons_product_text_18": "Polarized lens",
+    "collection_icons_product_img_19": "shopify:\/\/shop_images\/turtle_1_5637d49d-960a-469e-bdb2-f2a412cf0857.png",
+    "collection_icons_product_text_19": "Support the Sea Turtle Conservancy",
+    "collection_icons_product_img_20": "shopify:\/\/shop_images\/box_1_ec440136-b077-499c-b791-4453b791b3c0.png",
+    "collection_icons_product_text_20": "Eco-friendly packaging",
+    "active_women_mage": "shopify:\/\/shop_images\/Chloe-1_1.jpg",
+    "active_women_image_link": "shopify:\/\/products\/aspen-square-classic-horn-rimmed-polarized-sunglasses-for-women",
+    "active_women_image_number": 5,
+    "rx_women_mage": "shopify:\/\/shop_images\/S5A6412-Edit_1.jpg",
+    "rx_women_image_link": "shopify:\/\/products\/daisy-women-cat-eye-prescription-glasses-beige-tortoise",
+    "rx_women_image_btn_text": "SHOP DAISY",
+    "women_sunglasses_mage": "shopify:\/\/shop_images\/Lucy-TwoProduct_1.jpg",
+    "women_sunglasses_link": "shopify:\/\/products\/lucy-oversized-square-flat-lens-mirror-sunglasses-for-women",
+    "women_sunglasses_btn_text": "SHOP LUCY",
+    "women_sunglasses_number": 4,
+    "men_sunglasses_mage": "shopify:\/\/shop_images\/Nick_CLRG15-1_e3f24daa-857a-425e-8ffc-a6632a906ca1.jpg",
+    "men_sunglasses_link": "https:\/\/shopwearmepro.com\/products\/nick-square-modern-flat-lens-polarized-mirrored-lens-sunglasses?variant=18526608719961",
+    "men_sunglasses_btn_text": "SHOP NICK",
+    "new_arrivals_mage": "shopify:\/\/shop_images\/4P6A0554edit.jpg",
+    "new_arrivals_link": "shopify:\/\/products\/tate-classic-round-retro-polarized-sunglasses",
+    "new_arrivals_btn_text": "SHOP TATE",
+    "men_new_arrivals_mage": "shopify:\/\/shop_images\/Emerson_collection_12a0b256-ff86-40f3-81aa-bd387f3c1e36.jpg",
+    "men_new_arrivals_link": "https:\/\/shopwearmepro.com\/products\/emerson-modern-one-bridge-square-men-retro-aviator-sunglasses?variant=39423779995737",
+    "men_new_arrivals_btn_text": "SHOP EMERSON",
+    "blue_light_mage": "shopify:\/\/shop_images\/2_ea0bf6b2-60e8-4a5d-a508-f5ac957a5174.png",
+    "blue_light_link": "shopify:\/\/products\/jules-round-retro-blue-ligh-blocking-glasses",
+    "blue_light_btn_text": "Shop Jules",
+    "blue_light_men_mage": "shopify:\/\/shop_images\/3_9fbdc940-b5a0-47fe-8ff3-c756611ef3a7.png",
+    "blue_light_men_link": "shopify:\/\/products\/alex-square-modern-metal-frame-blue-light-blocking-computer-glasses",
+    "blue_light_men_btn_text": "Shop Alex",
+    "collection_header_image_collection_1": "active-collection",
+    "collection_header_image_image_1": "shopify:\/\/shop_images\/WomensActive_764bf514-2b67-4a1c-a369-d3398e1ce9e4.jpg",
+    "collection_header_text_1": "",
+    "collection_header_color_1": "#000000",
+    "collection_header_text_position_1": "right-text",
+    "collection_header_image_font_size_desktop_1": 40,
+    "collection_header_image_font_size_mobile_1": 16,
+    "collection_header_image_font_size_text_desktop_1": 91,
+    "collection_header_image_show_title_1": false,
+    "collection_header_image_show_title_shadow_1": false,
+    "collection_header_image_collection_2": "womens-sunglasses",
+    "collection_header_image_image_2": "shopify:\/\/shop_images\/Untitled-1_db425748-7e16-4206-b421-8e8395923211.jpg",
+    "collection_header_text_2": "",
+    "collection_header_color_2": "#000000",
+    "collection_header_text_position_2": "left-text",
+    "collection_header_text_vertical_position_2": "bottom-text",
+    "collection_header_image_font_size_desktop_2": 39,
+    "collection_header_image_font_size_mobile_2": 16,
+    "collection_header_image_font_size_text_desktop_2": 59,
+    "collection_header_image_font_size_text_mobile_2": 26,
+    "header_font_2": "WFHavanaSunset",
+    "collection_header_image_show_title_2": false,
+    "collection_header_image_show_title_shadow_2": false,
+    "collection_header_image_collection_3": "mens-blue-light",
+    "collection_header_image_image_3": "shopify:\/\/shop_images\/MensBL.jpg",
+    "collection_header_color_3": "#ffffff",
+    "collection_header_text_position_3": "right-text",
+    "collection_header_text_vertical_position_3": "center-text",
+    "collection_header_image_font_size_desktop_3": 34,
+    "collection_header_image_font_size_mobile_3": 12,
+    "collection_header_image_font_size_text_mobile_3": 29,
+    "collection_header_image_show_title_3": false,
+    "collection_header_image_show_title_shadow_3": true,
+    "collection_header_image_collection_4": "men-sunglasses",
+    "collection_header_image_image_4": "shopify:\/\/shop_images\/Mens_f411276d-3e8b-4006-a34f-c5606b014366.jpg",
+    "collection_header_text_4": "",
+    "collection_header_color_4": "#ffffff",
+    "collection_header_text_position_4": "left-text",
+    "collection_header_text_vertical_position_4": "center-text",
+    "collection_header_image_font_size_desktop_4": 64,
+    "collection_header_image_font_size_mobile_4": 15,
+    "collection_header_image_font_size_text_desktop_4": 68,
+    "collection_header_image_font_size_text_mobile_4": 22,
+    "header_font_4": "WFHavanaSunset",
+    "collection_header_image_show_title_4": false,
+    "collection_header_image_show_title_shadow_4": true,
+    "collection_header_image_collection_5": "womens-blue-light-glasses",
+    "collection_header_image_image_5": "shopify:\/\/shop_images\/WomensBL.jpg",
+    "collection_header_text_5": "",
+    "collection_header_color_5": "#000000",
+    "collection_header_text_position_5": "right-text",
+    "collection_header_text_vertical_position_5": "bottom-text",
+    "collection_header_image_font_size_desktop_5": 38,
+    "collection_header_image_font_size_mobile_5": 12,
+    "collection_header_image_font_size_text_desktop_5": 80,
+    "collection_header_image_font_size_text_mobile_5": 24,
+    "header_font_5": "WFHavanaSunset",
+    "collection_header_image_show_title_5": false,
+    "collection_header_image_show_title_shadow_5": false,
+    "collection_header_image_collection_6": "rx-frames",
+    "collection_header_image_image_6": "shopify:\/\/shop_images\/WomensRX.jpg",
+    "collection_header_text_6": "",
+    "collection_header_color_6": "#ffffff",
+    "collection_header_text_position_6": "right-text",
+    "collection_header_text_vertical_position_6": "bottom-text",
+    "collection_header_image_font_size_desktop_6": 38,
+    "collection_header_image_font_size_mobile_6": 12,
+    "collection_header_image_font_size_text_desktop_6": 24,
+    "collection_header_image_font_size_text_mobile_6": 12,
+    "header_font_6": "ZonaPro",
+    "collection_header_image_show_title_6": false,
+    "collection_header_image_show_title_shadow_6": true,
+    "collection_header_image_collection_7": "prescription-glasses-men",
+    "collection_header_image_image_7": "shopify:\/\/shop_images\/MensRX.jpg",
+    "collection_header_color_7": "#ffffff",
+    "collection_header_text_position_7": "left-text",
+    "collection_header_text_vertical_position_7": "bottom-text",
+    "collection_header_image_font_size_desktop_7": 32,
+    "collection_header_image_font_size_mobile_7": 12,
+    "collection_header_image_show_title_7": false,
+    "collection_header_image_show_title_shadow_7": true,
+    "collection_header_image_collection_8": "mens-shop-all",
+    "collection_header_image_image_8": "shopify:\/\/shop_images\/MensShopAll_f280cc5a-b2e1-41fc-aa72-d3dfcc8b211b.jpg",
+    "collection_header_text_8": "",
+    "collection_header_color_8": "#ffffff",
+    "collection_header_text_position_8": "right-text",
+    "collection_header_text_vertical_position_8": "bottom-text",
+    "collection_header_image_font_size_desktop_8": 42,
+    "collection_header_image_font_size_mobile_8": 17,
+    "collection_header_image_font_size_text_desktop_8": 99,
+    "collection_header_image_font_size_text_mobile_8": 43,
+    "collection_header_image_show_title_8": false,
+    "collection_header_image_show_title_shadow_8": true,
+    "collection_header_image_collection_9": "women-all",
+    "collection_header_image_image_9": "shopify:\/\/shop_images\/WomensShopAll.jpg",
+    "collection_header_text_9": "",
+    "collection_header_color_9": "#282828",
+    "collection_header_text_position_9": "left-text",
+    "collection_header_text_vertical_position_9": "bottom-text",
+    "collection_header_image_font_size_desktop_9": 41,
+    "collection_header_image_font_size_mobile_9": 14,
+    "collection_header_image_font_size_text_desktop_9": 68,
+    "collection_header_image_font_size_text_mobile_9": 17,
+    "header_font_9": "WFHavanaSunset",
+    "collection_header_image_show_title_9": false,
+    "collection_header_image_show_title_shadow_9": false,
+    "collection_header_image_collection_10": "womens-new-arrivals",
+    "collection_header_image_image_10": "shopify:\/\/shop_images\/WomensNewArrival.jpg",
+    "collection_header_text_10": "",
+    "collection_header_color_10": "#ffffff",
+    "collection_header_text_position_10": "right-text",
+    "collection_header_image_font_size_desktop_10": 34,
+    "collection_header_image_font_size_mobile_10": 12,
+    "collection_header_image_font_size_text_desktop_10": 104,
+    "collection_header_image_show_title_10": false,
+    "collection_header_image_show_title_shadow_10": false,
+    "collection_header_image_collection_11": "back-in-stock",
+    "collection_header_image_image_11": "shopify:\/\/shop_images\/WomensBackInStock.jpg",
+    "collection_header_color_11": "#282828",
+    "collection_header_text_position_11": "right-text",
+    "collection_header_text_vertical_position_11": "bottom-text",
+    "collection_header_image_font_size_desktop_11": 40,
+    "collection_header_image_font_size_mobile_11": 14,
+    "collection_header_image_show_title_11": false,
+    "collection_header_image_show_title_shadow_11": false,
+    "collection_header_image_collection_12": "men-i-back-in-stock",
+    "collection_header_image_image_12": "shopify:\/\/shop_images\/MensBackInStock.jpg",
+    "collection_header_color_12": "#000000",
+    "collection_header_text_position_12": "right-text",
+    "collection_header_image_font_size_desktop_12": 56,
+    "collection_header_image_font_size_mobile_12": 14,
+    "collection_header_image_show_title_12": false,
+    "collection_header_image_show_title_shadow_12": false,
+    "collection_header_image_collection_13": "mens-new-arrivals",
+    "collection_header_image_image_13": "shopify:\/\/shop_images\/NewArrivals_07c98c52-3458-489b-a676-8a05d3fb38b0.jpg",
+    "collection_header_color_13": "#ffffff",
+    "collection_header_text_position_13": "left-text",
+    "collection_header_image_font_size_mobile_13": 16,
+    "collection_header_image_show_title_13": false,
+    "collection_header_image_collection_14": "top-rated-mens",
+    "collection_header_image_image_14": "shopify:\/\/shop_images\/MensBestSeller_204f10dd-be12-4678-b9a4-63fe762b1dd6.jpg",
+    "collection_header_color_14": "#000000",
+    "collection_header_text_position_14": "right-text",
+    "collection_header_image_font_size_desktop_14": 40,
+    "collection_header_image_font_size_mobile_14": 12,
+    "collection_header_image_show_title_14": false,
+    "collection_header_image_show_title_shadow_14": false,
+    "collection_header_image_collection_15": "top-rated-womens",
+    "collection_header_image_image_15": "shopify:\/\/shop_images\/WomensTopRated_d1dd0520-61a2-4ea6-8e5b-2e8cc255415a.jpg",
+    "collection_header_color_15": "#000000",
+    "collection_header_text_position_15": "right-text",
+    "collection_header_text_vertical_position_15": "bottom-text",
+    "collection_header_image_font_size_desktop_15": 37,
+    "collection_header_image_font_size_mobile_15": 12,
+    "collection_header_image_font_size_text_desktop_15": 42,
+    "collection_header_image_show_title_15": false,
+    "collection_header_image_show_title_shadow_15": false,
+    "collection_header_image_collection_16": "the-pink-collection",
+    "collection_header_image_image_16": "shopify:\/\/shop_images\/PinkCollectionBanner.jpg",
+    "collection_header_color_16": "#ecb6db",
+    "collection_header_text_position_16": "right-text",
+    "collection_header_text_vertical_position_16": "center-text",
+    "collection_header_image_font_size_desktop_16": 72,
+    "collection_header_image_font_size_mobile_16": 22,
+    "collection_header_image_show_title_16": true,
+    "collection_header_image_show_title_shadow_16": false,
+    "collection_header_image_collection_17": "eco-collection",
+    "collection_header_image_image_17": "shopify:\/\/shop_images\/eco.jpg",
+    "collection_header_color_17": "#ffffff",
+    "collection_header_text_position_17": "left-text",
+    "collection_header_image_font_size_desktop_17": 60,
+    "collection_header_image_font_size_mobile_17": 22,
+    "collection_header_image_font_size_text_desktop_17": 40,
+    "collection_header_image_show_title_17": false,
+    "collection_header_image_show_title_shadow_17": true,
+    "frame_colors_to_exclude": "Frame Color_Green,Frame Color_Marble,Frame Color_Orange,Frame Color_Purple,Frame Color_Red,Frame Color_White,Frame Color_White Marble",
+    "enable_infinite_scroll": true,
+    "new_items_collection": "mens-new-arrivals",
+    "new_items_collection2": "womens-new-arrivals",
+    "kind_items_collection": "eco-collection",
+    "kind_items_badge": "shopify:\/\/shop_images\/Preview-Black_png.png",
+    "blue_light_items_collection": "",
+    "enable_sale_badge": false,
+    "color_body_bg": "#ffffff",
+    "color_body_text": "#282828",
+    "color_headings": "#333333",
+    "color_primary_accent": "#efebe4",
+    "color_secondary_accent": "#93b2aa",
+    "color_on_sale": "#d27d60",
+    "color_price": "#3d3d3d",
+    "color_blue_light": "#009bd6",
+    "color_filters_accent": "#93b2aa",
+    "desktop_cart_icon_color": "#93b2aa",
+    "desktop_cart_icon_hover_color": "#050504",
+    "desktop_cart_bubble_background_color": "#ff4500",
+    "desktop_cart_bubble_color": "#fffdfd",
+    "mobile_nav_bar_background_color": "#000000",
+    "mobile_nav_bar_color": "#ffffff",
+    "mobile_nav_bar_cart_bubble_background_color": "#f53b3b",
+    "mobile_nav_bar_cart_bubble_color": "#f9f7f7",
+    "mobile_nav_background_color": "#ffffff",
+    "mobile_nav_color": "#000000",
+    "mobile_nav_item_background_color": "#efebe4",
+    "mobile_nav_item_gradient_overlay_color": "#efebe4",
+    "mobile_nav_item_color": "#000000",
+    "mobile_nav_secondary_item_color": "#282828",
+    "share_image": "",
+    "facebook_url": "https:\/\/www.facebook.com\/wmpeyewear",
+    "snapchat_url": "https:\/\/snapchat.com\/add\/wearmepro",
+    "instagram_url": "http:\/\/www.instagram.com\/wmpeyewear",
+    "pinterest_url": "https:\/\/www.pinterest.com\/wmpeyewear\/",
+    "tiktok_url": "https:\/\/www.tiktok.com\/@wmpeyewear?lang=en",
+    "enable_bl_promo": false,
+    "bl_promo_text": "24 hrs only: each order = double the donation to animals in need",
+    "promo_collection": "",
+    "countdown_collection": "",
+    "countdown_date": "March 21, 2022",
+    "countdown_text": "SUNGLASSES BOGO ENDS IN:",
+    "prism_product": "prizm",
+    "checkout_header_image": "shopify:\/\/shop_images\/augustine-wong-oebTM5wHTfw-unsplash_9f6c8787-0647-467d-96e8-5fb3964f0840.jpg",
+    "checkout_logo_image": "shopify:\/\/shop_images\/WMP_PrimaryLogo_Black_9a93841e-4411-40ec-b925-84a3dca59add.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#6b6b6b",
+    "checkout_button_color": "#93b2aa",
+    "checkout_error_color": "#ed1100",
+    "collection_icons_product_group_1": "sunglasses",
+    "collection_icons_product_group_2": "polarized",
+    "collection_icons_product_group_3": "blue-light-glasses",
+    "announcement_bar_text": "BLACK FRIDAY SALE IS HERE!",
+    "cart_free_pair_image": "shopify:\/\/shop_images\/free-pair.png",
+    "cart_free_pair_title": "Classic Square Sunglasses Red Lens",
+    "checkout_use_storefront_logo": false,
+    "sections": {
+      "featured-links": {
+        "type": "featured-links",
+        "blocks": {
+          "f3ce847c-e8cd-421d-8d86-587639aa68da": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled_design-4.png",
+              "url": "shopify:\/\/collections\/eco-collection",
+              "title": "ECO",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "a5910f06-eccd-4e16-91a5-d33a067d9a1b": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Avi005_BRWBRW.jpg",
+              "url": "shopify:\/\/collections\/men-sunglasses",
+              "title": "MEN",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "60cf31b1-787e-4d30-b85a-15acd89bbbb0": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DSC00403.jpg",
+              "url": "shopify:\/\/collections\/womens-sunglasses",
+              "title": "WOMEN",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1601671617173": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Base_5efa5d81-9873-4aa2-b90f-1990ba215198.jpg",
+              "url": "shopify:\/\/collections\/sunglasses",
+              "title": "SUNGLASSES",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565383452261": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Copy_of_Alex-TRTGLD-2.jpg",
+              "url": "shopify:\/\/collections\/womens-blue-light-glasses",
+              "title": "BLUE LIGHT",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565383368664": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Nevada-GLDBLK_660ceada-5e72-4a94-bcf2-50a9307e2776.jpg",
+              "url": "shopify:\/\/collections\/best-sellers",
+              "title": "BEST SELLERS",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1576282226379": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Olivia-TRTGLD.jpg",
+              "url": "shopify:\/\/collections\/womens-new-arrivals",
+              "title": "NEW",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565380348045": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Wesley-BRWBRW_946dc52f-f661-41d5-b6e5-96b142cf74be.jpg",
+              "url": "shopify:\/\/collections\/polarized-sunglasses",
+              "title": "POLARIZED",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565383397773": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Ramsey-GLDBLK_12b69dec-4c8a-4e5a-890f-a96e0720d09e.jpg",
+              "url": "shopify:\/\/collections\/aviator-sunglasses",
+              "title": "AVIATORS",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565383408243": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Aria-TRTGLD_6c88855a-8611-46bf-9f6d-e9eb6d8d588a.jpg",
+              "url": "shopify:\/\/collections\/cateye-sunglasses",
+              "title": "CATEYE",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565383424496": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Clove-CRMTRT_2402d00e-30a6-41fb-80c8-fff4378e9d39.jpg",
+              "url": "shopify:\/\/collections\/round-sunglasses",
+              "title": "ROUND",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1596838869247": {
+            "type": "featured_link",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Aspen_2.jpg",
+              "url": "shopify:\/\/collections\/coming-soon-1",
+              "title": "COMING SOON",
+              "hide_in_mobile_menu": true
+            }
+          }
+        },
+        "block_order": [
+          "f3ce847c-e8cd-421d-8d86-587639aa68da",
+          "a5910f06-eccd-4e16-91a5-d33a067d9a1b",
+          "60cf31b1-787e-4d30-b85a-15acd89bbbb0",
+          "1601671617173",
+          "1565383452261",
+          "1565383368664",
+          "1576282226379",
+          "1565380348045",
+          "1565383397773",
+          "1565383408243",
+          "1565383424496",
+          "1596838869247"
+        ],
+        "settings": {
+          "show_featured_links": true,
+          "bold": false
+        }
+      },
+      "desktop-header": {
+        "type": "desktop-header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Untitled_300_x_300_px_-2.png",
+          "main_menu": "new-menu",
+          "sticky_nav": false
+        }
+      },
+      "desktop-nav": {
+        "type": "desktop-nav",
+        "settings": {
+          "main_menu": "new-menu",
+          "sticky_nav": true
+        }
+      },
+      "mobile-header-and-nav": {
+        "type": "mobile-header-and-nav",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/crop_copy.png",
+          "main_menu": "new-menu",
+          "sticky_nav": true
+        }
+      },
+      "popup": {
+        "type": "popup",
+        "settings": {
+          "show_promo_popup": false,
+          "image": "shopify:\/\/shop_images\/40__OFF_Facebook_Cover_-3.png",
+          "url": "shopify:\/\/collections\/the-pink-collection",
+          "max_width": 450,
+          "delay": 10,
+          "frequency": 1
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>Free US shipping via USPS<\/li>\n<li>2-Day US Fedex Shipping for $4.99<\/li>\n  <li>Free 2-Day FedEx Shipping on domestic orders over $55<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 2-4 business days to arrive once they leave the FedEx facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
+          "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_79f6c84d-8757-49f0-aea6-84b6aa3485e7.png",
+          "mobile_title": "<div class=\"title\">\n<span>Protect your eyes f<\/span>rom<\/div>\n <div>screen time<\/div>",
+          "mobile_text": "screen time",
+          "mobile_image": "shopify:\/\/shop_images\/Blue_Light_0cfe3abe-5662-4295-ac89-08d1c6c7ab76.png"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "menu": "footer",
+          "footer_bg": "#000000",
+          "footer_color": "#ffffff",
+          "footer_border": "#93b2aa",
+          "footer_icon": "#efebe4",
+          "show_id": true,
+          "email_url": "mailto:service@wearmepro.com",
+          "email_text": "service@wearmepro.com",
+          "phone_url": "tel:14806872287",
+          "phone_text": "1 (480) 687-4907"
+        }
+      },
+      "page-why-wmp": {
+        "type": "page-why-wmp",
+        "blocks": {
+          "1554214161705": {
+            "type": "feedback",
+            "settings": {
+              "title": "BRANDY",
+              "picture": "shopify:\/\/shop_images\/Screen_Shot_2019-04-22_at_1.02.40_PM.png",
+              "copy": "<p>Love these for the price. They are polarized and work great. Super cute, come with a case. I received many compliments!<\/p>"
+            }
+          },
+          "1554215347580": {
+            "type": "feedback",
+            "settings": {
+              "title": "Alexandra A",
+              "picture": "shopify:\/\/shop_images\/Screen_Shot_2020-02-06_at_8.53.39_AM.png",
+              "copy": "<p>I love these. Have received so many compliments on them. They really make a difference wearing them at work.<\/p>"
+            }
+          },
+          "1555963694164": {
+            "type": "feedback",
+            "settings": {
+              "title": "",
+              "picture": "shopify:\/\/shop_images\/Screen_Shot_2020-02-06_at_8.46.35_AM.png",
+              "copy": "<p>Absolutely love my glasses! They fit my face perfectly! And my eyes no longer ache while working on my computer and phone!<\/p>"
+            }
+          },
+          "1581004203448": {
+            "type": "feedback",
+            "settings": {
+              "title": "Julia H.R",
+              "picture": "shopify:\/\/shop_images\/Screen_Shot_2020-02-06_at_8.49.42_AM_764df2df-287e-4b70-b4b4-813e389502f4.png",
+              "copy": "<p>I bought these sunglasses for a guy I&rsquo;ve been hooking up with for a few months because he mentioned he needed some and these were the exact style he was looking for. I figured at $16, it would be a nice gesture and I would be regarded as the angel that found him the perfect sunnies. They finally arrived and as soon as he put them on and looked in the mirror, he decided they were too big for his &ldquo;small face.&rdquo; Fortunately, I tried them on immediately after and decided they look fabulous on me despite being made for men. I am blown away by the quality for the price. They look like designer sunglasses. They are sturdy and flattering. I have worn them almost every day since. I will be shopping at WearMe Pro again soon. And I will not be purchasing sunglasses for anyone but myself ever again.<\/p>"
+            }
+          },
+          "1581004271995": {
+            "type": "feedback",
+            "settings": {
+              "title": "Carlos E",
+              "picture": "shopify:\/\/shop_images\/Screen_Shot_2020-02-06_at_8.51.39_AM.png",
+              "copy": "<p>Personally, I can say that I love my glasses! They're made well and look very stylish! You guys did an amazing job in paying attention to the details. That's something that I think and not only me but the public in general, that detail is very important since detail is one of the main factors the distinguishes the difference between cheap and quality glasses, and you guys did an amazing job at it. Thank you! ~ Carlos<\/p>"
+            }
+          },
+          "1581004482175": {
+            "type": "feedback",
+            "settings": {
+              "title": "Lauren R",
+              "picture": "shopify:\/\/shop_images\/Screen_Shot_2020-02-06_at_8.55.41_AM.png",
+              "copy": "<p>LOVE LOVE LOVE. perfect shape and fit my face perfectly, I will definitely order from here again!<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1554214161705",
+          "1554215347580",
+          "1555963694164",
+          "1581004203448",
+          "1581004271995",
+          "1581004482175"
+        ],
+        "settings": {
+          "section_image": "shopify:\/\/shop_images\/brody1IMG_3931-2.jpg",
+          "hero_heading_script": true,
+          "hero_heading": "Rethink Your Eyewear",
+          "hero_text": "stop paying for overpriced branding",
+          "section_1_image": "shopify:\/\/shop_images\/Jara_WearMePro_465_1.jpg",
+          "section_1_copy": "<p>WearMe Pro started with one big goal - to provide reasonably priced eyewear that is on-trend! We believe that investing in over-priced branding and logos, is simply not worth it. We rather you save that extra money and invest it into experiences. When buying our sunglasses, you will not be paying for unnecessary mark ups. We truly rejoice when our customers love their new eyewear and we know we didn&rsquo;t overcharge them for it!<\/p>\n<p><\/p>\n<p>Another important aspect of WearMe Pro is to give back. In 2020 WearMe Pro has partnered with Arizona Humane Society, a&nbsp;non-profit animal welfare and protection agency.&nbsp;<strong>For every&nbsp;order placed on our website, we will donate one can of cat\/dog food to a dog or cat in need!<\/strong><\/p>",
+          "section_2_image": "shopify:\/\/shop_images\/smallsquare.jpg",
+          "section_2_copy": "<p>All our eyewear is precisely inspected before we package them for you. We put our heart and soul into ensuring you&rsquo;re 100% satisfied with your product. Unlike other brands, we started as a family owned company and our customers are the reason we thrive. We enjoy connecting with you on the daily basis! Need help picking a style? Need special shipping arrangements? We are always here for you:<\/p>",
+          "section_2_email_link": "mailto:support@wearmepro.com",
+          "section_2_post_email_copy": "<p>We promise, you will NEVER get an automated reply from us!<\/p>"
+        }
+      },
+      "page-shop-by-collection": {
+        "type": "page-shop-by-collection",
+        "blocks": {
+          "1572384856184": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "premium-collection",
+              "cover_image": "shopify:\/\/shop_images\/ariel.jpg",
+              "display_title": "Premium"
+            }
+          },
+          "1572907615831": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "polarized-sunglasses",
+              "cover_image": "shopify:\/\/shop_images\/mennevada2.jpg",
+              "display_title": "Polarized"
+            }
+          },
+          "1572907640402": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "round-sunglasses",
+              "cover_image": "shopify:\/\/shop_images\/round.jpg",
+              "display_title": "Round"
+            }
+          },
+          "1572907705933": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "square-sunglasses",
+              "cover_image": "shopify:\/\/shop_images\/SquareMenAbner_ca2e7755-5c68-40be-841e-9487fc85fded.jpg",
+              "display_title": "Square"
+            }
+          },
+          "1572907521592": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "aviator-sunglasses",
+              "cover_image": "shopify:\/\/shop_images\/aviator.jpg",
+              "display_title": "Aviator"
+            }
+          },
+          "1572907593319": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "cateye-sunglasses",
+              "cover_image": "shopify:\/\/shop_images\/Cat_Eye.jpg",
+              "display_title": "Cat Eye"
+            }
+          },
+          "1572907559861": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "womens-blue-light-glasses",
+              "cover_image": "shopify:\/\/shop_images\/Blue_Light.jpg",
+              "display_title": "Blue Light"
+            }
+          }
+        },
+        "block_order": [
+          "1572384856184",
+          "1572907615831",
+          "1572907640402",
+          "1572907705933",
+          "1572907521592",
+          "1572907593319",
+          "1572907559861"
+        ],
+        "settings": {}
+      },
+      "1588611037474": {
+        "type": "collection-list",
+        "blocks": {
+          "1588611037474-0": {
+            "type": "item",
+            "settings": {
+              "collection": "men-sunglasses",
+              "image": "shopify:\/\/shop_images\/web2_03806366-29c4-4178-85c3-f2ee101e5e64.jpg",
+              "button_text": "SHOP MEN'S SUNGLASSES"
+            }
+          },
+          "1588611037474-1": {
+            "type": "item",
+            "settings": {
+              "collection": "womens-sunglasses",
+              "image": "shopify:\/\/shop_images\/367A0235_d9bca2f9-1938-4cd6-b188-61b42a2e96da.jpg",
+              "button_text": "SHOP WOMEN'S SUNGLASSES"
+            }
+          }
+        },
+        "block_order": [
+          "1588611037474-0",
+          "1588611037474-1"
+        ],
+        "settings": {
+          "grid": "2",
+          "color": "secondary-accent",
+          "tint_on_hover": true,
+          "tint_color": "primary",
+          "show_buttons": true,
+          "buttons_on_hover": false
+        }
+      },
+      "1588611914946": {
+        "type": "rich-text",
+        "disabled": true,
+        "settings": {
+          "heading": "Trendy eyewear without the traditional markup",
+          "content": "<p> We believe reasonably priced sunglasses don’t have to be cheap sunglasses! Choose from various high quality styles with polarized lenses and 100% UV protection lenses. Shop our <a href=\"https:\/\/shopwearmepro.com\/collections\/round-sunglasses\">round sunglasses<\/a>,<a href=\"https:\/\/shopwearmepro.com\/collections\/cateye-sunglasses\"> cat eye sunglasses<\/a>, <a href=\"https:\/\/shopwearmepro.com\/collections\/aviator-sunglasses\">aviator sunglasses<\/a> and our newest<a href=\"https:\/\/shopwearmepro.com\/collections\/blue-light-glasses\"> blue light blocking glasses<\/a>.<\/p><p><\/p>",
+          "bg_base_color": "#fafafa",
+          "use_custom_bg_pattern": true
+        }
+      },
+      "1588623211038": {
+        "type": "image-with-text-overlay",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Copy_of_be_brave.png",
+          "title": "",
+          "url": "shopify:\/\/collections\/womens-blue-light-glasses",
+          "button_text": "",
+          "content_align_x": "left",
+          "content_align_y": "middle",
+          "text_align": "center",
+          "display": "desktop"
+        }
+      },
+      "1588702591828": {
+        "type": "showcase",
+        "settings": {}
+      },
+      "1588776524346": {
+        "type": "reviews-slideshow",
+        "disabled": true,
+        "blocks": {
+          "1575323334922": {
+            "type": "review",
+            "settings": {
+              "title": "Lauren",
+              "image": "shopify:\/\/shop_images\/Lauren.png",
+              "body": "<p>These glasses are too cute!<\/p><p>Love the stud detail. Sometimes aviator style can either be too big, or too small. These are just the right size. Lightweight and not too heavy.<\/p>"
+            }
+          },
+          "1575323415025": {
+            "type": "review",
+            "settings": {
+              "title": "Samantha",
+              "image": "shopify:\/\/shop_images\/Samantha.png",
+              "body": "<p>Honestly, I’m obsessed! These sunglasses came in a cute box with a sturdy case. They are oversized but just the right amount. They keep the sun out of my eyes easily and I am just in love! I’d highly recommend these sunglasses if you want to look expensive but for an affordable price!<\/p>"
+            }
+          },
+          "1575323453303": {
+            "type": "review",
+            "disabled": true,
+            "settings": {
+              "title": "RP",
+              "image": "shopify:\/\/shop_images\/RP.png",
+              "body": "<p>Always good quality from this company at the best price. With so many options, I never look for any other brand.<\/p>"
+            }
+          },
+          "1575315473219": {
+            "type": "review",
+            "settings": {
+              "title": "Ange",
+              "image": "shopify:\/\/shop_images\/ANGE.png",
+              "body": "<p>It’s pretty hard for me to find round glasses that fit my larger face without making me look like I’m part of the 3 blind mice, but these were perfect! I think these would work really well with smaller faces too. It’s a great pair of everyday glasses. The case is super sturdy and zips as well. It comes with a cloth to clean the lens. A lot of more expensive brands have flimsy cases. The polarization is great because it doesn’t distort color and reduces glare making it easier on your eyes, but iPhones also have this so together, it’ll make your screen look pretty weird. Besides that, amazing glasses<\/p>"
+            }
+          },
+          "1575315618769": {
+            "type": "review",
+            "disabled": true,
+            "settings": {
+              "title": "LC",
+              "image": "shopify:\/\/shop_images\/LC.png",
+              "body": "<p>Love these!! They’re sooo light weight and easy to wear. They fold up pretty small so they fit in my purse way better than clunky plastic sunglasses. They seem pretty durable too. Also the nose pieces and bridge are bendable so you can adjust to your face.<\/p>"
+            }
+          },
+          "1575315629703": {
+            "type": "review",
+            "disabled": true,
+            "settings": {
+              "title": "Daisy",
+              "image": "shopify:\/\/shop_images\/Daisy.png",
+              "body": "<p>I bought this sun glasses because I wanted some polarized lens and this ones are perfect. The price is amazing for the quality of this glasses. Going to buy another pair for my sister.<\/p>"
+            }
+          },
+          "1575322132403": {
+            "type": "review",
+            "settings": {
+              "title": "Victoria",
+              "image": "shopify:\/\/shop_images\/Victoria_ade69fd1-868a-4e20-be47-75207640aea5.png",
+              "body": "<p>If you’re looking for oversized sunnies, these are perfect! I absolutely love the polarization aspect of them, my eyes feel less strained when it’s super sunny out.<\/p>"
+            }
+          },
+          "1575322160532": {
+            "type": "review",
+            "disabled": true,
+            "settings": {
+              "title": "Jess",
+              "image": "shopify:\/\/shop_images\/JESS.png",
+              "body": "<p>I loved these sunglasses! They’re very stylish and cute for casual outtings or dates. Definitely adds a little something to your outfits and the frames aren’t too large where it covers half your face. Perfect!<\/p>"
+            }
+          },
+          "1575322220538": {
+            "type": "review",
+            "disabled": true,
+            "settings": {
+              "title": "Rafix",
+              "image": "shopify:\/\/shop_images\/RAFIX.png",
+              "body": "<p>I've been looking for a good quality aviator type pair of glasses and they are all either too big or too small or too fake looking. The picture I attached doesn’t do justice to how cool these are in person! lightweight and really good quality. also i believe they are polarized because everything is so clear on a sunny day! I love these glasses!<\/p>"
+            }
+          },
+          "1575322247090": {
+            "type": "review",
+            "settings": {
+              "title": "Tabitha",
+              "image": "shopify:\/\/shop_images\/Tabitha.png",
+              "body": "<p>Love these so far! Great, comfortably snug fit and the lenses are great. The only downside I can tell so far is that they seem fragile, BUT haven&#x27;t broken, so it could mean nothing. LOVE the green mirrored lenses &amp; polarizing seems better than my Costa Del Mar (which the frames snapped after 2 months) ones so....there&#x27;s that!<\/p>"
+            }
+          },
+          "1575322416782": {
+            "type": "review",
+            "settings": {
+              "title": "Xtopher",
+              "image": "shopify:\/\/shop_images\/Xtopher.png",
+              "body": "<p>I really love these glasses. They frame my face very well.<\/p>"
+            }
+          },
+          "1575322457098": {
+            "type": "review",
+            "settings": {
+              "title": "LisaBeesa",
+              "image": "shopify:\/\/shop_images\/LisaBeesa.png",
+              "body": "<p>I love that they&#x27;re oversized just enough buuuuut, I really LOVE how you cannot see through them from the front. No one knows you&#x27;re even looking at them in these bad boys! Love.LOVE.LOVE<\/p>"
+            }
+          },
+          "1575322480863": {
+            "type": "review",
+            "settings": {
+              "title": "Melissa",
+              "image": "shopify:\/\/shop_images\/Melissa.png",
+              "body": "<p>Here’s the thing. I’m running off day 5 of dry shampoo and 4 hours of sleep. I’m tired and I feel far from glamorous but I whipped out my cat eye glasses and suddenly I feel like I can attack the day and feel dang cute while waiting in the parent pick up line at my kids school. Sure they’re only sunglasses but if a few bucks can give my self esteems a boost then Hell yeah lm going to recommend them.<\/p>"
+            }
+          },
+          "1575322534780": {
+            "type": "review",
+            "settings": {
+              "title": "Brandi",
+              "image": "shopify:\/\/shop_images\/Brandi.png",
+              "body": "<p>Perfect pair of sunnies. Super cute, looks exactly the same (if not better) than the $70 sunnies posted on social media. These are awesome and you should definitely order yourself a pair ASAP. Great packaging!<\/p>"
+            }
+          },
+          "1575323306626": {
+            "type": "review",
+            "settings": {
+              "title": "cwallace",
+              "image": "shopify:\/\/shop_images\/cwallace.png",
+              "body": "<p>Aviators are probably MY FAVORITE type of sunglasses and these easily went to the top of my list!!! They look and feel WAY more expensive than they actually are! I get compliments on them all the time! I love how they are reflective but also from some angles look not reflective- making it so easy to wear with any outfit! I totally recommend these glasses and I will be ordering them in the other colors :)!!!<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1575323334922",
+          "1575323415025",
+          "1575323453303",
+          "1575315473219",
+          "1575315618769",
+          "1575315629703",
+          "1575322132403",
+          "1575322160532",
+          "1575322220538",
+          "1575322247090",
+          "1575322416782",
+          "1575322457098",
+          "1575322480863",
+          "1575322534780",
+          "1575323306626"
+        ],
+        "settings": {
+          "heading": "Real Reviews From Real People"
+        }
+      },
+      "why-buy": {
+        "type": "why-buy",
+        "blocks": {
+          "1588872238252": {
+            "type": "reason",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/why-reasonable-price_f04e957a-1d79-4f18-9643-eab81a311673.png",
+              "text": "Trendy Eyewear Without Traditional Markups"
+            }
+          },
+          "1588872341691": {
+            "type": "reason",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/why-help-charities_70eda83c-4fad-46e0-bdd8-a244859fe529.png",
+              "text": "One Order<br>=<br>One Animal Fed"
+            }
+          },
+          "1588872370880": {
+            "type": "reason",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/why-free-two-day-shipping_32a50328-55d2-49ed-a0d6-b246b2b4d039.png",
+              "text": "Free US 2-day Shipping Over $55"
+            }
+          }
+        },
+        "block_order": [
+          "1588872238252",
+          "1588872341691",
+          "1588872370880"
+        ],
+        "settings": {
+          "heading": "Why WearMe Pro?"
+        }
+      },
+      "collection-list": {
+        "type": "collection-list",
+        "blocks": {
+          "1588942832196": {
+            "type": "item",
+            "settings": {
+              "collection": "womens-new-arrivals",
+              "image": "shopify:\/\/shop_images\/D22AA699-B41B-42F2-9C36-0DB634482F3D.jpg",
+              "button_text": "Shop"
+            }
+          },
+          "1588942949294": {
+            "type": "item",
+            "settings": {
+              "collection": "womens-sunglasses",
+              "image": "shopify:\/\/shop_images\/Premium.jpg",
+              "button_text": "Shop"
+            }
+          },
+          "1588942951574": {
+            "type": "item",
+            "settings": {
+              "collection": "womens-blue-light-glasses",
+              "image": "shopify:\/\/shop_images\/bluelightsquare.jpg",
+              "button_text": "Shop"
+            }
+          },
+          "1588942953861": {
+            "type": "item",
+            "settings": {
+              "collection": "men-sunglasses",
+              "image": "shopify:\/\/shop_images\/wesbite_main-2.jpg",
+              "button_text": "Shop"
+            }
+          },
+          "1588942956335": {
+            "type": "item",
+            "settings": {
+              "collection": "best-sellers",
+              "image": "shopify:\/\/shop_images\/WMPalex-2_7bb92906-5acb-4aa3-a1f4-641a3ef9a9a1.jpg",
+              "button_text": "Shop"
+            }
+          }
+        },
+        "block_order": [
+          "1588942832196",
+          "1588942949294",
+          "1588942951574",
+          "1588942953861",
+          "1588942956335"
+        ],
+        "settings": {
+          "grid": "2",
+          "color": "primary-accent",
+          "tint_on_hover": true,
+          "tint_color": "primary",
+          "show_buttons": true,
+          "buttons_on_hover": true
+        }
+      },
+      "1588944691324": {
+        "type": "image-with-text-overlay",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/wmp_B1G1_Bluelight_Banner_Mobile_v02.gif",
+          "title": "",
+          "url": "shopify:\/\/collections\/womens-blue-light-glasses",
+          "button_text": "",
+          "content_align_x": "center",
+          "content_align_y": "bottom",
+          "text_align": "center",
+          "display": "mobile"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {}
+      },
+      "page-template": {
+        "type": "page-template",
+        "settings": {
+          "show_title": false
+        }
+      },
+      "page-blue-light": {
+        "type": "page-blue-light",
+        "blocks": {
+          "1591732658165": {
+            "type": "explainer_reason",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/image1_fd0b340e-c870-42d2-94fa-dc2ebc233918.png",
+              "title": "Full Resin Saturation Technology",
+              "reason": "In our lenses, the blue light blocking polymer is inserted directly into the lens. Not only top layer of film, like other brands."
+            }
+          },
+          "1591732692882": {
+            "type": "explainer_reason",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/image3_c941e028-e42d-450a-9505-717c1fdbcfcb.png",
+              "title": "Virtually Clear Lens",
+              "reason": "With only a slight blue tint, our lenses will not distort your vision."
+            }
+          },
+          "1591732669359": {
+            "type": "explainer_reason",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/image2_039ef567-1db8-49f3-8f90-931a01aa676f.png",
+              "title": "Quality & Affordable Price",
+              "reason": "We provide blue light glasses at a price you will love! We do not believe in brand mark ups."
+            }
+          },
+          "1591732701934": {
+            "type": "explainer_reason",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/image4_db9e9a30-1c53-47d2-8d18-fa4ad30a6427.png",
+              "title": "100% UV Protection",
+              "reason": "Our blue light lenses also provide UVA + UVB 400 protection."
+            }
+          },
+          "1592252967813": {
+            "type": "explainer_reason",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/image5_80a78f9d-3dd3-4ba0-9cbd-7357e16473bd.png",
+              "title": "Shatter Resistant",
+              "reason": "Our lenses are made of polycarbonate and are shatter resistant."
+            }
+          }
+        },
+        "block_order": [
+          "1591732658165",
+          "1591732692882",
+          "1591732669359",
+          "1591732701934",
+          "1592252967813"
+        ],
+        "settings": {
+          "hero_desktop_image": "shopify:\/\/shop_images\/desktop.jpg",
+          "hero_mobile_image": "shopify:\/\/shop_images\/rea-extended.jpg",
+          "hero_heading": "Blue Light Glasses",
+          "hero_url": "shopify:\/\/collections\/womens-blue-light-glasses",
+          "hero_cta_text": "Shop now",
+          "hero_cta_text_mobile": "Shop Blue Light Glasses",
+          "explainer_heading": "More Digital Devices\n= \nMore Exposure to Blue Light",
+          "explainer_first_image": "shopify:\/\/shop_images\/image7_ddceef44-265b-455d-88b8-742e3a57c553.png",
+          "explainer_second_image": "shopify:\/\/shop_images\/design4.jpg",
+          "explainer_second_image_text": "Why Choose WearMe Pro?",
+          "explainer_mobile_image": "shopify:\/\/shop_images\/big-DSC_9381-2.jpg",
+          "comparison_our_lens": "shopify:\/\/shop_images\/LENS1.png",
+          "comparison_our_lens_detail_text": "Full Resin \nSaturation Technology",
+          "comparison_other_brands": "shopify:\/\/shop_images\/lens2.png",
+          "comparison_other_brands_detail_text": "Only Top Layer \nFilm or Applique"
+        }
+      },
+      "reviews-slideshow--blue-light": {
+        "type": "reviews-slideshow--blue-light",
+        "blocks": {
+          "1592319366739": {
+            "type": "review",
+            "settings": {
+              "title": "Sarah",
+              "image": "shopify:\/\/shop_images\/Sarah_Sellers.png",
+              "body": "<p>I absolutely love these glasses! I bought 2 pair and it was worth every Penny! My eyes don't hurt as bad and I also wear them as fashion glasses! Most definitely buying another pair just for looks!. I wish it came with a glasses cleaner cloth though. But again worth every Penny! The product wasn't cheap! And they came on time!<\/p>"
+            }
+          },
+          "1592319394473": {
+            "type": "review",
+            "settings": {
+              "title": "Heather",
+              "image": "shopify:\/\/shop_images\/Heather_Smith.png",
+              "body": "<p>I love my blue-light blocking glasses from WearMePro! Due to everything being moved to remote work for my Grad school, I have been getting massive headaches from staring at my laptop screen all day. I had to make a change and these glasses are the answer! My headaches are gone! Thank you WearMePro!<\/p>"
+            }
+          },
+          "1592319396526": {
+            "type": "review",
+            "settings": {
+              "title": "Emily",
+              "image": "shopify:\/\/shop_images\/Emily_Davis.png",
+              "body": "<p>This is my first pair of blue light blocking glasses and I absolutely love them! They fit on my face great and are not too tight behinds my ears. They look cute with any outfit and have helped my eyes be less dry and strained during times I am on my laptop for awhile. I highly recommend these glasses!<\/p>"
+            }
+          },
+          "1592319398207": {
+            "type": "review",
+            "settings": {
+              "title": "Alicia",
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2020-06-18_at_1.48.30_PM.png",
+              "body": "<p>I got these blue light blocking glasses and love them! So impressed with the quality and style. These are so stylish and help keep my eyes from feeling strained from long hours on the phone and computer. I ever find myself just wear them to wear them because they are so cute. I&rsquo;ve received many compliments when wear them too. I&rsquo;d highly recommend them, specially if you are blonde like me I love that they offer the lighter tortoise shade as it blends nicely. Come with a nice hard case to keep them from getting scratched or broken.<\/p>"
+            }
+          },
+          "1592319399621": {
+            "type": "review",
+            "settings": {
+              "title": "Euston",
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2020-06-18_at_1.49.50_PM.png",
+              "body": "<p>I am obsessed with these glasses. They have helped with my tension headaches from being on the computer everyday and they are super stylish. I have received so many compliments<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1592319366739",
+          "1592319394473",
+          "1592319396526",
+          "1592319398207",
+          "1592319399621"
+        ],
+        "settings": {
+          "heading": "Our Customer Reviews",
+          "heading_mobile": "Real Reviews From Real Customers"
+        }
+      },
+      "related-products": {
+        "type": "related-products",
+        "settings": {}
+      },
+      "page-template--faq": {
+        "type": "page-template--faq",
+        "blocks": {
+          "1598630915870": {
+            "type": "subheading",
+            "settings": {
+              "title": "Orders"
+            }
+          },
+          "1598630921223": {
+            "type": "question",
+            "settings": {
+              "title": "How long will it take for my order to arrive?",
+              "answer": "<p>We ship all our orders every morning Monday - Friday via USPS or FedEx Express. We offer free US shipping via USPS (4-6 business days) and $4.99 2-Day Shipping via Fedex Express. Fedex Express arrival time will depend on your location and can take from 2-4 business days. You can learn more about shipping options <a href=\"https:\/\/shopwearmepro.com\/pages\/us-shipping\" title=\"https:\/\/shopwearmepro.com\/pages\/us-shipping\">here<\/a>. Please note that due to COVID-19, we have seen some delays in delivery.<\/p>"
+            }
+          },
+          "1598636291541": {
+            "type": "question",
+            "settings": {
+              "title": "How often do you update your catalogue?",
+              "answer": "<p>On average we restock and add new styles every 2–3 months.<\/p>"
+            }
+          },
+          "1598636435078": {
+            "type": "question",
+            "settings": {
+              "title": "Can I cancel or update my order?",
+              "answer": "<p>Usually, our orders are processed very quickly, we have a system set up to send all orders through to our fulfillment center right when the order is placed. Unfortunately, this often means <strong>we are unable to make changes to your order<\/strong> but we can always try! Please reach out to <a href=\"mailto:service@wearmepro.com\" title=\"mailto:service@wearmepro.com\">service@wearmepro.com<\/a> about any address changes or cancellations. However, please note that once the order is processed by our fulfillment center, we cannot make any changes.<\/p>"
+            }
+          },
+          "1598636638240": {
+            "type": "question",
+            "settings": {
+              "title": "I forgot to add the coupon code while checking out? Can you add it?",
+              "answer": "<p>Oh no! We are so sorry to hear that! Unfortunately, once the order is processed we cannot add the coupon code to the order.<\/p>"
+            }
+          },
+          "1598636701246": {
+            "type": "question",
+            "settings": {
+              "title": "What do I do if my package is marked as delivered but I cannot locate it?",
+              "answer": "<p>Please allow 48 hours for your package to arrive. If package still does not show up, please call the shipping provider. They often hold the package for pick up.  If you still cannot locate the package - please email: <a href=\"mailto:service@wearmepro.com\" title=\"mailto:service@wearmepro.com\">service@wearmepro.com<\/a>.<\/p>"
+            }
+          },
+          "1598636747171": {
+            "type": "subheading",
+            "settings": {
+              "title": "Shipping"
+            }
+          },
+          "1598636757786": {
+            "type": "question",
+            "settings": {
+              "title": "When do you ship your orders?",
+              "answer": "<p>We ship our orders Monday - Friday! If you place an order over the weekend, it will not ship until Monday morning.<\/p>"
+            }
+          },
+          "1598636788365": {
+            "type": "question",
+            "settings": {
+              "title": "I made a mistake in my address! Help!",
+              "answer": "<p>Please email us at <a href=\"mailto:service@wearmepro.com\" title=\"mailto:service@wearmepro.com\">service@wearmepro.com<\/a> with the correct address as soon as possible. If we can, we will update the address. Unfortunately, sometimes we cannot make the change in time and we cannot be held accountable for reshipping the item to a new address.<\/p>"
+            }
+          },
+          "1598882737451": {
+            "type": "question",
+            "settings": {
+              "title": "How can I track my order?",
+              "answer": "<p>1. If you have a WearMe Pro account - you can log in to check the status of your package.<\/p><p><\/p><p>2. If you do not have a WearMe Pro account, once your order is shipped, you will receive an email with your tracking number. You can then track the package right to your door!<\/p>"
+            }
+          },
+          "1598882809398": {
+            "type": "subheading",
+            "settings": {
+              "title": "Returns"
+            }
+          },
+          "1598882837137": {
+            "type": "question",
+            "settings": {
+              "title": "How do I return my order?",
+              "answer": "<p>You can return your order within 14 days for the cost of $5.00 (domestic only). Return shipping is FREE when the store credit option is chosen. When choosing store credit - you have 30 days to return your order. You can start your return <a href=\"https:\/\/shopwearmepro.com\/a\/returns\" title=\"https:\/\/shopwearmepro.com\/a\/returns\">here<\/a>.<\/p><p><\/p><p>We also accept international returns, however the customer is responsible for shipping the item on their own and a return label will not be provided.<\/p>"
+            }
+          },
+          "1598882883138": {
+            "type": "question",
+            "settings": {
+              "title": "I sent in my return, when will I get the refund?",
+              "answer": "<p>Please note, it can take up to 14 days for us to receive your package and process a return. Once in our facility, we try to get to all returns within 48 hours. We will refund you to your original payment method, please be aware that payments can take up to 3 business days to process depending on your bank or payment provider.<\/p>"
+            }
+          },
+          "1598882906271": {
+            "type": "question",
+            "settings": {
+              "title": "I received a damaged product, how do I get a replacement?",
+              "answer": "<p>Please contact us at <a href=\"mailto:service@wearmepro.com\" title=\"mailto:service@wearmepro.com\">service@wearmepro.com<\/a> and we will help resolve this issue promptly.<\/p>"
+            }
+          },
+          "1598882949529": {
+            "type": "question",
+            "settings": {
+              "title": "I received a free pair because I spent over $80, do I have to return it?",
+              "answer": "<p>If you received a free promotional pair, you must return it, if the total of your order is below $80 after the return.<\/p>"
+            }
+          },
+          "1598882973725": {
+            "type": "subheading",
+            "settings": {
+              "title": "Sunglasses"
+            }
+          },
+          "1598882982503": {
+            "type": "question",
+            "settings": {
+              "title": "Do your sunglasses have UV protection?",
+              "answer": "<p>Of course, all our sunglasses offer 100% UVB + UVA protection.<\/p>"
+            }
+          },
+          "1598882992738": {
+            "type": "question",
+            "settings": {
+              "title": "How do I find sunglasses for someone with a bigger head?",
+              "answer": "<p>All our sunglasses have size charts. Please use the frame width measurement to ensure the sunglasses will be comfortable. You can also learn how to use our size chart <a href=\"https:\/\/shopwearmepro.com\/blogs\/blog\/how-to-pick-the-perfect-pair-of-sunglasses-for-your-face\" title=\"https:\/\/shopwearmepro.com\/blogs\/blog\/how-to-pick-the-perfect-pair-of-sunglasses-for-your-face\">here<\/a>.<\/p>"
+            }
+          },
+          "1598883020182": {
+            "type": "question",
+            "settings": {
+              "title": "What are polarized sunglasses?",
+              "answer": "<p>Polarized lenses reduce glare from bright sun and flat surfaces, offering a clearer image and reducing eye fatigue over long periods outside. This can be great at the beach or when driving. The lens is coated in a special filter that blocks intense reflected light.<\/p><p><\/p><p>Polarized lenses are not the same thing as UV lenses, which protect your eyes from sun damage.<\/p><p>You can shop all of our polarized styles <a href=\"https:\/\/shopwearmepro.com\/collections\/polarized\" title=\"https:\/\/shopwearmepro.com\/collections\/polarized\">here<\/a>.<\/p>"
+            }
+          },
+          "1598883056023": {
+            "type": "question",
+            "settings": {
+              "title": "How do I clean my sunglasses?",
+              "answer": "<p>1. Rinse glasses under lukewarm water<br\/>2. Add a tiny drop of soap to lens and gently swirl around on lens with your fingers<br\/>3. Rinse again<br\/>4. Dry gently with a microfiber cloth<\/p>"
+            }
+          },
+          "1598883103036": {
+            "type": "question",
+            "settings": {
+              "title": "How do I know if the sunglasses are the right size?",
+              "answer": "<p>We recommend using our size chart which is located on the product page. If you have a pair of sunglasses\/glasses that fit you well and are comfortable, try finding a new frame with the same or similar measurements. You can also learn more about finding the right pair of sunglasses <a href=\"https:\/\/shopwearmepro.com\/blogs\/blog\/how-to-pick-the-perfect-pair-of-sunglasses-for-your-face\" title=\"https:\/\/shopwearmepro.com\/blogs\/blog\/how-to-pick-the-perfect-pair-of-sunglasses-for-your-face\">here<\/a>.<\/p>"
+            }
+          },
+          "1598883135242": {
+            "type": "subheading",
+            "settings": {
+              "title": "Blue Light Glasses"
+            }
+          },
+          "1598883142344": {
+            "type": "question",
+            "settings": {
+              "title": "What are blue light glasses?",
+              "answer": "<p>Blue light glasses are clear lens glasses that offer protection from blue light that is emitted from our electronic devices. If you spend a lot of time on your phone or you work in front of the computer - they may help your eyes feel less tired! You can learn more about WearMe Pro blue light glasses - <a href=\"https:\/\/shopwearmepro.com\/pages\/our-blue-light-lens\" title=\"https:\/\/shopwearmepro.com\/pages\/our-blue-light-lens\">here<\/a>.<\/p>"
+            }
+          },
+          "1598883194103": {
+            "type": "question",
+            "settings": {
+              "title": "What emits blue light?",
+              "answer": "<p>• Many indoor lightbulbs<br\/>• Computer monitor screens<br\/>• Flat screen LED televisions<br\/>• Smart phone screens<br\/>• Tablet screens<\/p>"
+            }
+          },
+          "1598883228102": {
+            "type": "question",
+            "settings": {
+              "title": "Why wear blue light glasses?",
+              "answer": "<p>Excessive exposure to blue light can send mixed signals to your built-in body clock, telling your brain it’s daytime even in the late PM hours. For many, the result is insomnia, difficulty staying asleep, irregular sleep patterns, tense dream states, and\/or chronic exhaustion.<\/p><p><\/p><p>Wearing blue light glasses can help decrease your exposure to the blue light emitted from screens.<\/p>"
+            }
+          },
+          "d9c8c2cd-5e0f-4374-9714-a858e0d72e2f": {
+            "type": "subheading",
+            "settings": {
+              "title": "Prescription Glasses"
+            }
+          },
+          "69e5113c-2003-44a0-aaaf-33a8122ba18e": {
+            "type": "question",
+            "settings": {
+              "title": "Can I use a contact lens prescription for ordering glasses?",
+              "answer": "<p>Prescriptions for contact lenses cannot be used for glasses. A contact lens prescription can only be used to purchase contact lenses.<\/p>"
+            }
+          },
+          "6f57f6c1-049b-4685-bfcb-00c3fbe684db": {
+            "type": "question",
+            "settings": {
+              "title": "How do I measure my PD (Pupillary Distance)?",
+              "answer": "<p>PD, or pupillary distance, refers to the distance in millimeters between the center of one pupil to the center of the other. Having a correct PD on your glasses prescription ensures that you are looking through the ideal spot in your lenses. If this number was not provided on your prescription by your eye care professional, you can measure it yourself in 3 easy steps:<\/p><p>1. Look in the mirror and line up a ruler horizontally between your eyes.<\/p><p>2. Make sure the ruler is lined exactly underneath the middle of the left pupil.<\/p><p>3. Measure the exact distance between your left pupil and your right pupil in millimeters.<\/p><p>4. Repeat steps 1 - 3 a couple times for accuracy and use the average for your final measurement.<\/p>"
+            }
+          },
+          "d51b2e5a-1fe9-4aaa-8ec8-1c7fc149647e": {
+            "type": "question",
+            "settings": {
+              "title": "Can I send my prescription by fax or email?",
+              "answer": "<p>We cannot accept prescriptions by fax or email. To ensure accuracy we ask that you enter your prescription manually or upload your RX file from your optometrist (recommended) with our easy online ordering system.<\/p>"
+            }
+          },
+          "55240d67-4501-414b-b4f4-5d3c1a5d3751": {
+            "type": "question",
+            "settings": {
+              "title": "What is the warranty for WMP prescription lenses?",
+              "answer": "<p>WMP prescription lenses come with a one (1) year warranty. If there’s a manufacturing defect in our products or their workmanship, we’ll make it right and cover shipping costs while we’re at it. The warranty does not cover scratches, breaks or other damage and\/or return requests caused by accidents, negligence, or improper care.<br\/><br\/><\/p>"
+            }
+          },
+          "d22aec2a-efe6-45c8-981a-7b4f91719478": {
+            "type": "question",
+            "settings": {
+              "title": "What is the return policy for prescription lenses?",
+              "answer": "<p>All prescription purchases can be returned within 14 days to receive a full refund. Click <a href=\"https:\/\/shopwearmepro.com\/a\/returns\" title=\"https:\/\/shopwearmepro.com\/a\/returns\">here<\/a> to start a refund.<\/p>"
+            }
+          },
+          "75224f1b-37d0-4633-8113-7e336e6e1fcf": {
+            "type": "question",
+            "settings": {
+              "title": "Do the lenses come with UV protection?",
+              "answer": "<p>Yes! All of our prescription lenses come with Full UV protection.<\/p>"
+            }
+          },
+          "07bf7f86-3576-45b0-b22a-8c733cc33d76": {
+            "type": "question",
+            "settings": {
+              "title": "Do the lenses have blue light protection?",
+              "answer": "<p>Yes, we do offer prescription lenses with blue light protection! Please note that lenses do not automatically come with blue light protection so make sure to select the blue light lens option during the ordering process.<\/p>"
+            }
+          },
+          "11f015df-21c6-4ff4-8515-ec2fba86c935": {
+            "type": "question",
+            "settings": {
+              "title": "Can I use my health insurance to cover the expense?",
+              "answer": "<p>Currently, we do not work directly with insurance providers. However, we recommend contacting your insurance provider to see if you have out-of-network benefits. You may have the option to submit a detailed receipt of purchase to your insurance company for reimbursement.<\/p>"
+            }
+          },
+          "add45588-81cb-455a-8639-7212196a95ed": {
+            "type": "question",
+            "settings": {
+              "title": "How long is the shipping for RX?",
+              "answer": "<p>United States: 7-12 business days<\/p><p>International: 12-14 business days<\/p>"
+            }
+          },
+          "32eff40a-2de6-42a8-837b-33ab41c75fe8": {
+            "type": "question",
+            "settings": {
+              "title": "What if I entered the wrong prescription?",
+              "answer": "<p>Please get in touch with us as soon as possible at 1 (480) 687 4907 or email us at <a href=\"mailto:SERVICE@WEARMEPRO.COM\" target=\"_blank\"><strong>SERVICE@WEARMEPRO.COM<\/strong><\/a>.<\/p>"
+            }
+          },
+          "ec0a65bf-c7cf-44dd-af17-31527fed9e5d": {
+            "type": "question",
+            "settings": {
+              "title": "Do you offer sunglasses with prescription lenses?",
+              "answer": "<p>At this time we do not offer sunglasses with prescription lenses. However, if this is something you’d like to see from us, please let us know! We’d love to hear your comments and feedback at <a href=\"mailto:service@wearmepro.com\" target=\"_blank\">service@wearmepro.com<\/a>.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1598630915870",
+          "1598630921223",
+          "1598636291541",
+          "1598636435078",
+          "1598636638240",
+          "1598636701246",
+          "1598636747171",
+          "1598636757786",
+          "1598636788365",
+          "1598882737451",
+          "1598882809398",
+          "1598882837137",
+          "1598882883138",
+          "1598882906271",
+          "1598882949529",
+          "1598882973725",
+          "1598882982503",
+          "1598882992738",
+          "1598883020182",
+          "1598883056023",
+          "1598883103036",
+          "1598883135242",
+          "1598883142344",
+          "1598883194103",
+          "1598883228102",
+          "d9c8c2cd-5e0f-4374-9714-a858e0d72e2f",
+          "69e5113c-2003-44a0-aaaf-33a8122ba18e",
+          "6f57f6c1-049b-4685-bfcb-00c3fbe684db",
+          "d51b2e5a-1fe9-4aaa-8ec8-1c7fc149647e",
+          "55240d67-4501-414b-b4f4-5d3c1a5d3751",
+          "d22aec2a-efe6-45c8-981a-7b4f91719478",
+          "75224f1b-37d0-4633-8113-7e336e6e1fcf",
+          "07bf7f86-3576-45b0-b22a-8c733cc33d76",
+          "11f015df-21c6-4ff4-8515-ec2fba86c935",
+          "add45588-81cb-455a-8639-7212196a95ed",
+          "32eff40a-2de6-42a8-837b-33ab41c75fe8",
+          "ec0a65bf-c7cf-44dd-af17-31527fed9e5d"
+        ],
+        "settings": {
+          "show_title": true
+        }
+      },
+      "1602168723780": {
+        "type": "featured-product",
+        "disabled": true,
+        "settings": {
+          "product": "alex-square-modern-metal-frame-blue-light-blocking-computer-glasses",
+          "image": "shopify:\/\/shop_images\/Home_page_three.jpg",
+          "seamless": true,
+          "heading": "Alex",
+          "content": "<p>Stay forever fashionable in Alex, a classic rectangular design that looks great on both women and men. The modern, yet timeless, mixed material frame features a full-rim face front constructed of lightweight polycarbonate with luxe, stainless steel arms. Expect a comfortable fit and copious amounts of compliments in this popular style. <\/p>",
+          "url": "shopify:\/\/products\/alex-square-modern-metal-frame-blue-light-blocking-computer-glasses",
+          "button_text": "",
+          "alignment": "right",
+          "color": "default",
+          "button_color": "secondary-accent",
+          "enable_shopping": true
+        }
+      },
+      "160810744488e986dc": {
+        "type": "slideshow",
+        "blocks": {
+          "160810744488e986dc-1": {
+            "type": "slide",
+            "settings": {
+              "heading": "",
+              "image": "shopify:\/\/shop_images\/DSC00717_2.jpg",
+              "text": "TATE",
+              "alignment": "center center",
+              "text_alignment": "center bottom",
+              "url": "shopify:\/\/products\/tate-classic-round-retro-polarized-sunglasses",
+              "button_text": "Shop",
+              "heading_color": "secondary-accent",
+              "text_color": "secondary-accent",
+              "button_color": "secondary-accent"
+            }
+          },
+          "160810744488e986dc-0": {
+            "type": "slide",
+            "settings": {
+              "heading": "",
+              "image": "shopify:\/\/shop_images\/Nick_CLRG15-2.jpg",
+              "text": "NICK",
+              "alignment": "center center",
+              "text_alignment": "right center",
+              "url": "shopify:\/\/products\/nick-square-modern-flat-lens-polarized-mirrored-lens-sunglasses",
+              "button_text": "Shop",
+              "heading_color": "secondary-accent",
+              "text_color": "secondary-accent",
+              "button_color": "secondary-accent"
+            }
+          },
+          "160810744488e986dc-2": {
+            "type": "slide",
+            "settings": {
+              "heading": "",
+              "image": "shopify:\/\/shop_images\/DSC07593.jpg",
+              "text": "ARIA",
+              "alignment": "center center",
+              "text_alignment": "right bottom",
+              "url": "shopify:\/\/products\/aria-full-flat-lens-mirrored-cateye-sunglasses",
+              "button_text": "Shop",
+              "heading_color": "secondary-accent",
+              "text_color": "secondary-accent",
+              "button_color": "secondary-accent"
+            }
+          }
+        },
+        "block_order": [
+          "160810744488e986dc-1",
+          "160810744488e986dc-0",
+          "160810744488e986dc-2"
+        ],
+        "settings": {
+          "heading": "TRENDING NOW",
+          "slides_to_show": "3",
+          "seamless": false,
+          "slideshow_height": "tall",
+          "tint_on_hover": true,
+          "tint_color": "primary"
+        }
+      },
+      "16085434107e9c6bb2": {
+        "type": "video",
+        "disabled": true,
+        "settings": {
+          "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/The-Benefits-to-Blue-Light-Glasses-Oveth-Video---1920x748.mp4.mp4?v=1608312337",
+          "video_mobile_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/mob-video.mp4?v=1608897874"
+        }
+      },
+      "16092390992020579e": {
+        "type": "footer-icons",
+        "blocks": {
+          "8380a030-d8ec-45e5-89c3-dc24b5c560e0": {
+            "type": "footer_icons",
+            "settings": {
+              "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/ships_for_free_1e7757e1-7df9-4833-a3c5-5ffa762c4ac9.svg?v=1641313758",
+              "title": "FREE SHIPPING",
+              "text": "On all domestic US orders"
+            }
+          },
+          "3082fe5b-7db2-4625-b67e-e838d5aa0404": {
+            "type": "footer_icons",
+            "settings": {
+              "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/hassle_free_returns_977e6551-e652-46f9-b372-d690312fe10d.svg?v=1641313781",
+              "title": "EASY RETURNS",
+              "text": "Simple, quick & FREE with store credit option"
+            }
+          },
+          "2727d6b4-09b5-4180-842a-656b17054049": {
+            "type": "footer_icons",
+            "settings": {
+              "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/on_trend_v1_ea78d8ad-5f85-472c-8233-1b34ed27be2e.svg?v=1641460782",
+              "title": "ON TREND",
+              "text": "Chic styles without the traditional markup"
+            }
+          },
+          "abea5079-0c27-453b-802b-d017c8f42c69": {
+            "type": "footer_icons",
+            "settings": {
+              "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/animal_helped_a5259c92-f816-4e0e-becd-f998af0f4a65.svg?v=1641313795",
+              "title": "ONE ORDER = ONE ANIMAL HELPED",
+              "text": "Each order helps a pet in need"
+            }
+          }
+        },
+        "block_order": [
+          "8380a030-d8ec-45e5-89c3-dc24b5c560e0",
+          "3082fe5b-7db2-4625-b67e-e838d5aa0404",
+          "2727d6b4-09b5-4180-842a-656b17054049",
+          "abea5079-0c27-453b-802b-d017c8f42c69"
+        ],
+        "settings": {
+          "color": "#f5f4f2"
+        }
+      },
+      "product-steps-template": {
+        "type": "product-steps-template",
+        "blocks": {
+          "a78d3bd5-6d47-440c-9982-8ca2a16c5117": {
+            "type": "step_three_product",
+            "settings": {
+              "product": "clear",
+              "info_text": "CLEAR",
+              "info_textarea": "Lenses that are clear all the time. These include 99% UV protection and anti-scratch coating.",
+              "text": "1"
+            }
+          },
+          "18a8795f-329b-431a-b529-ce8b7beaa1e8": {
+            "type": "step_three_product",
+            "settings": {
+              "product": "clear-blue-light-blocking",
+              "info_text": "CLEAR – BLUE LIGHT BLOCKING",
+              "info_textarea": "Lenses that are clear all the time. These limit the transmission of harmful blue light using internal resin filter, to relax your eyes and reduce harmful blue light wavelengths from entering the lens. Includes 99% UV protection and anti-scratch coating.",
+              "text": "0"
+            }
+          },
+          "64c3eda5-8c4c-4b8f-a34a-7d4831337d09": {
+            "type": "lenses_product",
+            "settings": {
+              "product": "premium-lenses",
+              "info_text": "Premium Lenses",
+              "info_textarea": "Includes all standard lens features as well as an anti-glare coating that decreases reflections, improving your visual clarity and cosmetics.",
+              "text": "1",
+              "anti_reflective": "reflective"
+            }
+          },
+          "480d5968-0a7f-49ce-b985-b1d665f156fb": {
+            "type": "lenses_product",
+            "settings": {
+              "product": "standart-lens",
+              "info_text": "Standart Lenses",
+              "info_textarea": "Standard lenses are thin and light and include 99% UV protection, an anti-scratch coating, and impact resistance.",
+              "text": "0",
+              "anti_reflective": "not_reflective"
+            }
+          },
+          "60cf6d69-512f-455b-bf14-d52005042832": {
+            "type": "lenses_product",
+            "settings": {
+              "product": "premium-lenses-1",
+              "info_text": "Premium Lenses",
+              "info_textarea": "Includes all standard lens features as well as an anti-glare coating that decreases reflections, improving your visual clarity and cosmetics.",
+              "text": "0",
+              "anti_reflective": "not_reflective"
+            }
+          },
+          "46f52e34-73b8-4947-bfa7-8f081337a035": {
+            "type": "lenses_product",
+            "settings": {
+              "product": "hight-index-lenses",
+              "info_text": "Hight Index Lenses",
+              "info_textarea": "A high-index lens allows people with a stronger prescription to wear a lens that is lightweight and thin. This ensures more comfortable glasses even if your farsightedness, nearsightedness, or astigmatism prescription is high.",
+              "text": "0",
+              "anti_reflective": "not_reflective"
+            }
+          }
+        },
+        "block_order": [
+          "a78d3bd5-6d47-440c-9982-8ca2a16c5117",
+          "18a8795f-329b-431a-b529-ce8b7beaa1e8",
+          "64c3eda5-8c4c-4b8f-a34a-7d4831337d09",
+          "480d5968-0a7f-49ce-b985-b1d665f156fb",
+          "60cf6d69-512f-455b-bf14-d52005042832",
+          "46f52e34-73b8-4947-bfa7-8f081337a035"
+        ],
+        "settings": {
+          "shipping_html": "<h3>RX Shipping &amp; Processing Time<\/h3>\n<ul>\n  <li>United States: 5-8 business days <br> *Hight index lenses might take up to 12 business days<\/li>\n  <li>International: 12-14 business days\n<br>*Hight index lenses might take up to 12 business days<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee\n<\/h3>\n<p>At WearMe Pro, we're all about making our customer's experience the best it can possibly be! If you're not satisfied with your order please reach out to us at service@wearmepro.com and we will always address all of your concerns.<\/p>",
+          "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_79f6c84d-8757-49f0-aea6-84b6aa3485e7.png",
+          "mobile_title": "",
+          "mobile_text": ""
+        }
+      },
+      "1617898349d988f295": {
+        "type": "banner_with_buttons",
+        "settings": {
+          "image_desctop": "shopify:\/\/shop_images\/shopwearmepro_desktop_banner_02-19-2022_200af38b-b5b9-4780-bc99-a235b4b30c8a.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/shopwearmepro_mobile_banner_02-19-2022_9846f74f-d1e7-4859-a176-0e0c00af2b99.jpg",
+          "button_position": "customization-right",
+          "button_position_in_block": "btn-center",
+          "show_shadow": false,
+          "top_desktop": 76,
+          "top_mobile": 83,
+          "is_enable_banner_link": false,
+          "banner_link": "",
+          "left_url": "shopify:\/\/collections\/womens-sunglasses",
+          "left_button_text": "Shop Women",
+          "left_button_color": "#000000",
+          "text_left_button_color": "#ffffff",
+          "right_url": "shopify:\/\/collections\/men-sunglasses",
+          "right_button_text": "Shop Men",
+          "right_button_color": "#000000",
+          "text_right_button_color": "#fffdfd",
+          "display": "both"
+        }
+      },
+      "page-landing-template": {
+        "type": "page-landing-template",
+        "settings": {
+          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>Free 2 Day FedEx Shipping on domestic orders over $65<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 6–10 business days to arrive once they leave the USPS facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
+          "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_7982ec66-a68b-41da-9aa6-3d0b5cc7c941.png",
+          "countdown_date": "Apr 27, 2021",
+          "countdown_text": "Text"
+        }
+      },
+      "search-template": {
+        "type": "search-template",
+        "settings": {}
+      },
+      "1625629267ff67ba2c": {
+        "type": "banner_with_buttons",
+        "settings": {
+          "image_desctop": "shopify:\/\/shop_images\/shopwearmepro_desktop_banner_02-08-2022_d687c312-9eb6-449d-ab38-4cbd233608e1.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/shopwearmepro_mobile_banner_02-08-2022_828x_196f05a5-7a46-45f6-87bb-3ba965c77ccd.jpg",
+          "button_position": "customization-right",
+          "button_position_in_block": "btn-center",
+          "show_shadow": true,
+          "top_desktop": 79,
+          "top_mobile": 82,
+          "is_enable_banner_link": false,
+          "banner_link": "",
+          "left_url": "shopify:\/\/collections\/eco-collection",
+          "left_button_text": "Shop ECO",
+          "left_button_color": "#000000",
+          "text_left_button_color": "#ffffff",
+          "right_url": "",
+          "right_button_text": "Shop Women",
+          "right_button_color": "#7dcfb6",
+          "text_right_button_color": "#ffffff",
+          "display": "both"
+        }
+      },
+      "collection-infinity-template": {
+        "type": "collection-infinity-template",
+        "settings": {}
+      },
+      "banner-affiliates": {
+        "type": "banner-affiliates",
+        "settings": {
+          "header_image": "shopify:\/\/shop_images\/Affliate_banner.jpg",
+          "title_text": "Join wmp",
+          "header_text": "Affiliate",
+          "background_color": "#efedee",
+          "header_color": "#000000",
+          "header_text_position": "right-text",
+          "header_image_font_size_desktop": 25,
+          "header_image_font_size_mobile": 16,
+          "header_image_font_size_text_desktop": 56,
+          "header_image_font_size_text_mobile": 30,
+          "header_font": "WFHavanaSunset"
+        }
+      },
+      "page-reviews": {
+        "type": "page-reviews",
+        "settings": {
+          "header_image_show_title": false,
+          "header_image": "shopify:\/\/shop_images\/DSC08702_2864296d-3275-48fb-9749-cd2d127aa835.jpg",
+          "header_text": "",
+          "header_color": "#000000",
+          "header_text_position": "center-text",
+          "header_vertical_alignment": "vertical-top-text",
+          "header_image_font_size_desktop": 46,
+          "header_image_font_size_mobile": 15,
+          "header_image_font_size_text_desktop": 42,
+          "header_image_font_size_text_mobile": 30,
+          "header_font": "ZonaPro"
+        }
+      },
+      "page-about-us": {
+        "type": "page-about-us",
+        "settings": {
+          "banner_title": "our story",
+          "banner_image": "shopify:\/\/shop_images\/about-banner-img.jpg",
+          "box_text": "<p>At WMP we believe that quality eyewear shouldn’t be exclusive to designer labels. That’s why we’re committed to creating fashionable, affordable glasses that are accessible to everyone. Every product we offer — yesterday, today, and tomorrow — is (<strong>W<\/strong>)orn and (<strong>M<\/strong>)ade with (<strong>P<\/strong>)urpose.<br\/><\/p>",
+          "col_image_right": "shopify:\/\/shop_images\/col-img-1.jpg",
+          "col_title_right": "WEAR WHAT YOU LOVE",
+          "col_text_right": "<p>Whether your vibe is sporty chic, classic cool, retro glam, or somewhere in between, we’re advocates for rocking what makes you feel your best. That’s why we are dedicated to designing frames with your style in mind. Because the best thing you can wear is confidence.<\/p>",
+          "col_image_left": "shopify:\/\/shop_images\/col-img-2.jpg",
+          "col_title_left": "MADE WITHOUT THE MARKUP",
+          "col_text_left": "<p>Overpaying for a logo? We’re not about that. As a small, independent, family-owned business, we’re able to offer finely crafted, on-trend eyewear without the luxury brand price tag. Don’t take it from us though, we’ll let our 7k+ five-star ratings do the talking.<\/p>",
+          "purpose_title": "PURPOSE WITH EVERY PURCHASE",
+          "purpose_text": "<p>We’re obsessively passionate about two things; providing you with the best specs AND saving pets! As proud supporters of the Arizona Humane Society, a portion of every eyewear purchase goes to animals in need. To date, we’ve been able to donate more than 100k cans of food and truckloads of other much needed supplies. So thank you for helping us make a pawsitive impact! <\/p>",
+          "purpose_image": "shopify:\/\/shop_images\/img-col_27cfa1c3-3cfb-4c21-ae44-02e84d410ff5.png",
+          "founders_title": "GET TO KNOW OUR FOUNDERS, <span>DAVID & ULA<\/span>",
+          "founders_text": "<p>Cześć! That means “hello” in Polish, David & Ula’s native language. That’s the only greeting David knew when he immigrated to the United States at 16 years old. Fast forward to 2011, David - now 21, fluent in English, and married to Ula - launches WMP Eyewear out of a small Chicago apartment with roughly 100 sunglasses and a dream to disrupt the eyewear industry.<br\/>In 2017 David & Ula left Windy City for the Valley of the Sun (aka Phoenix, Arizona) where the company quickly expanded. By 2019 WMP was named the #9 Fastest Growing Arizona Company by Inc. 5000 with a 6,500 square foot warehouse to show for it.<br\/>When not designing fresh frames, the duo enjoys adventuring with their one-year-old daughter, Noa, and French Bulldog, Ivy.<\/p>",
+          "founders_image": "shopify:\/\/shop_images\/col-img-3.jpg"
+        }
+      },
+      "about-story": {
+        "type": "about-story",
+        "blocks": {
+          "df873d73-d8da-417f-ac1a-2a2313c6bb16": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2012",
+              "years_img": "shopify:\/\/shop_images\/year-img-1.jpg",
+              "years_text": "WMP Eyewear is born in a small Illinois apartment."
+            }
+          },
+          "ea255201-305d-483e-8f1d-96788ab887fb": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2014",
+              "years_img": "shopify:\/\/shop_images\/year-img-2.jpg",
+              "years_text": "David spends months in Asia searching high & low for a manufacturer that shares WMP’s core values."
+            }
+          },
+          "24fbe530-1052-41fb-b1e1-899b1b36073e": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2015",
+              "years_img": "shopify:\/\/shop_images\/year-img-3.jpg",
+              "years_text": "WMP moves from the Windy City to sunny Tempe, Arizona and the team starts to grow.﻿"
+            }
+          },
+          "be662d43-7943-44b3-b305-ab2fae69f293": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2017",
+              "years_img": "shopify:\/\/shop_images\/year-img-4.jpg",
+              "years_text": "With products now found in more that 1500 retail stores nationwide, WMP’s reach expands beyond e-commerce.﻿"
+            }
+          },
+          "c02aa1fe-ba30-49d0-be49-10255fc5dc07": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2019",
+              "years_img": "shopify:\/\/shop_images\/year-img-5.jpg",
+              "years_text": "Inc. 5000 releases its esteemed annual Fastest Growing Companies list with WMP ranking #377.﻿"
+            }
+          },
+          "8cd393cb-1d76-4381-aec5-cadba1cff920": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2020",
+              "years_img": "shopify:\/\/shop_images\/year-img-6.jpg",
+              "years_text": "In an effort to give back, WMP launches an ongoing partnership with Arizona Humane Society, donating a portion of every purchase to animals in need.﻿"
+            }
+          },
+          "2c90aaf8-e85c-4ec4-bd88-e615b5c6a6fe": {
+            "type": "years-blocks",
+            "settings": {
+              "years": "2021",
+              "years_img": "shopify:\/\/shop_images\/year-img-7.jpg",
+              "years_text": "WMP continues to evolve, welcoming a crew of eyewear-loving team members!﻿"
+            }
+          }
+        },
+        "block_order": [
+          "df873d73-d8da-417f-ac1a-2a2313c6bb16",
+          "ea255201-305d-483e-8f1d-96788ab887fb",
+          "24fbe530-1052-41fb-b1e1-899b1b36073e",
+          "be662d43-7943-44b3-b305-ab2fae69f293",
+          "c02aa1fe-ba30-49d0-be49-10255fc5dc07",
+          "8cd393cb-1d76-4381-aec5-cadba1cff920",
+          "2c90aaf8-e85c-4ec4-bd88-e615b5c6a6fe"
+        ],
+        "settings": {
+          "story_title": "Our Story"
+        }
+      },
+      "about-team": {
+        "type": "about-team",
+        "blocks": {
+          "df37ab0b-6b93-4352-b1be-0effaab4fa9d": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "David",
+              "team_img": "shopify:\/\/shop_images\/Photo-1.png",
+              "team_text": "<p>Founder<\/p>"
+            }
+          },
+          "ae39489d-50d1-4609-87ca-75c032242482": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Ula",
+              "team_img": "shopify:\/\/shop_images\/Photo-2.png",
+              "team_text": "<p>Marketing<\/p><p>Manager<\/p>"
+            }
+          },
+          "0cb53921-6fbd-4154-a845-295c8155b954": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Matt",
+              "team_img": "shopify:\/\/shop_images\/Photo-3.png",
+              "team_text": "<p>E-commerce<\/p><p>Operations Manager<\/p>"
+            }
+          },
+          "e7c7d2fa-18e3-46d9-ad20-16453ac01ea6": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Karah",
+              "team_img": "shopify:\/\/shop_images\/Photo-4.png",
+              "team_text": "<p>Social Media <\/p><p>Manager<\/p>"
+            }
+          },
+          "de17e2ca-9cf4-4626-a4b2-11432d917e03": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Michelle",
+              "team_img": "shopify:\/\/shop_images\/Michelle_HeadshotCropped_50f602e3-5ad9-4639-b168-bec84708b638.jpg",
+              "team_text": "<p>Customer Relations <\/p><p>Specialist<\/p>"
+            }
+          },
+          "e26739c4-fa00-4f69-b287-91aac8abc314": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Juan",
+              "team_img": "shopify:\/\/shop_images\/Photo-7.png",
+              "team_text": "<p>E-Commerce<\/p><p>Coordinator<\/p>"
+            }
+          },
+          "5e05ca64-c3e9-49bd-8adf-f01aee5b475a": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Josh",
+              "team_img": "shopify:\/\/shop_images\/Photo-8.png",
+              "team_text": "<p>Shipping <br\/>Supervisor<\/p>"
+            }
+          },
+          "85bdd7c5-1aac-4273-81de-94fa1c791187": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Abigail",
+              "team_img": "shopify:\/\/shop_images\/Photo-10.png",
+              "team_text": "<p>Shipping <\/p><p>Associate<\/p>"
+            }
+          },
+          "4995972c-0fb9-45af-af69-18a6203a4956": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Tanner",
+              "team_img": "shopify:\/\/shop_images\/Photo-11.png",
+              "team_text": "<p>Photographer<\/p>"
+            }
+          },
+          "7aa39652-7481-4d24-8857-5ad00f14299a": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Vlad",
+              "team_img": "shopify:\/\/shop_images\/Photo-12.png",
+              "team_text": "<p>E-commerce <\/p><p>Developer <\/p>"
+            }
+          },
+          "36084d00-cfdd-4751-9f61-9c570822213f": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Ivy",
+              "team_img": "shopify:\/\/shop_images\/Photo-13.png",
+              "team_text": "<p>Chief Barketing Officer<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "df37ab0b-6b93-4352-b1be-0effaab4fa9d",
+          "ae39489d-50d1-4609-87ca-75c032242482",
+          "0cb53921-6fbd-4154-a845-295c8155b954",
+          "e7c7d2fa-18e3-46d9-ad20-16453ac01ea6",
+          "de17e2ca-9cf4-4626-a4b2-11432d917e03",
+          "e26739c4-fa00-4f69-b287-91aac8abc314",
+          "5e05ca64-c3e9-49bd-8adf-f01aee5b475a",
+          "85bdd7c5-1aac-4273-81de-94fa1c791187",
+          "4995972c-0fb9-45af-af69-18a6203a4956",
+          "7aa39652-7481-4d24-8857-5ad00f14299a",
+          "36084d00-cfdd-4751-9f61-9c570822213f"
+        ],
+        "settings": {
+          "team_title": "Meet Our Team"
+        }
+      },
+      "banner_ambassadors": {
+        "type": "banner_ambassadors",
+        "settings": {
+          "works-title": "How it works",
+          "works_image-1": "shopify:\/\/shop_images\/wmpambassadorlandingpagesubmiticon_JNRaIPKW1_e8ff2ae4-d19d-4fd8-99df-f3a8c3a1d4a4.jpg",
+          "works_title_col-1": "SUBMIT",
+          "works_text_col-1": "<p>Fill out our super simple Brand Ambassador application to get started!<\/p>",
+          "works_image-2": "shopify:\/\/shop_images\/wmpambassadorlandingpageshareicon_HlMw7tPA1.jpg",
+          "works_title_col-2": "EARN $$$",
+          "works_text_col-2": "<p>Flex those influencer muscles & tell everyone you know about your personal referral code to start scoring sales + fun freebies.<\/p>",
+          "works_image-3": "shopify:\/\/shop_images\/wmpambassadorlandingpagesocializeicon_nDErS0Sq1_4387a127-5f70-48f6-95e5-637a71c1aa79.jpg",
+          "works_title_col-3": "SOCIALIZE",
+          "works_text_col-3": "<p>You'll be rewerded for creating your own content & regularly engaging with ours! Start by connecting with us via Instagram or private FB group.<\/p>",
+          "works_title_btn": "APPLY NOW",
+          "works_btn_link": "https:\/\/wearmepro.refersion.com\/?oid=35899"
+        }
+      },
+      "banner-ambassadors": {
+        "type": "banner-ambassadors",
+        "settings": {
+          "works-title": "How it works",
+          "works_image-1": "shopify:\/\/shop_images\/wmpambassadorlandingpagesubmiticon_JNRaIPKW1_e8ff2ae4-d19d-4fd8-99df-f3a8c3a1d4a4.jpg",
+          "works_title_col-1": "SUBMIT",
+          "works_text_col-1": "<p>Fill out our super simple Brand Ambassador application to get started!<\/p>",
+          "works_image-2": "shopify:\/\/shop_images\/wmpambassadorlandingpageshareicon_HlMw7tPA1.jpg",
+          "works_title_col-2": "EARN $$$",
+          "works_text_col-2": "<p>Flex those influencer muscles & tell everyone you know about your personal referral code to start scoring sales + fun freebies.<\/p>",
+          "works_image-3": "shopify:\/\/shop_images\/wmpambassadorlandingpagesocializeicon_nDErS0Sq1_4387a127-5f70-48f6-95e5-637a71c1aa79.jpg",
+          "works_title_col-3": "SOCIALIZE",
+          "works_text_col-3": "<p>You'll be rewerded for creating your own content & regularly engaging with ours! Start by connecting with us via Instagram or private FB group.<\/p>",
+          "works_title_btn": "APPLY NOW",
+          "works_btn_link": "https:\/\/wearmepro.refersion.com\/?oid=35899"
+        }
+      },
+      "welcome-box": {
+        "type": "welcome-box",
+        "settings": {
+          "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/video-banner.mp4?v=1646901478",
+          "logo_id": "shopify:\/\/shop_images\/image_1.png",
+          "top_id": "Eco Collection",
+          "bottom_id": "SEA BETTER. LIVE SUSTAINABLY",
+          "image_id": "shopify:\/\/shop_images\/ECO03-YLWBLU_Front2_1_4f484a4d-28c7-45ba-ac67-673994914637.png",
+          "text_id": "<p>Ten million tons of plastic are dumped in our oceans annually, equal to more than a garbage truckload every minute. In fact, by 2050 there will be more plastic in the oceans than fish. Instead of allowing these bottles to aimlessly pollute oceans worldwide we’re taking a step towards change and giving them a purpose. We’ve always offered high-quality, fashion-forward glasses at a great price. Now, we present an eyewear collection crafted with intent. We’re proud to release a line of eco-friendly, ethically sourced eyewear made from recycled materials that doesn’t sacrifice style or quality.<\/p>",
+          "btn_link": "shopify:\/\/collections\/eco-collection",
+          "btn_text": "EXPLORE COLLECTION"
+        }
+      },
+      "text-and-image": {
+        "type": "text-and-image",
+        "blocks": {
+          "79465c10-5a90-42ea-899b-b437124c6edd": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/Bottles_51470d79-6270-42d4-8796-dca72271a00b.jpg",
+              "title": "Plastic Bottles",
+              "desc": "<p>Discarded plastic bottles are removed<br\/>from the world’s oceans.<\/p>",
+              "position_id": "left"
+            }
+          },
+          "a98b68cb-478f-433b-b3dd-8dc38e396a46": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/Glasses-2-2b_b2f0ab00-dd4e-41d4-b879-fcc12e2485b1.jpg",
+              "title": "Shredded Plastic",
+              "desc": "<p>That rescued plastic is shipped to a location <br\/>to be cleaned and shredded.<\/p>",
+              "position_id": "right"
+            }
+          },
+          "5fb59352-1792-4df1-9f4b-4fb777dc24da": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/PlasticBeads-2_fe49d7e7-3cec-4e99-ab2b-ba03b0ed6a28.jpg",
+              "title": "Pellets",
+              "desc": "<p>The shredded plastic is melted down <br\/>and reformed into pellets.<\/p>",
+              "position_id": "left"
+            }
+          },
+          "36b22618-0b8b-4ad9-9e2d-9a8f95653b9b": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/Glasses-2_263b0201-eae1-4430-8a74-54976c4b5a02.jpg",
+              "title": "Sunglasses",
+              "desc": "<p>The finished product is your new, quality-crafted <br\/>recycled shades.<\/p>",
+              "position_id": "right"
+            }
+          }
+        },
+        "block_order": [
+          "79465c10-5a90-42ea-899b-b437124c6edd",
+          "a98b68cb-478f-433b-b3dd-8dc38e396a46",
+          "5fb59352-1792-4df1-9f4b-4fb777dc24da",
+          "36b22618-0b8b-4ad9-9e2d-9a8f95653b9b"
+        ],
+        "settings": {}
+      },
+      "collection-featured-eco": {
+        "type": "collection-featured-eco",
+        "settings": {
+          "title_id": "THE STYLES",
+          "collection_id": "eco-collection"
+        }
+      },
+      "features-section": {
+        "type": "features-section",
+        "blocks": {
+          "189f13de-72c7-4249-b57a-6109335d2bd1": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/comfort_9bd8f0fd-d15e-48c6-bb37-eeec22645767.png",
+              "title": "RECYCLED",
+              "desc": "6 bottles = 1 pair of sunglasses",
+              "size_id": 110
+            }
+          },
+          "3726bed8-89c3-4e2e-9fae-7328d4c53c40": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/polarized_lens_71d322a4-9c39-41cb-9d32-a181f271957a.png",
+              "title": "Polarized",
+              "desc": "Reduce unwanted glare",
+              "size_id": 155
+            }
+          },
+          "d62542d9-77c2-4cc2-84db-b86bb75ebdfb": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/turtle_1_e3b11b30-0763-4b1f-928d-c574c5555218.png",
+              "title": "GIVES BACK",
+              "desc": "Each order helps support Sea Turtle Conservancy",
+              "size_id": 120
+            }
+          },
+          "d223905f-d895-4cc0-adb0-d17ef779b92a": {
+            "type": "text",
+            "settings": {
+              "img": "shopify:\/\/shop_images\/box_1_e4806842-7222-43ed-bbf2-48679503b88c.png",
+              "title": "ECO FRIENDLY",
+              "desc": "Ships with eco-friendly packaging",
+              "size_id": 115
+            }
+          }
+        },
+        "block_order": [
+          "189f13de-72c7-4249-b57a-6109335d2bd1",
+          "3726bed8-89c3-4e2e-9fae-7328d4c53c40",
+          "d62542d9-77c2-4cc2-84db-b86bb75ebdfb",
+          "d223905f-d895-4cc0-adb0-d17ef779b92a"
+        ],
+        "settings": {}
+      },
+      "before-after-slider": {
+        "type": "before-after-slider",
+        "settings": {
+          "text_id": "<p>As passionate animal advocates we’re committed to supporting our four-legged friends which is why we’re excited to expand our 1 Order = 1 Animal helped initiative to another essential nonprofit organization. While a portion of every WMP purchase will still go back to pets in need at our hometown Humane Society, a percentage of proceeds from the Eco Collection will be donated to The Sea Turtle Conservancy.<\/p>",
+          "img_one": "shopify:\/\/shop_images\/Glasses_Slider_56d4ca5c-656f-42ec-9b59-d9852d664351.png",
+          "img_two": "shopify:\/\/shop_images\/image1_96c7fb46-9dae-41dd-90bc-b03cfa0378c7.png"
+        }
+      },
+      "showcase-eco": {
+        "type": "showcase-eco",
+        "settings": {
+          "title_id": "#wmpcollection",
+          "desc_id": "Follow us and tag us to be a part of  our conscious mission"
+        }
+      },
+      "product-template-eco": {
+        "type": "product-template-eco",
+        "settings": {
+          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>Free US shipping via USPS<\/li>\n<li>2-Day US Fedex Shipping for $4.99<\/li>\n  <li>Free 2-Day FedEx Shipping on domestic orders over $55<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 2-4 business days to arrive once they leave the FedEx facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
+          "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_9128fcbb-096c-4a0a-a80e-c55f3de365df.png",
+          "mobile_title": "",
+          "mobile_text": "",
+          "url_id": "shopify:\/\/pages\/eco-collection"
+        }
+      },
+      "banner_loyalty-program": {
+        "type": "banner_loyalty-program",
+        "settings": {
+          "img": "shopify:\/\/shop_images\/emma-dau-9Xnecn8oiHA-unsplash.jpg",
+          "banner_title": "Get rewards",
+          "banner_title2": "when you shop!",
+          "banner_text": "<p>Sign up for WMP rewards for FREE and start earning points to <br\/>redeem rewards & learn about exclusive discounts. <\/p>"
+        }
+      },
+      "loyalty-program_points": {
+        "type": "loyalty-program_points",
+        "blocks": {
+          "f8421801-c844-4916-a068-d92b440b9a63": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\">\n  <g id=\"Сгруппировать_11\" data-name=\"Сгруппировать 11\" transform=\"translate(-949.867 -1169.867)\">\n    <g id=\"shopping-bag\" transform=\"translate(949.867 1169.867)\">\n      <g id=\"Сгруппировать_4\" data-name=\"Сгруппировать 4\" transform=\"translate(0 14.539)\">\n        <g id=\"Сгруппировать_3\" data-name=\"Сгруппировать 3\">\n          <path id=\"Контур_1\" data-name=\"Контур 1\" d=\"M68.335,106.667H1.454A1.454,1.454,0,0,0,0,108.121v43.618a10.189,10.189,0,0,0,10.178,10.178H59.611a10.189,10.189,0,0,0,10.177-10.178V108.121A1.454,1.454,0,0,0,68.335,106.667Zm-1.454,45.072a7.276,7.276,0,0,1-7.27,7.27H10.178a7.276,7.276,0,0,1-7.27-7.27V109.575H66.881Z\" transform=\"translate(0 -106.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_6\" data-name=\"Сгруппировать 6\" transform=\"translate(20.355 0)\">\n        <g id=\"Сгруппировать_5\" data-name=\"Сгруппировать 5\">\n          <path id=\"Контур_2\" data-name=\"Контур 2\" d=\"M163.872,0a14.556,14.556,0,0,0-14.539,14.539V24.717a1.454,1.454,0,0,0,2.908,0V14.539a11.631,11.631,0,1,1,23.263,0V24.717a1.454,1.454,0,0,0,2.908,0V14.539A14.556,14.556,0,0,0,163.872,0Z\" transform=\"translate(-149.333 0)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_8\" data-name=\"Сгруппировать 8\" transform=\"translate(17.447 23.263)\">\n        <g id=\"Сгруппировать_7\" data-name=\"Сгруппировать 7\">\n          <path id=\"Контур_3\" data-name=\"Контур 3\" d=\"M132.362,170.667a4.362,4.362,0,1,0,4.362,4.362A4.367,4.367,0,0,0,132.362,170.667Zm0,5.816a1.454,1.454,0,1,1,1.454-1.454A1.458,1.458,0,0,1,132.362,176.483Z\" transform=\"translate(-128 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_10\" data-name=\"Сгруппировать 10\" transform=\"translate(43.618 23.263)\">\n        <g id=\"Сгруппировать_9\" data-name=\"Сгруппировать 9\">\n          <path id=\"Контур_4\" data-name=\"Контур 4\" d=\"M324.362,170.667a4.362,4.362,0,1,0,4.362,4.362A4.367,4.367,0,0,0,324.362,170.667Zm0,5.816a1.454,1.454,0,1,1,1.454-1.454A1.458,1.458,0,0,1,324.362,176.483Z\" transform=\"translate(-320 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"Эллипс_1\" data-name=\"Эллипс 1\" transform=\"translate(990.867 1210.867)\" fill=\"#fbf9f5\" stroke=\"#282828\" stroke-width=\"3\">\n      <circle cx=\"19.5\" cy=\"19.5\" r=\"19.5\" stroke=\"none\"><\/circle>\n      <circle cx=\"19.5\" cy=\"19.5\" r=\"18\" fill=\"none\"><\/circle>\n    <\/g>\n    <text id=\"_\" data-name=\"$\" transform=\"translate(1010.867 1238.867)\" fill=\"#282828\" font-size=\"24\" font-family=\"SegoeUI-Semibold, Segoe UI\" font-weight=\"600\" letter-spacing=\"0.025em\"><tspan x=\"-6.662\" y=\"0\">$<\/tspan><\/text>\n  <\/g>\n<\/svg>",
+              "points": "7 points per $1",
+              "points_2": "Make a purchase"
+            }
+          },
+          "3d00e27f-0aaa-4b36-9903-275e827baeb6": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"92.022\" height=\"81\" viewbox=\"0 0 92.022 81\">\n  <g id=\"review\" transform=\"translate(0.5 -30.5)\">\n    <path id=\"Контур_16\" data-name=\"Контур 16\" d=\"M90.044,38.6A12.433,12.433,0,0,0,78.578,31H12.444A12.433,12.433,0,0,0,0,43.444v65.778A1.776,1.776,0,0,0,1.776,111h0a1.764,1.764,0,0,0,1.257-.521L18.514,95H78.578A12.433,12.433,0,0,0,91.022,82.556V68.966a1.778,1.778,0,0,0-3.556,0V82.556a8.889,8.889,0,0,1-8.889,8.889h-60.8a1.787,1.787,0,0,0-1.257.521L3.556,104.93V43.444a8.886,8.886,0,0,1,8.889-8.889H78.578a8.886,8.886,0,0,1,8.889,8.889v9.522a1.778,1.778,0,1,0,3.556,0V43.444A12.373,12.373,0,0,0,90.044,38.6Z\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/path>\n    <circle id=\"Эллипс_8\" data-name=\"Эллипс 8\" cx=\"1.778\" cy=\"1.778\" r=\"1.778\" transform=\"translate(87.467 59.188)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/circle>\n    <circle id=\"Эллипс_9\" data-name=\"Эллипс 9\" cx=\"1.778\" cy=\"1.778\" r=\"1.778\" transform=\"translate(74.089 71.889)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/circle>\n    <path id=\"Контур_17\" data-name=\"Контур 17\" d=\"M131.517,262.778A1.781,1.781,0,0,0,129.739,261H77.028a1.778,1.778,0,0,0,0,3.556h52.711A1.781,1.781,0,0,0,131.517,262.778Z\" transform=\"translate(-61.872 -189.111)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/path>\n    <path id=\"Контур_18\" data-name=\"Контур 18\" d=\"M217.251,78.357a1.778,1.778,0,0,0-1.454-1.229l-5.233-.719-2.322-4.453a1.778,1.778,0,0,0-3.152,0l-2.322,4.453-5.233.719a1.778,1.778,0,0,0-.963,3.068l3.726,3.437-.875,4.828a1.778,1.778,0,0,0,2.541,1.909l4.7-2.339,4.7,2.339a1.778,1.778,0,0,0,2.541-1.909l-.875-4.828,3.726-3.437A1.778,1.778,0,0,0,217.251,78.357Zm-7.346,3.325a1.778,1.778,0,0,0-.544,1.624l.417,2.3-2.321-1.154a1.777,1.777,0,0,0-1.584,0l-2.321,1.154.417-2.3a1.778,1.778,0,0,0-.544-1.624l-1.675-1.545,2.409-.331a1.777,1.777,0,0,0,1.334-.939l1.171-2.245,1.171,2.244a1.778,1.778,0,0,0,1.334.939l2.409.331Z\" transform=\"translate(-161.155 -32.889)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/path>\n    <path id=\"Контур_19\" data-name=\"Контур 19\" d=\"M357.251,78.357a1.778,1.778,0,0,0-1.454-1.229l-5.233-.719-2.322-4.453a1.778,1.778,0,0,0-3.152,0l-2.322,4.453-5.233.719a1.778,1.778,0,0,0-.963,3.068l3.726,3.437-.875,4.828a1.778,1.778,0,0,0,2.541,1.909l4.7-2.339,4.7,2.339a1.778,1.778,0,0,0,2.541-1.909l-.875-4.828,3.726-3.437A1.778,1.778,0,0,0,357.251,78.357Zm-7.346,3.325a1.778,1.778,0,0,0-.544,1.624l.417,2.3-2.321-1.154a1.777,1.777,0,0,0-1.584,0l-2.321,1.154.417-2.3a1.778,1.778,0,0,0-.544-1.624l-1.675-1.545,2.409-.331a1.777,1.777,0,0,0,1.334-.939l1.171-2.245,1.171,2.244a1.777,1.777,0,0,0,1.334.939l2.409.331Z\" transform=\"translate(-276.266 -32.889)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/path>\n    <path id=\"Контур_20\" data-name=\"Контур 20\" d=\"M60.1,90.2a1.777,1.777,0,0,0,1.86.17l4.7-2.339,4.7,2.339a1.778,1.778,0,0,0,2.541-1.909l-.875-4.828L76.76,80.2a1.778,1.778,0,0,0-.963-3.068l-5.233-.719-2.322-4.453a1.778,1.778,0,0,0-3.152,0l-2.322,4.453-5.233.719a1.778,1.778,0,0,0-.963,3.068L60.3,83.633l-.875,4.828A1.778,1.778,0,0,0,60.1,90.2Zm4.057-10.393a1.777,1.777,0,0,0,1.334-.939l1.171-2.244,1.171,2.244a1.778,1.778,0,0,0,1.334.939l2.409.331L69.9,81.682a1.778,1.778,0,0,0-.544,1.624l.417,2.3-2.321-1.154a1.777,1.777,0,0,0-1.584,0l-2.321,1.154.417-2.3a1.778,1.778,0,0,0-.544-1.624l-1.675-1.545Z\" transform=\"translate(-46.043 -32.889)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/path>\n    <path id=\"Контур_21\" data-name=\"Контур 21\" d=\"M137.739,221H77.028a1.778,1.778,0,1,0,0,3.556h60.711a1.778,1.778,0,0,0,0-3.556Z\" transform=\"translate(-61.872 -156.222)\" fill=\"#282828\" stroke=\"#fbf9f5\" stroke-width=\"1\"><\/path>\n  <\/g>\n<\/svg>",
+              "points": "30 points",
+              "points_2": "Leave a review"
+            }
+          },
+          "4d034a8b-277a-4e86-8c4f-d42b32b094de": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg id=\"facebook\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\">\n  <g id=\"Сгруппировать_47\" data-name=\"Сгруппировать 47\" transform=\"translate(38.438 58.646)\">\n    <g id=\"Сгруппировать_46\" data-name=\"Сгруппировать 46\">\n      <path id=\"Контур_22\" data-name=\"Контур 22\" d=\"M247.563,375.333A1.562,1.562,0,0,0,246,376.9v.025a1.563,1.563,0,0,0,3.125,0V376.9A1.562,1.562,0,0,0,247.563,375.333Z\" transform=\"translate(-246 -375.333)\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n  <g id=\"Сгруппировать_49\" data-name=\"Сгруппировать 49\">\n    <g id=\"Сгруппировать_48\" data-name=\"Сгруппировать 48\">\n      <path id=\"Контур_23\" data-name=\"Контур 23\" d=\"M64.688,0H15.313A15.33,15.33,0,0,0,0,15.313V64.688A15.33,15.33,0,0,0,15.313,80H40a1.562,1.562,0,0,0,1.563-1.562V66.328a1.563,1.563,0,0,0-3.125,0V76.875H15.313A12.2,12.2,0,0,1,3.125,64.688V15.313A12.2,12.2,0,0,1,15.313,3.125H64.688A12.2,12.2,0,0,1,76.875,15.313V64.688A12.2,12.2,0,0,1,64.688,76.875h-10V49.3h9.06A1.563,1.563,0,0,0,65.3,47.891l1.124-11.165a1.562,1.562,0,0,0-1.555-1.719H54.688V29.145c0-1.061.338-1.456,1.247-1.456H64.8a1.562,1.562,0,0,0,1.563-1.562V15.242A1.562,1.562,0,0,0,64.8,13.68H53.157c-6.6,0-10.1,2.9-11.869,5.329a16.445,16.445,0,0,0-2.85,9.505v6.564H30.781a1.562,1.562,0,0,0-1.562,1.563V47.734A1.562,1.562,0,0,0,30.781,49.3h7.656V53.75a1.563,1.563,0,0,0,3.125,0V47.734A1.562,1.562,0,0,0,40,46.172H32.344V38.2H40a1.562,1.562,0,0,0,1.563-1.562V28.513c0-3.521,1.13-11.709,11.595-11.709H63.238v7.759h-7.3a4.2,4.2,0,0,0-4.372,4.581V36.57a1.562,1.562,0,0,0,1.563,1.563H63.143l-.809,8.04H53.125a1.562,1.562,0,0,0-1.562,1.563v30.7A1.562,1.562,0,0,0,53.125,80H64.688A15.33,15.33,0,0,0,80,64.688V15.313A15.33,15.33,0,0,0,64.688,0Z\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "points": "30 points",
+              "points_2": "Like us on Facebook"
+            }
+          },
+          "8ab33df0-a49b-4bab-8dcb-26cef15845b2": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg id=\"instagram\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\">\n  <g id=\"Сгруппировать_51\" data-name=\"Сгруппировать 51\">\n    <g id=\"Сгруппировать_50\" data-name=\"Сгруппировать 50\">\n      <path id=\"Контур_24\" data-name=\"Контур 24\" d=\"M67.826,0H12.174A12.187,12.187,0,0,0,0,12.174V67.826A12.188,12.188,0,0,0,12.174,80v-.158c1.421.158,4,.158,8.7.158H67.826A12.188,12.188,0,0,0,80,67.826V12.174A12.188,12.188,0,0,0,67.826,0Zm8.7,67.826a8.706,8.706,0,0,1-8.7,8.7H12.174a8.706,8.706,0,0,1-8.7-8.7V12.174a8.706,8.706,0,0,1,8.7-8.7H67.826a8.706,8.706,0,0,1,8.7,8.7Z\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n  <g id=\"Сгруппировать_53\" data-name=\"Сгруппировать 53\" transform=\"translate(13.913 13.913)\">\n    <g id=\"Сгруппировать_52\" data-name=\"Сгруппировать 52\">\n      <path id=\"Контур_25\" data-name=\"Контур 25\" d=\"M90.087,64a26.087,26.087,0,1,0,26.087,26.087A26.117,26.117,0,0,0,90.087,64Zm0,48.7A22.609,22.609,0,1,1,112.7,90.087,22.635,22.635,0,0,1,90.087,112.7Z\" transform=\"translate(-64 -64)\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n  <g id=\"Сгруппировать_55\" data-name=\"Сгруппировать 55\" transform=\"translate(24.184 24.266)\">\n    <g id=\"Сгруппировать_54\" data-name=\"Сгруппировать 54\">\n      <path id=\"Контур_26\" data-name=\"Контур 26\" d=\"M126.982,111.624a15.734,15.734,0,1,0,15.734,15.734A15.753,15.753,0,0,0,126.982,111.624Zm0,27.99a12.256,12.256,0,1,1,12.256-12.256A12.269,12.269,0,0,1,126.982,139.614Z\" transform=\"translate(-111.248 -111.624)\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n  <g id=\"Сгруппировать_57\" data-name=\"Сгруппировать 57\" transform=\"translate(62.609 10.435)\">\n    <g id=\"Сгруппировать_56\" data-name=\"Сгруппировать 56\">\n      <circle id=\"Эллипс_10\" data-name=\"Эллипс 10\" cx=\"3.478\" cy=\"3.478\" r=\"3.478\" fill=\"#282828\"><\/circle>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "points": "30 points",
+              "points_2": "Follow us on Instagram"
+            }
+          },
+          "faa90b86-0f4d-4e50-a807-d0cdd2836201": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg id=\"sms\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"64.516\" height=\"80\" viewbox=\"0 0 64.516 80\">\n  <path id=\"Контур_27\" data-name=\"Контур 27\" d=\"M131.871,416a3.871,3.871,0,1,0,3.871,3.871A3.876,3.876,0,0,0,131.871,416Zm0,5.161a1.29,1.29,0,1,1,1.29-1.29A1.292,1.292,0,0,1,131.871,421.161Zm0,0\" transform=\"translate(-107.355 -348.903)\" fill=\"#282828\"><\/path>\n  <path id=\"Контур_28\" data-name=\"Контур 28\" d=\"M120,32h10.323v2.581H120Zm0,0\" transform=\"translate(-100.645 -26.839)\" fill=\"#282828\"><\/path>\n  <path id=\"Контур_29\" data-name=\"Контур 29\" d=\"M63.226,15.484H49.032V6.452A6.459,6.459,0,0,0,42.581,0H6.452A6.459,6.459,0,0,0,0,6.452v67.1A6.459,6.459,0,0,0,6.452,80H42.581a6.459,6.459,0,0,0,6.452-6.452V41.29H63.226A1.29,1.29,0,0,0,64.516,40V16.774A1.29,1.29,0,0,0,63.226,15.484ZM45.161,30.559,30.585,18.065H59.738ZM28.387,19.579l9.319,7.987-9.319,9.319Zm12.9-4.1H27.1a1.29,1.29,0,0,0-1.29,1.29V40a1.29,1.29,0,0,0,1.29,1.29H41.29V61.935H7.742V12.9H41.29ZM30.212,38.71l9.459-9.459,4.65,3.986a1.287,1.287,0,0,0,1.68,0l4.65-3.986,9.459,9.458Zm22.4-11.144,9.319-7.987V36.885ZM46.452,73.548a3.876,3.876,0,0,1-3.871,3.871H6.452a3.876,3.876,0,0,1-3.871-3.871V6.452A3.876,3.876,0,0,1,6.452,2.581H42.581a3.876,3.876,0,0,1,3.871,3.871v9.032H43.871V11.613a1.29,1.29,0,0,0-1.29-1.29H6.452a1.29,1.29,0,0,0-1.29,1.29V63.226a1.29,1.29,0,0,0,1.29,1.29H42.581a1.29,1.29,0,0,0,1.29-1.29V41.29h2.581Zm0,0\" fill=\"#282828\"><\/path>\n  <path id=\"Контур_30\" data-name=\"Контур 30\" d=\"M71.742,287.484H76.9a7.75,7.75,0,0,0,7.742-7.742V273.29a1.29,1.29,0,0,0-1.29-1.29H71.742a7.742,7.742,0,1,0,0,15.484Zm0-12.9H82.065v5.161A5.166,5.166,0,0,1,76.9,284.9H71.742a5.161,5.161,0,0,1,0-10.323Zm0,0\" transform=\"translate(-53.677 -228.129)\" fill=\"#282828\"><\/path>\n  <path id=\"Контур_31\" data-name=\"Контур 31\" d=\"M96,312h2.581v2.581H96Zm0,0\" transform=\"translate(-80.516 -261.677)\" fill=\"#282828\"><\/path>\n  <path id=\"Контур_32\" data-name=\"Контур 32\" d=\"M128,312h2.581v2.581H128Zm0,0\" transform=\"translate(-107.355 -261.677)\" fill=\"#282828\"><\/path>\n<\/svg>",
+              "points": "50 points",
+              "points_2": "SMS sign up"
+            }
+          },
+          "e982c6d9-8c92-4310-9e80-ce6c7104e9d6": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"74.672\" height=\"80\" viewbox=\"0 0 74.672 80\">\n  <g id=\"add-user\" transform=\"translate(-32 -15.986)\">\n    <path id=\"Контур_33\" data-name=\"Контур 33\" d=\"M305.333,332h8v8A1.333,1.333,0,0,0,316,340v-8h8a1.333,1.333,0,0,0,0-2.667h-8v-8a1.333,1.333,0,0,0-2.667,0v8h-8a1.333,1.333,0,0,0,0,2.667Z\" transform=\"translate(-226.664 -253.342)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_34\" data-name=\"Контур 34\" d=\"M32.695,82.5c.611.333,15.136,8.163,29.973,8.163A55.376,55.376,0,0,0,73.84,89.472,18.664,18.664,0,1,0,88,58.657c-.357,0-.711.011-1.063.031A29.482,29.482,0,0,0,69.92,46.25a16,16,0,1,0-14.5,0,28.941,28.941,0,0,0-14.5,9.129C35.168,61.981,32,71.194,32,81.325a1.333,1.333,0,0,0,.695,1.171ZM88,61.324a16,16,0,1,1-16,16,16,16,0,0,1,16-16ZM49.334,31.989A13.334,13.334,0,1,1,62.668,45.323,13.334,13.334,0,0,1,49.334,31.989Zm-6.4,25.145A25.932,25.932,0,0,1,83.972,59.1a18.659,18.659,0,0,0-11.87,28,52.02,52.02,0,0,1-9.434.9c-12.365,0-24.933-5.931-27.994-7.474C34.836,71.352,37.753,63.074,42.931,57.135Z\" fill=\"#282828\"><\/path>\n  <\/g>\n<\/svg>",
+              "points": "300 points",
+              "points_2": "Create an account"
+            }
+          },
+          "bc65a203-7825-48f6-9d74-c1281c3393ac": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg id=\"tick-mark\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\">\n  <g id=\"Сгруппировать_58\" data-name=\"Сгруппировать 58\" transform=\"translate(0 6.667)\">\n    <path id=\"Контур_35\" data-name=\"Контур 35\" d=\"M28.333,58.667h-20A8.343,8.343,0,0,1,0,50.333v-40A8.343,8.343,0,0,1,8.333,2h50a8.343,8.343,0,0,1,8.333,8.333V23.667a1.667,1.667,0,1,1-3.333,0V10.333a5.006,5.006,0,0,0-5-5h-50a5.006,5.006,0,0,0-5,5v40a5.006,5.006,0,0,0,5,5h20a1.667,1.667,0,1,1,0,3.333Z\" transform=\"translate(0 -2)\" fill=\"#282828\"><\/path>\n  <\/g>\n  <g id=\"Сгруппировать_59\" data-name=\"Сгруппировать 59\" transform=\"translate(0 20)\">\n    <path id=\"Контур_36\" data-name=\"Контур 36\" d=\"M65,9.333H1.667A1.667,1.667,0,1,1,1.667,6H65a1.667,1.667,0,0,1,0,3.333Z\" transform=\"translate(0 -6)\" fill=\"#282828\"><\/path>\n  <\/g>\n  <g id=\"Сгруппировать_60\" data-name=\"Сгруппировать 60\" transform=\"translate(13.333)\">\n    <path id=\"Контур_37\" data-name=\"Контур 37\" d=\"M5.667,16.667A1.667,1.667,0,0,1,4,15V1.667a1.667,1.667,0,1,1,3.333,0V15A1.667,1.667,0,0,1,5.667,16.667Z\" transform=\"translate(-4)\" fill=\"#282828\"><\/path>\n  <\/g>\n  <g id=\"Сгруппировать_61\" data-name=\"Сгруппировать 61\" transform=\"translate(50)\">\n    <path id=\"Контур_38\" data-name=\"Контур 38\" d=\"M16.667,16.667A1.667,1.667,0,0,1,15,15V1.667a1.667,1.667,0,1,1,3.333,0V15A1.667,1.667,0,0,1,16.667,16.667Z\" transform=\"translate(-15)\" fill=\"#282828\"><\/path>\n  <\/g>\n  <g id=\"Сгруппировать_62\" data-name=\"Сгруппировать 62\" transform=\"translate(46.666 49.999)\">\n    <path id=\"Контур_39\" data-name=\"Контур 39\" d=\"M22.334,31.667a1.679,1.679,0,0,1-1.18-.487l-6.667-6.667a1.666,1.666,0,0,1,2.357-2.357l5.407,5.407L32.744,15.57a1.666,1.666,0,1,1,2.507,2.2L23.584,31.1a1.656,1.656,0,0,1-1.2.567h-.053Z\" transform=\"translate(-14 -15)\" fill=\"#282828\"><\/path>\n  <\/g>\n  <g id=\"Сгруппировать_63\" data-name=\"Сгруппировать 63\" transform=\"translate(36.667 36.667)\">\n    <path id=\"Контур_40\" data-name=\"Контур 40\" d=\"M32.667,54.333A21.667,21.667,0,1,1,54.333,32.667,21.692,21.692,0,0,1,32.667,54.333Zm0-40A18.333,18.333,0,1,0,51,32.667,18.355,18.355,0,0,0,32.667,14.333Z\" transform=\"translate(-11 -11)\" fill=\"#282828\"><\/path>\n  <\/g>\n<\/svg>",
+              "points": "50 points",
+              "points_2": "Monthly sign up"
+            }
+          },
+          "47f9d1f2-f255-4379-a133-049c0751835b": {
+            "type": "points-blocks",
+            "settings": {
+              "points_svg": "<svg id=\"refer\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\">\n  <g id=\"Сгруппировать_64\" data-name=\"Сгруппировать 64\" transform=\"translate(0 0)\">\n    <path id=\"Контур_41\" data-name=\"Контур 41\" d=\"M73.69,35.015a12.6,12.6,0,0,0,6.163-6.1,1.562,1.562,0,0,0-.055-1.43,45.192,45.192,0,0,1-4.351-10.723l-.828-3.15A18.249,18.249,0,0,0,40.267,10.9l-.054-.038a1.562,1.562,0,0,0-1.293-.228,32.664,32.664,0,0,1-8.36,1.083A13.9,13.9,0,0,0,16.672,25.6v8.486a13.9,13.9,0,0,0,7.382,12.266v1.79H21.26A21.284,21.284,0,0,0,0,69.4v9.033A1.562,1.562,0,0,0,1.562,80H23.517a1.562,1.562,0,1,0,0-3.125H3.125V69.4A18.155,18.155,0,0,1,21.26,51.269h2.852a6.5,6.5,0,0,0,12.894,0h2.855a20,20,0,0,1,6.274,1.144l-.7.852a1.562,1.562,0,0,0,1.209,2.552h3.827a19.306,19.306,0,0,1-9.257,15.036,1.562,1.562,0,0,0,.814,2.9h.051a23.424,23.424,0,0,0,14.587-5.737c.4-.348.784-.712,1.157-1.085A18.307,18.307,0,0,1,58,69.4v7.471H37.58a1.563,1.563,0,0,0,0,3.125h21.98a1.562,1.562,0,0,0,1.563-1.562V69.4a21.3,21.3,0,0,0-.726-5.519,23.417,23.417,0,0,0,3.665-8.067l14.376.013A1.562,1.562,0,0,0,80,54.269V46.308a13.275,13.275,0,0,0-6.31-11.293ZM47.979,6.088A15.123,15.123,0,0,1,71.6,14.4l.828,3.15a48.317,48.317,0,0,0,4.241,10.722,9.489,9.489,0,0,1-8.205,4.763l-6.09,0V30.484a11.816,11.816,0,0,0,5.866-10.221,7.893,7.893,0,0,0-4.458-7.091,6.921,6.921,0,0,1-3.149-2.906,6.527,6.527,0,0,0,.31-.605,1.562,1.562,0,0,0-2.851-1.279,3.421,3.421,0,0,1-2.122,1.872l-6.528,1.993a5.7,5.7,0,0,0-4.018,4.766,15.645,15.645,0,0,0-2.66-3.938,15,15,0,0,1,5.219-6.988ZM56.9,31.978a12,12,0,0,0,2.343-.269v3.174a2.44,2.44,0,0,1-4.879,0V31.718a12.468,12.468,0,0,0,2.536.262c.065,0-.066,0,0,0Zm.046-3.125a8.306,8.306,0,0,1-8.448-8.3V17.735a2.6,2.6,0,0,1,1.85-2.5l6.528-1.993a6.54,6.54,0,0,0,1.5-.677,10.039,10.039,0,0,0,4.087,3.444,4.718,4.718,0,0,1,2.64,4.252A8.492,8.492,0,0,1,56.949,28.854Zm-5.707,1.683v2.5H44.447v-.72a15.626,15.626,0,0,0,2.34-6.258,11.516,11.516,0,0,0,4.455,4.477Zm-20.682-15.7a35.839,35.839,0,0,0,8.428-1,12.67,12.67,0,0,1,4.34,13.469,8.919,8.919,0,0,0-7.874-5.055H25.665a8.544,8.544,0,0,0-5.818,2.329,10.777,10.777,0,0,1,10.713-9.741Zm3.381,35.568a3.381,3.381,0,0,1-6.762,0V47.558a13.915,13.915,0,0,0,6.762,0v2.848ZM30.559,44.85A10.775,10.775,0,0,1,19.8,34.087V32.019c0-3.663,2.632-6.644,5.868-6.644h9.789c3.236,0,5.868,2.98,5.868,6.644v2.069A10.775,10.775,0,0,1,30.559,44.85Zm9.3,3.294h-2.8V46.354a13.931,13.931,0,0,0,7.151-9.741,10.116,10.116,0,0,1,2.922-.45h4.254a5.576,5.576,0,0,0,4.8,4.25,1.562,1.562,0,0,0-.6.447l-7.369,9A23.628,23.628,0,0,0,39.862,48.144Zm22.931,4.549a1.563,1.563,0,0,0-1.538,1.286A20.267,20.267,0,0,1,47.606,69.633,22.492,22.492,0,0,0,53.66,54.255,1.563,1.563,0,0,0,52.1,52.693H49.946L56.8,44.317l6.859,8.376h-.871Zm14.082.013H67.713l-9.7-11.846a1.56,1.56,0,0,0-.6-.447,5.576,5.576,0,0,0,4.808-4.251H66.8A10.158,10.158,0,0,1,76.875,46.308Z\" transform=\"translate(0 0)\" fill=\"#282828\"><\/path>\n    <circle id=\"Эллипс_11\" data-name=\"Эллипс 11\" cx=\"1.562\" cy=\"1.562\" r=\"1.562\" transform=\"translate(28.998 76.875)\" fill=\"#282828\"><\/circle>\n  <\/g>\n<\/svg>",
+              "points": "1000 points",
+              "points_2": "Refer a friend"
+            }
+          }
+        },
+        "block_order": [
+          "f8421801-c844-4916-a068-d92b440b9a63",
+          "3d00e27f-0aaa-4b36-9903-275e827baeb6",
+          "4d034a8b-277a-4e86-8c4f-d42b32b094de",
+          "8ab33df0-a49b-4bab-8dcb-26cef15845b2",
+          "faa90b86-0f4d-4e50-a807-d0cdd2836201",
+          "e982c6d9-8c92-4310-9e80-ce6c7104e9d6",
+          "bc65a203-7825-48f6-9d74-c1281c3393ac",
+          "47f9d1f2-f255-4379-a133-049c0751835b"
+        ],
+        "settings": {
+          "points_title": "WAYS TO EARN POINTS"
+        }
+      },
+      "loyalty-program_rewards": {
+        "type": "loyalty-program_rewards",
+        "blocks": {
+          "d2bcf894-899e-414c-af3a-ea8aebe5909a": {
+            "type": "rewards-blocks",
+            "settings": {
+              "coupone": "$5 COUPON",
+              "points": "500 points"
+            }
+          },
+          "35f78995-77c3-436f-8ccc-bdb788fd0fac": {
+            "type": "rewards-blocks",
+            "settings": {
+              "coupone": "$10 COUPON",
+              "points": "1000 points"
+            }
+          },
+          "0a0e5d98-3284-4995-88d6-9d8e70a3ab0b": {
+            "type": "rewards-blocks",
+            "settings": {
+              "coupone": "Free Pair",
+              "points": "1500 points"
+            }
+          }
+        },
+        "block_order": [
+          "d2bcf894-899e-414c-af3a-ea8aebe5909a",
+          "35f78995-77c3-436f-8ccc-bdb788fd0fac",
+          "0a0e5d98-3284-4995-88d6-9d8e70a3ab0b"
+        ],
+        "settings": {
+          "rewards_title": "REWARDS"
+        }
+      },
+      "login": {
+        "type": "login",
+        "blocks": {
+          "770ce7c1-195c-4829-861a-6f4fe57c9ffe": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\">\n  <g id=\"Сгруппировать_11\" data-name=\"Сгруппировать 11\" transform=\"translate(-949.867 -1169.867)\">\n    <g id=\"shopping-bag\" transform=\"translate(949.867 1169.867)\">\n      <g id=\"Сгруппировать_4\" data-name=\"Сгруппировать 4\" transform=\"translate(0 14.539)\">\n        <g id=\"Сгруппировать_3\" data-name=\"Сгруппировать 3\">\n          <path id=\"Контур_1\" data-name=\"Контур 1\" d=\"M68.335,106.667H1.454A1.454,1.454,0,0,0,0,108.121v43.618a10.189,10.189,0,0,0,10.178,10.178H59.611a10.189,10.189,0,0,0,10.177-10.178V108.121A1.454,1.454,0,0,0,68.335,106.667Zm-1.454,45.072a7.276,7.276,0,0,1-7.27,7.27H10.178a7.276,7.276,0,0,1-7.27-7.27V109.575H66.881Z\" transform=\"translate(0 -106.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_6\" data-name=\"Сгруппировать 6\" transform=\"translate(20.355 0)\">\n        <g id=\"Сгруппировать_5\" data-name=\"Сгруппировать 5\">\n          <path id=\"Контур_2\" data-name=\"Контур 2\" d=\"M163.872,0a14.556,14.556,0,0,0-14.539,14.539V24.717a1.454,1.454,0,0,0,2.908,0V14.539a11.631,11.631,0,1,1,23.263,0V24.717a1.454,1.454,0,0,0,2.908,0V14.539A14.556,14.556,0,0,0,163.872,0Z\" transform=\"translate(-149.333 0)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_8\" data-name=\"Сгруппировать 8\" transform=\"translate(17.447 23.263)\">\n        <g id=\"Сгруппировать_7\" data-name=\"Сгруппировать 7\">\n          <path id=\"Контур_3\" data-name=\"Контур 3\" d=\"M132.362,170.667a4.362,4.362,0,1,0,4.362,4.362A4.367,4.367,0,0,0,132.362,170.667Zm0,5.816a1.454,1.454,0,1,1,1.454-1.454A1.458,1.458,0,0,1,132.362,176.483Z\" transform=\"translate(-128 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_10\" data-name=\"Сгруппировать 10\" transform=\"translate(43.618 23.263)\">\n        <g id=\"Сгруппировать_9\" data-name=\"Сгруппировать 9\">\n          <path id=\"Контур_4\" data-name=\"Контур 4\" d=\"M324.362,170.667a4.362,4.362,0,1,0,4.362,4.362A4.367,4.367,0,0,0,324.362,170.667Zm0,5.816a1.454,1.454,0,1,1,1.454-1.454A1.458,1.458,0,0,1,324.362,176.483Z\" transform=\"translate(-320 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"Эллипс_1\" data-name=\"Эллипс 1\" transform=\"translate(990.867 1210.867)\" fill=\"#fbf8f3\" stroke=\"#282828\" stroke-width=\"3\">\n      <circle cx=\"19.5\" cy=\"19.5\" r=\"19.5\" stroke=\"none\"><\/circle>\n      <circle cx=\"19.5\" cy=\"19.5\" r=\"18\" fill=\"none\"><\/circle>\n    <\/g>\n    <text id=\"_\" data-name=\"$\" transform=\"translate(1010.867 1238.867)\" fill=\"#282828\" font-size=\"24\" font-family=\"SegoeUI-Semibold, Segoe UI\" font-weight=\"600\" letter-spacing=\"0.025em\"><tspan x=\"-6.662\" y=\"0\">$<\/tspan><\/text>\n  <\/g>\n<\/svg>",
+              "awards_text": "Earn Points for Shopping"
+            }
+          },
+          "f5a7af91-32b8-4738-86cf-21b6675f42d7": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"79.412\" height=\"45\" viewbox=\"0 0 79.412 45\">\n  <g id=\"coupon\" transform=\"translate(0 -104)\">\n    <g id=\"Сгруппировать_13\" data-name=\"Сгруппировать 13\" transform=\"translate(24.211 130.374)\">\n      <g id=\"Сгруппировать_12\" data-name=\"Сгруппировать 12\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_8\" data-name=\"Прямоугольник 8\" width=\"1.937\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_15\" data-name=\"Сгруппировать 15\" transform=\"translate(24.211 136.184)\">\n      <g id=\"Сгруппировать_14\" data-name=\"Сгруппировать 14\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_9\" data-name=\"Прямоугольник 9\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_17\" data-name=\"Сгруппировать 17\" transform=\"translate(24.211 141.027)\">\n      <g id=\"Сгруппировать_16\" data-name=\"Сгруппировать 16\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_10\" data-name=\"Прямоугольник 10\" width=\"1.937\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_19\" data-name=\"Сгруппировать 19\" transform=\"translate(24.211 125.532)\">\n      <g id=\"Сгруппировать_18\" data-name=\"Сгруппировать 18\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_11\" data-name=\"Прямоугольник 11\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_21\" data-name=\"Сгруппировать 21\" transform=\"translate(24.211 119.721)\">\n      <g id=\"Сгруппировать_20\" data-name=\"Сгруппировать 20\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_12\" data-name=\"Прямоугольник 12\" width=\"1.937\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_23\" data-name=\"Сгруппировать 23\" transform=\"translate(24.211 114.879)\">\n      <g id=\"Сгруппировать_22\" data-name=\"Сгруппировать 22\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_13\" data-name=\"Прямоугольник 13\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_25\" data-name=\"Сгруппировать 25\" transform=\"translate(24.211 109.068)\">\n      <g id=\"Сгруппировать_24\" data-name=\"Сгруппировать 24\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_14\" data-name=\"Прямоугольник 14\" width=\"1.937\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_27\" data-name=\"Сгруппировать 27\" transform=\"translate(4.842 109.068)\">\n      <g id=\"Сгруппировать_26\" data-name=\"Сгруппировать 26\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_15\" data-name=\"Прямоугольник 15\" width=\"2.905\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_29\" data-name=\"Сгруппировать 29\" transform=\"translate(71.664 109.068)\">\n      <g id=\"Сгруппировать_28\" data-name=\"Сгруппировать 28\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_16\" data-name=\"Прямоугольник 16\" width=\"2.905\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_31\" data-name=\"Сгруппировать 31\" transform=\"translate(71.664 141.027)\">\n      <g id=\"Сгруппировать_30\" data-name=\"Сгруппировать 30\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_17\" data-name=\"Прямоугольник 17\" width=\"2.905\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_33\" data-name=\"Сгруппировать 33\" transform=\"translate(4.842 141.027)\">\n      <g id=\"Сгруппировать_32\" data-name=\"Сгруппировать 32\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_18\" data-name=\"Прямоугольник 18\" width=\"2.905\" height=\"2.905\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_35\" data-name=\"Сгруппировать 35\" transform=\"translate(0 104)\">\n      <g id=\"Сгруппировать_34\" data-name=\"Сгруппировать 34\">\n        <path id=\"Контур_5\" data-name=\"Контур 5\" d=\"M78.088,119.882a1.324,1.324,0,0,0,1.324-1.324V105.324A1.324,1.324,0,0,0,78.088,104H1.324A1.324,1.324,0,0,0,0,105.324v13.235a1.324,1.324,0,0,0,1.324,1.324,6.618,6.618,0,0,1,0,13.235A1.324,1.324,0,0,0,0,134.441v13.235A1.324,1.324,0,0,0,1.324,149H78.088a1.324,1.324,0,0,0,1.324-1.324V134.441a1.324,1.324,0,0,0-1.324-1.324,6.618,6.618,0,0,1,0-13.235Zm-9.178,7.934a9.265,9.265,0,0,0,7.854,7.854v10.682H2.647V135.671a9.265,9.265,0,0,0,0-18.341V106.647H76.765v10.682A9.265,9.265,0,0,0,68.91,127.816Z\" transform=\"translate(0 -104)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_37\" data-name=\"Сгруппировать 37\" transform=\"translate(34.412 113.265)\">\n      <g id=\"Сгруппировать_36\" data-name=\"Сгруппировать 36\" transform=\"translate(0 0)\">\n        <path id=\"Контур_6\" data-name=\"Контур 6\" d=\"M213.294,160a5.294,5.294,0,1,0,5.294,5.294A5.294,5.294,0,0,0,213.294,160Zm0,7.941a2.647,2.647,0,1,1,2.647-2.647A2.647,2.647,0,0,1,213.294,167.941Z\" transform=\"translate(-208 -160)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_39\" data-name=\"Сгруппировать 39\" transform=\"translate(50.294 129.147)\">\n      <g id=\"Сгруппировать_38\" data-name=\"Сгруппировать 38\" transform=\"translate(0 0)\">\n        <path id=\"Контур_7\" data-name=\"Контур 7\" d=\"M309.294,256a5.294,5.294,0,1,0,5.294,5.294A5.294,5.294,0,0,0,309.294,256Zm0,7.941a2.647,2.647,0,1,1,2.647-2.647A2.647,2.647,0,0,1,309.294,263.941Z\" transform=\"translate(-304 -256)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_41\" data-name=\"Сгруппировать 41\" transform=\"translate(36.123 114.973)\">\n      <g id=\"Сгруппировать_40\" data-name=\"Сгруппировать 40\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_19\" data-name=\"Прямоугольник 19\" width=\"29.948\" height=\"2.647\" transform=\"translate(0 21.176) rotate(-45)\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "awards_text": "Exclusive Discounts"
+            }
+          },
+          "63a5b68d-8cb3-4187-ad3a-2bf04a436441": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"95.296\" height=\"35\" viewbox=\"0 0 95.296 35\">\n  <g id=\"sunglasses\" transform=\"translate(0 -161.395)\">\n    <path id=\"Контур_8\" data-name=\"Контур 8\" d=\"M93.895,169.115H89.236a1.4,1.4,0,0,0-.412.062A14.9,14.9,0,0,0,75.732,161.4H19.185a14.9,14.9,0,0,0-13.059,7.724c-.022,0-.044,0-.067,0H1.4a1.4,1.4,0,1,0,0,2.8h3.54a14.892,14.892,0,0,0-.487,6.63l.618,4.046a1.4,1.4,0,1,0,2.77-.423l-.618-4.046A12.1,12.1,0,0,1,19.185,164.2H30.042a10.033,10.033,0,0,1,9.935,8.695,1.415,1.415,0,0,0,.031.281,9.988,9.988,0,0,1-2.027,7.14l-6.168,8.024a13.457,13.457,0,0,1-22.07-1.05,1.4,1.4,0,1,0-2.373,1.489,16.261,16.261,0,0,0,26.665,1.269l6.168-8.025a12.784,12.784,0,0,0,2.64-8.573,6.915,6.915,0,0,1,9.132.432c.025.025.052.047.079.07a12.787,12.787,0,0,0,2.66,8.071l2.721,3.541a1.4,1.4,0,0,0,2.222-1.708l-2.721-3.541a10.014,10.014,0,0,1,7.94-16.117H75.733a12.1,12.1,0,0,1,11.961,13.927l-.618,4.046A13.457,13.457,0,0,1,63.1,188.338a1.4,1.4,0,1,0-2.222,1.708,16.259,16.259,0,0,0,28.963-7.453l.618-4.046a14.89,14.89,0,0,0-.487-6.63h3.918a1.4,1.4,0,1,0,0-2.8ZM55.479,165.5a12.815,12.815,0,0,0-2.948,5.243,9.685,9.685,0,0,0-10.236-.31,12.814,12.814,0,0,0-4.26-6.231H56.882a12.714,12.714,0,0,0-1.4,1.3Z\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_9\" data-name=\"Контур 9\" d=\"M90.036,224.3l-3.083,3.083a1.4,1.4,0,0,0,1.982,1.981l3.083-3.083a1.4,1.4,0,0,0-1.982-1.981Z\" transform=\"translate(-70.377 -50.818)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_10\" data-name=\"Контур 10\" d=\"M90.955,233.44a1.4,1.4,0,0,0,1.982,0l13.329-13.329a1.4,1.4,0,1,0-1.981-1.981L90.955,231.459A1.4,1.4,0,0,0,90.955,233.44Z\" transform=\"translate(-73.632 -45.803)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_11\" data-name=\"Контур 11\" d=\"M408.591,229.771a1.4,1.4,0,0,0,.991-2.392L406.5,224.3a1.4,1.4,0,0,0-1.981,1.981l3.083,3.083A1.4,1.4,0,0,0,408.591,229.771Z\" transform=\"translate(-328.621 -50.818)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_12\" data-name=\"Контур 12\" d=\"M345.662,218.129a1.4,1.4,0,0,0,0,1.981l13.329,13.329a1.4,1.4,0,0,0,1.982-1.981l-13.329-13.329A1.4,1.4,0,0,0,345.662,218.129Z\" transform=\"translate(-280.759 -45.802)\" fill=\"#282828\"><\/path>\n  <\/g>\n<\/svg>",
+              "awards_text": "Free Sunnies for Points"
+            }
+          },
+          "9560e1c8-3240-4947-8250-26645b95d655": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"75\" height=\"75\" viewbox=\"0 0 75 75\">\n  <g id=\"XMLID_318_\" transform=\"translate(-0.001 -0.001)\">\n    <g id=\"XMLID_1792_\" transform=\"translate(0.001 0.001)\">\n      <path id=\"XMLID_3769_\" d=\"M31.488,75a7.2,7.2,0,0,1-5.855-2.985A4.238,4.238,0,0,0,21.487,70.3a7.194,7.194,0,0,1-8.159-5.452,4.238,4.238,0,0,0-3.173-3.173A7.215,7.215,0,0,1,4.7,53.515a4.238,4.238,0,0,0-1.717-4.146,7.215,7.215,0,0,1-1.914-9.624,4.238,4.238,0,0,0,0-4.487,7.215,7.215,0,0,1,1.914-9.624A4.238,4.238,0,0,0,4.7,21.487a7.215,7.215,0,0,1,5.452-8.159,4.238,4.238,0,0,0,3.173-3.173A7.215,7.215,0,0,1,21.487,4.7a4.237,4.237,0,0,0,4.146-1.717,7.215,7.215,0,0,1,9.624-1.914,4.238,4.238,0,0,0,4.487,0,7.215,7.215,0,0,1,9.624,1.914A4.239,4.239,0,0,0,53.515,4.7a7.215,7.215,0,0,1,8.159,5.452,4.238,4.238,0,0,0,3.173,3.173A7.215,7.215,0,0,1,70.3,21.487a4.238,4.238,0,0,0,1.717,4.146,7.215,7.215,0,0,1,1.914,9.624,4.238,4.238,0,0,0,0,4.487,7.215,7.215,0,0,1-1.914,9.624A4.238,4.238,0,0,0,70.3,53.515a7.215,7.215,0,0,1-5.452,8.159,4.238,4.238,0,0,0-3.173,3.173A7.215,7.215,0,0,1,53.515,70.3a4.239,4.239,0,0,0-4.146,1.717,7.215,7.215,0,0,1-9.624,1.914,4.237,4.237,0,0,0-4.487,0A7.141,7.141,0,0,1,31.488,75Zm-9.3-7.69A7.145,7.145,0,0,1,28.011,70.3a4.275,4.275,0,0,0,5.7,1.134,7.152,7.152,0,0,1,7.572,0,4.275,4.275,0,0,0,5.7-1.134,7.151,7.151,0,0,1,7-2.9,4.276,4.276,0,0,0,4.835-3.231,7.151,7.151,0,0,1,5.354-5.354,4.276,4.276,0,0,0,3.231-4.835,7.152,7.152,0,0,1,2.9-7,4.275,4.275,0,0,0,1.134-5.7,7.152,7.152,0,0,1,0-7.572,4.275,4.275,0,0,0-1.134-5.7,7.152,7.152,0,0,1-2.9-7,4.275,4.275,0,0,0-3.231-4.835,7.151,7.151,0,0,1-5.354-5.354A4.276,4.276,0,0,0,53.986,7.6a7.152,7.152,0,0,1-7-2.9,4.275,4.275,0,0,0-5.7-1.134,7.152,7.152,0,0,1-7.572,0,4.276,4.276,0,0,0-5.7,1.134,7.152,7.152,0,0,1-7,2.9,4.276,4.276,0,0,0-4.835,3.231,7.151,7.151,0,0,1-5.354,5.354A4.276,4.276,0,0,0,7.6,21.015a7.152,7.152,0,0,1-2.9,7,4.275,4.275,0,0,0-1.134,5.7,7.152,7.152,0,0,1,0,7.572A4.275,4.275,0,0,0,4.7,46.99a7.152,7.152,0,0,1,2.9,7,4.275,4.275,0,0,0,3.231,4.835,7.151,7.151,0,0,1,5.354,5.354,4.276,4.276,0,0,0,4.835,3.231,7.319,7.319,0,0,1,1.177-.1Z\" transform=\"translate(-0.001 -0.001)\" fill=\"#282828\"><\/path>\n    <\/g>\n    <g id=\"XMLID_775_\" transform=\"translate(10.148 10.148)\">\n      <path id=\"XMLID_3761_\" d=\"M93.305,120.658a27.352,27.352,0,1,1,14.077-50.809,1.44,1.44,0,0,1-1.484,2.467,24.46,24.46,0,1,0,8.539,8.636,1.44,1.44,0,0,1,2.484-1.456,27.359,27.359,0,0,1-23.616,41.161Z\" transform=\"translate(-65.953 -65.953)\" fill=\"#282828\"><\/path>\n    <\/g>\n    <g id=\"XMLID_776_\" transform=\"translate(20.525 23.191)\">\n      <g id=\"XMLID_782_\" transform=\"translate(9.652 0.858)\">\n        <path id=\"XMLID_781_\" d=\"M209.89,195.431a1.539,1.539,0,0,1-1.383-2.211l11.57-23.825a1.539,1.539,0,1,1,2.768,1.344l-11.57,23.825A1.539,1.539,0,0,1,209.89,195.431Z\" transform=\"translate(-208.352 -168.529)\" fill=\"#282828\"><\/path>\n      <\/g>\n      <g id=\"XMLID_777_\">\n        <g id=\"XMLID_780_\" transform=\"translate(21.622 16.29)\">\n          <path id=\"XMLID_3763_\" d=\"M292.316,281.152a6.165,6.165,0,1,1,6.165-6.165A6.172,6.172,0,0,1,292.316,281.152Zm0-9.252a3.087,3.087,0,1,0,3.087,3.087A3.091,3.091,0,0,0,292.316,271.9Z\" transform=\"translate(-286.151 -268.823)\" fill=\"#282828\"><\/path>\n        <\/g>\n        <g id=\"XMLID_778_\">\n          <path id=\"XMLID_3764_\" d=\"M151.789,175.282a6.165,6.165,0,1,1,6.165-6.165A6.172,6.172,0,0,1,151.789,175.282Zm0-9.252a3.087,3.087,0,1,0,3.087,3.087A3.091,3.091,0,0,0,151.789,166.03Z\" transform=\"translate(-145.624 -162.953)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"XMLID_316_\" transform=\"translate(54.677 17.459)\">\n      <path id=\"XMLID_3762_\" d=\"M375.492,122.479a1.539,1.539,0,1,1,1.088-.451A1.55,1.55,0,0,1,375.492,122.479Z\" transform=\"translate(-373.953 -119.402)\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "awards_text": "Early Sale Access"
+            }
+          }
+        },
+        "block_order": [
+          "770ce7c1-195c-4829-861a-6f4fe57c9ffe",
+          "f5a7af91-32b8-4738-86cf-21b6675f42d7",
+          "63a5b68d-8cb3-4187-ad3a-2bf04a436441",
+          "9560e1c8-3240-4947-8250-26645b95d655"
+        ],
+        "settings": {
+          "img": "shopify:\/\/shop_images\/login-bg.png",
+          "title": "sign in",
+          "title_list": "<p>not a member yet?<br\/><a href=\"https:\/\/shopwearmepro.com\/account\/register\" title=\"https:\/\/shopwearmepro.com\/account\/register\">join now<\/a> &gt;<\/p>",
+          "subtitle_img": "",
+          "subtitle_points": "",
+          "subtitle_text": "",
+          "list_col": true
+        }
+      },
+      "register": {
+        "type": "register",
+        "blocks": {
+          "2722cab8-4baf-4f4b-90a0-2405c5ffe4e0": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"55\" height=\"55\" viewbox=\"0 0 55 55\">\n  <g id=\"Сгруппировать_11\" data-name=\"Сгруппировать 11\" transform=\"translate(-949.867 -1169.867)\">\n    <g id=\"shopping-bag\" transform=\"translate(949.867 1169.867)\">\n      <g id=\"Сгруппировать_4\" data-name=\"Сгруппировать 4\" transform=\"translate(0 9.996)\">\n        <g id=\"Сгруппировать_3\" data-name=\"Сгруппировать 3\">\n          <path id=\"Контур_1\" data-name=\"Контур 1\" d=\"M46.98,106.667H1a1,1,0,0,0-1,1v29.987a7,7,0,0,0,7,7H40.983a7,7,0,0,0,7-7V107.667A1,1,0,0,0,46.98,106.667Zm-1,30.987a5,5,0,0,1-5,5H7a5,5,0,0,1-5-5V108.666H45.981Z\" transform=\"translate(0 -106.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_6\" data-name=\"Сгруппировать 6\" transform=\"translate(13.994 0)\">\n        <g id=\"Сгруппировать_5\" data-name=\"Сгруппировать 5\">\n          <path id=\"Контур_2\" data-name=\"Контур 2\" d=\"M159.329,0a10.007,10.007,0,0,0-10,10v7a1,1,0,0,0,2,0V10a8,8,0,1,1,15.993,0v7a1,1,0,0,0,2,0V10A10.007,10.007,0,0,0,159.329,0Z\" transform=\"translate(-149.333 0)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_8\" data-name=\"Сгруппировать 8\" transform=\"translate(11.995 15.993)\">\n        <g id=\"Сгруппировать_7\" data-name=\"Сгруппировать 7\">\n          <path id=\"Контур_3\" data-name=\"Контур 3\" d=\"M131,170.667a3,3,0,1,0,3,3A3,3,0,0,0,131,170.667Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,131,174.665Z\" transform=\"translate(-128 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_10\" data-name=\"Сгруппировать 10\" transform=\"translate(29.987 15.993)\">\n        <g id=\"Сгруппировать_9\" data-name=\"Сгруппировать 9\">\n          <path id=\"Контур_4\" data-name=\"Контур 4\" d=\"M323,170.667a3,3,0,1,0,3,3A3,3,0,0,0,323,170.667Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,323,174.665Z\" transform=\"translate(-320 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"Эллипс_1\" data-name=\"Эллипс 1\" transform=\"translate(977.867 1197.867)\" fill=\"#faf7f2\" stroke=\"#282828\" stroke-width=\"2\">\n      <circle cx=\"13.5\" cy=\"13.5\" r=\"13.5\" stroke=\"none\"><\/circle>\n      <circle cx=\"13.5\" cy=\"13.5\" r=\"12.5\" fill=\"none\"><\/circle>\n    <\/g>\n    <text id=\"_\" data-name=\"$\" transform=\"translate(991.321 1217.867)\" fill=\"#282828\" font-size=\"18\" font-family=\"SegoeUI-Semibold, Segoe UI\" font-weight=\"600\" letter-spacing=\"0.025em\"><tspan x=\"-4.997\" y=\"0\">$<\/tspan><\/text>\n  <\/g>\n<\/svg>",
+              "awards_text": "Earn Points for Shopping"
+            }
+          },
+          "11f0cbf3-987a-40b4-9a93-f0cb5b93fd10": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"52.941\" height=\"30\" viewbox=\"0 0 52.941 30\">\n  <g id=\"coupon\" transform=\"translate(0 -104)\">\n    <g id=\"Сгруппировать_13\" data-name=\"Сгруппировать 13\" transform=\"translate(16.141 121.582)\">\n      <g id=\"Сгруппировать_12\" data-name=\"Сгруппировать 12\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_8\" data-name=\"Прямоугольник 8\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_15\" data-name=\"Сгруппировать 15\" transform=\"translate(16.141 125.456)\">\n      <g id=\"Сгруппировать_14\" data-name=\"Сгруппировать 14\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_9\" data-name=\"Прямоугольник 9\" width=\"1.291\" height=\"1.291\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_17\" data-name=\"Сгруппировать 17\" transform=\"translate(16.141 128.684)\">\n      <g id=\"Сгруппировать_16\" data-name=\"Сгруппировать 16\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_10\" data-name=\"Прямоугольник 10\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_19\" data-name=\"Сгруппировать 19\" transform=\"translate(16.141 118.354)\">\n      <g id=\"Сгруппировать_18\" data-name=\"Сгруппировать 18\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_11\" data-name=\"Прямоугольник 11\" width=\"1.291\" height=\"1.291\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_21\" data-name=\"Сгруппировать 21\" transform=\"translate(16.141 114.481)\">\n      <g id=\"Сгруппировать_20\" data-name=\"Сгруппировать 20\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_12\" data-name=\"Прямоугольник 12\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_23\" data-name=\"Сгруппировать 23\" transform=\"translate(16.141 111.253)\">\n      <g id=\"Сгруппировать_22\" data-name=\"Сгруппировать 22\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_13\" data-name=\"Прямоугольник 13\" width=\"1.291\" height=\"1.291\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_25\" data-name=\"Сгруппировать 25\" transform=\"translate(16.141 107.379)\">\n      <g id=\"Сгруппировать_24\" data-name=\"Сгруппировать 24\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_14\" data-name=\"Прямоугольник 14\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_27\" data-name=\"Сгруппировать 27\" transform=\"translate(3.228 107.379)\">\n      <g id=\"Сгруппировать_26\" data-name=\"Сгруппировать 26\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_15\" data-name=\"Прямоугольник 15\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_29\" data-name=\"Сгруппировать 29\" transform=\"translate(47.776 107.379)\">\n      <g id=\"Сгруппировать_28\" data-name=\"Сгруппировать 28\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_16\" data-name=\"Прямоугольник 16\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_31\" data-name=\"Сгруппировать 31\" transform=\"translate(47.776 128.684)\">\n      <g id=\"Сгруппировать_30\" data-name=\"Сгруппировать 30\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_17\" data-name=\"Прямоугольник 17\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_33\" data-name=\"Сгруппировать 33\" transform=\"translate(3.228 128.684)\">\n      <g id=\"Сгруппировать_32\" data-name=\"Сгруппировать 32\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_18\" data-name=\"Прямоугольник 18\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_35\" data-name=\"Сгруппировать 35\" transform=\"translate(0 104)\">\n      <g id=\"Сгруппировать_34\" data-name=\"Сгруппировать 34\">\n        <path id=\"Контур_5\" data-name=\"Контур 5\" d=\"M52.059,114.588a.882.882,0,0,0,.882-.882v-8.824a.882.882,0,0,0-.882-.882H.882a.882.882,0,0,0-.882.882v8.824a.882.882,0,0,0,.882.882,4.412,4.412,0,0,1,0,8.824.882.882,0,0,0-.882.882v8.824A.882.882,0,0,0,.882,134H52.059a.882.882,0,0,0,.882-.882v-8.824a.882.882,0,0,0-.882-.882,4.412,4.412,0,0,1,0-8.824Zm-6.119,5.289a6.176,6.176,0,0,0,5.236,5.236v7.121H1.765v-7.121a6.176,6.176,0,0,0,0-12.228v-7.121H51.176v7.121A6.176,6.176,0,0,0,45.94,119.878Z\" transform=\"translate(0 -104)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_37\" data-name=\"Сгруппировать 37\" transform=\"translate(22.941 110.176)\">\n      <g id=\"Сгруппировать_36\" data-name=\"Сгруппировать 36\" transform=\"translate(0 0)\">\n        <path id=\"Контур_6\" data-name=\"Контур 6\" d=\"M211.529,160a3.529,3.529,0,1,0,3.529,3.529A3.529,3.529,0,0,0,211.529,160Zm0,5.294a1.765,1.765,0,1,1,1.765-1.765A1.765,1.765,0,0,1,211.529,165.294Z\" transform=\"translate(-208 -160)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_39\" data-name=\"Сгруппировать 39\" transform=\"translate(33.529 120.765)\">\n      <g id=\"Сгруппировать_38\" data-name=\"Сгруппировать 38\" transform=\"translate(0 0)\">\n        <path id=\"Контур_7\" data-name=\"Контур 7\" d=\"M307.529,256a3.529,3.529,0,1,0,3.529,3.529A3.529,3.529,0,0,0,307.529,256Zm0,5.294a1.765,1.765,0,1,1,1.765-1.765A1.765,1.765,0,0,1,307.529,261.294Z\" transform=\"translate(-304 -256)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_41\" data-name=\"Сгруппировать 41\" transform=\"translate(24.082 111.315)\">\n      <g id=\"Сгруппировать_40\" data-name=\"Сгруппировать 40\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_19\" data-name=\"Прямоугольник 19\" width=\"19.965\" height=\"1.765\" transform=\"translate(0 14.117) rotate(-45)\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "awards_text": "Exclusive Discounts"
+            }
+          },
+          "8b3b52db-e02e-4fd6-aef3-5e3717239f76": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"68.068\" height=\"25\" viewbox=\"0 0 68.068 25\">\n  <g id=\"sunglasses\" transform=\"translate(0 -161.395)\">\n    <path id=\"Контур_8\" data-name=\"Контур 8\" d=\"M67.068,166.909H63.74a1,1,0,0,0-.295.044,10.645,10.645,0,0,0-9.351-5.559H13.7a10.642,10.642,0,0,0-9.328,5.517l-.048,0H1a1,1,0,0,0,0,2H3.529a10.637,10.637,0,0,0-.348,4.736l.441,2.89a1,1,0,1,0,1.978-.3l-.442-2.89A8.643,8.643,0,0,1,13.7,163.4h7.755a7.166,7.166,0,0,1,7.1,6.211,1.011,1.011,0,0,0,.022.2,7.134,7.134,0,0,1-1.448,5.1l-4.405,5.732a9.612,9.612,0,0,1-15.764-.75,1,1,0,1,0-1.7,1.064,11.615,11.615,0,0,0,19.046.906l4.405-5.732A9.132,9.132,0,0,0,30.6,170a4.939,4.939,0,0,1,6.523.308c.018.018.037.034.056.05a9.134,9.134,0,0,0,1.9,5.765l1.944,2.529a1,1,0,0,0,1.587-1.22l-1.943-2.529A7.153,7.153,0,0,1,46.34,163.4h7.755a8.643,8.643,0,0,1,8.544,9.948l-.442,2.89a9.612,9.612,0,0,1-17.123,4.406,1,1,0,1,0-1.587,1.22,11.613,11.613,0,0,0,20.688-5.323l.442-2.89a10.635,10.635,0,0,0-.348-4.736h2.8a1,1,0,1,0,0-2Zm-27.44-2.586a9.154,9.154,0,0,0-2.105,3.745,6.918,6.918,0,0,0-7.312-.222,9.153,9.153,0,0,0-3.043-4.451H40.63a9.082,9.082,0,0,0-1,.927Z\" transform=\"translate(0)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_9\" data-name=\"Контур 9\" d=\"M89.038,224.179l-2.2,2.2a1,1,0,0,0,1.415,1.415l2.2-2.2a1,1,0,0,0-1.415-1.415Z\" transform=\"translate(-74.996 -54.153)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_10\" data-name=\"Контур 10\" d=\"M90.838,228.948a1,1,0,0,0,1.415,0l9.521-9.521a1,1,0,1,0-1.415-1.415l-9.521,9.521A1,1,0,0,0,90.838,228.948Z\" transform=\"translate(-78.464 -48.809)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_11\" data-name=\"Контур 11\" d=\"M407.31,228.089a1,1,0,0,0,.708-1.708l-2.2-2.2a1,1,0,0,0-1.415,1.415l2.2,2.2A1,1,0,0,0,407.31,228.089Z\" transform=\"translate(-350.189 -54.153)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_12\" data-name=\"Контур 12\" d=\"M345.544,218.011a1,1,0,0,0,0,1.415l9.521,9.521a1,1,0,0,0,1.415-1.415l-9.521-9.521A1,1,0,0,0,345.544,218.011Z\" transform=\"translate(-299.186 -48.808)\" fill=\"#282828\"><\/path>\n  <\/g>\n<\/svg>",
+              "awards_text": "Free Sunnies for Points"
+            }
+          },
+          "f167b1cf-8606-4cd0-be93-836821f21ece": {
+            "type": "awards-blocks",
+            "settings": {
+              "awards_img": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"55\" height=\"55\" viewbox=\"0 0 55 55\">\n  <g id=\"XMLID_318_\" transform=\"translate(-0.001 -0.001)\">\n    <g id=\"XMLID_1792_\" transform=\"translate(0.001 0.001)\">\n      <path id=\"XMLID_3769_\" d=\"M23.091,55A5.283,5.283,0,0,1,18.8,52.812a3.108,3.108,0,0,0-3.04-1.259,5.275,5.275,0,0,1-5.983-4,3.108,3.108,0,0,0-2.327-2.327,5.291,5.291,0,0,1-4-5.983A3.108,3.108,0,0,0,2.19,36.2a5.291,5.291,0,0,1-1.4-7.058,3.108,3.108,0,0,0,0-3.291A5.291,5.291,0,0,1,2.19,18.8a3.108,3.108,0,0,0,1.259-3.04,5.291,5.291,0,0,1,4-5.983A3.108,3.108,0,0,0,9.774,7.447a5.291,5.291,0,0,1,5.983-4A3.107,3.107,0,0,0,18.8,2.19a5.291,5.291,0,0,1,7.058-1.4,3.108,3.108,0,0,0,3.291,0A5.291,5.291,0,0,1,36.2,2.19a3.108,3.108,0,0,0,3.04,1.259,5.291,5.291,0,0,1,5.983,4,3.108,3.108,0,0,0,2.327,2.327,5.291,5.291,0,0,1,4,5.983,3.108,3.108,0,0,0,1.259,3.04,5.291,5.291,0,0,1,1.4,7.058,3.108,3.108,0,0,0,0,3.291,5.291,5.291,0,0,1-1.4,7.058,3.108,3.108,0,0,0-1.259,3.04,5.291,5.291,0,0,1-4,5.983,3.108,3.108,0,0,0-2.327,2.327,5.291,5.291,0,0,1-5.983,4,3.109,3.109,0,0,0-3.04,1.259,5.291,5.291,0,0,1-7.058,1.4,3.107,3.107,0,0,0-3.291,0A5.237,5.237,0,0,1,23.091,55Zm-6.817-5.639a5.24,5.24,0,0,1,4.267,2.2,3.135,3.135,0,0,0,4.182.832,5.245,5.245,0,0,1,5.553,0,3.135,3.135,0,0,0,4.182-.832,5.244,5.244,0,0,1,5.13-2.125,3.136,3.136,0,0,0,3.546-2.369,5.244,5.244,0,0,1,3.927-3.927,3.135,3.135,0,0,0,2.369-3.546,5.245,5.245,0,0,1,2.125-5.13,3.135,3.135,0,0,0,.832-4.182,5.245,5.245,0,0,1,0-5.553,3.135,3.135,0,0,0-.832-4.182,5.245,5.245,0,0,1-2.125-5.13,3.135,3.135,0,0,0-2.369-3.546,5.244,5.244,0,0,1-3.927-3.927A3.135,3.135,0,0,0,39.59,5.57a5.245,5.245,0,0,1-5.13-2.125,3.135,3.135,0,0,0-4.182-.832,5.245,5.245,0,0,1-5.553,0,3.135,3.135,0,0,0-4.182.832,5.245,5.245,0,0,1-5.13,2.125,3.136,3.136,0,0,0-3.546,2.369,5.244,5.244,0,0,1-3.927,3.927A3.135,3.135,0,0,0,5.57,15.412a5.245,5.245,0,0,1-2.125,5.13,3.135,3.135,0,0,0-.832,4.182,5.245,5.245,0,0,1,0,5.553,3.135,3.135,0,0,0,.832,4.182A5.245,5.245,0,0,1,5.57,39.59a3.135,3.135,0,0,0,2.369,3.546,5.244,5.244,0,0,1,3.927,3.927,3.136,3.136,0,0,0,3.546,2.369,5.367,5.367,0,0,1,.863-.07Z\" transform=\"translate(-0.001 -0.001)\" fill=\"#282828\"><\/path>\n    <\/g>\n    <g id=\"XMLID_775_\" transform=\"translate(7.726 7.726)\">\n      <path id=\"XMLID_3761_\" d=\"M85.727,105.5A19.774,19.774,0,1,1,95.9,68.769a1.041,1.041,0,1,1-1.073,1.784A17.684,17.684,0,1,0,101,76.8a1.041,1.041,0,0,1,1.8-1.052A19.779,19.779,0,0,1,85.727,105.5Z\" transform=\"translate(-65.953 -65.953)\" fill=\"#282828\"><\/path>\n    <\/g>\n    <g id=\"XMLID_776_\" transform=\"translate(14.577 16.607)\">\n      <g id=\"XMLID_782_\" transform=\"translate(7.348 0.653)\">\n        <path id=\"XMLID_781_\" d=\"M209.523,189.01a1.172,1.172,0,0,1-1.053-1.683l8.809-18.138a1.171,1.171,0,1,1,2.107,1.023l-8.809,18.138A1.171,1.171,0,0,1,209.523,189.01Z\" transform=\"translate(-208.352 -168.529)\" fill=\"#282828\"><\/path>\n      <\/g>\n      <g id=\"XMLID_777_\">\n        <g id=\"XMLID_780_\" transform=\"translate(16.461 12.402)\">\n          <path id=\"XMLID_3763_\" d=\"M290.844,278.21a4.693,4.693,0,1,1,4.693-4.693A4.7,4.7,0,0,1,290.844,278.21Zm0-7.044a2.35,2.35,0,1,0,2.35,2.35A2.353,2.353,0,0,0,290.844,271.166Z\" transform=\"translate(-286.151 -268.823)\" fill=\"#282828\"><\/path>\n        <\/g>\n        <g id=\"XMLID_778_\">\n          <path id=\"XMLID_3764_\" d=\"M150.317,172.339a4.693,4.693,0,1,1,4.693-4.693A4.7,4.7,0,0,1,150.317,172.339Zm0-7.044a2.35,2.35,0,1,0,2.35,2.35A2.353,2.353,0,0,0,150.317,165.3Z\" transform=\"translate(-145.624 -162.953)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"XMLID_316_\" transform=\"translate(40.031 12.782)\">\n      <path id=\"XMLID_3762_\" d=\"M375.124,121.745a1.172,1.172,0,1,1,.828-.343A1.18,1.18,0,0,1,375.124,121.745Z\" transform=\"translate(-373.953 -119.402)\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "awards_text": "Early Sale Access"
+            }
+          }
+        },
+        "block_order": [
+          "2722cab8-4baf-4f4b-90a0-2405c5ffe4e0",
+          "11f0cbf3-987a-40b4-9a93-f0cb5b93fd10",
+          "8b3b52db-e02e-4fd6-aef3-5e3717239f76",
+          "f167b1cf-8606-4cd0-be93-836821f21ece"
+        ],
+        "settings": {
+          "img": "shopify:\/\/shop_images\/login-bg.png",
+          "title": "sign up",
+          "title_list": "<p>SIGN UP AND GET REWARDS<\/p>",
+          "subtitle_img": "<svg id=\"dollar-coin\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"40.943\" height=\"31.16\" viewbox=\"0 0 40.943 31.16\">\n  <path id=\"Контур_14\" data-name=\"Контур 14\" d=\"M7.376,76.508a17.971,17.971,0,0,1,8.951-15.562,15.579,15.579,0,1,0,0,31.123A17.971,17.971,0,0,1,7.376,76.508Z\" transform=\"translate(0 -60.928)\" fill=\"#ffd361\"><\/path>\n  <path id=\"Контур_15\" data-name=\"Контур 15\" d=\"M137.459,60.94a15.579,15.579,0,1,0,15.579,15.579A15.6,15.6,0,0,0,137.459,60.94Zm1.2,23.682V86.4a1.2,1.2,0,1,1-2.408,0V84.622a6.056,6.056,0,0,1-4.007-1.005,1.2,1.2,0,0,1,1.373-1.979,3.084,3.084,0,0,0,1.717.576h4.042a2.245,2.245,0,0,0,0-4.49h-3.841a4.658,4.658,0,0,1-4.653-4.653c0-2.3,1.562-4.654,5.369-4.654V66.643a1.2,1.2,0,0,1,2.408,0v1.773a5.992,5.992,0,0,1,2.542.387h0a5.588,5.588,0,0,1,2.018,1.386h0a1.2,1.2,0,0,1-1.774,1.628,3.085,3.085,0,0,0-2.205-.995h-3.707a2.245,2.245,0,0,0,0,4.49h3.841a4.658,4.658,0,0,1,4.653,4.653c0,2.467-1.726,4.654-5.369,4.654Z\" transform=\"translate(-112.095 -60.939)\" fill=\"#ffd361\"><\/path>\n<\/svg>",
+          "subtitle_points": "300 POINTS",
+          "subtitle_text": "When Sign up Instantly",
+          "list_col": false
+        }
+      },
+      "account": {
+        "type": "account",
+        "blocks": {
+          "dad21e24-b6e2-4bba-982e-7e87d379ce00": {
+            "type": "perks-blocks",
+            "settings": {
+              "perks_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"55\" height=\"55\" viewbox=\"0 0 55 55\">\n  <g id=\"Сгруппировать_11\" data-name=\"Сгруппировать 11\" transform=\"translate(-949.867 -1169.867)\">\n    <g id=\"shopping-bag\" transform=\"translate(949.867 1169.867)\">\n      <g id=\"Сгруппировать_4\" data-name=\"Сгруппировать 4\" transform=\"translate(0 9.996)\">\n        <g id=\"Сгруппировать_3\" data-name=\"Сгруппировать 3\">\n          <path id=\"Контур_1\" data-name=\"Контур 1\" d=\"M46.98,106.667H1a1,1,0,0,0-1,1v29.987a7,7,0,0,0,7,7H40.983a7,7,0,0,0,7-7V107.667A1,1,0,0,0,46.98,106.667Zm-1,30.987a5,5,0,0,1-5,5H7a5,5,0,0,1-5-5V108.666H45.981Z\" transform=\"translate(0 -106.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_6\" data-name=\"Сгруппировать 6\" transform=\"translate(13.994 0)\">\n        <g id=\"Сгруппировать_5\" data-name=\"Сгруппировать 5\">\n          <path id=\"Контур_2\" data-name=\"Контур 2\" d=\"M159.329,0a10.007,10.007,0,0,0-10,10v7a1,1,0,0,0,2,0V10a8,8,0,1,1,15.993,0v7a1,1,0,0,0,2,0V10A10.007,10.007,0,0,0,159.329,0Z\" transform=\"translate(-149.333 0)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_8\" data-name=\"Сгруппировать 8\" transform=\"translate(11.995 15.993)\">\n        <g id=\"Сгруппировать_7\" data-name=\"Сгруппировать 7\">\n          <path id=\"Контур_3\" data-name=\"Контур 3\" d=\"M131,170.667a3,3,0,1,0,3,3A3,3,0,0,0,131,170.667Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,131,174.665Z\" transform=\"translate(-128 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n      <g id=\"Сгруппировать_10\" data-name=\"Сгруппировать 10\" transform=\"translate(29.987 15.993)\">\n        <g id=\"Сгруппировать_9\" data-name=\"Сгруппировать 9\">\n          <path id=\"Контур_4\" data-name=\"Контур 4\" d=\"M323,170.667a3,3,0,1,0,3,3A3,3,0,0,0,323,170.667Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,323,174.665Z\" transform=\"translate(-320 -170.667)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"Эллипс_1\" data-name=\"Эллипс 1\" transform=\"translate(977.867 1197.867)\" fill=\"#faf7f2\" stroke=\"#282828\" stroke-width=\"2\">\n      <circle cx=\"13.5\" cy=\"13.5\" r=\"13.5\" stroke=\"none\"><\/circle>\n      <circle cx=\"13.5\" cy=\"13.5\" r=\"12.5\" fill=\"none\"><\/circle>\n    <\/g>\n    <text id=\"_\" data-name=\"$\" transform=\"translate(991.321 1217.867)\" fill=\"#282828\" font-size=\"18\" font-family=\"SegoeUI-Semibold, Segoe UI\" font-weight=\"600\" letter-spacing=\"0.025em\"><tspan x=\"-4.997\" y=\"0\">$<\/tspan><\/text>\n  <\/g>\n<\/svg>",
+              "perks_text": "7 points per $1 spent"
+            }
+          },
+          "71892876-775f-453b-82ba-c7256b71b4c9": {
+            "type": "perks-blocks",
+            "settings": {
+              "perks_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"52.941\" height=\"30\" viewbox=\"0 0 52.941 30\">\n  <g id=\"coupon\" transform=\"translate(0 -104)\">\n    <g id=\"Сгруппировать_13\" data-name=\"Сгруппировать 13\" transform=\"translate(16.141 121.582)\">\n      <g id=\"Сгруппировать_12\" data-name=\"Сгруппировать 12\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_8\" data-name=\"Прямоугольник 8\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_15\" data-name=\"Сгруппировать 15\" transform=\"translate(16.141 125.456)\">\n      <g id=\"Сгруппировать_14\" data-name=\"Сгруппировать 14\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_9\" data-name=\"Прямоугольник 9\" width=\"1.291\" height=\"1.291\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_17\" data-name=\"Сгруппировать 17\" transform=\"translate(16.141 128.684)\">\n      <g id=\"Сгруппировать_16\" data-name=\"Сгруппировать 16\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_10\" data-name=\"Прямоугольник 10\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_19\" data-name=\"Сгруппировать 19\" transform=\"translate(16.141 118.354)\">\n      <g id=\"Сгруппировать_18\" data-name=\"Сгруппировать 18\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_11\" data-name=\"Прямоугольник 11\" width=\"1.291\" height=\"1.291\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_21\" data-name=\"Сгруппировать 21\" transform=\"translate(16.141 114.481)\">\n      <g id=\"Сгруппировать_20\" data-name=\"Сгруппировать 20\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_12\" data-name=\"Прямоугольник 12\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_23\" data-name=\"Сгруппировать 23\" transform=\"translate(16.141 111.253)\">\n      <g id=\"Сгруппировать_22\" data-name=\"Сгруппировать 22\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_13\" data-name=\"Прямоугольник 13\" width=\"1.291\" height=\"1.291\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_25\" data-name=\"Сгруппировать 25\" transform=\"translate(16.141 107.379)\">\n      <g id=\"Сгруппировать_24\" data-name=\"Сгруппировать 24\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_14\" data-name=\"Прямоугольник 14\" width=\"1.291\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_27\" data-name=\"Сгруппировать 27\" transform=\"translate(3.228 107.379)\">\n      <g id=\"Сгруппировать_26\" data-name=\"Сгруппировать 26\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_15\" data-name=\"Прямоугольник 15\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_29\" data-name=\"Сгруппировать 29\" transform=\"translate(47.776 107.379)\">\n      <g id=\"Сгруппировать_28\" data-name=\"Сгруппировать 28\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_16\" data-name=\"Прямоугольник 16\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_31\" data-name=\"Сгруппировать 31\" transform=\"translate(47.776 128.684)\">\n      <g id=\"Сгруппировать_30\" data-name=\"Сгруппировать 30\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_17\" data-name=\"Прямоугольник 17\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_33\" data-name=\"Сгруппировать 33\" transform=\"translate(3.228 128.684)\">\n      <g id=\"Сгруппировать_32\" data-name=\"Сгруппировать 32\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_18\" data-name=\"Прямоугольник 18\" width=\"1.937\" height=\"1.937\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_35\" data-name=\"Сгруппировать 35\" transform=\"translate(0 104)\">\n      <g id=\"Сгруппировать_34\" data-name=\"Сгруппировать 34\">\n        <path id=\"Контур_5\" data-name=\"Контур 5\" d=\"M52.059,114.588a.882.882,0,0,0,.882-.882v-8.824a.882.882,0,0,0-.882-.882H.882a.882.882,0,0,0-.882.882v8.824a.882.882,0,0,0,.882.882,4.412,4.412,0,0,1,0,8.824.882.882,0,0,0-.882.882v8.824A.882.882,0,0,0,.882,134H52.059a.882.882,0,0,0,.882-.882v-8.824a.882.882,0,0,0-.882-.882,4.412,4.412,0,0,1,0-8.824Zm-6.119,5.289a6.176,6.176,0,0,0,5.236,5.236v7.121H1.765v-7.121a6.176,6.176,0,0,0,0-12.228v-7.121H51.176v7.121A6.176,6.176,0,0,0,45.94,119.878Z\" transform=\"translate(0 -104)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_37\" data-name=\"Сгруппировать 37\" transform=\"translate(22.941 110.176)\">\n      <g id=\"Сгруппировать_36\" data-name=\"Сгруппировать 36\" transform=\"translate(0 0)\">\n        <path id=\"Контур_6\" data-name=\"Контур 6\" d=\"M211.529,160a3.529,3.529,0,1,0,3.529,3.529A3.529,3.529,0,0,0,211.529,160Zm0,5.294a1.765,1.765,0,1,1,1.765-1.765A1.765,1.765,0,0,1,211.529,165.294Z\" transform=\"translate(-208 -160)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_39\" data-name=\"Сгруппировать 39\" transform=\"translate(33.529 120.765)\">\n      <g id=\"Сгруппировать_38\" data-name=\"Сгруппировать 38\" transform=\"translate(0 0)\">\n        <path id=\"Контур_7\" data-name=\"Контур 7\" d=\"M307.529,256a3.529,3.529,0,1,0,3.529,3.529A3.529,3.529,0,0,0,307.529,256Zm0,5.294a1.765,1.765,0,1,1,1.765-1.765A1.765,1.765,0,0,1,307.529,261.294Z\" transform=\"translate(-304 -256)\" fill=\"#282828\"><\/path>\n      <\/g>\n    <\/g>\n    <g id=\"Сгруппировать_41\" data-name=\"Сгруппировать 41\" transform=\"translate(24.082 111.315)\">\n      <g id=\"Сгруппировать_40\" data-name=\"Сгруппировать 40\" transform=\"translate(0 0)\">\n        <rect id=\"Прямоугольник_19\" data-name=\"Прямоугольник 19\" width=\"19.965\" height=\"1.765\" transform=\"translate(0 14.117) rotate(-45)\" fill=\"#282828\"><\/rect>\n      <\/g>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "perks_text": "Exclusive member  discounts"
+            }
+          },
+          "0c13e658-9886-4dc2-b1c5-fb6004cec5c8": {
+            "type": "perks-blocks",
+            "settings": {
+              "perks_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"55\" height=\"55\" viewbox=\"0 0 55 55\">\n  <g id=\"XMLID_318_\" transform=\"translate(-0.001 -0.001)\">\n    <g id=\"XMLID_1792_\" transform=\"translate(0.001 0.001)\">\n      <path id=\"XMLID_3769_\" d=\"M23.091,55A5.283,5.283,0,0,1,18.8,52.812a3.108,3.108,0,0,0-3.04-1.259,5.275,5.275,0,0,1-5.983-4,3.108,3.108,0,0,0-2.327-2.327,5.291,5.291,0,0,1-4-5.983A3.108,3.108,0,0,0,2.19,36.2a5.291,5.291,0,0,1-1.4-7.058,3.108,3.108,0,0,0,0-3.291A5.291,5.291,0,0,1,2.19,18.8a3.108,3.108,0,0,0,1.259-3.04,5.291,5.291,0,0,1,4-5.983A3.108,3.108,0,0,0,9.774,7.447a5.291,5.291,0,0,1,5.983-4A3.107,3.107,0,0,0,18.8,2.19a5.291,5.291,0,0,1,7.058-1.4,3.108,3.108,0,0,0,3.291,0A5.291,5.291,0,0,1,36.2,2.19a3.108,3.108,0,0,0,3.04,1.259,5.291,5.291,0,0,1,5.983,4,3.108,3.108,0,0,0,2.327,2.327,5.291,5.291,0,0,1,4,5.983,3.108,3.108,0,0,0,1.259,3.04,5.291,5.291,0,0,1,1.4,7.058,3.108,3.108,0,0,0,0,3.291,5.291,5.291,0,0,1-1.4,7.058,3.108,3.108,0,0,0-1.259,3.04,5.291,5.291,0,0,1-4,5.983,3.108,3.108,0,0,0-2.327,2.327,5.291,5.291,0,0,1-5.983,4,3.109,3.109,0,0,0-3.04,1.259,5.291,5.291,0,0,1-7.058,1.4,3.107,3.107,0,0,0-3.291,0A5.237,5.237,0,0,1,23.091,55Zm-6.817-5.639a5.24,5.24,0,0,1,4.267,2.2,3.135,3.135,0,0,0,4.182.832,5.245,5.245,0,0,1,5.553,0,3.135,3.135,0,0,0,4.182-.832,5.244,5.244,0,0,1,5.13-2.125,3.136,3.136,0,0,0,3.546-2.369,5.244,5.244,0,0,1,3.927-3.927,3.135,3.135,0,0,0,2.369-3.546,5.245,5.245,0,0,1,2.125-5.13,3.135,3.135,0,0,0,.832-4.182,5.245,5.245,0,0,1,0-5.553,3.135,3.135,0,0,0-.832-4.182,5.245,5.245,0,0,1-2.125-5.13,3.135,3.135,0,0,0-2.369-3.546,5.244,5.244,0,0,1-3.927-3.927A3.135,3.135,0,0,0,39.59,5.57a5.245,5.245,0,0,1-5.13-2.125,3.135,3.135,0,0,0-4.182-.832,5.245,5.245,0,0,1-5.553,0,3.135,3.135,0,0,0-4.182.832,5.245,5.245,0,0,1-5.13,2.125,3.136,3.136,0,0,0-3.546,2.369,5.244,5.244,0,0,1-3.927,3.927A3.135,3.135,0,0,0,5.57,15.412a5.245,5.245,0,0,1-2.125,5.13,3.135,3.135,0,0,0-.832,4.182,5.245,5.245,0,0,1,0,5.553,3.135,3.135,0,0,0,.832,4.182A5.245,5.245,0,0,1,5.57,39.59a3.135,3.135,0,0,0,2.369,3.546,5.244,5.244,0,0,1,3.927,3.927,3.136,3.136,0,0,0,3.546,2.369,5.367,5.367,0,0,1,.863-.07Z\" transform=\"translate(-0.001 -0.001)\" fill=\"#282828\"><\/path>\n    <\/g>\n    <g id=\"XMLID_775_\" transform=\"translate(7.726 7.726)\">\n      <path id=\"XMLID_3761_\" d=\"M85.727,105.5A19.774,19.774,0,1,1,95.9,68.769a1.041,1.041,0,1,1-1.073,1.784A17.684,17.684,0,1,0,101,76.8a1.041,1.041,0,0,1,1.8-1.052A19.779,19.779,0,0,1,85.727,105.5Z\" transform=\"translate(-65.953 -65.953)\" fill=\"#282828\"><\/path>\n    <\/g>\n    <g id=\"XMLID_776_\" transform=\"translate(14.577 16.607)\">\n      <g id=\"XMLID_782_\" transform=\"translate(7.348 0.653)\">\n        <path id=\"XMLID_781_\" d=\"M209.523,189.01a1.172,1.172,0,0,1-1.053-1.683l8.809-18.138a1.171,1.171,0,1,1,2.107,1.023l-8.809,18.138A1.171,1.171,0,0,1,209.523,189.01Z\" transform=\"translate(-208.352 -168.529)\" fill=\"#282828\"><\/path>\n      <\/g>\n      <g id=\"XMLID_777_\">\n        <g id=\"XMLID_780_\" transform=\"translate(16.461 12.402)\">\n          <path id=\"XMLID_3763_\" d=\"M290.844,278.21a4.693,4.693,0,1,1,4.693-4.693A4.7,4.7,0,0,1,290.844,278.21Zm0-7.044a2.35,2.35,0,1,0,2.35,2.35A2.353,2.353,0,0,0,290.844,271.166Z\" transform=\"translate(-286.151 -268.823)\" fill=\"#282828\"><\/path>\n        <\/g>\n        <g id=\"XMLID_778_\">\n          <path id=\"XMLID_3764_\" d=\"M150.317,172.339a4.693,4.693,0,1,1,4.693-4.693A4.7,4.7,0,0,1,150.317,172.339Zm0-7.044a2.35,2.35,0,1,0,2.35,2.35A2.353,2.353,0,0,0,150.317,165.3Z\" transform=\"translate(-145.624 -162.953)\" fill=\"#282828\"><\/path>\n        <\/g>\n      <\/g>\n    <\/g>\n    <g id=\"XMLID_316_\" transform=\"translate(40.031 12.782)\">\n      <path id=\"XMLID_3762_\" d=\"M375.124,121.745a1.172,1.172,0,1,1,.828-.343A1.18,1.18,0,0,1,375.124,121.745Z\" transform=\"translate(-373.953 -119.402)\" fill=\"#282828\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+              "perks_text": "Early access to sales"
+            }
+          },
+          "0f85430f-5f4c-42f6-b121-003c200c7ff1": {
+            "type": "perks-blocks",
+            "settings": {
+              "perks_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"68.068\" height=\"25\" viewbox=\"0 0 68.068 25\">\n  <g id=\"sunglasses\" transform=\"translate(0 -161.395)\">\n    <path id=\"Контур_8\" data-name=\"Контур 8\" d=\"M67.068,166.909H63.74a1,1,0,0,0-.295.044,10.645,10.645,0,0,0-9.351-5.559H13.7a10.642,10.642,0,0,0-9.328,5.517l-.048,0H1a1,1,0,0,0,0,2H3.529a10.637,10.637,0,0,0-.348,4.736l.441,2.89a1,1,0,1,0,1.978-.3l-.442-2.89A8.643,8.643,0,0,1,13.7,163.4h7.755a7.166,7.166,0,0,1,7.1,6.211,1.011,1.011,0,0,0,.022.2,7.134,7.134,0,0,1-1.448,5.1l-4.405,5.732a9.612,9.612,0,0,1-15.764-.75,1,1,0,1,0-1.7,1.064,11.615,11.615,0,0,0,19.046.906l4.405-5.732A9.132,9.132,0,0,0,30.6,170a4.939,4.939,0,0,1,6.523.308c.018.018.037.034.056.05a9.134,9.134,0,0,0,1.9,5.765l1.944,2.529a1,1,0,0,0,1.587-1.22l-1.943-2.529A7.153,7.153,0,0,1,46.34,163.4h7.755a8.643,8.643,0,0,1,8.544,9.948l-.442,2.89a9.612,9.612,0,0,1-17.123,4.406,1,1,0,1,0-1.587,1.22,11.613,11.613,0,0,0,20.688-5.323l.442-2.89a10.635,10.635,0,0,0-.348-4.736h2.8a1,1,0,1,0,0-2Zm-27.44-2.586a9.154,9.154,0,0,0-2.105,3.745,6.918,6.918,0,0,0-7.312-.222,9.153,9.153,0,0,0-3.043-4.451H40.63a9.082,9.082,0,0,0-1,.927Z\" transform=\"translate(0)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_9\" data-name=\"Контур 9\" d=\"M89.038,224.179l-2.2,2.2a1,1,0,0,0,1.415,1.415l2.2-2.2a1,1,0,0,0-1.415-1.415Z\" transform=\"translate(-74.996 -54.153)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_10\" data-name=\"Контур 10\" d=\"M90.838,228.948a1,1,0,0,0,1.415,0l9.521-9.521a1,1,0,1,0-1.415-1.415l-9.521,9.521A1,1,0,0,0,90.838,228.948Z\" transform=\"translate(-78.464 -48.809)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_11\" data-name=\"Контур 11\" d=\"M407.31,228.089a1,1,0,0,0,.708-1.708l-2.2-2.2a1,1,0,0,0-1.415,1.415l2.2,2.2A1,1,0,0,0,407.31,228.089Z\" transform=\"translate(-350.189 -54.153)\" fill=\"#282828\"><\/path>\n    <path id=\"Контур_12\" data-name=\"Контур 12\" d=\"M345.544,218.011a1,1,0,0,0,0,1.415l9.521,9.521a1,1,0,0,0,1.415-1.415l-9.521-9.521A1,1,0,0,0,345.544,218.011Z\" transform=\"translate(-299.186 -48.808)\" fill=\"#282828\"><\/path>\n  <\/g>\n<\/svg>",
+              "perks_text": "Free sunnies for points"
+            }
+          }
+        },
+        "block_order": [
+          "dad21e24-b6e2-4bba-982e-7e87d379ce00",
+          "71892876-775f-453b-82ba-c7256b71b4c9",
+          "0c13e658-9886-4dc2-b1c5-fb6004cec5c8",
+          "0f85430f-5f4c-42f6-b121-003c200c7ff1"
+        ],
+        "settings": {
+          "perks_title": "CURRENT PERKS"
+        }
+      }
+    },
+    "content_for_index": [
+      "16085434107e9c6bb2",
+      "1617898349d988f295",
+      "1588611037474",
+      "1588623211038",
+      "1588944691324",
+      "1588611914946",
+      "1625629267ff67ba2c",
+      "1602168723780",
+      "160810744488e986dc",
+      "1588776524346",
+      "1588702591828",
+      "16092390992020579e"
+    ],
+    "blocks": {
+      "733389323033596483": {
+        "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/theme-settings\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": false
+        }
+      }
+    }
+  }
+}

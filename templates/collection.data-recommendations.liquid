@@ -1,0 +1,36 @@
+{% layout none %}
+{% paginate collection.products by 10 %}
+{
+  "products": [
+    {% for product in collection.products %}
+    {%- assign product_display_title = product.title | split: ' ' | first -%}
+    {%- if product.tags contains '__settings:full-title' -%}
+      {% assign product_display_title = product.title -%}
+    {%- endif -%}
+    {
+      "id": {{ product.id | json }},
+      "title": {{ product_display_title | json }},
+      "variants": [
+        {% assign sorted_variants = product.variants | where: 'available' | sort: 'inventory_quantity' | reverse %}
+        {% for variant in sorted_variants limit: 4 %}
+        {
+          "id": {{ variant.id | json }},
+          "title": {{ variant.title | json }},
+          "inventory_quantity": {{ variant.inventory_quantity | json }},
+          {%- capture swatch_name -%}{%- render 'swatch-name-generator', variant_title: variant.title -%}{%- endcapture -%}
+          {%- assign swatch_img_template = swatch_name | strip | asset_img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+          "swatch_img_template": "{{ swatch_img_template | strip }}",
+          {%- assign featured_img_template = variant.featured_media | img_url: '1x1', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+          "featured_img_template": "{{ featured_img_template | strip }}",
+          "price": {{ variant.price | money | replace: '.00', '' | json }},
+          "compare_at_price": {{ variant.compare_at_price | money | replace: '.00', '' | json }}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      "current_variant_id": {{ sorted_variants[0].id | json }},
+      "is_shown": "false"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+{% endpaginate %}

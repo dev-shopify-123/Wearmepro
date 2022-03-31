@@ -1,0 +1,80 @@
+<!-- section/reviews-slideshow.liquid -->
+<section class="full-bleed"
+         data-section-id="{{ section.id }}"
+         data-section-type="reviews-slideshow">
+  {% if section.settings.heading != blank %}
+    <h1 class="reviews-slideshow-title mt6 mb5 ff--heading text-center">{{ section.settings.heading }}</h1>
+  {% endif %}
+  <div class="reviews-slideshow-background lazyload"
+       data-bgset="{% include 'data-srcset-asset', asset_image_name: 'pattern-white.png', sizes: '200, 500, 1000, 1500' %}"
+       data-sizes="auto">
+    <div class="reviews-slideshow-container lazyload js-reviews-container-{{ section.id }}" data-bgset="{% include 'data-srcset-asset', asset_image_name: 'pattern-white.png', sizes: '200, 500, 1000, 1500' %}" data-sizes="auto">
+      {% for block in section.blocks %}
+      <div class="reviews-slideshow__review-container" {{ block.shopify_attributes }}>
+        <div class="reviews-slideshow__review">
+          <div class="reviews-slideshow__review__customer">
+            <div class="reviews-slideshow__review__customer__photo">
+              <div class="reviews-slideshow__review__customer__photo__image">
+                {% render 'responsive-image',
+                  image: block.settings.image,
+                  extra_classes: 'responsive-image--circle',
+                  aspect_ratio: 1,
+                  crop: 'center'
+                %}
+              </div>
+            </div>
+          </div>
+          <div class="reviews-slideshow__review__body ff--body">
+            {{ block.settings.body }}
+            <p></p>
+            <p class="ff--body"><strong>{{ block.settings.title }}</strong></p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Reviews",
+  "class": "homepage-section section--reviews-slideshow",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real Reviews From Real People"
+    }
+  ],
+  "blocks": [
+    {
+     "type": "review",
+     "name": "Review",
+     "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Name"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "body",
+        "type": "richtext",
+        "label": "Review text"
+      }
+     ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews slideshow",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

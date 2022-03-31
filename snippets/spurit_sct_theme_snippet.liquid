@@ -1,0 +1,30 @@
+<script>
+  if(typeof(Spurit) === 'undefined'){
+    var Spurit = {};
+  }
+  if(!Spurit.CountdownTimer){
+    Spurit.CountdownTimer = {};
+  }
+  if(!Spurit.CountdownTimer.snippet){
+    Spurit.CountdownTimer.snippet = {};
+  }
+  Spurit.CountdownTimer.snippet.shopHash = '4cffcbb68f56bd89a1578a4afe2a9e2f';
+  Spurit.CountdownTimer.snippet.cacheTimestamp = 1610130321;
+
+  {% assign page = template | split: '.' | first %}
+  {% if page == 'product' and product and product.id %}
+    Spurit.CountdownTimer.snippet.productId = {{ product.id }};
+  {% endif %}
+  {% if page == 'collection' and collection and collection.id %}
+  Spurit.CountdownTimer.snippet.collectionId = {{ collection.id }};
+  {% endif %}
+</script>
+{% assign page = template | split: '.' | first %}
+{% if page == 'product' and product and product.id or page == 'collection' and collection and collection.id %}
+    <script src="https://cdn-spurit.com/shopify-apps/timer-app/common.js" async></script>
+    <link href="https://cdn-spurit.com/shopify-apps/timer-app/common.css" rel="stylesheet" type="text/css" media="all">
+{% endif %}
+{% comment %}
+    <script src="https://cdn-spurit.com/shopify-apps/timer-app/common.js"></script>
+    <link href="https://cdn-spurit.com/shopify-apps/timer-app/common.css" rel="stylesheet" type="text/css" media="all">
+{% endcomment %}

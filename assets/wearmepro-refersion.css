@@ -1,0 +1,48 @@
+.container.top-bar .row-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container.top-bar .span6.mobile-align-center {
+    width: auto;
+    margin: 0 0 20px;
+    text-align: center;
+}
+.container.top-bar a {
+    opacity: 1;
+    background: none;
+   
+}
+.container.main-aff-reg {
+    box-shadow: none;
+    border: none;
+}
+.container.main-aff-reg .accordion-group {
+    border: none;
+}
+.container.main-aff-reg .accordion-inner {
+    border: none;
+}
+.container.main-aff-reg h4 {
+    text-transform: uppercase;
+}
+.container.main-aff-reg form.no-bottom-margin .span6 {
+    width: 100%;
+    margin: 0;
+}
+.container.main-aff-reg form.no-bottom-margin .span6 input {
+    width: 92% !important;
+}
+.container.main-aff-reg form.no-bottom-margin i.icon-asterisk.red {
+    font-size: 5px;
+    color: #282828;
+    top: -8px;
+    position: relative;
+}
+.container.main-aff-reg form.no-bottom-margin input.btn.btn-large.btn-yellow.bold.cta-button {
+    background: #66E1BE;
+    color: #fff;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 0 15px;
+}

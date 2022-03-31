@@ -1,0 +1,32 @@
+{% assign show_label = false %}
+{% assign show_polarized_label = false %}
+{% assign show_blue_light_label = false %}
+{% assign show_rx_label = false %}
+
+{% for collect in product.collections %}
+  {% if collect.handle == 'rx-frames' or collect.handle == 'prescription-glasses-men' %}
+    {% assign show_label = true %}
+    {% assign show_rx_label = true %}
+  {% endif %}
+{% endfor %}
+
+{% assign product_title_dc = product.title | downcase %}
+{% if product_title_dc contains 'polarized' %}
+  {% assign show_label = true %}
+  {% assign show_polarized_label = true %}
+{% endif %}
+{% if product.tags contains 'Lens Type_Blue Light' %}
+  {% assign show_label = true %}
+  {% assign show_blue_light_label = true %}
+{% endif %}
+{% if show_label %}
+  {% if show_polarized_label %}
+  <div class="product-label product-label--polarized {{ extra_classes }}">Polarized</div>
+  {% endif %}
+  {% if show_blue_light_label %}
+  <div class="product-label product-label--blue-light {{ extra_classes }}">Blue Light</div>
+  {% endif %}
+  {% if show_rx_label %}
+  <div class="product-label product-label--red {{ extra_classes }}">Prescription</div>
+  {% endif %}
+{% endif %}

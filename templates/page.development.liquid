@@ -1,0 +1,40 @@
+{% layout none %}
+
+<div>
+
+</div>
+
+<script>
+  var baseUrl = {{ routes.product_recommendations_url | json }};
+  var productId = 4404180713561;
+
+  var finalUrl = baseUrl + ".json?product_id=" + productId + "&limit=4";
+
+  console.log(finalUrl);
+
+  // Create an AJAX request
+  var request = new XMLHttpRequest();
+
+  request.open(
+    "GET",
+    finalUrl
+  );
+
+  request.onload = function() {
+    if (request.status === 404 || request.status === 422) {
+      console.error(request.status);
+    }
+
+    var products = JSON.parse(request.response).products;
+
+    if (products.length > 0) {
+      console.log(products);
+    }
+  };
+
+  request.onerror = function() {
+    console.error('something went wrong');
+  };
+
+  request.send();
+</script>

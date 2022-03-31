@@ -1,0 +1,475 @@
+{% capture inner_overlay_content %}
+  <a class="flex flex--column-nowrap justify-content--center align-items--center lg--pt4 pt2"
+    {% if section.settings.hero_url != blank %}
+    href="{{ section.settings.hero_url }}"
+    {% endif %}
+    >
+    <h1 class="ff--script blue-light-page__heading color--white my4">
+      {{ section.settings.hero_heading }}
+    </h1>
+    {% if section.settings.hero_url != blank and section.settings.hero_cta_text != blank %}
+    <div class="btn btn--color-blue-light-page ff--heading fw--bold uppercase ls03">
+      <span class="md-dn--hide">
+        {{ section.settings.hero_cta_text }}
+      </span>
+      <div class="lg--hide">
+        {{ section.settings.hero_cta_text_mobile }}
+      </div>
+    </div>
+    {% endif %}
+  </a>
+{% endcapture %}
+
+{% capture overlay_content %}
+<div>
+  {{ inner_overlay_content }}
+</div>
+{% endcapture %}
+
+<div class="lg--hide">
+  {% render 'responsive-image-with-overlay',
+     section_id: section.id,
+     image: section.settings.hero_mobile_image,
+     overlay_classes: 'flex flex--column-nowrap',
+     overlay_content: overlay_content,
+  %}
+</div>
+
+{% capture overlay_content %}
+<div class="flex--row__half">
+  {{ inner_overlay_content }}
+</div>
+{% endcapture %}
+
+<div class="md-dn--hide">
+  {% render 'responsive-image-with-overlay',
+     section_id: section.id,
+     image: section.settings.hero_desktop_image,
+     overlay_classes: 'flex flex--row-nowrap',
+     overlay_content: overlay_content,
+  %}
+</div>
+
+{% capture overlay_content %}
+  <div class="explainer__text bg--blue-light-page color--white ff--body uppercase fw--bold text-center mx--auto lg--py2 lg--px3 p2">
+    {{ section.settings.explainer_heading | newline_to_br }}
+  </div>
+{% endcapture %}
+
+<div class="explainer bg--orange-gradient mt3 md-dn--py2">
+  {% render 'responsive-image-with-overlay',
+    section_id: section.id,
+    image: section.settings.explainer_first_image,
+    overlay_content: overlay_content,
+  %}
+</div>
+
+{% capture overlay_content %}
+  <h2 class="explainer-two__text ff--heading fw-bold f1 text-center">
+    {{ section.settings.explainer_second_image_text }}
+  </h2>
+{% endcapture %}
+
+<div class="explainer-two mt3 md-dn--hide">
+  {% render 'responsive-image-with-overlay',
+     section_id: section.id,
+     image: section.settings.explainer_second_image,
+     overlay_content: overlay_content,
+     overlay_classes: 'explainer-two__content',
+  %}
+</div>
+
+<h2 class="lg--hide f1 mt3 mb2 uppercase text-center explainer-two-mobile-heading px2">
+  {{ section.settings.explainer_second_image_text | replace: 'WearMe Pro', 'WearMe&nbsp;Pro' }}
+</h2>
+
+<div class="reasons-container lg--mt3 md-dn--mb5">
+  <div class="reasons lg--pb3 lg--pt2">
+    {% for block in section.blocks %}
+    <div class="reason pt3 md-dn--py1 px1 md-dn--px0 {% if forloop.index == 5 %}lg--hide{% endif %}" {{ block.shopify_attributes }}>
+      <div class="reason__icon lg--mtn3">
+        {% render 'responsive-image',
+           widths: '[84, 168, 180, 336, 360, 504, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]',
+           image: block.settings.icon,
+        %}
+      </div>
+      <div class="reason__content pt3 pr2">
+        <h2 class="reason__title ff--body fw--bold lg--f3 f4 mt0 mb1">{{ block.settings.title }}</h2>
+        <p class="reason__text ff--heading fw--light lg--f5 f6 lh--copy mt1 mb0">{{ block.settings.reason }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="lg--hide">
+  {% render 'responsive-image',
+     image: section.settings.explainer_mobile_image,
+  %}
+</div>
+
+<div class="comparison bg--orange-gradient mt3 lg--py4">
+  <div class="comparison__header ff--heading fw--light f2 py3 px4 text-center mx--auto md-dn--hide">
+    <span class="comparison__header__text uppercase">
+      Our Lens
+    </span>
+    <span class="comparison__header__vs fw--bold">
+      vs
+    </span>
+    <span class="comparison__header__text uppercase">
+      Other Brands
+    </span>
+  </div>
+  <div class="comparison__figure lg--py3 lg--px4 mt2">
+    <div class="comparison__side comparison-our-lens md-dn--p3">
+      <div class="comparison__header--mobile lg--hide f1 mb2 text-center uppercase ff--heading">
+        Our Lens
+      </div>
+      <div class="comparison-our-lens__image p2">
+        {% render 'responsive-image',
+           image: section.settings.comparison_our_lens,
+           extra_classes: 'responsive-image--circle',
+        %}
+      </div>
+      <div class="comparison-side__text mt3 comparison-our-lens__text f4 text-center fw--bold">
+        {{ section.settings.comparison_our_lens_detail_text | newline_to_br }}
+      </div>
+    </div>
+    <div class="comparison__spacer"></div>
+    <div class="comparison__side comparison-other-brands md-dn--p3">
+      <div class="comparison__header--mobile lg--hide f1 mb2 text-center uppercase ff--heading">
+        Other Brands
+      </div>
+      <div class="comparison-other-brands__image p2">
+        {% render 'responsive-image',
+           image: section.settings.comparison_other_brands,
+           extra_classes: 'responsive-image--circle',
+        %}
+      </div>
+      <div class="comparison-side__text mt3 comparison-other-brands__text f4 text-center fw--bold">
+        {{ section.settings.comparison_other_brands_detail_text | newline_to_br }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.bg--orange-gradient {
+  background-image: radial-gradient(
+    circle at bottom right,
+    #ffe174 0%,
+    #ffbf02 75%
+  );
+}
+
+.blue-light-page__heading {
+  font-size: 17.75vw;
+  margin-top: 0.5vw;
+  margin-bottom: 2.5vw;
+}
+
+@media screen and (min-width: 901px) {
+  .blue-light-page__heading {
+    font-size: 9.75vw;
+    margin-top: 6.5vw;
+    margin-bottom: 3.5vw;
+  }
+}
+
+.explainer__text {
+  font-size: 3.6vw;
+  max-width: 20em;
+  transform: translateY(
+    calc(
+     calc(
+        50% + calc( var(--space-3) / 2 )
+            + calc( var(--space-2) / 2 )
+     ) * -1
+  )
+  );
+}
+
+@media screen and (min-width: 901px) {
+  .explainer__text {
+    font-size: 2.8vw;
+    max-width: 22em;
+    transform: translateY(
+      calc(
+        calc(50% + calc(var(--space-3) / 2)) * -1
+      )
+    );
+  }
+}
+
+.explainer-two-mobile-heading::after {
+  display: block;
+  content: '';
+  height: 2px;
+  background-color: #fec22b;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.explainer-two__content {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  right: 0;
+  left: auto;
+}
+
+.explainer-two__text {
+  max-width: 10em;
+}
+
+.reasons {
+  display: flex;
+  flex-flow: column nowrap;
+
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 901px) {
+  .reasons-container {
+    background-color: #f5f5f5;
+  }
+
+  .reasons {
+    flex-flow: row wrap;
+    max-width: 1200px;
+  }
+}
+
+.reason {
+  flex: 0 0 50%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.reason__icon {
+  flex: 0 0 25%;
+}
+
+.reason__content {
+  flex: 0 0 75%;
+}
+
+@media (min-width: 901px) {
+  .reason__icon {
+    flex: 0 0 28%;
+  }
+
+  .reason__content {
+    flex: 0 0 72%;
+  }
+}
+
+.reason__icon .responsive-image {
+  width: 100%;
+}
+
+.reason__title {
+  color: #4b4b4b;
+}
+
+.reason__text {
+  color: #3a3a3a;
+}
+
+.comparison__header {
+  border: 2px solid white;
+  border-left: none;
+  border-right: none;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.comparison__header__text,
+.comparison__side {
+  flex: 2 0 0%;
+}
+
+.comparison__header__vs,
+.comparison__spacer {
+  flex: 1 1 0%;
+  color: #4e5258;
+}
+
+.comparison__figure {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.comparison__header--mobile::before,
+.comparison__header--mobile::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: var(--color-body-bg);
+  width: 66.67%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comparison__header--mobile::before{
+  margin-bottom: var(--space-1);
+}
+
+.comparison__header--mobile::after {
+  margin-top: var(--space-1);
+}
+
+@media (max-width: 900px) {
+  .comparison__spacer {
+    min-height: var(--space-4);
+    background: var(--color-body-bg);
+  }
+}
+
+@media (min-width: 901px) {
+  .comparison__figure {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
+
+.comparison-side__text {
+  color: #4e5258;
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Blue Light",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_desktop_image",
+      "label": "Desktop Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_mobile_image",
+      "label": "Mobile Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "Blue Light Glasses"
+    },
+    {
+      "type": "url",
+      "id": "hero_url",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Button text",
+      "default": "Shop now"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text_mobile",
+      "label": "Button text – mobile",
+      "default": "Shop Blue Light Glasses"
+    },
+    {
+      "type": "header",
+      "content": "Explainer"
+    },
+    {
+      "type": "textarea",
+      "id": "explainer_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "explainer_first_image",
+      "label": "First image"
+    },
+    {
+      "type": "image_picker",
+      "id": "explainer_second_image",
+      "label": "Second image"
+    },
+    {
+      "type": "text",
+      "id": "explainer_second_image_text",
+      "label": "Second image overlay text",
+      "default": "Why choose WearMe Pro?"
+    },
+    {
+      "type": "image_picker",
+      "id": "explainer_mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "header",
+      "content": "Comparison"
+    },
+    {
+      "type": "image_picker",
+      "id": "comparison_our_lens",
+      "label": "Our lens: Image"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_our_lens_detail_text",
+      "label": "Our lens: Detail text"
+    },
+    {
+      "type": "image_picker",
+      "id": "comparison_other_brands",
+      "label": "Other brands: Image"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_other_brands_detail_text",
+      "label": "Other brands: Detail text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Explainer reason",
+      "type": "explainer_reason",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "reason",
+          "label": "Reason text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

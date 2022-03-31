@@ -1,0 +1,183 @@
+{% assign variant_title_dc = variant_title | strip | remove: 'Frame' | remove: 'Lens' | remove: 'Glossy' | downcase %}
+
+{% if variant_title_dc contains '/' %}
+  {% assign variant_frame_color = variant_title_dc | split: '/' | first | handleize %}
+  {% assign variant_lens_color = variant_title_dc | split: '/' | last | handleize %}
+{% else %}
+  {% assign variant_frame_color = variant_title_dc | handleize %}
+  {% assign variant_lens_color = '' %}
+{% endif %}
+{% if variant_title_dc contains 'mirror' or variant_title_dc contains 'mirrored' %}
+  {% assign variant_lens_color = variant_lens_color | remove: 'mirrored-' %}
+  {% assign variant_lens_color = variant_lens_color | remove: 'mirror-' %}
+  {% comment %}
+  {% assign variant_lens_color = variant_lens_color | prepend: 'mirrored' %}
+  {% endcomment %}
+{% endif %}
+
+{% if variant_title_dc contains 'rimmed' %}
+  {% if variant_lens_color != '' and variant_lens_color != variant_frame_color %}
+    {% assign variant_frame_color = variant_frame_color | split: 'rimmed-' | last %}
+  {% else %}
+    {% assign variant_frame_color = variant_frame_color | remove: 'rimmed-' %}
+  {% endif %}
+{% endif %}
+{% comment %}
+{% if variant_frame_color contains 'transparent-' %}
+  {% assign variant_frame_color = variant_frame_color | remove: 'transparent-' %}
+{% endif %}
+{% endcomment %}
+
+{% if variant_lens_color contains 'flashing-' %}
+  {% assign variant_lens_color = variant_lens_color | remove: 'flashing-' %}
+{% endif %}
+
+{% capture swatch_img_name %}swatch-{{- variant_frame_color -}}{%- if variant_lens_color != '' and variant_lens_color != variant_frame_color -%}-{{- variant_lens_color -}}{%- endif -%}.png{% endcapture %}
+
+{% comment %}
+Hard overrides
+{% endcomment %}
+
+{% if swatch_img_name == 'swatch-transparent-red-tinted-red.png' %}
+  {% assign swatch_img_name = 'swatch-red.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-transparent-matte-blue-blue.png' %}
+  {% assign swatch_img_name = 'swatch-clear-blue.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-transparent-matte-red-red.png' %}
+  {% assign swatch_img_name = 'swatch-clear-red.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-beige-brown-brown.png' or swatch_img_name == 'swatch-oatmeal-beige-tortoise.png' or swatch_img_name == 'swatch-beige-tortoise.png' %}
+  {% assign swatch_img_name = 'swatch-beige.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-navy-blue.png' %}
+  {% assign swatch_img_name = 'swatch-dark-blue.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-grey-black.png' or swatch_img_name == 'swatch-black-transparent-black.png' %}
+  {% assign swatch_img_name = 'swatch-black.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-lava-tortoise.png' or swatch_img_name == 'swatch-brown-tortoise.png' or swatch_img_name == 'swatch-soft-tortoise-gold.png' or swatch_img_name == 'swatch-blaze-tortoise-shell.png' or swatch_img_name == 'swatch-light-brown-tortoise.png' or swatch_img_name == 'swatch-blaze-brown-tortoise.png' or swatch_img_name == 'swatch-beige-tortoise-brown-gradient.png' %}
+  {% assign swatch_img_name = 'swatch-tortoise.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-whisky-brown.png' %}
+  {% assign swatch_img_name = 'swatch-brown.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-clear-green.png' %}
+  {% assign swatch_img_name = 'swatch-green.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-grey.png' %}
+  {% assign swatch_img_name = 'swatch-silver.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-black-clear-gold.png' %}
+  {% assign swatch_img_name = 'swatch-black-gold.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-lava-tortoise-gold-temple.png' %}
+  {% assign swatch_img_name = 'swatch-lava.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-twilight-purple.png' %}
+  {% assign swatch_img_name = 'swatch-purple.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-teal-grey-mirrored.png' %}
+  {% assign swatch_img_name = 'swatch-teal.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-white-tortoise-pink.png' or swatch_img_name == 'swatch-white-tortoise-rose-gold.png' %}
+  {% assign swatch_img_name = 'swatch-tortoise-pink.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-havana-brown.png' %}
+  {% assign swatch_img_name = 'swatch-brown.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-beige-brown-gradient.png' %}
+  {% assign swatch_img_name = 'swatch-beige.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-space-grey-gradient-silver.png' %}
+  {% assign swatch_img_name = 'swatch-silver.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-white-tortoise-smoke-green.png' %}
+  {% assign swatch_img_name = 'swatch-black-green-smoke.png' %}
+{% endif %}
+
+{% if product.handle == 'ocean-2-square-horn-rimmed-polarized-classic-modern-look-sunglasses' %}
+  {% if swatch_img_name == 'swatch-black.png' %}
+    {% assign swatch_img_name = 'swatch-transparent-grey-black.png' %}
+  {% endif %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-drift-grey-black.png' %}
+  {% assign swatch_img_name = 'swatch-transparent-grey-black.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-pink-tinted-pink.png' %}
+  {% assign swatch_img_name = 'swatch-rose-gold-pink.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-matte-space-grey-dark-silver.png' or swatch_img_name == 'swatch-space-grey-black.png' %}
+  {% assign swatch_img_name = 'swatch-moon-grey-black-revo.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-grey-transparent-black-gradient.png' %}
+  {% assign swatch_img_name = 'swatch-transparent-grey-black.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-grey-transparent-blue.png' %}
+  {% assign swatch_img_name = 'swatch-grey-blue-mirrored.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-brown-tortoise-pink.png' %}
+  {% assign swatch_img_name = 'swatch-tortoise-pink.png' %}
+{% endif %}
+
+
+{% if swatch_img_name == 'swatch-clear-silver-rimmed.png' or swatch_img_name == 'swatch-clear-blue-light.png' %}
+  {% assign swatch_img_name = 'swatch-clear.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-black-matte-black.png' %}
+  {% assign swatch_img_name = 'swatch-black.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-gold-tinted-pink.png' %}
+  {% assign swatch_img_name = 'swatch-gold-pink.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-clear-jet-black-black-gradient.png' %}
+  {% assign swatch_img_name = 'swatch-transparent-grey-black.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-pink-blue-light.png' %}
+  {% assign swatch_img_name = 'swatch-rose-pink-rose-gold.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-clear-pink-blue-light.png' or swatch_img_name == 'swatch-clear-pink.png' %}
+  {% assign swatch_img_name = 'swatch-rose-pink-rose-gold.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-blaze-tortoise-pink.png' or swatch_img_name == 'swatch-tortoise-pink-mirror.png' %}
+  {% assign swatch_img_name = 'swatch-tortoise-pink.png' %}
+{% endif %}
+
+{% if swatch_img_name == 'swatch-blaze-tortoise-black.png' %}
+  {% assign swatch_img_name = 'swatch-tortoise-black.png' %}
+{% endif %}
+
+
+
+
+{{ swatch_img_name }}

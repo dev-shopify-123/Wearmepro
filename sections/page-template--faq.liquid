@@ -1,0 +1,136 @@
+<section data-section-id="{{ section.id }}"
+         data-section-type="page"
+         data-has-collapsibles>
+  {% if section.settings.show_title %}
+  <h1 class="page__title ff--heading f2 text-center h--underline">Frequently Asked Questions</h1>
+  {% endif %}
+  <div class="page__content faq mt4 mb6">
+    {% for block in section.blocks %}
+      {% if block.type == 'subheading' %}
+      <h4 class="faq-subheading mt5 mb3 uppercase text-center ff--heading f4"
+          {{ block.shopify_attributes }}>
+        {{ block.settings.title | strip | escape }}
+      </h4>
+      {% endif %}
+      {% if block.type == 'question' %}
+      <div class="faq-question{% unless section.blocks[forloop.index].type == 'question' %} faq-question--no-border{% endunless %}"
+           {{ block.shopify_attributes }}>
+        <div class="faq-question__heading my2 fw--bold"
+             data-collapse-trigger>
+            {{ block.settings.title | strip | escape }}
+        </div>
+        <div class="faq-question__body"
+             data-collapsible>
+          {{ block.settings.answer }}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+<style>
+  .faq a:any-link {
+    color: var(--color-primary-accent);
+  }
+
+  .faq [data-collapsible] {
+    overflow: hidden;
+    height: 0;
+  }
+
+  .faq-question:not(.faq-question--no-border) {
+    border-bottom: 1px solid rgba(var(--color-body-text-rgb), .1);
+  }
+
+  .faq-question__heading {
+    cursor: pointer;
+    position: relative;
+    padding-right: var(--space-4);
+  }
+
+  .faq-question__heading::after {
+    content: '\e900';
+    display: block;
+    font-family: custom-icon!important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: rotate(0) translate3d(0, 0, 0);
+    transition: transform .1s ease-in;
+  }
+
+  .faq-question__heading.is-expanded::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-question__heading,
+  .faq-question__body {
+    padding-right: var(--space-4);
+  }
+
+  .faq-question__body > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  [data-collapsible] {
+    height: 0;
+    overflow: hidden;
+  }
+
+  [data-collapsible].active {
+    height: auto !important;
+  }
+
+</style>
+<script>
+  const faqWrap = document.querySelector('.page__content');
+  faqWrap.addEventListener('click', (e) => {
+    if(e.target.classList.contains('faq-question__heading')) {
+      e.target.classList.toggle('is-expanded');
+    }
+  })
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "class": "template template--page template--page--faq",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show title",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Subheading"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

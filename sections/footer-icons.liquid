@@ -1,0 +1,63 @@
+<div class="banner-with-contents footer-icon" style="background: {{ section.settings.color }};">
+    <div class="content-asset">
+        <ul class="value-propositions holder-footer-icon">
+        {% for block in section.blocks %}
+            {% if block.settings.image != blank %}
+                {% capture link_image_src %}{{ block.settings.image | img_url: '65x65' }}{% endcapture %}
+            {% endif %}
+            <li class="value-proposition-item">
+                <div class="proposition-icon-holder">
+                    <img src="{{ block.settings.image_url }}" alt="" width="55" height="42">
+                </div>
+                <div class="proposition-copy-wrap">
+                  <p><strong>{{ block.settings.title }}</strong></p>
+                    <p>{{ block.settings.text }}</p>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Footer Icons",
+    "class": "footer-wrapper",
+    "settings": [
+        {
+            "type": "color",
+            "id": "color",
+            "label": "Color"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "footer_icons",
+            "name": "Footer Icons",
+            "settings": [
+
+                {
+                "type": "url",
+                "id": "image_url",
+                "label": "Image"
+                },
+                {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+                },
+                {
+                "type": "text",
+                "id": "text",
+                "label": "Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Footer Icons",
+            "category": "Image"
+        }
+]
+}
+{% endschema %}

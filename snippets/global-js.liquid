@@ -1,0 +1,25 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function loadVue() {
+            setTimeout(() => {
+                theme.LibraryLoader.load('vueLazy', function () {
+                    document.dispatchEvent(new CustomEvent('wmp:scripts:vueLazy:loaded'));
+                })
+            },0)
+        }
+
+        // Load images for submenu in mobile
+        const images = document.querySelectorAll('.mobile-shop-submenu__image-wrappers img');
+        const mobileMenu = document.querySelector('[data-mobile-menu-toggle]');
+        mobileMenu.addEventListener('click', (e) => {
+            images.forEach((item) => {
+                item.classList.add('lazyload');
+            })
+        } )
+
+    })
+</script>
+
+{% if template == 'collection' %}
+    <script src="{{ 'vue.min.js' | asset_url }}" defer="defer"></script>
+{% endif %}

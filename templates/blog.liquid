@@ -1,0 +1,23 @@
+<style>
+  .recent-stories-items:not(.slick-initialized) .recent-stories-items__link:not(:first-of-type) {
+    display: none !important;
+  }
+</style>
+{% unless current_tags %}
+{% include 'blog__recent-stories' %}
+{% else %}
+<div class="container blog__recent-stories-container js-blog-recent-stories">
+  <h1 class="text-center text-uppercase blog__section__heading">Blog: <span class="js-current-tag">{{ current_tags[0] }}</span></h1>
+</div>
+{% endunless %}
+
+
+{% assign count = settings.blog_post_count | plus: 0 %}
+
+{% include 'blog__posts-grid' %}
+
+<style>
+  .blog__section__heading {
+    margin-bottom: 40px;
+  }
+</style>

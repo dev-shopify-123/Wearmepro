@@ -1,0 +1,63 @@
+<section class="features">
+    <div class="container">
+        <div class="features__list">
+            {% for block in section.blocks %}
+                <div class="features__item">
+                    <div class="features__img">
+                        <img class="lazyload" style="max-width: {{block.settings.size_id}}px;" data-src="{{ block.settings.img | img_url: 'master' }}" alt="{{ block.settings.img.alt }}">
+                    </div>
+                    <div class="features__text">
+                        <strong>{{- block.settings.title -}}</strong>
+                        <p>{{- block.settings.desc -}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features section",
+  "max_blocks": 4,
+  "blocks": [
+  {
+  "name": "Item",
+  "type": "text",
+  "settings": [
+  {
+  "type": "image_picker",
+  "id": "img",
+  "label": "Image"
+  },
+  {
+  "type": "text",
+  "id": "title",
+  "label": "Title"
+  },
+  {
+      "type": "text",
+      "id": "desc",
+      "label": "Description"
+  },
+  {
+      "type": "range",
+      "id": "size_id",
+      "label": "Select size image",
+      "min": 5,
+      "max": 200,
+      "step": 5,
+      "default": 100
+  }
+  ]
+  }
+  ],
+  "presets": [
+  {
+  "name": "Features section",
+  "category": "New"
+  }
+  ]
+  }
+{% endschema %}

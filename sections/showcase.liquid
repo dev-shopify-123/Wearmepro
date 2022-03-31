@@ -1,0 +1,141 @@
+<!-- section/showcase.liquid -->
+<section class="full-bleed js-showcase-container"
+         id="showcase_container"
+         data-section-id="{{ section.id }}"
+         data-section-type="showcase">
+         <h1 class="underline-mob uppercase lg--f2 md-dn--f2 mt0 mb3 ff--heading h-underline text-center">Connect with Us</h1>
+</section>
+<script src="//foursixty.com/media/scripts/fs.embed.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="showcase_v2_5" data-open-links-in-same-page="true" data-connector-filter="46125,46126" data-show-okendo-stars="true" data-page-size="12"></script>
+<style>.fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-desktop .fs-entry-container { width:16.666666666666668% !important; padding-top:16.666666666666668% !important } .fs-mobile .fs-entry-container { width:50% !important; padding-top:50% !important } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:2px } </style>
+<style>
+  .section--showcase .content {
+    margin-top: 0;
+  }
+
+  .section--showcase .container {
+    padding-left: 3px;
+    padding-right: 3px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .section--showcase .container {
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+  }
+
+  .section--showcase .container
+  .showcase-gallery .showcase-grid
+  .showcase-grid-items .showcase-grid-item {
+    padding: 3px 3px 3px 3px;
+  }
+
+  .wmp-instagram__title {
+    text-transform: lowercase;
+    letter-spacing: .06rem;
+    font-size: 6.25rem;
+    font-weight: 400;
+    color: var(--color-secondary-accent);
+  }
+
+  @media screen and (max-width: 900px) {
+    .wmp-instagram__title {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 792px) {
+    .showcase-gallery .showcase-grid .showcase-grid-buttons .showcase-button {
+      display: none !important;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items {
+      margin: 0;
+      width: 100%;
+      padding-top: calc(100% / 3);
+      position: relative;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item {
+        display: block;
+        width: calc(100% / 6);
+        height: 50%;
+        position: absolute;
+        padding: 0 0 0 0;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items .showcase-grid-item .showcase-grid-item-post {
+      padding-bottom: 0 !important;
+      height: 100%;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(1) {
+      top: 0;
+      width: calc(100% / 3);
+      height: 100%;
+      left: 50%;
+      margin-left: calc(100% / 6 * -1);
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(2) {
+      top: 0;
+      left: 0;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(3) {
+      top: 0;
+      left: calc(100% / 6);
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(4) {
+      bottom: 0;
+      left: 0;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(5) {
+      bottom: 0;
+      left: calc(100% / 6);
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(6) {
+      top: 0;
+      right: calc(100% / 6);
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(7) {
+      top: 0;
+      right: 0;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(8) {
+      bottom: 0;
+      right: calc(100% / 6);
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(9) {
+      bottom: 0;
+      right: 0;
+    }
+
+    .showcase-gallery .showcase-grid .showcase-grid-items.showcase-columns-3 .showcase-grid-item:nth-child(10) {
+      display: none !important;
+    }
+  }
+
+</style>
+
+
+
+{% schema %}
+{
+  "name": "Showcase",
+  "class": "homepage-section section--showcase",
+  "presets": [
+    {
+      "name": "Showcase",
+      "category": "Instagram"
+    }
+  ]
+}
+{% endschema %}

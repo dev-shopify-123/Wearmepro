@@ -1,0 +1,103 @@
+<div class="team"> 
+    <h2><span>{{ section.settings.team_title }}</span></h2>
+    <div class="row">
+        {% for block in section.blocks %}
+            {% if block.type == 'team-blocks' %}    
+        <div class="col">
+            <figure><img src="{{ block.settings.team_img | img_url: 'master' }}" alt="{{  block.settings.team_img.alt }}"></figure>
+            <div class="desc">
+                <p><strong>{{ block.settings.team_name }}</strong></p>
+                {{ block.settings.team_text }}
+            </div>
+        </div>
+        {% endif %}      
+        {% endfor %}  
+    </div>
+</div>
+<style>
+    .team {
+        max-width: 1655px;
+        margin: 0 auto 60px;
+        padding: 0 15px;
+        font-size: 28px;
+        line-height: 35px;
+        text-align: center;
+    }
+    .team p {
+        margin: 0;
+    }
+    .team figure {
+        margin: 0 0 30px;
+    }
+    .team .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+        justify-content: center;
+    }
+    .team .row .col {
+        width: 25%;
+        padding: 0 15px;
+        margin: 0 0 60px;
+    }
+    @media screen and (max-width: 960px) {
+        .team .row .col {
+            width: 33.3%;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .team .row .col {
+            width: 50%;
+        }
+        .team {
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .team figure {
+                margin: 0 0 15px;
+            }
+    }
+    /* @media screen and (max-width: 540px) {
+        .team .row .col {
+            width: 100%;
+        }
+    } */
+</style>
+{% schema %}
+{
+    "name": "Team",
+    "settings": [
+      {
+        "id": "team_title",
+        "type": "text",
+        "label": "Team title"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "team-blocks",
+      "name": "Team blocks",
+      "settings": [
+        {
+          "id": "team_name",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "id": "team_img",
+          "type": "image_picker",
+          "label": "Photo"
+        },
+        {
+          "id": "team_text",
+          "type": "richtext",
+          "label": "Position"
+        }
+      ]
+    }      
+  ]
+ 
+    
+    
+}
+{% endschema %}

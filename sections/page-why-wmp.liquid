@@ -1,0 +1,232 @@
+<div class="wwp-root mb3">
+  {% assign section_image = section.settings.section_image %}
+  <div class="wwp-hero wwp-container--full" style="background-image: url('{{ section_image | img_url: '2000x' }}'); padding-top: {{ 100.00 | divided_by: section_image.aspect_ratio }}%">
+    <div class="wwp-hero__content">
+      <h1 class="wwp-page-title {% if section.settings.hero_heading_script %}wwp-page-title--script{% endif %}">
+        {{ section.settings.hero_heading }}
+      </h1>
+      <h2 class="wmp-page-tagline ff--body">{{ section.settings.hero_text }}</h2>
+    </div><!-- /.wwp-hero__content -->
+  </div><!-- /.wwp-hero -->
+  <div class="padded-container wwp-container">
+    <div class="wwp-section wwp-section--a" id="goal">
+      <div class="wwp-area">
+        <div class="wwp-area__half">
+          {% if section.settings.section_1_image %}
+          {% include 'responsive-image', image: section.settings.section_1_image, sizes: '375, 445, 545' %}
+          {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          {% endif %}
+        </div><!-- /.wwp-area__half -->
+        <div class="wwp-area__half wwp-m-padded">
+          <div>{{ section.settings.section_1_copy }}</div>
+          <div class="cta"><a href="/pages/about-us" class="btn btn--color-secondary btn--small ff--heading uppercase ls06 fw--bold">About Us</a></div>
+        </div><!-- /.wwp-area__half -->
+      </div><!-- /.wwp-area -->
+    </div><!-- /.wwp-section -->
+  </div><!-- /.wwp-container -->
+  <div class="container wwp-container--full">
+    <div class="wwp-section wwp-section--b" id="feedback">
+      <h2 class="uppercase wwp-line-after text-center">
+        Your Feedback Matters
+      </h1>
+      <div class="wwp-feedback js-feedback">
+        {% for block in section.blocks %}
+        <div class="wwp-feedback__item text-center" {{ block.shopify_attributes }}>
+          <div class="wwp-feedback-item__picture">
+            {% if block.settings.picture %}
+              {% include 'responsive-image', image: block.settings.picture, sizes: '72, 150, 300' %}
+            {% else %}
+              {{ 'product-3' | placeholder_svg_tag: 'placeholder placeholder--user' }}
+            {% endif %}
+          </div>
+          <div class="wwp-feedback-item__content">
+            <h4 class="wwp-feedback-item__content__name ff--body fw-normal">{{ block.settings.title }}</h4>
+            <div class="wwp-feedback-item__content__copy">
+              {{ block.settings.copy }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div><!-- /.wwp-container-\-full -->
+  <div class="padded-container wwp-container">
+    <div class="wwp-section wwp-section--a" id="contact">
+      <div class="wwp-area">
+        <div class="wwp-area__half wwp-m-padded sm--order-2">
+          <div>{{ section.settings.section_2_copy }}</div>
+          {% if section.settings.section_2_email_link != blank %}
+          <div class="wwp-email">
+            <a href="{{ section.settings.section_2_email_link }}" class="color--secondary-accent">
+              <span class="wwp-email__envelope">{% include 'page-why-wmp__icon-envelope' %}</span>
+              <span class="wwp-email__link">
+                {{ section.settings.section_2_email_link | remove: 'mailto:' }}
+              </span>
+            </a>
+          </div>
+          <div>{{ section.settings.section_2_post_email_copy }}</div>
+          {% endif %}
+          <div class="cta"><a href="/pages/reviews" class="btn btn--color-secondary btn--small ff--heading uppercase ls06 fw--bold">More Reviews</a></div>
+        </div>
+        <div class="wwp-area__half sm--order-1">
+          {% if section.settings.section_2_image %}
+            {% include 'responsive-image', image: section.settings.section_2_image, sizes: '375, 445, 545' %}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          {% endif %}
+        </div>
+      </div>
+    </div><!-- /.wwp-section -->
+  </div><!-- /.wwp-container -->
+  <div class="container wwp-container--full">
+    <div class="wwp-section wwp-section--b" id="vs">
+      <h2 class="uppercase wwp-line-after text-center">
+        WearMe Pro vs Other Brands
+      </h2>
+      <div class="wwp-area">
+        <div class="wwp-area__half wwp-m-padded desktop--wwp-area__half--comparison--right">
+          <div class="wwp-comparison-graph-container">
+            <div class="wwp-comparison-graph">
+              <div class="wwp-comparison-graph__bg wwp-comparison-graph__bg--wmp"></div>
+              <div class="wwp-comparison-graph__content text-center">
+                <div class="wwp-comparison-graph__frame">
+                  <img src="{{ 'wwp-frame-wmp.svg' | asset_url }}">
+                </div><!-- /.wwp-comparison-graph__frame -->
+                <p class="wwp-comparison-graph__label uppercase">WearMe Pro cost</p>
+                <p class="wwp-comparison-graph__cost wwp-comparison-graph__cost--wmp mb0">$20</p>
+              </div><!-- /.wwp-comparison-graph__content -->
+            </div><!-- /.wwp-comparison-graph -->
+          </div><!-- /.wwp-comparison-graph-container -->
+          <div class="wwp-comparison-list">
+            <ul>
+              <li>100% UVB + UVA protection</li>
+              <li>Polarized lenses (many)</li>
+              <li>Polycarbonate and metal frames</li>
+              <li>Family-owned</li>
+              <li>No logo/branding markup</li>
+              <li>Shatter-resistant lens</li>
+              <li>Case included</li>
+            </ul>
+
+          </div>
+        </div><!-- /.wwp-area__half -->
+        <div class="wwp-area__half wwp-m-padded ">
+          <div class="wwp-comparison-graph-container">
+            <div class="wwp-comparison-graph">
+              <div class="wwp-comparison-graph__bg wwp-comparison-graph__bg--others"></div>
+              <div class="wwp-comparison-graph__content text-center">
+                <div class="wwp-comparison-graph__frame wwp-comparison-graph__frame--others">
+                  <img src="{{ 'wwp-frame-others.svg' | asset_url }}">
+                </div><!-- /.wwp-comparison-graph__frame -->
+                <p class="wwp-comparison-graph__label uppercase">Other brands cost</p>
+                <p class="wwp-comparison-graph__cost wwp-comparison-graph__cost--others mb0">$60&ndash;$80</p>
+              </div><!-- /.wwp-comparison-graph__content -->
+            </div><!-- /.wwp-comparison-graph -->
+          </div><!-- /.wwp-comparison-graph-container -->
+          <div class="wwp-comparison-list">
+            <ul>
+              <li>100% UVB + UVA protection</li>
+              <li>Polarized lenses (many)</li>
+              <li>Polycarbonate and metal frames</li>
+              <li class="wwp-bullet--minus">Large corporation</li>
+              <li class="wwp-bullet--minus">Logo/branding markup</li>
+              <li>Shatter-resistant lens</li>
+              <li>Case included</li>
+            </ul>
+          </div>
+        </div><!-- /.wwp-area__half -->
+      </div><!-- /.wwp-area -->
+    </div><!-- /.wwp-section -->
+  </div><!-- /.wwp-container-\-full -->
+</div><!-- /.wwp-root -->
+{% schema %}
+{
+    "name": "Why WearMe Pro",
+    "settings": [
+          {
+            "id": "section_image",
+            "type": "image_picker",
+            "label": "Main image"
+          },
+          {
+            "type": "checkbox",
+            "id": "hero_heading_script",
+            "label": "Use script font"
+          },
+          {
+            "id": "hero_heading",
+            "type": "text",
+            "label": "Hero Heading",
+            "default": "Rethink Your Eyewear"
+          },
+          {
+            "id": "hero_text",
+            "type": "text",
+            "label": "Hero Text",
+            "default": "stop paying for overpriced branding"
+          },
+          {
+            "type": "header",
+            "content": "Section 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "section_1_image",
+            "label": "Section 1 image"
+          },
+          {
+            "type": "richtext",
+            "id": "section_1_copy",
+            "label": "Section 1 copy"
+          },
+          {
+            "type": "header",
+            "content": "Section 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "section_2_image",
+            "label": "Section 2 image"
+          },
+          {
+            "type": "richtext",
+            "id": "section_2_copy",
+            "label": "Section 2 copy"
+          },
+          {
+            "type": "url",
+            "id": "section_2_email_link",
+            "label": "Support email link"
+          },
+          {
+            "type": "richtext",
+            "id": "section_2_post_email_copy",
+            "label": "Section 2 post–email-link copy"
+          }
+    ],
+    "blocks": [
+      {
+          "type": "feedback",
+          "name": "Feedback",
+          "settings": [
+            {
+              "id": "title",
+              "type": "text",
+              "label": "Feedback Name or Title"
+            },
+            {
+              "id": "picture",
+              "type": "image_picker",
+              "label": "Feedback picture"
+            },
+            {
+             "id": "copy",
+             "type": "richtext",
+             "label": "Feedback body copy"
+            }
+          ]
+      }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,265 @@
+<!-- <div class="page-width">
+	<div style="text-align:center">{{ page.content }}
+		<div style="max-width:400px;margin:auto;padding:20px" id="ps__subscribe-form">
+			<form action="https://api.postscript.io/subscribe/form" method="post" onsubmit="document.getElementById('ps__sent-message').style.display = 'block'; document.getElementById('ps__subscribe-form').style.display = 'none';" target="dummyframe">
+				<input id="ps__shop_id" name="shop_id" type="hidden" value="16199">
+				<input id="ps__keyword_id" name="keyword_id" type="hidden" value="42404">
+				<div style="margin-bottom:10px;text-align:center">
+					<input id="ps__phone-subscribe" name="phone" type="phone" placeholder="Phone Number" style="width:100%;padding:.75em;font-size:1.5em;" autofocus></div>
+					<div style="max-width:100%;font-size:10px;margin-bottom:25px;margin-top:15px;text-align:center;line-height:1.2;">*By subscribing, you agree to receive recurring automated marketing text messages (e.g. cart reminders) at the phone number provided. Consent is not a condition to purchase. Msg & data rates may apply. Msg frequency varies. Reply HELP for help and STOP to cancel. View our <a href="{{shop.privacy_policy.url}}">Privacy Policy</a> and <a href="{{shop.terms_of_service.url}}">Terms of Service</a>.
+					</div>
+				<div>
+					<input type="submit" value="Subscribe" class="btn" style="width:100%;padding:.75em;font-size:1.5em;">
+				</div>
+			</form>
+		</div>
+		<div style="max-width:400px;margin:auto;padding:20px;display:none;" id="ps__sent-message">
+			<h4>Thanks for subscribing! We'll send you a message shortly.</h4>
+		</div>
+	</div>
+</div>
+<iframe width="0" height="0" border="0" name="dummyframe" id="ps__dummyframe"></iframe>  -->
+
+<style>
+
+  .page-subscribe {
+   padding: 30px 0;
+    font-family: var(--font-heading-stack);
+      overflow: hidden;
+  }
+  .page-subscribe-bg {
+
+background: rgb(254,207,66); 
+background: -moz-linear-gradient(top,  rgba(254,207,66,1) 0%, rgba(254,207,66,1) 44%, rgba(109,199,164,1) 100%); 
+background: -webkit-linear-gradient(top,  rgba(254,207,66,1) 0%,rgba(254,207,66,1) 44%,rgba(109,199,164,1) 100%); 
+background: linear-gradient(to bottom,  rgba(254,207,66,1) 0%,rgba(254,207,66,1) 44%,rgba(109,199,164,1) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fecf42', endColorstr='#6dc7a4',GradientType=0 );
+
+  }
+  .page-subscribe .row {
+   max-width: 1200px;
+    margin: 0 auto;    
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: flex-end;
+    
+  }
+  .page-subscribe .col {
+    padding: 0 15px;
+    position: relative;
+        width: 40%;
+    text-align: center;
+    
+  }
+.page-subscribe .col:first-child {
+ padding-top: 40px; 
+      flex: 0 0 547px;
+    padding-right: 35px;
+}
+  .page-subscribe img {
+      width: auto;
+    height: 100%;
+    vertical-align: top;
+  }
+  .page-subscribe figure {
+         border-radius: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: -35px;
+    bottom: -35px;
+    margin: 0;
+        display: inline-block;
+    left: 15px;
+    width: 100%;
+
+  }
+  .page-subscribe h3 { 
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 65px;
+    color: #fff;
+    margin: 0;
+   position: relative;
+  
+    
+   
+  text-shadow: 2.677px 2.973px 0px rgba(0, 0, 0, 0.16);
+ 
+
+  
+}
+  .page-subscribe h3 span {
+   position: relative;
+        z-index: 1;
+  }
+    .page-subscribe h3:after {
+     content: '';
+      position: absolute;
+      background: #6dc6a5;     
+  	border-radius: 14px;
+          bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+
+
+    }
+
+    
+  .page-subscribe h3 + p {
+    font-size: 35px;
+    color: #fff;
+  
+        margin: 20px 0;
+    line-height: 1.3;
+  
+  text-shadow: 2.677px 2.973px 0px rgba(0, 0, 0, 0.16);
+  
+
+  }
+  .page-subscribe .desc {  
+    display: inline-block;
+    font-size: 18px;
+        margin: 0 0 20px;
+    background: #6dc6a5;
+    color: #fff;
+    font-weight: 700;
+    padding: 5px 3px;
+    
+  border-radius: 11px;
+  
+
+  }
+  .page-subscribe .desc p {
+   margin: 0; 
+  }
+  .page-subscribe form {
+   max-width: 500px;
+    margin: 0 auto 30px;
+  }
+  .page-subscribe form input {
+   display: block; 
+     width: 100%;
+    height: 60px;
+    line-height: 58px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-family: var(--font-heading-stack);
+        font-weight: 700;
+     font-size: 20px;
+        margin: 0 0 15px;    
+  	border-radius: 11px; 
+
+  }
+  .page-subscribe form input::-webkit-input-placeholder { 
+  color: #cacaca;
+}
+.page-subscribe form input::-moz-placeholder {
+  color: #cacaca;
+}
+.page-subscribe form input:-ms-input-placeholder {
+  color: #cacaca;
+}
+.page-subscribe form input:-moz-placeholder {
+  color: #cacaca;
+}
+  .page-subscribe form input:focus {
+   outline: none; 
+  }
+  .page-subscribe form .btn-form {
+  background-image: -moz-linear-gradient( -90deg, rgb(109,198,165) 0%, rgb(144,243,206) 100%);
+  background-image: -webkit-linear-gradient( -90deg, rgb(109,198,165) 0%, rgb(144,243,206) 100%);
+  background-image: -ms-linear-gradient( -90deg, rgb(109,198,165) 0%, rgb(144,243,206) 100%);
+font-family: var(--font-heading-stack);
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 20px;
+   
+  text-shadow: 1.338px 1.486px 0px rgba(0, 0, 0, 0.16);
+    
+  
+  }
+  @media screen and (max-width: 1200px) {
+    .page-subscribe .col:first-child {
+     width: 60%; 
+    }
+  }
+    @media screen and (max-width: 928px) {
+       .page-subscribe {
+   padding: 0;
+         
+       }
+      .page-subscribe .col:first-child {
+     flex: auto;
+        padding-right: 15px;
+    }
+    .page-subscribe .col {
+     width: 100% !important; 
+      margin: 0 0 30px;
+     
+    }
+    .page-subscribe h3 {
+      font-size: 40px;
+    }
+       .page-subscribe h3 + p {
+        font-size: 30px; 
+       }
+      .page-subscribe figure {
+            position: static;
+        width: auto;
+      }
+      .page-subscribe img {
+    width: 100%;
+    height: auto;
+        
+      }
+      .page-subscribe h3:after {
+        border-radius: 5px;
+      }
+  }
+  
+   @media screen and (max-width: 540px) {
+  .page-subscribe h3 + p {
+        font-size: 22px; 
+       }
+       .page-subscribe .desc {
+       font-size: 12px; 
+       }
+   }
+</style>
+
+<div class="page-subscribe">
+  <div class="page-subscribe-bg">
+  <div class="row">
+    <div class="col">
+      <h3><span>Become a VIP</span></h3>
+      <p><strong>Sign up now to get <br> 15% off your next order!</strong></p>
+      <div class ="desc">
+      <p>Plus, you'll receive first access to sales, giveaways,<br> new product drops, and more when you join our VIP list</p>
+      </div>
+      <form action="https://api.postscript.io/subscribe/form" method="post" onsubmit="document.getElementById('ps__sent-message').style.display = 'block'; document.getElementById('ps__subscribe-form').style.display = 'none';" target="dummyframe">
+				<input id="ps__shop_id" name="shop_id" type="hidden" value="16199">
+				<input id="ps__keyword_id" name="keyword_id" type="hidden" value="42404">
+				<div style="margin-bottom:10px;text-align:center">
+					<input class="phone" id="ps__phone-subscribe" name="phone" type="phone" placeholder="PHONE NUMBER" autofocus>
+        		</div>					
+				<div>
+					<input type="submit" value="SUBSCRIBE" class="btn-form">
+				</div>
+			</form>
+      <div style="max-width:400px;margin:auto;padding:20px;display:none;" id="ps__sent-message">
+			<h4>Thanks for subscribing! We'll send you a message shortly.</h4>
+		</div>
+      
+    </div>
+    <div class="col">
+      <figure><img src="https://cdn.shopify.com/s/files/1/0896/5742/files/Luna-Image-for-SMSLandingPage-Compressed.jpg?v=1628074804"> </figure>
+    </div>
+	  
+  </div>
+  </div>
+</div>
+
+<iframe width="0" height="0" border="0" name="dummyframe" id="ps__dummyframe"></iframe> 

@@ -1,0 +1,27 @@
+{% if media.media_type == 'video' %}
+<div class="product-video"
+     style="padding-top:{{ 1 | divided_by: media.aspect_ratio | times: 100}}%;"
+     data-product-video>
+  {{ media | video_tag: class: 'media-video', image_size: '600x600', loop: true, autoplay: true, muted: true, controls: false }}
+</div>
+{% else %}
+  {% if alt == blank %}
+    {%- assign alt = media.alt -%}
+  {% endif %}
+<div class="responsive-image">
+  <div class="responsive-image__img-wrapper"
+       style="padding-top: {{ 1 | divided_by: ratio | times: 100 }}%;">
+    {%- assign img_url = media | img_url: '1x1', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+    <img id="{{ img_id }}"
+         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+         class="responsive-image__img lazyload {% if media_preload %}lazypreload{% endif %}"
+         alt="{{ alt }}"
+         data-src="{{ img_url }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ ratio }}"
+         data-sizes="auto"
+         data-image>
+    <div class="responsive-image__placeholder"></div>
+  </div>
+</div>
+{% endif %}

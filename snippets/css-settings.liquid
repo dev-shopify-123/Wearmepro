@@ -1,0 +1,219 @@
+<style>
+
+  @font-face {
+    font-family: 'WFHavanaSunset';
+    font-display: swap;
+    src: local('WFHavanaSunset'), local("sans-serif"), url('{{ 'WFHavanaSunset-Script.woff' | asset_url }}') format('woff'),
+    url('{{ 'WFHavanaSunset-Script.woff2' | asset_url }}') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+  @font-face {
+    font-family: 'Zona Pro';
+    font-display: swap;
+    src: local('Zona Pro'), local("sans-serif"), url('{{ 'ZonaPro-ExtraLight.woff' | asset_url }}') format('woff'),
+    url('{{ 'ZonaPro-ExtraLight.woff2' | asset_url }}') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Zona Pro';
+    font-display: swap;
+    src: local('Zona Pro'), local("sans-serif"), url('{{ 'ZonaPro-Bold.woff' | asset_url }}') format('woff'),
+    url('{{ 'ZonaPro-Bold.woff2' | asset_url }}') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+      font-family: 'Source Sans Pro';
+      font-display: swap;
+      src: local(''), local("sans-serif"), url('{{ 'source-sans-pro-v14-latin-regular.woff' | asset_url }}') format('woff'),
+      url('{{ 'source-sans-pro-v14-latin-regular.woff2' | asset_url }}') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+  }
+
+
+
+
+  @font-face {
+	font-family: 'Proximanova';
+  src: url('{{'proximanova-regular-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-regular-webfont.woff' | asset_url }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proximanova';
+    src: url('{{'proximanovat-thin-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanovat-thin-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 100;
+    font-style: normal;
+
+}
+
+
+@font-face {
+  font-family: 'Proximanova';
+    src: url('{{'proxima_nova_medium-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proxima_nova_medium-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 500;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Proximanova';
+    src: url('{{'proximanova-semibold-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-semibold-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 600;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Proximanova';
+    src: url('{{'proximanova-bold-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-bold-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 700;
+    font-style: normal;
+
+}
+@font-face {
+  font-family: 'Proximanova';
+    src: url('{{'proximanova-extrabld-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-extrabld-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 900;
+    font-style: normal;
+
+}
+
+
+  {% assign primary_font = settings.primary_font %}
+  {% assign secondary_font = settings.secondary_font %}
+  {% comment %}
+  {{ primary_font | font_face: font_display: 'swap' }}
+  {% endcomment %}
+  {%- assign primary_font_bold = primary_font | font_modify: 'weight', 'bolder' -%}
+  {%- assign primary_font_italic = primary_font | font_modify: 'style', 'italic' -%}
+  {%- assign primary_font_bold_italic = primary_font_bold | font_modify: 'style', 'italic' -%}
+
+  {{ primary_font_bold | font_face: font_display: 'swap' }}
+  {{ primary_font_italic | font_face: font_display: 'swap' }}
+  {{ primary_font_bold_italic | font_face: font_display: 'swap' }}
+
+  {% assign primary_font_families = primary_font.family | append: ', ' | append: primary_font.fallback_families %}
+
+  /* Slick */
+  /* Slick - Slider */
+  .slick-loading .slick-list {
+    background: #fff url('{{ 'ajax-loader.gif' | asset_url }}') center center no-repeat;
+  }
+
+  /* Slick - Icons */
+  /*@font-face {
+    font-display: swap;
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+    src: local('{{ 'slick.woff' | asset_url }}') format('woff'), url('{{ 'slick.woff' | asset_url }}') format('woff');
+  }*/
+  /* End Slick */
+
+  :root {
+    --root-font-size: 15px;
+
+    --select-icon-url: url({{ "ico-select.svg" | asset_url }});
+
+    --color-body-bg: {{ settings.color_body_bg }};
+    {% assign bg_brightness = settings.color_body_bg | color_brightness %}
+    {% if bg_brightness > 127 %}
+    --color-body-bg-overlay: {{ settings.color_body_bg | color_darken: 3 }};
+    {% else %}
+    --color-body-bg-overlay: {{ settings.color_body_bg | color_lighten: 3 }};
+    {% endif %}
+
+    --color-body-bg-rgb: {{ settings.color_body_bg | color_extract: 'red' }}, {{ settings.color_body_bg | color_extract: 'green' }}, {{ settings.color_body_bg | color_extract: 'blue' }};
+
+    --color-body-text: {{ settings.color_body_text }};
+    --color-body-text-rgb: {{ settings.color_body_text | color_extract: 'red' }}, {{ settings.color_body_text | color_extract: 'green' }}, {{ settings.color_body_text | color_extract: 'blue' }};
+
+    --color-headings: {{ settings.color_headings }};
+    --color-headings-rgb: {{ settings.color_headings | color_extract: 'red' }}, {{ settings.color_headings | color_extract: 'green' }}, {{ settings.color_headings | color_extract: 'blue' }};
+
+    --color-primary-accent: {{ settings.color_primary_accent }};
+    --color-primary-accent-rgb: {{ settings.color_primary_accent | color_extract: 'red' }}, {{ settings.color_primary_accent | color_extract: 'green' }}, {{ settings.color_primary_accent | color_extract: 'blue' }};
+
+    --color-secondary-accent: {{ settings.color_secondary_accent }};
+    --color-secondary-accent-rgb: {{ settings.color_secondary_accent | color_extract: 'red' }}, {{ settings.color_secondary_accent | color_extract: 'green' }}, {{ settings.color_secondary_accent | color_extract: 'blue' }};
+
+    --color-filters-accent: {{ settings.color_filters_accent }};
+    --color-filters-accent-rgb: {{ settings.color_filters_accent | color_extract: 'red' }}, {{ settings.color_filters_accent | color_extract: 'green' }}, {{ settings.color_filters_accent | color_extract: 'blue' }};
+
+    --color-placeholder: hsl(0, 0%, 96%);
+    --color-placeholder--lighter: hsl(0, 0%, 98%);
+    --color-placeholder--darker: hsl(0, 0%, 92%);
+    --color-placeholder--darkest: hsl(0, 0%, 89%);
+
+    --mobile-nav-bar-background-color: {{ settings.mobile_nav_bar_background_color }};
+    --mobile-nav-bar-color: {{ settings.mobile_nav_bar_color }};
+    --mobile-nav-bar-cart-bubble-background-color: {{ settings.mobile_nav_bar_cart_bubble_background_color }};
+    --mobile-nav-bar-cart-bubble-color: {{ settings.mobile_nav_bar_cart_bubble_color }};
+
+    --desktop-cart-icon-color: {{ settings.desktop_cart_icon_color }};
+    --desktop-cart-icon-hover-color: {{ settings.desktop_cart_icon_hover_color }};
+    --desktop-cart-bubble-background-color: {{ settings.desktop_cart_bubble_background_color }};
+    --desktop-cart-bubble-color: {{ settings.desktop_cart_bubble_color }};
+
+    --mobile-nav-background-color: {{ settings.mobile_nav_background_color }};
+    --mobile-nav-color: {{ settings.mobile_nav_color }};
+    --mobile-nav-color-rgb: {{ settings.mobile_nav_color | color_extract: 'red' }}, {{ settings.mobile_nav_color | color_extract: 'green' }}, {{ settings.mobile_nav_color | color_extract: 'blue' }};
+
+    --mobile-nav-item-background-color: {{ settings.mobile_nav_item_background_color }};
+    --mobile-nav-item-gradient-overlay-color-rgb: {{ settings.mobile_nav_item_gradient_overlay_color | color_extract: 'red' }}, {{ settings.mobile_nav_item_gradient_overlay_color | color_extract: 'green' }}, {{ settings.mobile_nav_item_gradient_overlay_color | color_extract: 'blue' }};
+    --mobile-nav-item-color: {{ settings.mobile_nav_item_color }};
+    --mobile-nav-secondary-item-color: {{ settings.mobile_nav_secondary_item_color }};
+
+    --color-flash-message-bg: hsl(197, 100%, 42%);
+    --color-flash-error: hsl(0, 86%, 65%);
+    --color-flash-success: hsl(142, 46%, 65%);
+
+    --color-success-bg: hsl(142, 44%, 95%);
+    --color-success-border: hsl(144, 29%, 90%);
+    --color-success-text: hsl(143, 55%, 40%);
+
+    --color-error-bg: hsl(0, 44%, 95%);
+    --color-error-border: hsl(0, 29%, 90%);
+    --color-error-text: hsl(0, 49%, 54%);
+
+    --color-warning: hsl(0, 78%, 46%);
+
+    --color-required-text: hsl(0, 87%, 54%);
+
+    --color-on-sale: {{ settings.color_on_sale }};
+    --color-blue-light: {{ settings.color_blue_light }};
+
+    --color-blue-light-page: #83cad2;
+
+    --color-table-border-light: #e5e5e5;
+    --color-table-border-dark: #9e9e9e;
+
+    --font-base-stack: {{ primary_font_families }};
+    --font-base-weight: {{ primary_font.weight }};
+    --font-base-style: {{ primary_font.style }};
+    --font-heading-stack: 'Zona Pro', sans;
+    --font-heading-weight: 300;
+    --font-heading-style: normal;
+    --font-script-stack: 'WFHavanaSunset', fantasy;
+    --font-script-weight: normal;
+    --font-script-style: normal;
+
+    --url-check-svg: url({{ 'check.svg' | asset_url }});
+    --url-circle-svg: url({{ 'circle.svg' | asset_url }});
+    --url-left-svg: url({{ 'left.svg' | asset_url }});
+    --url-right-svg: url({{ 'right.svg' | asset_url }});
+  }
+</style>

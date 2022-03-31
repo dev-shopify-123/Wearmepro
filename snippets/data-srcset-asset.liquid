@@ -1,0 +1,10 @@
+{%- assign sizes_array = sizes | split: ',' -%}
+{%- for size in sizes_array -%}
+  {%- capture size_x -%}{{ size | strip | append: 'x' }}{%- endcapture -%}
+  {%- capture size_w -%}{{ size | strip | append: 'w' }}{%- endcapture -%}
+  {%- capture size2x_w -%}{{ size | strip | times: 2 | append: 'w' }}{%- endcapture -%}
+
+  {{- asset_image_name | asset_img_url: size_x, scale: 1 }} {{ size_w }},
+  {{- asset_image_name | asset_img_url: size_x, scale: 2 }} {{ size2x_w -}}{%- unless forloop.last %},{% endunless -%}
+
+{%- endfor -%}

@@ -1,0 +1,33 @@
+<div id="section_content">
+  <ul class="site-nav-megamenu__plain-links site-nav-megamenu-plain-links">    
+	{{ link.title }}
+    {% for child_link in linklists.women.links %}
+    {% if forloop.index > 3 %}
+    <li class="site-nav-megamenu-plain-links__item">
+      <a href="{{ child_link.url }}" class="site-nav-megamenu-plain-links__link">
+        {{ child_link.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <ul class="site-nav-megamenu-image-links site-nav-megamenu__image-links">
+    {% for child_link in linklists.women.links %}
+    {% if forloop.index <= 3 %}
+    <li class="site-nav-megamenu-image-links__item site-nav-megamenu-image-link">
+      <a href="{{ child_link.url }}">
+        <div class="site-nav-megamenu-image-link__title">
+          {{ child_link.title }}
+        </div>
+        {% assign image_address = 'megamenu_image_' | append: forloop.index %}
+        {% assign the_image = settings[image_address] %}
+
+        <div class="site-nav-megamenu-image-link__image">
+          {% include 'responsive-image', image: the_image, crop_209: '209' %}
+        </div>
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>

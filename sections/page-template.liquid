@@ -1,0 +1,82 @@
+<section data-section-id="{{ section.id }}"
+         data-section-type="page">
+  {% if section.settings.show_title %}
+  <h1 class="page__title ff--heading f2 uppercase h--underline">{{ page.title }}</h1>
+  {% endif %}
+  {% unless page.handle == 'reviews' %}
+  <div class="page__content rte lh--copy"
+       data-page-content>
+    {{ page.content }}
+  </div>
+  {% else %}
+  <div>
+    {{ page.content }}
+  </div>
+  {% endunless %}
+</section>
+{% if page.handle == 'reviews' %}
+<div id="fs-pinboard-container"></div><script src="//foursixty.com/media/scripts/fs.embed.v3.js"></script><script>window.Foursixty.linkGallery(document.getElementById("fs-pinboard-container"),"wearme-pro", {"theme":"masonry","fixedProductDetails":true,"initiallyShowLinks":true,"openLinksInSameTab":true,"forUrl":false,"translations":{"ADD_TO_CART":"ADD TO CART"},"extraParams":{"connector_filter":[46125,46126]}});</script><style>.fs-indicator, .fs-indicator:active, .fs-indicator:hover, .fs-indicator:visited { background-color:rgba(124,207,182,0.86) } .fs-indicator:after { background-color:rgba(124,207,182,0.86); opacity: 0.5 } .fs-tag-detail__product-name.fs-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:bold; font-size:14px } .fs-text.-fs-secondary { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-text.fs-button { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:bold; font-size:14px } .fs-entry.-fs-fixed-details { margin:0 10px 21px; border:0px solid #cccccc; background-color:rgba(255,215,83,0.81) } .fs-button, .fs-button:hover, .fs-button:active, .fs-button:focus { background-color:rgba(124,207,182,1); color:#FFFFFF } .fs-button.-fs-addtocart { padding:11px 22px } </style>
+<style>
+  #pageContent #trustspot-widget-wrapper,
+  #pageContent #trustspot-tab-modal,
+  #pageContent .trustspot-inline-rating {
+    font-family: var(--font-heading-stack) !important;
+  }
+
+  #pageContent #trustspot-product-reviews #trustspot-widget-review-block p {
+    font-family: var(--font-base-stack) !important;
+  }
+
+  #pageContent #trustspot-widget-wrapper {
+    font-family: var(--font-heading-stack) !important;
+  }
+
+  #pageContent #trustspot-widget-wrapper
+  div#trustspot-widget-review-block .result-box {
+    flex-flow: row wrap;
+  }
+
+  #pageContent #trustspot-widget-wrapper .user-name {
+    padding-left: 0 !important;
+    width: 100%;
+  }
+
+  #pageContent #trustspot-widget-wrapper .stars {
+    width: 100%;
+  }
+
+  #pageContent #trustspot-widget-wrapper .ts-widget-review-star {
+    font-size: 16px;
+  }
+
+  #pageContent #trustspot-widget-wrapper .ts-stars-1 {
+    margin-bottom: 3px;
+  }
+
+  @media (min-width: 901px) {
+    #pageContent #trustspot-widget-wrapper .date {
+      margin-left: 0;
+      float: none;
+      width: 100%;
+    }
+  }
+
+  #pageContent #trustspot-widget-wrapper .description-block h4 a {
+    font-style: normal;
+  }
+</style>
+{% endif %}
+{% schema %}
+{
+  "name": "Page",
+  "class": "template template--page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show title",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

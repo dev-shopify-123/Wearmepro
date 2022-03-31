@@ -1,0 +1,58 @@
+{% assign product_title_dc = product.title | downcase %}
+{% if product_title_dc contains 'polarized' %}
+    <ul class="list-icon">
+        {% for i in (1..4) %}
+            {% assign settings_icon_img = 'collection_icons_product_img_%1' | replace:'%1', i %}
+            {% assign settings_icon_text = 'collection_icons_product_text_%1' | replace:'%1', i %}
+
+            {% assign icon_img = settings[settings_icon_img]  %}
+            {% assign icon_text = settings[settings_icon_text]  %}
+            <li>
+                <img src="{{icon_img | img_url: 'master' }}">
+                <span>{{ icon_text }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% elsif  product.tags contains 'Lens Type_Blue Light' %}
+    <ul class="list-icon">
+        {% for i in (9..12) %}
+            {% assign settings_icon_img = 'collection_icons_product_img_%1' | replace:'%1', i %}
+            {% assign settings_icon_text = 'collection_icons_product_text_%1' | replace:'%1', i %}
+
+            {% assign icon_img = settings[settings_icon_img]  %}
+            {% assign icon_text = settings[settings_icon_text]  %}
+            <li>
+                <img src="{{icon_img | img_url: 'master' }}">
+                <span>{{ icon_text }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% elsif  product.type == 'Prescription' %}
+    <ul class="list-icon">
+        {% for i in (13..16) %}
+            {% assign settings_icon_img = 'collection_icons_product_img_%1' | replace:'%1', i %}
+            {% assign settings_icon_text = 'collection_icons_product_text_%1' | replace:'%1', i %}
+
+            {% assign icon_img = settings[settings_icon_img]  %}
+            {% assign icon_text = settings[settings_icon_text]  %}
+            <li>
+                <img src="{{icon_img | img_url: 'master' }}">
+                <span>{{ icon_text }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <ul class="list-icon">    
+        {% for i in (5..8) %}
+            {% assign settings_icon_img = 'collection_icons_product_img_%1' | replace:'%1', i %}
+            {% assign settings_icon_text = 'collection_icons_product_text_%1' | replace:'%1', i %}
+
+            {% assign icon_img = settings[settings_icon_img]  %}
+            {% assign icon_text = settings[settings_icon_text]  %}
+            <li>
+                <img src="{{icon_img | img_url: 'master' }}">
+                <span>{{ icon_text }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

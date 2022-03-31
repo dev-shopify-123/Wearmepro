@@ -1,0 +1,454 @@
+{% if section.settings.banner_image != blank %}
+<div class="about-banner"> 
+  <!-- <h1>{{ section.settings.banner_title }}</h1> -->
+  <figure><img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="{{ section.settings.banner_image.alt }}"></figure>
+</div>
+{% endif %}
+<div class=" text-center"><h1 class="about-banner-title">{{ section.settings.banner_title }}</h1></div>
+{% if section.settings.box_text != blank %}
+<div class="text-block">
+  <div class="desc">
+    {{ section.settings.box_text }}
+  </div>
+</div>
+{% endif %}
+<div class="holder-content">
+  <div class="two-blocks">
+    {% if section.settings.col_image_right != blank %}
+      <div class="row">
+        <div class="col">
+          <figure><img src="{{ section.settings.col_image_right | img_url: 'master' }}" alt="{{ section.settings.col_image_right.alt }}"></figure>
+        </div>
+        <div class="col col-desc">
+          <div class="holder-icon">
+          <span><svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 0 24 24" width="35px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+          </div>
+          <div class="title"><strong>{{ section.settings.col_title_right }}</strong></div>
+          {{ section.settings.col_text_right }}
+        </div>
+      </div>
+    {% endif %}
+    {% if section.settings.col_image_left != blank %}
+      <div class="row">
+        <div class="col">
+          <figure><img src="{{ section.settings.col_image_left | img_url: 'master' }}" alt="{{ section.settings.col_image_left.alt }}"></figure>
+        </div>
+        <div class="col col-desc">
+          <div class="holder-icon">
+            <span><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="35px" viewBox="0 0 24 24" width="35px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="35px" viewBox="0 0 24 24" width="35px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="35px" viewBox="0 0 24 24" width="35px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="35px" viewBox="0 0 24 24" width="35px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg></span>
+            <span><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="35px" viewBox="0 0 24 24" width="35px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/><path d="M0,0h24v24H0V0z" fill="none"/></g><g><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></g></svg></span>
+          </div>
+          <div class="title"><strong>{{ section.settings.col_title_left }}</strong></div>
+          {{ section.settings.col_text_left }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% if section.settings.purpose_image != blank %}
+  <div class="purpose-block">   
+      <div class="col">
+        <figure><img src="{{ section.settings.purpose_image | img_url: 'master' }}" alt="{{ section.settings.purpose_image.alt }}"></figure>
+      </div>
+      <div class="col">
+        <div class="desc">
+          <div class="title"><strong>{{ section.settings.purpose_title }}</strong></div>
+          {{ section.settings.purpose_text }}
+        </div>
+      </div>   
+  </div>
+  {% endif %}
+  {% if section.settings.founders_image != blank %}
+  <div class="founders">
+    <div class="title"><strong>{{ section.settings.founders_title }}</strong></div>
+    <div class="row">
+      <div class="col">
+        <figure><img src="{{ section.settings.founders_image | img_url: 'master' }}" alt="{{ section.settings.founders_image.alt }}"></figure>
+      </div>
+      <div class="col">
+        {{ section.settings.founders_text }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+<style>
+  @font-face {
+	font-family: 'SourceSansPro-Light';
+	src: url('{{ 'SourceSansPro-Light.eot' | asset_url }}');
+	src: local('☺'), url('{{ 'SourceSansPro-Light.woff' | asset_url }}') format('woff'), url('{{ 'SourceSansPro-Light.ttf' | asset_url }}') format('truetype'), url('{{ 'SourceSansPro-Light.svg' | asset_url }}') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SourceSansPro-SemiBold';
+	src: url('{{ 'SourceSansPro-SemiBold.eot' | asset_url }}');
+	src: local('☺'), url('{{ 'SSourceSansPro-SemiBold.woff' | asset_url }}') format('woff'), url('{{ 'SourceSansPro-SemiBold.ttf' | asset_url }}') format('truetype'), url('{{ 'SourceSansPro-SemiBold.svg' | asset_url }}') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+  
+  @media screen and (min-width: 960px) {
+    .holder-about.test .holder-content{
+      max-width: none !important;
+      padding: 0 50px;
+      overflow: hidden;
+      
+    }
+    .two-blocks .row .col:first-child {
+      flex: 0 0 40%;
+    }
+    .two-blocks .row .col:first-child img {
+      width: 100%;
+    }
+    .purpose-block figure img {
+      width: 100%;
+    }
+  }
+  .holder-about figure {
+    margin: 0;
+  }
+  .holder-about img {
+    vertical-align: top;
+  }
+  .about-banner {
+    position: relative;
+    /* margin: 0 0 40px; */
+  }
+  .about-banner img {
+    width: 100%;
+  }
+  .holder-about h2 {
+    font-family: WFHavanaSunset, sans-serif;   
+    font-size: 58px;
+    font-weight: 400;
+  }
+  .holder-about h2 span {
+    border-bottom: #7dcfb6 solid 5px;
+  }
+  .about-banner-title {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    color: #000;
+    border-bottom: solid 5px#7dcfb6;
+    font-size: 95px;
+    text-transform: uppercase;   
+    margin: 50px 0;
+  }
+  .about-banner .about-banner-title {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    text-align: center;
+    color: #fff;
+    border-bottom: solid 5px#7dcfb6;
+    font-size: 95px;
+    text-transform: uppercase;   
+    margin: 50px 0 0;
+  }
+   
+  .text-block {
+    padding: 0 15px;
+    background: #ffecb6;
+    overflow: hidden;
+    margin: 0 0 80px;
+    font-family: 'SourceSansPro-Light'; 
+  }
+  .text-block .desc {
+    max-width: 960px;
+    margin: 0 auto;
+    font-size: 28px;
+    text-align: center;
+  }
+  .text-block strong {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+  }
+  .holder-content {
+    max-width: 1655px;
+    margin: 0 auto;
+    padding: 0 15px;
+    font-family: 'SourceSansPro-Light'; 
+  }
+  .holder-content strong {
+    font-family: 'SourceSansPro-SemiBold';
+  }
+  .two-blocks {    
+    font-size: 30px;
+  }
+  .two-blocks span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    background: #7dcfb6;
+    border-radius: 10px;
+    margin: 0 25px 20px 0;
+  }
+  .two-blocks .title {
+    position: relative;
+    padding: 0 0 0 40px;
+    margin: 0 0 40px;
+  }
+  .two-blocks .title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    height: 5px;
+    background: #7dcfb6;
+    width: 35px;
+  }
+  .two-blocks .holder-icon {
+    display: flex;
+    padding: 0 0 0 40px;
+  }
+  .two-blocks p {
+    margin: 0 0 20px;
+  }
+  .two-blocks .row {
+    display: flex;
+    align-items: center;
+    margin: 0 0 60px ;
+  }
+  .two-blocks .row:first-child {
+    flex-direction: row-reverse;
+  }
+  .two-blocks .row:first-child .col-desc {
+    padding: 0 110px 0 0;
+  }
+  .two-blocks .row .col-desc {
+    max-width: 60%;
+    padding: 0 0 0 110px;
+  }
+  .purpose-block {
+    display: flex;
+    font-size: 30px;
+    line-height: 36px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 0 60px;
+  }
+  .purpose-block figure {
+    margin: 40px 0 0;
+  }
+  .purpose-block p {
+    margin: 0;
+  }
+  .purpose-block .title {
+    margin: 0 0 40px;
+  }
+  .purpose-block .col {
+    width: 50%;
+  }
+  .purpose-block .col:first-child {
+    order: 1;
+  }
+  .purpose-block .col .desc {
+    background: #fee9a8;
+    padding: 30px;
+  }
+  .founders {
+    margin: 0 0 60px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .founders .title {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+  .founders .title span {
+    border-bottom: solid 5px #7dcfb6;
+  }
+  .founders .row {
+    display: flex;
+   
+    align-items: center;
+  }
+  .founders .row .col:first-child {
+    order: 1;
+    flex: 0 0 auto;
+    margin: 0 0 0 60px;
+  }
+  .founders img {
+    box-shadow: 50px 40px 0px #ece4cc;
+  }
+
+  @media screen and (max-width: 1300px) {
+    .founders .row {     
+      flex-direction: column;
+    }
+     .founders .row .col:first-child {
+        order: 0;       
+        margin: 0 0 60px;        
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .two-blocks {
+    
+        font-size: 24px;
+    }
+    .two-blocks .row:last-child {
+      margin: 0;
+    }
+    .two-blocks .row:first-child,
+    .two-blocks .row {
+        flex-direction: column;
+    }
+    .two-blocks figure {
+      margin: 0 0 40px;
+    }
+    .two-blocks .row:first-child .col-desc,
+    .two-blocks .row .col-desc {
+      padding: 0;
+      max-width: none;
+    }
+    
+    .two-blocks span {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      width: 40px;
+    height: 40px; 
+    }
+    .purpose-block figure {
+      margin: 0 0 40;
+      text-align: center;
+    }
+    .purpose-block .col {
+      width: 100%;
+    }
+    .purpose-block .col {
+      margin: 0 0 15px;
+    }
+    .purpose-block .col:first-child {
+      order: 0;
+    }
+    .two-blocks .title:after {
+      top: 12px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .about-banner-title,
+    .about-banner .about-banner-title {
+      font-size: 25px;
+      margin: 30px 0;
+      border-bottom: solid 2px #7DCFB4;
+    }
+    .holder-about h2 span {
+      border-bottom: #7dcfb6 solid 2px;
+    }
+    .text-block {
+      margin: 0 0 40px;
+    }
+    .text-block .desc {
+      font-size: 20px;
+    }
+    .purpose-block,
+    .founders,
+    .two-blocks {
+      font-size: 20px;
+      line-height: 28px;
+    }
+    .founders {
+      margin: 0 0 0;
+    }
+    .purpose-block .title {
+      margin: 0 0 20px;
+    }
+    .two-blocks .title {
+      margin: 0 0 20px;
+    }
+  }
+</style>
+
+
+
+{% schema %}
+{
+    "name": "About Us",
+    "settings": [
+      {
+        "id": "banner_title",
+        "type": "text",
+        "label": "Banner title"
+      },
+      {
+        "id": "banner_image",
+        "type": "image_picker",
+        "label": "Banner image"
+      },
+      {
+        "id": "box_text",
+        "type": "richtext",
+        "label": "Box text"
+      },
+      {
+        "id": "col_image_right",
+        "type": "image_picker",
+        "label": "Blocks image right"
+      },
+      {
+        "id": "col_title_right",
+        "type": "text",
+        "label": "Blocks title right"
+      },
+      {
+        "id": "col_text_right",
+        "type": "richtext",
+        "label": "Blocks text right"
+      },
+      {
+        "id": "col_image_left",
+        "type": "image_picker",
+        "label": "Blocks image left"
+      },
+      {
+        "id": "col_title_left",
+        "type": "text",
+        "label": "Blocks title left"
+      },
+      {
+        "id": "col_text_left",
+        "type": "richtext",
+        "label": "Blocks text left"
+      },
+      {
+        "id": "purpose_title",
+        "type": "text",
+        "label": "Purpose title"
+      },
+      {
+        "id": "purpose_text",
+        "type": "richtext",
+        "label": "Purpose text"
+      },    
+      {
+        "id": "purpose_image",
+        "type": "image_picker",
+        "label": "Purpose image"
+      },
+      {
+        "id": "founders_title",
+        "type": "text",
+        "label": "Founders title"
+      },
+      {
+        "id": "founders_text",
+        "type": "richtext",
+        "label": "Founders text"
+      },    
+      {
+        "id": "founders_image",
+        "type": "image_picker",
+        "label": "Founders image"
+      }
+    ]
+    
+    
+}
+{% endschema %}

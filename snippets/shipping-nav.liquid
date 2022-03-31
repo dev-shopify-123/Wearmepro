@@ -1,0 +1,16 @@
+<nav class="wmp-shipping-sidebar">
+  <h4>Shipping Policies</h4>
+  <ul>
+    <li {% if page.url contains 'us-shipping' %} class="active" {% endif %}><a href="/pages/us-shipping">US Shipping</a></li>
+    <li {% if page.url contains 'international-shipping' %} class="active" {% endif %}><a href="/pages/international-shipping">International Shipping</a></li>
+    <li {% if page.url contains 'prescription-glasses' %} class="active" {% endif %}><a href="/pages/prescription-glasses">Prescription Glasses</a></li>
+  </ul>
+  <h4>Return Policies</h4>
+  <ul>
+    <li {% if page.url contains 'shipping-returns' %} class="active" {% endif %}><a href="/pages/shipping-returns">Returns</a></li>
+  </ul>
+  <h4>Questions?</h4>
+  <ul>
+    <li {% if page.url contains 'shipping-contact-us' %} class="active" {% endif %}><a href="/pages/shipping-contact-us">Contact Us</a></li>
+  </ul>
+</nav>

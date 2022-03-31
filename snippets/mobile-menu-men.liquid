@@ -1,0 +1,27 @@
+{% for child_link in linklists.men.links %}
+    {% assign image_address = 'megamenu_mobile_men_image_' | append: forloop.index %}
+    {% assign the_image = settings[image_address] %}
+
+<li class="mobile-nav__item">
+        <div class="mobile-nav__item__inner mobile-nav__item__inner--submenu">
+            {%- assign img_url = the_image | img_url: '748x748', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+            {%- assign widths = '[180, 200, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' -%}
+            <a href="{{ child_link.url }}"
+               class="mobile-nav-link mobile-nav-link--submenu">
+                <!-- <img
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                        data-src="{{ img_url }}"
+                        data-sizes="auto"
+                        data-widths="{{ widths }}"
+                        class="responsive-image__imgs mobile-shop-submenu__images"
+                        sizes="(max-width: 768px) 200px"
+                        width="200"
+                        height="200"
+                > -->
+                {{ child_link.title }}
+              <!-- <span> </span> -->
+            </a>
+        </div>
+</li>
+
+{% endfor %}

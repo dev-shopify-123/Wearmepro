@@ -1,0 +1,133 @@
+{% if template contains 'collection' and collection.all_tags.size > 0 %}
+  {% assign categories = '' %}
+  {% for tag in collection.all_tags %}
+    {% if tag contains '_' %}
+      {% capture categories %}{% unless categories == blank  %}{{ categories }}|{% endunless %}{{ tag | split: '_' | first }}{% endcapture %}
+    {% endif %}
+  {% endfor %}
+  {% assign cat_array = categories | split: '|' | uniq %}
+{% endif %}
+
+{% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender,Lens Type' %}
+{% if collection.handle contains 'men' or collection.handle contains 'women' %}
+  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Lens Type' %}
+{% elsif collection.handle contains 'polarized' %}
+  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender' %}
+{% elsif collection.handle contains 'clear' %}
+  {% assign group_array_string = 'Frame Color,Frame Material,Frame Style,Gender' %}
+{% endif %}
+
+{% unless do_not_filter %}
+
+    <div class="w-filters_c w-filters_c--alt">
+  <div class="w-filters__mobile-close js-w-filters-toggle"><span class="material-icons custom-icon-close"></span></div>
+
+      {% assign group_array = group_array_string | escape | split: ',' %}
+      {% for group in group_array %}
+      {% if cat_array contains group %}
+      {% capture array %}{% unless array == blank or array == "" %}{{ array }},{% endunless %}{{group | strip}}{% endcapture%}
+      {% endif %}
+      {% endfor%}
+      {% assign cat_array = array | split:',' %}
+
+      {% comment %}
+      If the theme setting for group array is empty then use the default cat_array order
+      {% endcomment %}
+
+      {% if group_array == blank %}
+      {% assign group_array = cat_array %}
+      {% endif %}
+
+      {% comment %}
+      Build category links
+      {% endcomment %}
+
+      <ul class="w-filters__categories ff--heading">
+      {% for cat_item in group_array %}
+      {% assign filtering = false %}
+      {% for tag in current_tags %}
+      {% assign tag_cat = tag | split: '_' | first %}
+      {% if cat_item == tag_cat %}
+      {% assign filtering = true %}
+      {% endif %}
+      {% endfor %}
+        <li class="w-filters__category {% if filtering %}filtering{% endif %} js-filter-category-toggle-container">
+          <a href="#" class="js-filter-category-toggle" data-filter-category="{{ cat_item | handleize }}">{{ cat_item }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+
+      {% comment %}
+      Loop through tag categories
+      {% endcomment %}
+
+      <div class="w-filters__filters">
+      {% for cat_item in group_array %}
+      {% assign tags_present = false %}
+
+      {% if cat_array contains cat_item %}
+      {% assign tags_present = true %}
+      {% endif %}
+      {% unless tags_present == false %}
+
+
+      <div class="w-filters__filters__filter-category_c">
+        <h5 class="w-filters__filters__filter-category">{{ cat_item }}</h5>
+        <ul class="w-filters__filters__list advanced-filters js-filter-category-{{ cat_item | handleize }}" data-group-handle="{{ cat_item | handleize }}">
+          {% comment %}
+          Loop through collection tags
+          {% endcomment %}
+          {% for tag in collection.all_tags %}
+          {% assign cat = tag | split: '_' | first %}
+          {% if cat != tag and cat_item == cat %}
+          {% comment %}
+          Strip out tag category prefix and add/remove link for tag filtering
+          {% endcomment %}
+          {% if current_tags contains tag %}
+          <li class="advanced-filter active-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}">{{ tag | remove_first: cat_item | remove_first: '_' | link_to_remove_tag: tag }}</li>
+          {% else %}
+          <li class="advanced-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}">{{ tag | remove_first: cat_item | remove_first: '_' | link_to_add_tag: tag }}</li>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% endunless %}
+
+      {% endfor %}
+    </div>
+
+
+  {% if current_tags.size > 0 %}
+  <div class="w-filters__current-tags md-dn--mt3">
+  <p>
+    {%- for tag in current_tags -%}
+      {%- if tag == 'new-arrivals' -%}
+        New Arrivals
+      {%- else -%}
+        {%- if forloop.first -%}
+          {{- tag | split: '_' | first -}}:&nbsp;{{- tag | split: '_' | last -}}
+        {%- elsif forloop.last -%}
+          &nbsp;&amp;&nbsp;{{- tag | split: '_' | first -}}:&nbsp;{{- tag | split: '_' | last -}}
+        {%- else -%}
+          ,&nbsp;{{- tag | split: '_' | first -}}:&nbsp;{{- tag | split: '_' | last -}}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </p>
+  </div>
+  <div class="clear_all_tags_link">
+    {% if collection %}
+    <a href="/collections/{{collection.handle}}" class="f5">
+      <span class="material-icons custom-icon-close"></span> Clear All
+    </a>
+    {% else %}
+    <a href="/collections/all" class="f5">
+      <span class="material-icons custom-icon-close"></span> Clear All
+    </a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
+{% endunless %}

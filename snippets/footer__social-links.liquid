@@ -1,0 +1,49 @@
+<ul class="site-footer-nav__linklist site-footer-nav__linklist--icons">
+  {% if settings.facebook_url != blank %}
+  <li class="site-footer-nav__link--icon">
+    <a class="icon"
+       href="{{ settings.facebook_url }}">
+      <span class="material-icons custom-icon-facebook"></span>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.twitter_url != blank %}
+  <li class="site-footer-nav__link--icon">
+    <a class="" href="{{ settings.twitter_url }}">
+      {% render 'icon-twitter' %}
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.snapchat_url != blank %}
+  <li class="site-footer-nav__link--icon">
+    <a class="" href="{{ settings.snapchat_url }}">
+      <span class="material-icons custom-icon-snapchat"></span>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.instagram_url != blank %}
+  <li class="site-footer-nav__link--icon">
+    <a class="" href="{{ settings.instagram_url }}">
+      <span class="material-icons custom-icon-instagram"></span>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.pinterest_url != blank %}
+  <li class="site-footer-nav__link--icon">
+    <a class="" href="{{ settings.pinterest_url }}">
+      <span class="material-icons custom-icon-pinterest"></span>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.tiktok_url != blank %}
+  <li class="site-footer-nav__link--icon">
+    <a class="" href="{{ settings.tiktok_url }}">
+        <span class="material-icons custom-icon-tiktok"></span>
+    </a>
+  </li>
+  {% endif %}
+</ul>

@@ -1,0 +1,53 @@
+<style>
+  .wmp-dimensions {
+    display: none;
+    flex-direction: row;
+    margin-top: 22px;
+    max-width: 700px;
+    margin-left: -50px;
+    margin-right: auto;
+  }
+
+  .wmp-dimensions--shown {
+    display: flex;
+  }
+
+  .wmp-dimensions>div {
+    width: 50%;
+  }
+
+  .wmp-dimensions-front-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wmp-dimensions text {
+    font-family: var(--font-base-stack);
+    font-size: 17px;
+  }
+
+  .wmp-dimensions text.front-vertical,
+  .wmp-dimensions g.front-vertical-line {
+    display: none;
+  }
+
+  @media screen and (max-width: 660px) {
+    .wmp-dimensions {
+      flex-direction: column;
+      margin-left: 0;
+    }
+
+    .wmp-dimensions>div {
+      width: 100%;
+      align-self: center;
+      max-width: 320px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      margin: 10px 0;
+      padding: 10px;
+    }
+
+    .wmp-dimensions-side {}
+  }
+
+</style>

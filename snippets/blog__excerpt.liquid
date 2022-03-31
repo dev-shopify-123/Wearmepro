@@ -1,0 +1,5 @@
+{% unless truncate %}
+  {% assign truncate = 12 %}
+{% endunless %}
+
+{% if article.excerpt.size > 0 %}{{ article.excerpt | replace: ' ', ' ' | replace: '﻿', ' ' |strip }}{% else %}{{ article.content | strip_html | truncatewords: truncate, settings.truncate_last_symbols | replace: ' ', ' ' | replace: '﻿', ' ' | strip }}{% endif %}

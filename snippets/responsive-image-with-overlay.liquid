@@ -1,0 +1,16 @@
+<div id="{{ section_id }}-{{ image.id }}"
+       class="image-with-overlay lazyload {{ extra_classes }}"
+       data-bgset="{% render 'bgset', image: image %}"
+       data-aspectratio="{{ image.aspect_ratio }}"
+       data-sizes="auto"
+       style="padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100.00 }}%">
+    {% if overlay_bg_classes != blank or overlay_bg_style != blank %}
+    <div class="image-with-overlay__overlay-background {{ overlay_bg_classes }}"
+         {%- if overlay_bg_style != blank -%}
+         style="{{ overlay_bg_style }}"
+         {%- endif -%}></div>
+    {% endif %}
+    <div class="image-with-overlay__overlay {{ overlay_classes }}">
+      {{ overlay_content }}
+    </div>
+  </div>

@@ -1,0 +1,202 @@
+
+    <div class="banner-login" style="background-image: url('{{ section.settings.img | img_url: 'master' }}');">
+      
+        <div class="holder-form">
+          <div class="row">
+            <div class="col">
+              <h1>{{ section.settings.title }}</h1>
+
+              {% if  template == "customers/register" %}
+
+              {%- assign formId = 'RegisterForm' -%}
+              {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
+              {% include 'form-status', form: form, form_id: formId, success_message: 'customer.register.success' %}
+              <div class="holder-input">
+              <input type="text"
+                          name="customer[first_name]"
+                          class="form__input"
+                          id="{{ formId }}-FirstName"
+                          {% if form.first_name %}
+                          value="{{ form.first_name }}"
+                          {% endif %}
+                          autocomplete="given-name"
+                          placeholder="{{ 'customer.register.first_name' | t }}">
+    
+                  <input type="text"
+                          name="customer[last_name]"
+                          class="form__input"
+                          id="{{ formId }}-LastName"
+                          {% if form.last_name %}
+                          value="{{ form.last_name }}"
+                          {% endif %}
+                          autocomplete="family-name"
+                          placeholder="{{ 'customer.register.last_name' | t }}">
+    
+                    <input type="email"
+                          name="customer[email]"
+                          id="{{ formId }}-email"
+                          class="form__input {% if form.errors contains 'email' %} form__input--error{% endif %}"
+                          {% if form.email %}
+                          value="{{ form.email }}"
+                          {% endif %}
+                          autocorrect="off"
+                          autocapitalize="off"
+                          autocomplete="email"
+                          placeholder="{{ 'customer.register.email' | t }}"
+                          aria-required="true"
+                          {%- if form.errors contains 'email' -%}
+                          class="input--error"
+                          aria-invalid="true"
+                          aria-describedby="{{ formId }}-email-error"
+                          {%- endif -%}>
+    
+                      <input type="password"
+                            name="customer[password]"
+                            id="{{ formId }}-password"
+                            class="form__input {% if form.errors contains 'password' %} form__input--error{% endif %}"
+                            aria-required="true"
+                            placeholder="{{ 'customer.register.password' | t }}"
+                            {%- if form.errors contains 'password' -%}
+                            aria-invalid="true"
+                            aria-describedby="{{ formId }}-password-error"
+                            {%- endif -%}>
+                          </div>
+                            <button type="submit" class="btn btn-new btn--color-secondary uppercase ff--heading fw--bold ls06">
+                              {{ 'customer.register.submit' | t }}
+                            </button>
+    
+                            <a href="{{ routes.account_login_url }}" class="btn btn-new btn-border">SIGN IN</a>
+              
+            
+            
+              {% endform %}
+            
+              {% endif %}
+              {% if  template == "customers/login" %}
+              <div data-login-form data-toggleable-form>
+              {% form 'customer_login', class: 'form mb2' %}
+                {% if form.errors %}
+                    <div class="form__status text-center form__status--error">
+                    <p class="text-center f5 m0">{{ 'contact.form.error_heading' | t }}</p>
+                    {{ form.errors | default_errors }}
+                    </div>
+                {% endif %}
+                <div class="holder-input">
+                <input id="email"
+                      name="customer[email]"
+                      type="email"
+                      autocomplete="email"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      placeholder="{{ 'customer.login.email' | t }}"
+                      {%- if form.errors contains 'form' -%}
+                        class="form__input form__input--error"
+                        aria-invalid="true"
+                      {%- else -%}
+                        class="form__input"
+                      {%- endif -%}
+                      required
+                      >
+                      <input id="password"
+                       name="customer[password]"
+                       type="password"
+                       class="form__input"
+                       placeholder="{{ 'customer.login.password' | t }}"
+                       {%- if form.errors contains 'form' -%}
+                          class="form__input form__input--error"
+                          aria-invalid="true"
+                        {%- else -%}
+                          class="form__input"
+                        {%- endif -%}
+                       required
+                       >
+                       <p class="text-right">
+                        <a href="#recover"
+                          class="underline o-75"
+                          data-toggle-forgot
+                          >
+                          {{ 'customer.login.forgot_password' | t }}
+                        </a>
+                      </p>
+                    </div>
+                       <button type="submit" class="btn btn-new btn--color-secondary btn--with-material-icon uppercase ff--heading fw--bold ls06">
+                          {{ 'customer.login.sign_in' | t }}
+                        </button>
+                        <a href="{{ routes.account_register_url }}" class="btn btn-new btn-border">SIGN UP</a>
+                    {% endform %}
+
+                    
+                </div>
+
+                <div data-forgot-password-form data-toggleable-form class="hide">
+
+                    {% form 'recover_customer_password', class: 'form mb2' %}
+       
+        {% if form.posted_successfully? %}
+          <span class="hide reset-password-success"></span>
+        {% endif %}
+       
+          <div class="holder-input">
+            <input id="recover_email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="{{ 'customer.login.email' | t }}"
+            autocorrect="off"
+      autocapitalize="off" class="form__input {% if form.errors %} form__input--error{% endif %}" {% if
+      form.errors %} aria-invalid="true" aria-describedby="recover-email-error" {%- endif -%} required>
+          </div>
+          {%- if form.errors -%}
+          <div class="form__row">
+            <div id="recover-email-error" class="form__status form__status--error">
+              <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+              <span>{{ form.errors.messages['form'] }}</span>
+            </div>
+          </div>
+          {%- endif -%}
+          
+            <button type="submit" class="btn btn--color-secondary uppercase ff--heading fw--bold ls06">
+              {{ 'customer.recover_password.submit' | t }}
+            </button>
+            <p class="text-right">
+                <a href="#"
+                   class="underline o-75"
+                   data-toggle-forgot>{{ 'customer.recover_password.cancel' | t }}</a>
+            </p>
+        
+    {% endform %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="col">
+              <div class="title-list">{{ section.settings.title_list }}</div>
+              {% if section.settings.subtitle_points != blank %}
+              <div class="holder-svg">
+                <div class="subtitle-img">
+                  {{ section.settings.subtitle_img }}
+                </div>
+                <p><span>{{ section.settings.subtitle_points }}</span>{{ section.settings.subtitle_text }}</p>
+              </div>
+              {% endif %}
+  
+              <ul class="list 
+              {% if section.settings.list_col %}
+                list-row
+              {% endif %}
+              ">
+                {% for block in section.blocks %}
+              {% if block.type == 'awards-blocks' %}   
+                <li>
+                  <div class="img">{{ block.settings.awards_img }}</div>
+                  
+                <span>{{ block.settings.awards_text }}</span>
+              </li>
+              {% endif %}      
+          {% endfor %}  
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      

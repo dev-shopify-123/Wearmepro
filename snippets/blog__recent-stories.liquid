@@ -1,0 +1,261 @@
+<section class="with-padding container blog__recent-stories-container js-blog-recent-stories">
+  <h1 class="text-center f2 uppercase blog__section__heading">Blog</h1>
+  <h2 class="text-center f3 uppercase">Recent Stories</h2>
+  <div class="row recent-stories_c">
+        <div class="recent-stories-items">
+          {% for article in blog.articles | limit: 4 %}
+          <a class="recent-stories-items__link" href="{{ article.url }}">
+            <div class="recent-stories-items__item">
+              <div class="recent-stories-items__item__inner" style="background-image: url('{{ article.image | img_url: '2000x' }}');">
+              </div>
+              <div class="recent-stories-items__item__inner__text">
+                <h1 class="recent-stories-items__item__title">{{ article.title }}</h1>
+                <p class="recent-stories-items__item__excerpt">{% include 'blog__excerpt', article: article, truncate: 23 %}</p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        <div class="md-dn--hide recent-stories-items-index pl1">
+          {% for article in blog.articles | limit: 4 %}
+            <div class="recent-stories-items-index__item">
+              <div class="recent-stories-items-index__item__inner">
+                <h4 class="recent-stories-items-index__title">{{ article.title }}</h4>
+                <p class="recent-stories-items-index__excerpt">{% include 'blog__excerpt', article: article, truncate: 23 %}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+  </div>
+
+</section>
+<style>
+
+.blog__recent-stories-container {
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .container.blog__recent-stories-container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .container.blog__recent-stories-container .col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.recent-stories_c {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 30px auto 60px;
+}
+
+.recent-stories-items {
+  flex: 2 1 0%;
+  min-width: 0;
+}
+
+.recent-stories-items-index {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .recent-stories_c {
+    margin: 20px auto 30px;
+  }
+}
+
+.recent-stories_c .slick-dots {
+  display: block !important;
+  width: 100%;
+  bottom: -30px;
+}
+
+/*.recent-stories_c .slick-dots li.slick-active button:before {
+  color: white;
+  opacity: 1;
+}*/
+
+.recent-stories_c .slick-dots li button:before {
+/*  color: white;
+  opacity: .45;*/
+  font-size: 10px;
+}
+
+.recent-stories-items__link:hover,
+.recent-stories-items__link:focus {
+  text-decoration: none;
+}
+
+.recent-stories-items__item {
+  padding-top: 56.25%;
+  position: relative;
+}
+
+@media screen and (max-width: 900px) {
+  .recent-stories-items__item {
+    padding-top: 0 !important;
+  }
+}
+
+.recent-stories-items__item__inner {
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .recent-stories-items__item__inner {
+    padding-top: 56.25%;
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    height: auto;
+  }
+}
+
+
+.recent-stories-items__item__inner__text {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: hsla(0, 0%, 100%, 90%);
+  padding: 40px 30px;
+  max-width: 60%;
+}
+
+@media screen and (max-width: 900px) {
+  .recent-stories-items__item__inner__text {
+    position: relative;
+    top: auto;
+    left: auto;
+    max-width: 100%;
+    background: none;
+    padding: 10px 20px;
+  }
+}
+
+.recent-stories-items__item__title,
+.recent-stories-items__item__excerpt {
+  color: black;
+  max-width: 520px;
+}
+
+.recent-stories-items__item__title {
+  font-size: 30px;
+  line-height: 34px;
+  margin: 0 0 0 0;
+}
+
+@media screen and (max-width: 900px) {
+  .recent-stories-items__item__title {
+    font-size: 18px;
+    line-height: 19px;
+    margin-bottom: 3px;
+  }
+}
+
+.recent-stories-items__item__excerpt {
+  font-size: 1em;
+  line-height: 1.5em;
+  height: 4.5em;
+  overflow: hidden;
+  position: relative;
+}
+
+.recent-stories-items__item__excerpt::after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 4.5em;
+  background: linear-gradient(to bottom, hsla(0, 0%, 100%, 9%), hsla(0, 0%, 100%, 30%) 18%, hsl(0, 0%, 100%) 100%);
+}
+
+@media screen and (min-width: 901px) {
+  .recent-stories-items__item__excerpt,
+  .recent-stories-items__item__excerpt::after {
+    display: none !important;
+  }
+}
+
+.recent-stories-items-index__link {
+  display: block;
+}
+
+.recent-stories-items-index__item {
+  transition: opacity .2s ease-out;
+  background-color: inherit;
+  opacity: .4;
+}
+
+.slick-current.recent-stories-items-index__item {
+  opacity: 1;
+}
+
+.recent-stories-items-index__item__inner {
+  height: 100px;
+  border-bottom: 1px solid #eee;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 12px;
+}
+
+.recent-stories-items-index__title {
+  font-size: 16px;
+  line-height: 18px;
+  margin: 0 0 3px 0;
+  max-width: 420px;
+}
+
+.recent-stories-items-index__excerpt {
+  font-size: .9em;
+  line-height: 1.25em;
+  height: 3.75em;
+  overflow: hidden;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.recent-stories-items-index__excerpt::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3.75em;
+  background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 10%) 0%, hsla(0, 0%, 100%, 100%) 100%);
+}
+
+.recent-stories-items-index__date {
+  margin: 3px 0 0 0;
+  color: #999;
+  font-size: 13px;
+  line-height: 13px;
+}
+</style>

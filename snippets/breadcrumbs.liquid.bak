@@ -1,0 +1,66 @@
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{% assign show_breadcrumbs = false %}
+
+{% if template != "index" and template != "page.about" and template != "page.blue-light" %}
+  {% assign show_breadcrumbs = true %}
+{% endif %}
+
+{% if show_breadcrumbs == true %}
+{% if template != 'page.landing' %}
+  <section class="breadcrumbs-container mt0 mb3 md-dn--hide with-padding">
+    <ol class="breadcrumbs f6 ff--heading mt0 pt1">
+      <li class="home-link f5">
+        <a href="/"
+           class="functional breadcrumbs__home">
+        <span class="material-icons custom-icon-home"></span>
+        </a>
+      </li>
+      {% if template contains 'product' %}
+          {% if collection %}
+              {% if collection.handle %}
+                  {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+            <li>
+              <a href="{{ url }}"
+                 class="functional hv--underline">
+                {{ collection.title | capitalize  }}
+              </a>
+            </li>
+              {% endif %}
+          {% endif %}
+
+          {%- assign product_display_title = product.title | split: ' ' | first -%}
+          {%- if product.tags contains '__settings:full-title' -%}
+            {% assign product_display_title = product.title -%}
+          {%- endif -%}
+
+          <li><span>{{ product_display_title }}</span></li>
+
+      {% elsif template contains 'collection' and collection.handle %}
+          {% if current_tags %}
+              {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+            <li>{{ collection.title | link_to: url }}</li>
+          {% else %}
+            <li><span>{{ collection.title | capitalize }}</span></li>
+          {% endif %}
+
+      {% elsif template == 'article' %}
+          <li><a href="{{ blog.url }}" class="functional hv--underline">{{ blog.title }}</a></li>
+          <li><span>{{ article.title }}</span></li>
+      {% elsif template contains 'customers' and template != "customers/account" %}
+          {% assign account = 'customer.account.title' | t %}
+          <li>{{ account | link_to: "/account" }}</li>
+          <li><span>{{ page_title }}</span></li>
+
+      {% elsif template contains 'page' %}
+          <li><span>{{ page.title }}</span></li>
+
+      {% else %}
+          <li><span>{{ page_title }}</span></li>
+      {% endif %}
+    </ol>
+  </section>
+{% endif %}
+{% endif %}

@@ -1,0 +1,34 @@
+{%- assign new_product = false -%}
+{%- assign kind_product = false -%}
+{%- assign out_of_stock = false -%}
+
+{%- if product.available -%}
+  {%- for collection in product.collections -%}
+    {%- if collection.handle == settings.new_items_collection -%}
+      {%- assign new_product = true -%}
+    {%- endif -%}
+
+    {%- if collection.handle == settings.kind_items_collection -%}
+      {%- assign kind_product = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if kind_product == true -%}
+    {%- assign new_product = false -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign out_of_stock = true -%}
+{%- endif -%}
+
+
+{%- if new_product -%}
+  {% render 'product-grid-item__badges__badge', image: settings.new_items_badge, alt: 'New', extra_classes: '' %}
+{%- endif -%}
+
+{%- if kind_product -%}
+  {% render 'product-grid-item__badges__badge', image: settings.kind_items_badge, alt: 'Kind', extra_classes: 'badge--kind' %}
+{%- endif -%}
+
+{%- if product.available == false -%}
+  {% comment %}{% render 'product-grid-item__badges__badge', image: settings.out_of_stock_badge, alt: 'Out of Stock', extra_classes: 'badge--out-of-stock' %}{% endcomment %}
+{%- endif -%}

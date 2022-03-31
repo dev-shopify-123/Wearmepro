@@ -1,0 +1,38 @@
+{% layout none %}
+{% assign widths = '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048' | split: ', ' %}
+{% assign heights = '78, 157, 235, 313, 391, 470, 563, 657, 751, 890' | split: ', ' %}
+{% assign pgi_media_aspect_ratio = 2.3 %}
+
+<!doctype html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    {% paginate collection.products by 50 %}
+    <ol>
+      {% for product in collection.products %}
+        <li>
+          <strong>
+            {{ product.title }}
+          </strong>
+          {% for image in product.images %}
+            {% for width in widths %}
+              {% assign width_token = width | append: 'x' %}
+              {% assign height_token = heights[forloop.index0] %}
+              {% assign size_token = width_token | append: height_token %}
+              <pre>
+                {{ size_token }}
+              </pre>
+              <img src="{{ image | img_url: size_token, crop: 'center' }}">
+            {% endfor %}
+          {% endfor %}
+        </li>
+      {% endfor %}
+    </ol>
+    {%- if paginate.pages > 1 -%}
+      {% include 'pagination', paginate: paginate %}
+    {%- endif -%}
+    {% endpaginate %}
+  </body>
+</html>

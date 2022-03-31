@@ -1,0 +1,9 @@
+{% assign shipping_spend_string = settings.cart_free_shipping_threshold | prepend: '$' %}
+
+<div class="page with-padding wmp-shipping-container my3">
+  {% include 'shipping-nav' %}
+
+  <main class="shipping-page">
+    {{ page.content | replace: '__FREE_SHIPPING_SPEND__', shipping_spend_string }}
+  </main>
+</div>

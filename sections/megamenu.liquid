@@ -1,0 +1,46 @@
+<div id="section_content">
+  <ul class="site-nav-megamenu__plain-links site-nav-megamenu-plain-links">
+    <li class="site-nav-megamenu-plain-links__item">
+      <a href="{{ routes.all_products_collection_url }}" class="site-nav-megamenu-plain-links__link">
+        Shop All
+      </a>
+    </li>
+
+    {% comment %}
+    <li class="site-nav-megamenu-plain-links__item">
+      <a href="/pages/shop-all" class="site-nav-megamenu-plain-links__link">
+        Shop By Collection
+      </a>
+    </li>
+    {% endcomment %}
+
+    {% for child_link in linklists.shop.links %}
+    {% if forloop.index > 3 %}
+    <li class="site-nav-megamenu-plain-links__item">
+      <a href="{{ child_link.url }}" class="site-nav-megamenu-plain-links__link">
+        {{ child_link.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <ul class="site-nav-megamenu-image-links site-nav-megamenu__image-links">
+    {% for child_link in linklists.shop.links %}
+    {% if forloop.index <= 3 %}
+    <li class="site-nav-megamenu-image-links__item site-nav-megamenu-image-link">
+      <a href="{{ child_link.url }}">
+        <div class="site-nav-megamenu-image-link__title">
+          {{ child_link.title }}
+        </div>
+        {% assign image_address = 'megamenu_image_' | append: forloop.index %}
+        {% assign the_image = settings[image_address] %}
+
+        <div class="site-nav-megamenu-image-link__image">
+          {% include 'responsive-image', image: the_image %}
+        </div>
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>

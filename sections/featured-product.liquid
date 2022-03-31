@@ -1,0 +1,241 @@
+<!-- sections/featured-product.liquid -->
+
+{%- assign product = all_products[section.settings.product] -%}
+
+{% if section.settings.alignment == 'right' %}
+  {% assign extra_classes = extra_classes | append: ' featured-product--reverse' %}
+{% endif %}
+
+{% if section.settings.color != 'default' %}
+  {% assign extra_classes = extra_classes | append: ' featured-product--color--' | append: section.settings.color %}
+{% endif %}
+
+{% if section.settings.seamless %}
+  {% assign extra_classes = extra_classes | append: ' featured-product--seamless' %}
+{% endif %}
+<section class="full-bleed"
+         data-section-id="{{ section.id }}"
+         data-section-type="featured-product">
+  <div class="featured-product{{ extra_classes }}">
+    <div class="featured-product__image">
+      {% if section.settings.image != blank %}
+        {% comment %}
+        {% render 'responsive-image', image: section.settings.image %}
+        {% endcomment %}
+      <div class="responsive-image">
+        <div class="responsive-image__img-wrapper">
+          <figure class="img-dectop" style="margin: 0;"><img src="{{ section.settings.image | img_url: 'master'}}"></figure>
+          <figure class="img-mob" style="margin: 0;"><img src="{{ section.settings.image | img_url: '828x828'}}"></figure>
+        </div>
+      </div>
+      {% elsif product != blank %}
+        {% comment %}
+        {% render 'responsive-image', image: product.featured_image %}
+        {% endcomment %}
+        <figure class="img-dectop"><img data-src="{{ section.settings.featured_image | img_url: 'master'}}" width="1" height="1"></figure>
+        <figure class="img-mob"><img data-src="{{ section.settings.featured_image | img_url: '414x414'}}" width="1" height="1"></figure>
+      {% else %}
+      <div class="placeholder-svg-container placeholder-svg-container--dark">
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+      {% endif %}
+    </div>
+    <div class="featured-product__text">
+      {% if section.settings.heading != blank or product != blank %}
+        <h2 class="f2 mt0 mb3 uppercase ls03 ff--heading">
+          {% if section.settings.heading != blank %}
+            {{ section.settings.heading | escape }}
+          {% else %}
+            {{ product.title }}
+          {% endif %}
+        </h2>
+      {% endif %}
+      {% if section.settings.content != blank or product != blank %}
+        <div class="rte mb3 measure">
+          {% if section.settings.content != blank %}
+            {{ section.settings.content }}
+          {% else %}
+            {{ product.description }}
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if section.settings.button_text != blank %}
+        {% assign button_color = section.settings.button_color | replace: '-accent', '' %}
+
+        <a class="btn btn--color-{{ button_color }} uppercase ff--heading fw--bold ls03"
+           {% if section.settings.url != blank %}
+           href="{{ section.settings.url }}"
+           {% elsif product != blank %}
+           href="{{ product.url }}"
+           {% endif %}
+           >
+          {{ section.settings.button_text | escape }}
+        </a>
+      {% endif %}
+      {% if section.settings.enable_shopping and product != blank %}
+        <div class="featured-product__variants">
+          <div data-enable-bis="{{ settings.enable_bis }}"
+                data-product-listing>
+                {% render 'variant-grid-items',
+                  product: product,
+                  extra_classes: 'mx2 product-grid-item--no-hover',
+                  show_variant_thumbnail: true,
+                  pgi_media_aspect_ratio: 2.3,
+                  no_badges: true,
+                  no_swatches: true,
+                %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Featured product",
+  "class": "homepage-section section--featured-product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Leave blank to use product’s default image"
+    },
+    {
+      "type": "checkbox",
+      "id": "seamless",
+      "label": "Seamless"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave blank to use product’s heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Rich text",
+      "info": "Leave blank to use product’s description"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link",
+      "info": "Leave blank to link to product page"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Section color",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button color",
+      "options": [
+        {
+          "value": "primary-accent",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary-accent",
+          "label": "Secondary"
+        },
+        {
+          "value": "white",
+          "label": "White"
+        },
+        {
+          "value": "black",
+          "label": "Black"
+        }
+      ],
+      "default": "secondary-accent"
+    },
+    {
+      "type": "header",
+      "content": "Variant listing",
+      "info": "Show variants"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shopping",
+      "label": "Show variants"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

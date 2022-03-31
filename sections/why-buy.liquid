@@ -1,0 +1,55 @@
+<section class="why-buy-container mt6 md-dn--mt3">
+  <div class="why-buy mx--auto px2 text-center">
+    {% if section.settings.heading != blank %}
+    <h2 class="f2 md-dn--f3 mt0 mb3 fw--bold uppercase">{{ section.settings.heading }}</h2>
+    {% endif %}
+    <div class="wmp-why-buy lg--mxn2 md-dn--mxn1">
+      {% for block in section.blocks %}
+      <div class="wmp-why-buy__item text-center lg--mx2 md-dn--mx1">
+        <div class="wmp-why-buy__item__picture">
+          {% render 'responsive-image',
+                    image: block.settings.image,
+                    alt_text: block.settings.text,
+                    section_id: 'product-section-why-buy'
+          %}
+        </div>
+        <div class="wmp-why-buy__item__text f5 md-dn--f6 text-center lh--headline">
+          <p class="my0">{{ block.settings.text }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Why WMP",
+  "class": "section--why-wmp",
+  "settings": [
+    {
+     "type": "text",
+     "id": "heading",
+     "label": "Heading",
+     "default": "Why WearMe Pro?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

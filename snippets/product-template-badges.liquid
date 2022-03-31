@@ -1,0 +1,47 @@
+{%- assign new_hide = 'hide' -%}
+{%- assign top_rated_hide = 'hide' -%}
+{% assign stock_hide = 'hide' %}
+{% assign on_sale_hide = 'hide' %}
+{% assign show_bage = false %}
+{%- if current_variant.available == false -%}
+    {% assign stock_hide = '' %}
+    {% assign show_bage = true %}
+{% endif %}
+{%- if product.available -%}
+    {%- for collection in product.collections -%}
+        {%- if collection.handle == settings.new_items_collection or collection.handle == settings.new_items_collection2 -%}
+            {% if show_bage != true %}
+                {%- assign new_hide = '' -%}
+                {% assign show_bage = true %}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
+    {%- if current_variant.compare_at_price > current_variant.price and show_bage != true -%}
+        {%- assign on_sale_hide = '' -%}
+        {% assign show_bage = true %}
+    {%- endif -%}
+    {%- for collection in product.collections -%}
+        {% if collection.handle == 'top-rated-womens' or collection.handle == 'top-rated-mens' %}
+            {% if show_bage != true %}
+                {% assign top_rated_hide = '' %}
+                {% assign show_bage = true %}
+            {% endif %}
+        {% endif %}
+    {%- endfor -%}
+{% endif %}
+
+<div class="badge badge--left badge--text badge--new {{ new_hide }}" >
+    NEW
+</div>
+<div class="badge badge--left badge--text badge--sale {{ on_sale_hide }}" data-sale-badge="">
+    SALE
+</div>
+<div class="badge badge--left badge--text badge--out-of-stock {{ stock_hide }}" data-out-of-stock="">
+    OUT OF STOCK
+</div>
+<div class="badge badge--left badge--text badge--top-rated {{ top_rated_hide }}">
+    TOP RATED
+</div>
+{% comment %}<div class="badge badge--right badge--image">{% endcomment %}
+    {% comment %}{% render 'product-grid-item__badges__badge', image: settings.new_items_badge, alt: 'New', extra_classes: 'badge--new' %}{% endcomment %}
+{% comment %}</div>{% endcomment %}

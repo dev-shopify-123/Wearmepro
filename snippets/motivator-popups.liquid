@@ -1,0 +1,64 @@
+<div class="motivator-popups">
+
+  <div class="motivator-popup promos p3 f5 flex flex--column-nowrap justify-content--center js-cart-promo-item js-cart-promo-shipping">
+  {% if settings.cart_free_shipping_enable %}
+    <div class="motivator-popup-promo-1" style="display: none; margin: 20px 0;">
+      <div class="flex align-items--flex-start align-items--center">
+        <span class="motivator-popup__achieved js-promo-element-show-if-achieved" style="display: none;"></span>
+        <span class="js-promo-element-show-if-in-progress">
+          Spend another
+          <span class="fw--bold" data-promo-amount-remaining></span>
+          to get
+          <span class="promo-message">{{ settings.cart_free_shipping_text }}!</span>
+        </span>
+        <span class="js-promo-element-show-if-achieved success-message">
+          <span class="fw--bold">{{ settings.cart_free_shipping_text }}</span>
+        </span>
+      </div>
+      <div class="promo-progress-container promo-progress-container--bigger w-full js-promo-element-show-if-in-progress">
+        <span class="promo-progress" style="width: 0;" data-promo-progress></span>
+      </div>
+    </div>
+    {% endif %}
+    {% if settings.cart_free_shipping_enable2 %}
+    <div class="motivator-popup-promo-2" style="display: none; margin: 20px 0;">
+      <div class="flex align-items--flex-start align-items--center">
+        <span class="motivator-popup__achieved js-promo-element-show-if-achieved"></span>
+        <span class="js-promo-element-show-if-in-progress">
+          Spend another
+          <span class="fw--bold" data-promo-amount-remaining></span>
+          to get
+          <span class="promo-message">{{ settings.cart_free_shipping_text2 }}!</span>
+        </span>
+        <span class="js-promo-element-show-if-achieved success-message" style="display: none;">
+          <span class="fw--bold">{{ settings.cart_free_shipping_text2 }}</span>
+        </span>
+      </div>
+      <div class="promo-progress-container promo-progress-container--bigger w-full js-promo-element-show-if-in-progress">
+        <span class="promo-progress" style="width: 0;" data-promo-progress></span>
+      </div>
+    </div>
+
+    {% endif %}
+  </div>
+
+
+  {% if settings.cart_free_pair_enable %}
+  <div class="motivator-popup free-pair p3 f5 flex flex--column-nowrap justify-content--center js-cart-promo-item js-cart-promo-free-pair">
+    <div class="flex justify-content--flex-start align-items--center">
+      <span class="motivator-popup__achieved js-promo-element-show-if-achieved"></span>
+      <span class="js-promo-element-show-if-in-progress">
+        Spend another
+        <span class="fw--bold" data-promo-amount-remaining></span>
+        to get a Free Case!
+      </span>
+      <span class="js-promo-element-show-if-achieved">
+        <span class="fw--bold">Free</span>
+      </span>
+    </div>
+    <div class="promo-progress-container promo-progress-container--bigger w-full js-promo-element-show-if-in-progress">
+      <span class="promo-progress" style="width: 0;" data-promo-progress></span>
+    </div>
+  </div>
+  {% endif %}
+</div>

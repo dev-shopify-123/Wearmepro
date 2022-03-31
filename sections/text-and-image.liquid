@@ -1,0 +1,71 @@
+<div class="container text-and-img">
+    <section class="text-and-img-blocks">
+        {% for block in section.blocks %}
+            <div class="text-and-img-blocks__item d-flex align-items-center {% if block.settings.position_id == "right" %} flex-row-reverse {% endif %}">
+                <div class="text-and-img-blocks__img">
+                    <span class="text-and-img-blocks__number"></span>
+                    {% if block.settings.img %}
+                        <img class="lazyload" data-src="{{ block.settings.img | img_url: 'master' }}" alt="{{ block.settings.img.alt }}">
+                    {% endif %}
+                </div>
+                <div class="text-and-img-blocks__desc">
+                    <div class="text-and-img-blocks__text">
+                        <h3>{{- block.settings.title -}}</h3>
+                        <div>{{- block.settings.desc -}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "Text and Img Blocks",
+  "blocks": [
+  {
+  "name": "Text and Img item",
+  "type": "text",
+  "settings": [
+  {
+  "type": "image_picker",
+  "id": "img",
+  "label": "Image"
+  },
+  {
+  "type": "text",
+  "id": "title",
+  "label": "Title"
+  },
+  {
+  "type": "richtext",
+  "id": "desc",
+  "label": "Description"
+  },
+  {
+      "type": "select",
+      "id": "position_id",
+      "label": "Position image",
+      "options": [
+          {
+              "value": "left",
+              "label": "Left"
+          },
+          {
+              "value": "right",
+              "label": "Right"
+          }
+      ]
+  }
+  ]
+  }
+  ],
+  "presets": [
+  {
+  "name": "Text and Img Blocks",
+  "category": "New"
+  }
+  ]
+  }
+{% endschema %}

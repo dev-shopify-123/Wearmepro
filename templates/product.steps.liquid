@@ -1,0 +1,105 @@
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% unless product.price == 0 %}
+  {% section 'product-steps-template' %}
+  
+  {% section 'related-products' %}
+{% endunless %} 
+
+
+{{product.metafields.shogun.below}}
+
+<script type="text/javascript">
+  // Scroll to reviews
+  function getHeightOffset(deviceType = 'desktop') {
+            let resOffset = 0;
+            const heightFeaturedLinks = document.querySelector('#shopify-section-featured-links').clientHeight;
+            const heightReviewsTitle = document.querySelector('#product-reviews-product-steps-template').clientHeight;
+            const reviewsBlock = document.getElementById('product-reviews-product-steps-template');
+            const reviewsBlockOffsetTop = reviewsBlock.offsetTop;
+            if(deviceType === 'desktop') {
+                const heightHeaderMenu = document.querySelector('#shopify-section-desktop-header').clientHeight;
+                resOffset = reviewsBlockOffsetTop - heightFeaturedLinks - heightHeaderMenu - heightReviewsTitle;
+            } else if (deviceType === 'mobile') {
+                const heightHeaderMenu = document.querySelector('#shopify-section-mobile-header-and-nav').clientHeight;
+                resOffset = reviewsBlockOffsetTop - heightFeaturedLinks - heightHeaderMenu - heightReviewsTitle;
+            }
+            return resOffset - 30;
+        }
+        function listenerScrollToReviews() {
+            const linkEl = document.querySelector('.product-section__stars.md-dn--hide .okeReviews.oke-sr');
+            const linksElMobile = document.querySelectorAll('.mob-reviews-product .product-section__stars .okeReviews.oke-sr');
+            if(linkEl) {
+                linkEl.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const resOffset = getHeightOffset('desktop');
+                    console.log('resOffset() desktop: ', resOffset);
+                    if(!isNaN(resOffset)) {
+                        window.scrollTo({
+                            top: resOffset,
+                        });
+                    }
+                })
+            }
+
+            if(linksElMobile && window.innerWidth <= 1024) {
+                console.log('linksElMobile(): ', linksElMobile);
+                linksElMobile.forEach((link) => {
+                    link.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const resOffset = getHeightOffset('mobile');
+                        console.log('resOffset mobile: ', resOffset);
+                        if(!isNaN(resOffset)) {
+                            window.scrollTo({
+                                top: resOffset,
+                            });
+                        }
+                    })
+                })
+
+            }
+        }
+        window.onload = function () {
+            listenerScrollToReviews();
+        }
+  
+  
+  var _learnq = _learnq || [];
+
+  var item = {
+  Name: {{ product.title|json }},
+  ProductID: {{ product.id|json }},
+  Categories: {{ product.collections|map:'title'|json }},
+  ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url }}",
+  Brand: {{ product.vendor|json }},
+  Price: {{ product.price|money|json }},
+  CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+  Title: item.Name,
+  ItemId: item.ProductID,
+  Categories: item.Categories,
+  ImageUrl: item.ImageURL,
+  Url: item.URL,
+  Metadata: {
+  Brand: item.Brand,
+  Price: item.Price,
+  CompareAtPrice: item.CompareAtPrice
+  }
+  }]);
+</script>
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var classname = document.getElementsByClassName("btn--product-section-form");
+  var addToCartEvent = function() {
+    _learnq.push(['track', 'Added to Cart', classname]);
+  };
+  for (var i = 0; i < classname.length; i++) {
+    classname[i].addEventListener('click', addToCartEvent, false);
+  }
+</script>
+

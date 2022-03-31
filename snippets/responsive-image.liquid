@@ -1,0 +1,37 @@
+{%- if crop != blank -%}
+  {%- assign img_url = image | img_url: '1x1', crop: crop | replace: '_1x1_crop', '_{width}x{height}_crop' -%}
+{%- else -%}
+  {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- endif -%}
+{%- assign image_id = image.id -%}
+{%- if section_id -%}
+  {%- assign image_id = image_id | prepend: '-' | prepend: section_id -%}
+{%- endif -%}
+{%- if alt_text == blank -%}
+  {%- assign alt_text = img.alt -%}
+{%- endif -%}
+{%- if widths == blank -%}
+  {%- assign widths = '[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' -%}
+{%- endif -%}
+{%- if aspect_ratio == blank -%}
+  {%- assign aspect_ratio = image.aspect_ratio -%}
+{%- endif -%}
+{%- if crop_209 == '209' -%}
+  {%- assign img_url = image | img_url: '209x209', crop: 'center' -%}
+  {%- assign aspect_ratio = 1 -%}
+{%- endif -%}
+<div class="responsive-image {{ extra_classes }}">
+  <div class="responsive-image__img-wrapper"
+    style="padding-top: {{ 1 | divided_by: aspect_ratio | times: 100 }}%;">
+    <img id="{{ image_id }}"
+      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      class="responsive-image__img lazyload"
+      alt="{{ alt_text }}"
+      data-src="{{ img_url }}"
+      data-widths="{{ widths }}"
+      data-aspectratio="{{ aspect_ratio }}"
+      data-sizes="auto"
+      data-image>
+    <div class="responsive-image__placeholder"></div>
+  </div>
+</div>

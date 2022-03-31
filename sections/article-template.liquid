@@ -1,0 +1,219 @@
+{%- if comment.status == 'pending' -%}
+{%- assign number_of_comments = article.comments_count | plus: 1 -%}
+{%- else -%}
+{%- assign number_of_comments = article.comments_count -%}
+{%- endif -%}
+
+{% if article.comments.size > 0 %}{% assign comment_url = article.url | append: '#comments' %}{% else %}{% assign comment_url = article.url | append: '#addcomment' %}{% endif %}
+<!-- sections/article-template.liquid -->
+<section data-section-id="{{ section.id }}"
+         data-section-type="article">
+  <header class="article__header article-header measure--wide px2 my5 md-dn--mb4 mx--auto">
+    <div class="article-header__date">
+      <time class="article-header-date p2 aspect-ratio-box">
+        <div class="f2 lh--reset">{{ article.published_at | date: "%d" }}</div>
+        <div class="f5 lh--reset fs--italic">{{ article.published_at | date: "%b" | downcase }}</div>
+      </time>
+    </div>
+    <div class="article-header__title-and-meta md-dn--mt3 lg--pl3">
+      <h2 class="uppercase my1 f3 ff--heading">{{ article.title }}</h2>
+      <div class="color--primary-accent">
+        {% if blog.comments_enabled? %}
+        <a href="{{ comment_url }}" class="article-header__comments article-header__meta-with-icon color--inherit--force article-meta-link">
+          <span class="material-icons custom-icon-comment"></span>
+          <span class="article-meta-link__text">{{ number_of_comments }} {{ number_of_comments | pluralize: 'comment', 'comments' }}</span>
+        </a>
+        {% endif %}
+        <a href="{{ blog.url }}" class="article-header__blog article-header__meta-with-icon color--inherit--force article-meta-link">
+          <span class="material-icons custom-icon-folder"></span>
+          <span class="article-meta-link__text">{{ blog.title }}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="article__content rte rte--article measure--wide px2 mx--auto">
+    {{ article.content }}
+  </main>
+  <div class="article__comments measure--wide px2 mx--auto">
+    <h2 class="f3 text-center uppercase">{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</h2>
+
+    {% paginate article.comments by 5 %}
+
+      {% comment %}
+        #comments is required, it is used as an anchor link by Shopify.
+      {% endcomment %}
+      <div id="comments">
+        <ul class="article-comments">
+          {% comment %}
+            If a comment was just submitted with no blank field, show it.
+          {% endcomment %}
+          {% if comment.status == 'pending' %}
+            <li id="{{ comment.id }}" class="article-comments__comment">
+              {% include 'comment', comment: comment %}
+            </li>
+          {% endif %}
+
+          {% for comment in article.comments %}
+            <li id="{{ comment.id }}" class="article-comments__comment">
+              {% include 'comment', comment: comment %}
+            </li>
+          {% endfor %}
+        </ul>
+
+        {%- if paginate.pages > 1 -%}
+          {% include 'pagination', paginate: paginate %}
+        {%- endif -%}
+
+      </div>
+    {% endpaginate %}
+  </div>
+  <div class="article__comment-form mb5">
+    {% form 'new_comment', article %}
+
+      {%- assign formId = 'CommentForm' -%}
+
+      <h2 class="f3 text-center uppercase">{{ 'blogs.comments.title' | t }}</h2>
+
+      {%- assign post_message = 'blogs.comments.success' -%}
+      {%- if blog.moderated? and comment.status == 'pending' -%}
+        {%- assign post_message = 'blogs.comments.success_moderated' -%}
+      {%- elsif comment.status == 'unapproved' or comment.status == 'spam' -%}
+        {%- assign post_message = 'blogs.comments.unapproved' -%}
+      {%- endif -%}
+
+      {% include 'form-status', form: form, form_id: formId, success_message: post_message %}
+
+      <div class="form__content measure--wide mx--auto">
+        <div class="form__row mxn2">
+          <div class="form__input-group mx2">
+            <label for="{{ formId }}-author" class="form__label">{{ 'blogs.comments.name' | t }}</label>
+            <input type="text"
+                   name="comment[author]"
+                   id="{{ formId }}-author"
+                   class="form__input {% if form.errors contains 'author' %} form__input--error{% endif %}"
+                   value="{{ form.author }}"
+                   {% if form.errors contains 'author' %}
+                   aria-invalid="true"
+                   aria-describedby="{{ formId}}-author-error"
+                   {% endif %}>
+            {% if form.errors contains 'author' %}
+              <div id="{{ formId}}-author-error" class="form__status form__status--error">
+                <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                <span>{{ 'blogs.comments.name' | t }} {{ form.errors.messages['author'] }}.</span>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="form__input-group mx2">
+            <label for="{{ formId }}-email" class="form__label">{{ 'blogs.comments.email' | t }}</label>
+            <input type="email"
+                   name="comment[email]"
+                   id="{{ formId }}-email"
+                   class="form__input{% if form.errors contains 'email' %} form__input--error{% endif %}"
+                   value="{{ form.email }}"
+                   autocorrect="off"
+                   autocapitalize="off"
+                   {% if form.errors contains 'email' %}
+                   aria-invalid="true"
+                   aria-describedby="{{ formId}}-email-error"
+                   {% endif %}>
+            {% if form.errors contains 'email' %}
+              <div id="{{ formId}}-email-error" class="form__status form__status--error">
+                <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__input-group">
+          <label for="{{ formId }}-body">{{ 'blogs.comments.message' | t }}</label>
+          <textarea name="comment[body]"
+                    id="{{ formId }}-body"
+                    class="form__input{% if form.errors contains 'body' %} form__input--error{% endif %} textarea--min-height"
+            {% if form.errors contains 'body' %} aria-invalid="true" aria-describedby="{{ formId}}-body-error" {% endif
+            %}>{{ form.body }}</textarea>
+          {% if form.errors contains 'body' %}
+            <div id="{{ formId }}-body-error" class="form__status form__status--error">
+              <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+              <span>{{ 'blogs.comments.message' | t }} {{ form.errors.messages['body'] }}.</span>
+            </div>
+          {% endif %}
+          </div>
+        </div>
+
+        <div class="form__row mt3 mb2">
+          {% if blog.moderated? %}
+            <p class="fine-print">{{ 'blogs.comments.moderated' | t }}</p>
+          {% endif %}
+        </div>
+
+        <div class="form__row">
+          <input type="submit" class="btn btn--color-secondary uppercase ff--heading fw--bold ls06" value="{{ 'blogs.comments.post' | t }}">
+        </div>
+
+      </div>
+    {% endform %}
+  </div>
+</section>
+
+<style>
+  @media (min-width: 901px) {
+    .article-header {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .article-header-date {
+    display: block;
+    background-color: var(--color-primary-accent);
+    color: var(--color-body-bg);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  .article-header__meta-with-icon > span {
+    vertical-align: middle;
+  }
+
+  .article-header__meta-with-icon:not(:first-of-type) {
+    margin-left: var(--space-3);
+  }
+
+  .article-meta-link:hover .article-meta-link__text {
+    text-decoration: underline;
+  }
+
+  .article__content,
+  .article__comments {
+    border-bottom: 1px solid rgba(var(--color-body-text-rgb), 0.09);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .article-comments {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .article-comments__comment:not(:first-of-type) {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid rgba(var(--color-body-text-rgb), 0.09);
+  }
+
+  .comment__meta-item:not(:first-of-type)::before {
+    margin-left: 0.3em;
+    content: "•";
+    display: inline-block;
+    margin-right: .5em;
+  }
+</style>

@@ -1,0 +1,176 @@
+{% if section.blocks.size > 0 and section.settings.show_featured_links %}
+{% if template.name contains 'index' or template.name contains 'collection' %}
+  {% assign show_section = true %}
+{% else %}
+  {% assign show_section = false %}
+{% endif %}
+  <div class="featured-links featured-links--{{ template.name }}{% if show_section == false %} hide{% endif %}"
+       data-featured-links>
+    <ul class="featured-links__list ff--heading lh--reset">
+      {% for block in section.blocks %}
+      {% if block.settings.image != blank %}
+        {% capture link_image_src %}{{ block.settings.image | img_url: '130x130', crop: 'center' }}{% endcapture %}
+      {% endif %}
+
+      <li class="featured-links__list-item"
+          data-featured-link
+          data-featured-link-title="{{ block.settings.title }}"
+          data-featured-link-url="{{ block.settings.url }}"
+          {% if block.settings.image != blank %}
+          data-featured-link-image-src="{{ link_image_src }}"
+          data-featured-link-image-srcset="{{ link_image_srcset }}"
+          {% endif %}
+      >
+        <a href="{{ block.settings.url }}" class="featured-links__item-wrapper">
+          {% if template.name contains 'index' or template.name contains 'collection' %}
+          <div class="featured-links__image-wrapper">
+            <img width="65" height="65"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+              {% if block.settings.image != blank %}
+              data-src="{{ link_image_src }}"
+              {% endif %}
+              alt="{{ block.settings.title }}"
+              class="featured-links__image lazyload"
+            >
+          </div>
+          {% endif %}
+          <div class="featured-links__text text-center">
+            <span class="{% if section.settings.bold %}fw--bold {% endif %}uppercase text-center ls12">{{ block.settings.title }}</span>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+<style>
+  #shopify-section-featured-links {
+    z-index: 81;
+    position: relative;
+  }
+
+  #shopify-section-featured-links,
+  .featured-links,
+  .featured-links__list {
+    overflow-x: auto;
+  }
+
+  #shopify-section-featured-links::-webkit-scrollbar,
+  .featured-links::-webkit-scrollbar,
+  .featured-links__list::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+
+
+  .featured-links a:link,
+  .featured-links a:visited {
+    color: var(--color-headings);
+    text-decoration: none;
+  }
+
+  .featured-links a:hover,
+  .featured-links a:focus,
+  .featured-links a:active {
+    text-decoration: none;
+  }
+
+
+  .featured-links {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .featured-links__list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 7px 0 6px;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  .featured-links__list-item {
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+
+  .featured-links__item-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .featured-links__image-wrapper {
+    width: 65px;
+    height: 65px;
+  }
+
+  .featured-links__image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .featured-links__text {
+    font-size: 9.7px;
+    margin-top: 6px;
+  }
+</style>
+
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured Links",
+  "class": "section--featured-links lg--hide",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_featured_links",
+      "label": "Show section"
+    },
+    {
+      "type": "checkbox",
+      "id": "bold",
+      "label": "Use bold font"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_link",
+      "name": "Featured link",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Image will cropped to square"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_in_mobile_menu",
+          "label": "Hide in mobile menu",
+          "info": "Unless checked, will also appear in mobile menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

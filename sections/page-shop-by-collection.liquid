@@ -1,0 +1,164 @@
+<section id="{{ section.id }}"
+         data-section-type="shop-by-collection">
+  {% assign pgi_media_aspect_ratio = 2.3 %}
+  {% for block in section.blocks %}
+  <div class="collection-catalog__collection {% if forloop.first %}md-dn--mt3 mb3{% else %}mt5 mb3{% endif %}"
+       data-collection-container>
+    <a class="collection-catalog__poster"
+       href="{{ collections[block.settings.collection].url }}">
+      {% assign collection_title = collections[block.settings.collection].title %}
+      {% if block.settings.display_title != blank %}
+        {% assign collection_title = block.settings.display_title %}
+      {% endif %}
+      <h2 class="collection-catalog__title f2 text-center">
+        {{ collection_title }}
+      </h2>
+      {% if block.settings.cover_image != blank %}
+        {% assign image = block.settings.cover_image %}
+      {% else %}
+        {% assign image = collections[block.settings.collection].image %}
+    {% endif %}
+      {% render 'responsive-image', image: image %}
+    </a>
+    <div class="collection-catalog__products lg--pt5 lg--p4 pt3 p2 related-products mxn2"
+        data-product-listing
+        data-related-products="{{ block.settings.collection }}">
+        {% for i in (1..3) %}
+          {% assign extra_classes = 'mx2' %}
+          {% if forloop.index > 1 %}
+            {% assign extra_classes = extra_classes | append: ' md-dn--hide' %}
+          {% endif %}
+          {% render 'product-grid-item-placeholder',
+              pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+              extra_classes: extra_classes
+          %}
+        {% endfor %}
+    </div>
+    <div class="collection-catalog__controls">
+      <button class="btn btn--plain collection-catalog__button uppercase f6--force ls03 fw--bold"
+        data-slick-ctrl-button="slickPrev"><span class="material-icons custom-icon-navigate_before"></span> Prev
+      </button>
+      <span class="collection-catalog__controls-separator px1"> / </span>
+      <button class="btn btn--plain collection-catalog__button uppercase f6--force ls03 fw--bold"
+        data-slick-ctrl-button="slickNext">Next <span class="material-icons custom-icon-navigate_next"></span></button>
+    </div>
+  </div>
+  {% unless forloop.last %}
+  <hr class="collection-catalog__separator">
+  {% endunless %}
+  {% endfor %}
+</section>
+<style>
+  .collection-catalog__separator {
+    width: 80%;
+    margin: 0 auto;
+    height: 2px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 0;
+  }
+
+  .collection-catalog__poster {
+    display: block;
+    position: relative;
+  }
+
+
+  @media (min-width: 901px) {
+    .collection-catalog__separator {
+      background: var(--color-primary-accent);
+    }
+
+    .collection-catalog__collection {
+      display: flex;
+      position: relative;
+    }
+
+    .collection-catalog__poster {
+      flex: 2 0 0%;
+      min-width: 0;
+    }
+
+    .collection-catalog__products {
+      flex: 4 0 0%;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .related-products .slick-slide {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .collection-catalog__controls {
+    display: none;
+  }
+
+  @media (min-width: 901px) {
+    .collection-catalog__controls {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: rgb(var(--color-body-text-rgb), 0.5);
+    }
+  }
+
+
+  .collection-catalog__title {
+    display: inline-block;
+    background: #FFCC00;
+    background-image: linear-gradient(270deg, rgba(255,255,255,0.57) 0%, rgba(255,255,255,0.00) 100%);
+    margin: 24px auto;
+    color: hsl(0, 0%, 100%);
+    padding: 12px 54px;
+    position: absolute;
+    right: -140px;
+    min-width: 260px;
+    z-index: 2;
+  }
+
+  @media (max-width: 900px) {
+    .collection-catalog__title {
+      right: 5px;
+      bottom: -40px;
+    }
+  }
+
+  @media (min-width: 1770px) {
+    .collection-catalog__title {
+      right: -75px;
+    }
+  }
+
+</style>
+{% schema %}
+{
+  "name": "Shop By Collection",
+  "class": "shopify-section--less-padding",
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Featured collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "id": "cover_image",
+          "type": "image_picker",
+          "label": "Cover image"
+        },
+        {
+          "type": "text",
+          "id": "display_title",
+          "label": "Display name"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

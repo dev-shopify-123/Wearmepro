@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-animal_helped",
+      "disabled": true,
+      "settings": {}
+    },
+    "1648663764b67c187c": {
+      "type": "banner_with_buttons",
+      "settings": {
+        "image_desctop": "shopify:\/\/shop_images\/AD000610.jpg",
+        "button_position": "customization-left",
+        "button_position_in_block": "btn-left",
+        "show_shadow": true,
+        "top_desktop": 70,
+        "top_mobile": 70,
+        "is_enable_banner_link": true,
+        "banner_link": "",
+        "left_url": "",
+        "left_button_text": "Shop Men",
+        "left_button_color": "#7dcfb6",
+        "text_left_button_color": "#ffffff",
+        "right_url": "",
+        "right_button_text": "Shop Women",
+        "right_button_color": "#7dcfb6",
+        "text_right_button_color": "#ffffff",
+        "display": "both"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1648663764b67c187c"
+  ]
+}

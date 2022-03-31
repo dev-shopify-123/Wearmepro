@@ -1,0 +1,161 @@
+<div id="cover-spin"></div>
+<style type="text/css">
+    #cover-spin {
+        position:fixed;
+        width:100%;
+        left:0;right:0;top:0;bottom:0;
+        background-color: rgba(255,255,255,0.7);
+        z-index:9999;
+        display:block;
+    }
+    
+    @-webkit-keyframes spin {
+        from {-webkit-transform:rotate(0deg);}
+        to {-webkit-transform:rotate(360deg);}
+    }
+    
+    @keyframes spin {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+    }
+    
+    #cover-spin::after {
+        content:'';
+        display:block;
+        position:absolute;
+        left:48%;top:40%;
+        width:40px;height:40px;
+        border-style:solid;
+        border-color:black;
+        border-top-color:transparent;
+        border-width: 4px;
+        border-radius:50%;
+        -webkit-animation: spin .8s linear infinite;
+        animation: spin .8s linear infinite;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.shopify.com/s/javascripts/currencies.js"></script>
+<script type="text/javascript">
+    var LensAdvisor = {}
+    LensAdvisor.$ = $.noConflict(true);
+</script>
+{{ 'lensadvizor-currencies.js' | asset_url | script_tag | async }}
+<script type="text/javascript">
+
+    LensAdvisor.request = function (method, url, data) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open(method, url, false);
+        xhttp.send(data);
+        return JSON.parse(xhttp.response)
+    }
+
+    LensAdvisor.loaded = false;
+
+    LensAdvisor.get_products = function () {
+        var products = {}
+        for (let i=0; i < LensAdvisor.cart.items.length; i++ ) {
+            let item = LensAdvisor.cart.items[i]
+            if (item.properties && item.properties.hasOwnProperty('_lens_variant_id')) {
+                let lens_product = LensAdvisor.cart.items.filter((obj) => {
+                    return obj.variant_id == item.properties["_lens_variant_id"]
+                })[0]
+                if (!lens_product) {
+                    LensAdvisor.$.getJSON("/cart/change.js?id=" + item.key + "&quantity=0", function(obj) {
+                        window.location.reload()
+                    })
+                    return []
+                }
+                products[item.properties._unique_identifier] = {
+                    base_variant_id: item.variant_id,
+                    base_variant_quantity: item.quantity,
+                    base_variant_price: item.price,
+                    base_variant_key: item.key,
+                    lens_variant_id: item.properties["_lens_variant_id"],
+                    lens_key: lens_product.key,
+                    lens_quantity: lens_product.quantity,
+                    lens_price: lens_product.price
+                }
+            }
+        }
+        return products
+    }
+
+    LensAdvisor.get_lens_products = function () {
+        var products = {}
+        for (let i=0; i < LensAdvisor.cart.items.length; i++ ) {
+            let item = LensAdvisor.cart.items[i]
+            if (item.properties && item.properties.hasOwnProperty('_base_variant_id')) {
+                products[item.properties._unique_identifier] = {
+                    loopIndex: i,
+                    id: item.properties["_base_variant_id"],
+                    key: item.key
+                }
+            }
+        }
+        return products
+    }
+
+    LensAdvisor.updateCart = function () {
+        LensAdvisor.cart = LensAdvisor.request('GET', '/cart.js')
+        LensAdvisor.products = LensAdvisor.get_products()
+        LensAdvisor.lens_products = LensAdvisor.get_lens_products()
+
+        for (let key in LensAdvisor.products) {
+            let product = LensAdvisor.products[key]
+            LensAdvisor.$('.lensadvizor-line-item-id-' + product.lens_variant_id + key.replace(/:/g, '-').replace(".", '-')).hide()
+            if (product.base_variant_quantity != product.lens_quantity) {
+                LensAdvisor.$.getJSON("/cart/change.js?id=" + product.lens_key + "&quantity=" + product.base_variant_quantity, function(obj) {
+                    window.location.reload()
+                })
+            } else {
+                LensAdvisor.loaded = true
+            }
+
+            let price = (product.base_variant_quantity * product.base_variant_price) + (product.lens_quantity * product.lens_price)
+            LensAdvisor.$('.lensadvizor-price-id-' + product.base_variant_id + key.replace(/:/g, '-').replace('.', '-')).html(Currency.formatMoney(parseFloat(price.toFixed(2)), Currency.moneyFormats[Shopify.currency.active].money_format))
+
+            LensAdvisor.$('.lensadvizor-line-item-price-' + product.base_variant_id + key.replace(/:/g, '-').replace('.', '-')).html(Currency.formatMoney(parseFloat((product.base_variant_price + product.lens_price).toFixed(2)), Currency.moneyFormats[Shopify.currency.active].money_format))
+        }
+
+        for (let key in LensAdvisor.lens_products) {
+            base_variant = LensAdvisor.lens_products[key]
+            base_variant_items = LensAdvisor.cart.items.filter((obj) => {
+                return obj.variant_id == base_variant.id && obj.properties._unique_identifier == key
+            })
+            if (base_variant_items.length == 0) {
+                LensAdvisor.$.getJSON("/cart/change.js?id=" + LensAdvisor.lens_products[key].key + "&quantity=0", function(obj) {
+                    window.location.reload()
+                })
+            }
+        }
+        LensAdvisor.$('#cover-spin').hide()
+    }
+
+    LensAdvisor.$( document ).ready(function() {
+        LensAdvisor.updateCart()
+    });
+
+    // Detecting if any ajax call is made on the cart page
+    (function() {
+        setTimeout(function () {
+            var proxied = window.XMLHttpRequest.prototype.send;
+            window.XMLHttpRequest.prototype.send = function() {
+            //Here is where you can add any code to process the request. 
+                //If you want to pass the Ajax request object, pass the 'pointer' below
+                var pointer = this
+                var intervalId = window.setInterval(function(){
+                    if(pointer.readyState != 4){
+                        return;
+                    }
+                    clearInterval(intervalId);
+                    if (pointer.responseURL.includes('change.js') && Object.keys(LensAdvisor.products.length > 0) && LensAdvisor.loaded) {
+                        LensAdvisor.$('#cover-spin').show()
+                        window.location.reload()
+                    }
+                }, 1);//I found a delay of 1 to be sufficient, modify it as you need.
+                return proxied.apply(this, [].slice.call(arguments));
+            };
+        }, 100)
+    })();
+</script>

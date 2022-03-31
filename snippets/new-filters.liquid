@@ -1,0 +1,148 @@
+{% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender,Lens Type' %}
+{% if collection.handle contains 'men' or collection.handle contains 'women' %}
+  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Lens Type' %}
+{% elsif collection.handle contains 'polarized' %}
+  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender' %}
+{% elsif collection.handle contains 'clear' %}
+  {% assign group_array_string = 'Frame Color,Frame Material,Frame Style,Gender' %}
+{% endif %}
+
+{% assign material_image_metal = 'fm-metal-partial.jpg' | asset_img_url: '1x1' | replace: '1x1.', '{width}x{height}.' %}
+{% assign material_image_plastic = 'fm-plastic-partial.jpg' | asset_img_url: '1x1' | replace: '1x1.', '{width}x{height}.' %}
+
+<script>
+  window.collectionBaseUrl = '{{ routes.collections_url }}/{{ collection.handle }}';
+  window.filtersToExclude = {{ settings.frame_colors_to_exclude | json }};
+  window.groupArrayString = {{ group_array_string | json }};
+  window.materialImages = {
+    'frame-material_metal': {{ material_image_metal | json }},
+    'frame-material_plastic': {{ material_image_plastic | json }},
+  };
+</script>
+
+<div id="collection-filters-{{ section.id }}"
+     class="collection-filters"
+     :class="{ 'initialized' : !initializing }"
+     v-cloak>
+
+  <div class="collection-filters__modal-ui"
+       :class="{ 'shown' : shown }">
+    <h3 class="collection-filters__title text-center my2">
+      {{ collection.title }}
+    </h3>
+    <div class="collection-filters__mobile-close"
+         data-filter-toggle>
+      <span class="material-icons custom-icon-close"></span>
+    </div>
+
+    <ul class="collection-filters__groups-list ff--heading"
+        :class="{ 'has-shown' : selectedGroup !== '' }">
+      <li v-for="(group, index) in groups"
+          ref="groupSelectors"
+          class="collection-filters__group"
+          :class="{ 'filtering' : groupIsActive(group), 'shown' : selectedGroup === group }"
+          :key="index">
+        <div class="collection-filters__group-toggle"
+             @click.prevent="selectGroup(group)">
+          <span class="group-toggle__text"
+                v-html="group"></span>
+          <span class="group-toggle__icon">
+            <span class="material-icons custom-icon-expand_more" v-html=""></span>
+          </span>
+        </div>
+        <ul class="collection-filters__filters-list"
+            ref="groupListContainers"
+            :class="{ 'shown': selectedGroup === group }">
+          <li class="collection-filters__filter"
+              :class="{ 'active' : tagIsProposed(tag), 'collection-filters__filter--has-swatch' : group === 'Frame Material' }"
+              @click.prevent="selectTag(tag)"
+              v-for="tag in allTags[group]">
+            <div class="filter__name">
+              <div class="filter__name__swatch"
+                   v-if="group === 'Frame Material'">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     class="filter__swatch__img lazyload"
+                     :data-srcset="materialImages[tag.handle]"
+                     data-widths="[50, 150, 300, 600]"
+                     data-sizes="auto">
+              </div>
+              <span class="filter__name__text" v-html="tag.displayTagName"></span>
+            </div>
+            <div class="filter__radio"></div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    {% comment %}
+    <div class="collection-filters__proposed-tags"
+         v-if="needsRefresh">
+      <ul class="collection-filters__proposed-tags-list">
+        <li v-for="(tag, index) in proposedTagsFlat"
+            class="collection-filters__proposed-tag"
+            :key="index">
+            <span class="collection-filters__proposed-tag__group" v-html="tag.group"></span>
+            <span class="collection-filters__proposed-tag__value" v-html="tag.displayTagName"></span>
+            <span class="collection-filters__proposed-tag__remove"
+                  @click.prevent="clearProposedTag(tag)">
+            <span class="material-icons custom-icon-close"></span>
+            </span>
+          </li>
+      </ul>
+    </div>
+    {% endcomment %}
+
+    <div class="collection-filters__actions text-center">
+      <button class="btn btn--filters btn--filters--cancel"
+              @click.prevent="clearAllProposedTags">
+        Clear
+      </button>
+      <button class="btn btn--filters btn--filters--submit"
+              :disabled="!needsRefresh"
+              @click.prevent="submitProposedTags">
+        Apply
+      </button>
+    </div>
+
+    <div class="collection-filters__close text-center">
+      <button class="btn btn--filters btn--filters--transparent"
+              data-filter-toggle>
+        <span class="material-icons custom-icon-keyboard_backspace icon--filters-close--mobile"></span>
+        <span class="material-icons custom-icon-close icon--filters-close--desktop"></span>
+        Close
+      </button>
+    </div>
+  </div>
+
+  {% comment %}
+  <div class="collection-filters__current-tags mt3"
+       v-if="currentTagHandles.length">
+    <ul class="collection-filters__current-tags-list">
+      <li v-for="(tag, index) in currentTagsFlat"
+          class="collection-filters__current-tag"
+          :key="index">
+          <span class="collection-filters__current-tag__group" v-html="tag.group"></span>
+          <span class="collection-filters__current-tag__value" v-html="tag.displayTagName"></span>
+          <span class="collection-filters__current-tag__remove"
+                @click.prevent="clearCurrentTag(tag)">
+          <span class="material-icons custom-icon-close"></span>
+          </span>
+      </li>
+      <li class="collection-filters__current-tags__clear-all"
+          @click.prevent="clearAllCurrentTags">
+        <span class="material-icons custom-icon-close"></span>
+          Clear All
+      </li>
+
+    </ul>
+  </div>
+  {% endcomment %}
+  <div class="collection-filters__clear mt2 text-center"
+       v-if="currentTagHandles.length">
+    <button class="btn btn--filters btn--filters--transparent"
+            @click.prevent="clearAllProposedTagsNew">
+      <span class="material-icons custom-icon-close"></span>
+      Clear All Filters
+    </button>
+  </div>
+</div>

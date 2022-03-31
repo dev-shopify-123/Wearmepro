@@ -1,0 +1,56 @@
+<section class="collection-products">
+    <div class="container">
+        <div class="collection-products__title">
+            <h2 class="text-center">{{section.settings.title_id}}</h2>
+        </div>
+        <div data-section-id="{{ section.id }}"
+         data-infinite-scroll="{{ settings.enable_infinite_scroll }}"
+         {% if template.suffix == 'variants' %}
+         data-xhr-template="xhr-variants"
+         {% else %}
+         data-xhr-template="xhr"
+         {% endif %}
+         data-section-type="collection">
+            <div class="product-listing collection-products__listing" 
+            data-enable-bis="{{ settings.enable_bis }}"
+            {% unless template.suffix contains 'xhr' %}
+            data-loaded="false"
+            {% endunless %}
+            data-product-listing>
+                {% assign collection = collections[section.settings.collection_id] %}
+                {% for product in collection.products limit: 4%}
+                    {% render 'product-grid-item',
+                        product: product
+                    %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="collection-products__footer">
+            <a class="btn" href="{{collection.url}}">SHOP COLLECTION</a> 
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Collection product eco",
+    "settings": [
+    {
+        "type": "text",
+        "id": "title_id",
+        "label": "Text title"
+    },
+    {
+    "type": "collection",
+    "id": "collection_id",
+    "label": "Select Collection"
+    }
+    ],
+    "presets": [
+    {
+    "name": "Collection product eco",
+    "category": "Collection"
+    }
+    ]
+    }
+{% endschema %}

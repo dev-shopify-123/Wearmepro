@@ -1,0 +1,159 @@
+{% assign slides = '' %}
+
+{% if settings.announcement_bar_text != blank %}
+  {% assign slides =  slides | append: settings.announcement_bar_text_1 | append: ',' %}
+{% endif %}
+{% if settings.announcement_bar_text_2 != blank %}
+    {% assign slides =  slides | append: settings.announcement_bar_text_2 | append: ',' %} 
+{% endif %}
+{% if settings.announcement_bar_text_3 != blank %}
+  {% assign slides =  slides | append: settings.announcement_bar_text_3 | append: ',' %} 
+{% endif %}
+
+{% assign all_slides = slides | split: ","%}
+
+{% if all_slides.size == 1 %}
+
+  {% assign slide_title = settings.announcement_bar_text_1  %}
+  {% assign slide_url = settings.announcement_bar_url_1  %}
+	<div class="slider-top">
+      {% if slide_title != blank %}
+        {% assign shipping_spend_string = settings.cart_free_shipping_threshold | prepend: '$' %}
+        <a class="announcement-bar f6 ff--body uppercase text-center fw--bold ls06"
+          {% if slide_url != blank %}
+          href="{{ slide_url }}"
+          {% endif %}
+          >
+          {{ slide_title | replace: '__FREE_SHIPPING_SPEND__', shipping_spend_string }}
+        </a>
+      {% endif %}
+	</div>
+  {% else %}
+
+  {% assign someVar = 1 %}
+
+
+<div class="slider-top">
+  <div class="holder-arrow">
+     
+    </div>
+  <div  class="slider_wrap " data-autoplay="{{ settings.carousel_autoplay }}" data-speed="{{ settings.autoplay_speed }}">
+
+    {% for slide in all_slides %}
+
+      {% assign text_title = 'announcement_bar_text_%1' | replace:'%1', someVar %}
+      {% assign text_url = 'announcement_bar_url_%1' | replace:'%1', someVar %}
+
+      {% assign slide_title = settings[text_title]  %}
+      {% assign slide_url = settings[text_url]  %}
+    
+    
+
+      <div class="slider_item">
+        {% assign shipping_spend_string = settings.cart_free_shipping_threshold | prepend: '$' %}
+        <div class="content_wrap">
+            <div class="slider_content">
+                <!-- <a href="{{ block.settings.slide_link }}" class="button">{{ block.settings.button_title }}</a> -->
+                <a class="announcement-bar f6 ff--body uppercase text-center ls06" 
+                  {% if slide_url != blank %} 
+                  href="{{ slide_url }}"
+                  {% endif %} 
+                  >
+                  {{ slide_title | replace: '__FREE_SHIPPING_SPEND__', shipping_spend_string }}
+                </a>
+            </div>
+        </div>
+      </div>
+      {% assign someVar = someVar | plus:1 %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+
+  
+  
+
+  <style>
+    
+    
+    a.announcement-bar,
+    a.announcement-bar:link {
+      display: block;
+      width: 100%;     
+      text-align: {{ settings.announcement_bar_text_align }};
+      font-size: {{ settings.announcement_bar_font_size | append:'px'}};
+
+      {% if (settings.announcement_bar_bold_text != blank ) %}
+      font-weight: bold;
+      {% endif %}
+      text-decoration: none;
+      z-index: 70;
+      position: relative;
+      padding: 0.75em;
+      color: {{ settings.announcement_bar_text_color }};
+
+      display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 38px;
+      }
+
+    a.announcement-bar:hover {
+      color: {{ settings.announcement_bar_textHover_color }};
+      text-decoration: none;
+    }
+    
+   
+    .slider-top {
+      position: sticky;
+      top: 0;
+      z-index: 82;
+       background-color: {{ settings.announcement_bar_bg_color }};
+        {% if settings.announcement_bar_bg_image != blank  %}
+        background-image: url( {{settings.announcement_bar_bg_image | img_url: 'master'}});
+        background-size: cover;
+        background-repeat: no-repeat;
+      {% else %}
+        color: {{ settings.announcement_bar_text_color }};
+      {% endif %}      
+    }
+    
+     .slider-top .slider_wrap .slider_item {
+      display: none;
+    }
+    .slider-top .slider_wrap .slider_item:first-child {
+      display: block;
+    }
+    .slider-top .slider_wrap.slick-initialized .slider_item {
+       display: block;
+    }
+    .slider-top .holder-arrow {
+      position: absolute;
+        width: 800px; 
+      	top: 0;
+        left: 50%;
+        margin-left: -400px;
+        height: 100%;
+    }
+    .slider-top .holder-arrow .slick-arrow:before {
+       background: none;
+      backdrop-filter: none;
+      color: {{ settings.announcement_bar_arrow_color }};
+    }
+    .slider-top .holder-arrow .slick-arrow:hover:before {
+      color: {{ settings.announcement_bar_textHover_color }};
+    }
+    .slider-top .slider_wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media screen and (max-width: 990px) {
+      .slider-top .holder-arrow {
+       width: 100%;
+        left: 0;
+        margin: 0;
+      }
+    }
+  </style>

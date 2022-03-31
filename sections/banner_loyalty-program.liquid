@@ -1,0 +1,52 @@
+<div class="banner-program">
+    {% if section.settings.img != blank %}
+        <div class="desc">
+                <h1><em>{{ section.settings.banner_title }}</em> <span>{{ section.settings.banner_title2 }}<span class="text-stroke">{{ section.settings.banner_title2 }}</span></span></h1>
+                {{ section.settings.banner_text }}
+        </div>  
+        <figure><img src="{{ section.settings.img | img_url: 'master' }}" alt="{{  section.settings.img.alt }}"></figure>
+   {% endif %}
+</div>
+
+
+ 
+  
+  
+  
+
+
+
+<div class="holder-btn-program">
+    <p>Join the club and you will automatically receive <span>300 points!</span></p>
+    <a href="{{ routes.account_register_url }}" class="btn-new btn">SIGN UP NOW</a>
+    <p><small>Already a WMP Rewards Member? <a href="{{ routes.account_login_url }}">SIGN IN</a></small></p>
+</div>
+
+{% schema %} 
+{
+    "name": "Banner",
+    "settings": [
+      {
+        "id": "img",
+        "type": "image_picker",
+        "label": "Banner img"
+      },
+      {
+        "id": "banner_title",
+        "type": "text",
+        "label": "Title Top"
+      },
+      {
+        "id": "banner_title2",
+        "type": "text",
+        "label": "Title Bottom"
+      },
+      {
+        "id": "banner_text",
+        "type": "richtext",
+        "label": "Text Banner"
+      }
+      
+    ]
+}
+{% endschema %}

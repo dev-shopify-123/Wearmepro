@@ -1,0 +1,241 @@
+<!-- sections/image-with-text-overlay.liquid -->
+{% if section.settings.display == 'desktop' %}
+  {% assign section_display_extra_classes = ' md-dn--hide' %}
+{% elsif section.settings.display == 'mobile' %}
+  {% assign section_display_extra_classes = ' lg--hide' %}
+{% endif %}
+
+<section class="full-bleed{{ section_display_extra_classes }}"
+         data-section-id="{{ section.id }}"
+         data-section-type="image-with-text-overlay">
+  {% if section.settings.url != blank %}
+  <a class="image-with-text-overlay block"
+     {% if section.settings.url != blank %}
+     href="{{ section.settings.url }}"
+     {% endif %}
+     >
+  {% else %}
+  <div class="image-with-text-overlay">
+  {% endif %}
+
+    <div class="image-with-text-overlay__image">
+      {% if section.settings.image_desctop != blank or section.settings.image_mobile != blank%}
+      	  {% if section.settings.is_enable_banner_link %}
+            <a href="{{section.settings.banner_link}}">
+          {% endif %}
+        <div class="new-banner new-banner-{{ section.id }}">
+            {% if section.settings.image_desctop != blank%}  
+                <figure class="img-dectop"><img src="{{ section.settings.image_desctop | img_url: 'master'}}"></figure>
+            {% endif %}
+            {% if section.settings.image_mobile != blank%}  
+                <figure class="img-mob"><img src="{{ section.settings.image_mobile | img_url: '828x'}}"></figure>
+            {% endif %}
+          <div class="holder-btn-customization {{ section.settings.button_position }}">
+            <div class="col-customization {{ section.settings.button_position_in_block }}">
+              {% if section.settings.left_url != blank and section.settings.left_button_text != blank%}
+                <a href="{{ section.settings.left_url }}" class="btn ff--heading fw--bold uppercase ls03 btn--color-secondary" style="
+color: {{ section.settings.text_left_button_color }};
+background-color: {{ section.settings.left_button_color }};
+{% if section.settings.show_shadow %}
+box-shadow: 0 0 10px rgba(0,0,0,0.5);
+{% endif %}
+">{{ section.settings.left_button_text | escape }}</a>
+            {% endif %} 
+            {% if section.settings.right_url != blank and section.settings.right_button_text != blank%}
+                <a href="{{ section.settings.right_url }}" class="btn ff--heading fw--bold uppercase ls03 btn--color-secondary" style="
+color: {{ section.settings.text_right_button_color }};
+background-color: {{ section.settings.right_button_color }};
+                {% if section.settings.show_shadow %}
+                        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                {% endif %}
+">{{ section.settings.right_button_text | escape }}</a>
+            {% endif %} 
+            </div>
+          </div>
+
+        </div>
+          {% if section.settings.is_enable_banner_link %}
+            </a>
+          {% endif %}
+      {% else %}
+        <div class="placeholder-svg-container placeholder-svg-container--dark">
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+        {%- comment -%}
+            {% if section.settings.title != blank %}
+            <div class="image-with-text-overlay__image__text image-with-text-overlay__image__text--{{ section.settings.content_align_x }} image-with-text-overlay__image__text--{{ section.settings.content_align_y }} ">
+                <div class="text-{{ section.settings.text_align }}">
+                <h3 class="image-with-text-overlay__image__text__text f3">{{ section.settings.title }}</h3>
+                {% if section.settings.button_text != blank %}
+                    <div class="btn btn--color-secondary ff--heading uppercase ls03 fw--bold">
+                        {{ section.settings.button_text }}
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+            {% endif %}
+      {%- endcomment -%}
+    </div>
+  {% if section.settings.url != blank %}
+    </a><!-- /.image-with-text-overlay -->
+  {% else %}
+    </div><!-- /.image-with-text-overlay -->
+  {% endif %}
+ </section>
+<style>
+    .new-banner-{{ section.id }} .holder-btn-customization {
+        top: {{ section.settings.top_desktop }}%;
+    }
+    @media screen and (max-width: 900px) {
+        .new-banner-{{ section.id }} .holder-btn-customization {
+            top: {{ section.settings.top_mobile }}%;
+        }
+    }
+</style>
+
+
+{% schema %}
+{
+  "name": "Banner With Buttons",
+  "class": "homepage-section section--banner-with-buttons",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desctop",
+      "label": "Image Desctop"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image mobile"
+    },
+    {
+        "type": "select",
+        "id": "button_position",
+        "options": [
+                { "value": "customization-left", "label": "Left"},
+                { "value": "customization-right", "label": "Right"},
+                { "value": "customization-center", "label": "Center"}
+            ],
+        "default": "customization-left",
+        "label": "Position Button"
+    },
+    {
+        "type": "select",
+        "id": "button_position_in_block",
+        "options": [
+                { "value": "btn-left", "label": "Left"},
+                { "value": "btn-right", "label": "Right"},
+                { "value": "btn-center", "label": "Center"}
+            ],
+        "default": "btn-left",
+        "label": "Position Button in block"
+    },
+    {
+        "type": "checkbox",
+        "id": "show_shadow",
+        "default": true,
+        "label": "Show Shadow"
+    },
+	{
+        "type": "range",
+        "id": "top_desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 70,
+        "unit": "%",
+        "label": "Top Desktop"
+    },
+    {
+        "type": "range",
+        "id": "top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 70,
+        "unit": "%",
+        "label": "Top Mobile"
+    },
+	{
+        "type": "checkbox",
+        "id": "is_enable_banner_link",
+        "default": true,
+        "label": "Enable Banner Link"
+    },
+    {
+        "type": "url",
+        "id": "banner_link",
+        "label": "Banner Link"
+    },
+    {
+      "type": "url",
+      "id": "left_url",
+      "label": "Left Button Link"
+    },
+    {
+      "type": "text",
+      "id": "left_button_text",
+      "label": "Left Button text",
+      "default": "Shop Men"
+    },
+    {
+        "type": "color",
+        "id": "left_button_color",
+        "label": "Left Button Color",
+        "default": "#7dcfb6"
+    },
+    {
+        "type": "color",
+        "id": "text_left_button_color",
+        "label": "Text Left Button Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "url",
+        "id": "right_url",
+        "label": "Right Button Link"
+    },
+    {
+        "type": "text",
+        "id": "right_button_text",
+        "label": "Right Button text",
+        "default": "Shop Women"
+    },
+    {
+        "type": "color",
+        "id": "right_button_color",
+        "label": "Right Button Color",
+        "default": "#7dcfb6"
+    },
+    {
+        "type": "color",
+        "id": "text_right_button_color",
+        "label": "Text Right Button Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "header",
+        "content": "Display"
+    },
+    {
+        "type": "select",
+        "id": "display",
+        "options": [
+            { "value": "both", "label": "Everywhere"},
+            { "value": "mobile", "label": "Mobile only"},
+            { "value": "desktop", "label": "Desktop only"}
+        ],
+        "default": "both",
+        "label": "Display section"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner With Buttons",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+    <video
+            data-video-desctop="{{ section.settings.video_url }}"
+            data-video-mob="{{ section.settings.video_mobile_url }}"
+            id="video" class="video" autoplay="" muted="" loop="" playsinline="">
+    </video>
+
+
+
+{% schema %}
+{
+    "name": "Video",
+    "class": "homepage-section section--image-with-text",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Video"
+        },
+        {
+            "type": "url",
+            "id": "video_url",
+            "label": "Video Desktop"
+        },
+        {
+            "type": "url",
+            "id": "video_mobile_url",
+            "label": "Video Mobile"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Video",
+            "category": "Image"
+        }
+    ]
+}
+{% endschema %}

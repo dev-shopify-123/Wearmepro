@@ -1,0 +1,13 @@
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% unless product.price == 0 %}
+  
+  {% comment %}
+    Why WearMe Pro section – being reworked
+  {% section 'why-buy' %}
+  {% endcomment %}
+  {% section 'related-products' %}
+{% endunless %}
+
+{{product.metafields.shogun.below}}
+

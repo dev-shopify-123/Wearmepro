@@ -1,0 +1,180 @@
+<!-- sections/image-with-text.liquid -->
+{% if section.settings.alignment == 'right' %}
+  {% assign extra_classes = extra_classes | append: ' image-with-text--reverse' %}
+{% endif %}
+
+{% if section.settings.color != 'default' %}
+  {% assign extra_classes = extra_classes | append: ' image-with-text--color--' | append: section.settings.color %}
+{% endif %}
+
+{% if section.settings.seamless %}
+  {% assign extra_classes = extra_classes | append: ' image-with-text--seamless' %}
+{% endif %}
+
+<section class="full-bleed"
+         data-section-id="{{ section.id }}"
+         data-section-type="image-with-text">
+  <a class="image-with-text{{ extra_classes }}"
+     {% if section.settings.url != blank %}
+     href="{{ section.settings.url }}"
+     {% endif %}
+     >
+    <div class="image-with-text__image">
+      {% if section.settings.image != blank %}
+        {% render 'responsive-image', image: section.settings.image %}
+      {% else %}
+      <div class="placeholder-svg-container placeholder-svg-container--dark">
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+      {% endif %}
+    </div>
+    <div class="image-with-text__text">
+      {% if section.settings.heading != blank %}
+        <h2 class="f2 mt0 mb3 uppercase ls03 ff--heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="rte mb3 measure">
+          {{ section.settings.content }}
+        </div>
+      {% endif %}
+      {% if section.settings.button_text != blank %}
+        {% assign button_color = section.settings.button_color | replace: '-accent', '' %}
+
+        <div class="btn btn--color-{{ button_color }} uppercase ff--heading fw--bold ls03">
+          {{ section.settings.button_text | escape }}
+        </div>
+      {% endif %}
+    </div>
+  </a>
+</section>
+
+
+{% schema %}
+{
+  "name": "Image with text",
+  "class": "homepage-section section--image-with-text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "seamless",
+      "label": "Seamless"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Rich text",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Section color",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button color",
+      "options": [
+        {
+          "value": "primary-accent",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary-accent",
+          "label": "Secondary"
+        },
+        {
+          "value": "white",
+          "label": "White"
+        },
+        {
+          "value": "black",
+          "label": "Black"
+        }
+      ],
+      "default": "secondary-accent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

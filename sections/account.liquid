@@ -1,0 +1,174 @@
+<div class="holder-account">
+  <div class="holder-tabs">
+      <div class="holder-nav">
+          <h1>Welcome Back!</h1>
+          <p>{{ customer.name }}</p>
+          <div class="text-nav">
+              <span>MY REWARDS </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8.101" viewBox="0 0 15 8.101">
+                  <g id="next" transform="translate(15 -117.742) rotate(90)">
+                  <g id="Сгруппировать_42" data-name="Сгруппировать 42" transform="translate(117.742 0)">
+                      <path id="Контур_13" data-name="Контур 13" d="M125.672,7.088,118.734.17a.581.581,0,1,0-.821.823L124.438,7.5l-6.525,6.507a.581.581,0,0,0,.821.823l6.938-6.919a.581.581,0,0,0,0-.823Z" transform="translate(-117.742 0)" fill="#282828"/>
+                  </g>
+                  </g>
+              </svg>
+            </div>
+          <ul class="nav-tab">
+              <li class="active"><a href="#rewards-tab" >MY REWARDS  (<span data-lion-points="approved"></span>)</a></li>
+              <li><a href="#orders" >MY ORDERS</a></li>
+              <li><a href="#profile" >MY PROFILE</a></li>
+              <li><a href="#exchange" >GIVE $10 GET $10</a></li>
+              <li class="out-link"><a href="{{ routes.account_logout_url }}">Sign out</a></li>
+          </ul>
+      </div>
+      <div id="rewards-tab" class="holder-content-tab active">
+          <div class="row-bar">
+              <div class="col">
+                  <h2>MY REWARDS</h2>
+                  <div class="holder-bar">
+                      <div class="bar"><span></span></div>
+                      <span class="points-bar">500</span>
+                      <span class="points-bar">1000</span>
+                      <span class="points-bar">2000</span>
+                      <span class="points-bar">3000</span>
+                  </div>
+                  <div class="holder-points-sum">
+                      <h2>YOUR POINTS BALANCE:</h2>
+                      <span><span class="points-sum" data-lion-points="approved"></span> POINTS</span>
+                  </div>
+                        
+              </div>
+              <div class="col">              
+                <div class="holder-icon">
+                  <h3>{{ section.settings.perks_title }}</h3>
+                  {% for block in section.blocks %}
+              {% if block.type == 'perks-blocks' %}  
+                  <div class="icon-col">
+                    <span>{{ block.settings.perks_svg }}</span>
+                    <p>{{ block.settings.perks_text }}</p>
+                  </div>
+                  {% endif %}      
+              {% endfor %}  
+                </div>
+              </div>
+          </div> 
+                      
+        <div class="wrap-loyaltylion">
+              <h2>REDEEMED REWARDS</h2>
+              <div data-lion-claimed-rewards-list></div>    
+              <h2>REWARDS</h2>           
+              <div class="rewardsList" data-lion-rewards-list></div>
+              <h2>EARN MORE POINTS:</h2>
+              <div data-lion-rules-list></div>
+        </div>
+      </div>
+      <div id="orders" class="holder-content-tab">
+          {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+
+            <table class="account__orders responsive-table full-width text-left">
+              <thead>
+                <tr>
+                  <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr class="account__order">
+                    <th data-label="{{ 'customer.orders.order_number' | t }}" scope="row">
+                      <a href="{{ order.customer_url }}"
+                        class="underline"
+                        aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                    </th>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p class="text-center">{{ 'customer.orders.none' | t }}</p>
+          {% endif %}
+          {%- if paginate.pages > 1 -%}
+            {% include 'pagination', paginate: paginate %}
+          {%- endif -%}
+        {% endpaginate %}
+      </div>
+      <div id="profile" class="holder-content-tab">
+          <h2>MY PROFILE</h2>
+          {% assign date = 'now' | date: "%m/%d/%Y" %}
+          <table class="table-profile">
+              <tr>
+                  <td>FIRST NAME:</td>
+                  <td>{{customer.first_name}}</td>
+              </tr>
+              <tr>
+                  <td>LAST NAME:</td>
+                  <td>{{customer.last_name}}</td>
+              </tr>
+              <tr>
+                  <td>EMAIL ADDRESS:</td>
+                  <td>{{customer.email}}</td>
+              </tr>
+              <tr>
+                  <td>DATE JOINED:</td>
+                  <td>{{ date }}</td>
+              </tr>
+          </table>
+          <h2 class="ff--heading  f3 uppercase h-underline mt6 mb3">{{ 'customer.account.details' | t }}</h2>
+    <div class="measure ">
+      {{ customer.default_address | format_address }}
+
+      <div class="mt2 ">
+        <a href="{{ routes.account_addresses_url }}" class="btn btn--tertiary">
+          {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+        </a>
+      </div>
+    </div>
+      </div>
+      <div id="exchange" class="holder-content-tab">
+        <a class="btn btn-new" href="#" data-lion-refer>GIVE $10 GET $10</a>
+      </div>
+      
+      
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "Perks",
+    "settings": [
+      {
+        "id": "perks_title",
+        "type": "text",
+        "label": "Perks title",
+        "default": "CURRENT PERKS"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "perks-blocks",
+      "name": "Perks blocks",
+      "settings": [
+      {
+        "id": "perks_svg",
+        "type": "html",
+        "label": "Img svg"
+      },
+        {
+          "id": "perks_text",
+          "type": "text",
+          "label": "Perks text"
+        }
+       
+      ]
+    }      
+  ]
+}
+{% endschema %}

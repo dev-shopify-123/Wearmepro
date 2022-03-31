@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary_accent }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {% comment %}
+    {% assign content_for_header = content_for_header | replace: 'https://cdn.shopify.com/s/javascripts/tricorder/trekkie.storefront.min.js?v=2019.11.04.1', '' %}
+    {% assign content_for_header = content_for_header | replace: 'Gtag Pixel', 'nope' %}
+    {% endcomment %}
+    <!-- START CONTENT FOR HEADER -->
+    {{ content_for_header }}
+    <!-- END CONTENT FOR HEADER -->
+
+    <script>
+      var libraryTypes = {
+        link: 'link',
+        script: 'script'
+      };
+
+      var theme = {
+        strings: {
+          cartError: {{ 'cart.general.cart_error' | t | json }},
+          soldOut: {{ 'products.product.sold_out' | t | json }},
+          addToCart: {{ 'products.product.add_to_cart' | t | json }},
+          bisLong: {{ 'products.product.bis_long' | t | json }},
+          bisShort: {{ 'products.product.bis_short' | t | json }},
+        },
+        moneyFormat: {{ shop.money_format | json }},
+        moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }},
+        libraries: {
+          dimensions: {
+            tagId: 'wmp-dimensions',
+            src: {{ 'product--dimensions.js' | asset_url | json }},
+            type: libraryTypes.script
+          },
+          tsreviewswidget: {
+            tagId: 'ts-reviews-widget',
+            src: {{ 'product--trustspot.js' | asset_url | json }},
+            type: libraryTypes.script
+          }
+        }
+      };
+
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    {% if template contains 'collection' and 1 == 2 %}
+    <script src="{{ 'wmp-filters.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+    <script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script>
+
+    {% render 'critical-styles' %}
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" onload="this.rel='stylesheet'">
+
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </noscript>
+
+    {% if collection contains 'template' %}
+      <link rel="preload" as="style" href="{{ 'wmp-filters.css' | asset_url }}" onload="this.rel='stylesheet'">
+      <noscript>
+        <link rel="stylesheet" href="{{ 'wmp-filters.css' | asset_url }}">
+      </noscript>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ 'settings.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}">
+
+    {% comment %}
+    {% render 'load-css-script' %}
+    {% endcomment %}
+    {% render 'rel-preload-polyfill' %}
+
+    <title>{{ shop.name }}</title>
+
+  
+  {% render 'shogun-head' %}
+</head>
+  <body class="wmp preload">
+    {% render 'preloader' %}
+
+    <div class="flash-messages-container" data-flash-messages-container>
+      <div id="flash-messages">
+        <transition-group name="list-complete" tag="div">
+          <div v-for="(message, index) in flashMessages"
+               :key="message.message + message.index"
+               class="flash-message list-complete-item"
+               :class="message.statusClass">
+            <span class="flash-message__message"><% message.message %></span>
+          </div>
+        </transition>
+      </div>
+    </div>
+
+    {% include 'wmp-cart-drawer' %}
+
+    {% render 'announcement-bar' %}
+
+    {% section 'popup' %}
+    {% section 'featured-links' %}
+
+    <!-- start header -->
+
+    {% section 'desktop-header' %}
+    {% section 'desktop-nav' %}
+
+    {% section 'mobile-header-and-nav' %}
+
+    <!-- end header -->
+
+    {% unless content_for_layout contains 'data-collection-header-image' %}
+      {% render 'breadcrumbs' %}
+    {% endunless %}
+
+    <div id="pageContent">
+      {{ content_for_layout }}
+    </div>
+
+    {% section 'footer' %}
+
+
+    <a href="#" class="back-to-top"
+         data-back-to-top>
+      <span class="back-to-top__icon material-icons">
+        keyboard_arrow_up
+      </span>
+    </a>
+
+    {% comment %}
+     TrustSpot
+    {% endcomment %}
+
+    <link rel="preload" as="style" href="https://trustspot.io/index.php/api/pub/product_widget_css/4662/widget.css"
+          onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://trustspot.io/assets/css/font-awesome.min.css"
+          onload="this.rel='stylesheet'">
+
+    <noscript>
+      <link rel="stylesheet" type="text/css"
+            href="https://trustspot.io/index.php/api/pub/product_widget_css/4662/widget.css">
+      <link rel="stylesheet" type="text/css" href="https://trustspot.io/assets/css/font-awesome.min.css">
+    </noscript>
+    <script>trustspot_key = '7005bfa190ef99dc38d21cc5f6c8348025ad9d0806878aad15dc9c1e62ec23c05e80f7051a6d3240e039fc23d86d045ae6d5df647550d98c77456ecb28ee7515';</script>
+    <script defer src="https://trustspot.io/assets/js/trustspot_product_reviews.js"></script>
+    <script>
+      function trustspot_full_refresh() { trustspot_pr_methods = [], trustspot_forEachElement(".trustspot-inline-simple", function (t, e) { trustspot_pr_methods.push({ method: "inline_simple", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-inline-category", function (t, e) { trustspot_pr_methods.push({ method: "inline_category", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-inline-product", function (t, e) { trustspot_pr_methods.push({ method: "inline_product", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-main-widget", function (t, e) { trustspot_pr_methods.push({ method: "main_widget", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-photo-carousel", function (t, e) { trustspot_pr_methods.push({ method: "photo_carousel", params: { limit: t.getAttribute("data-photo-limit"), product: t.getAttribute("data-show-product"), company: t.getAttribute("data-show-company"), instagram: t.getAttribute("data-show-instagram"), title: t.getAttribute("data-title"), button: t.getAttribute("data-button-text") } }) }), trustspot_forEachElement(".trustspot-photo-gallery", function (t, e) { trustspot_gallery_params = { product: t.getAttribute("data-show-product"), company: t.getAttribute("data-show-company"), instagram: t.getAttribute("data-show-instagram"), title: t.getAttribute("data-title"), button: t.getAttribute("data-button-text"), limit: t.getAttribute("data-photo-limit"), infinite: t.getAttribute("data-infinite-scroll") }, trustspot_pr_methods.push({ method: "photo_gallery", params: trustspot_gallery_params }) }), trustspot_forEachElement(".trustspot-product-carousel", function (t, e) { trustspot_pr_methods.push({ method: "product_carousel", params: {} }) }), trustspot_forEachElement(".trustspot-review-count", function (t, e) { trustspot_pr_methods.push({ method: "review_count", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-average-rating", function (t, e) { trustspot_pr_methods.push({ method: "average_rating", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_refresh("", 1) }
+    </script>
+
+
+    <!-- Back in Stock helper snippet -->
+    {% render 'back-in-stock-helper' %}
+    <!-- End Back in Stock helper snippet -->
+  </body>
+</html>

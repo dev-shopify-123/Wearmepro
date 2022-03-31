@@ -1,0 +1,66 @@
+{% include "login" %}
+
+  {% schema %}
+  {
+      "name": "Banner",
+      "settings": [
+        {
+          "id": "img",
+          "type": "image_picker",
+          "label": "Banner img"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title form"
+        },
+        {
+          "id": "title_list",
+          "type": "richtext",
+          "label": "Title list"
+        },
+        {
+          "id": "subtitle_img",
+          "type": "html",
+          "label": "Subtitle img"
+        },
+        {
+          "id": "subtitle_points",
+         "type": "text",
+         "label": "Subtitle points"
+        },
+        {
+          "id": "subtitle_text",
+         "type": "text",
+         "label": "Subtitle text"
+        },
+        {
+          "type": "checkbox",
+          "id": "list_col",
+          "label": "List awards col/row",
+          "default": false 
+        }
+      ],
+      "blocks": [
+      {
+        "type": "awards-blocks",
+        "name": "Awards blocks",
+        "settings": [
+          {
+            "id": "awards_img",
+            "type": "html",
+            "label": "Awards img"
+          },
+          {
+            "id": "awards_text",
+            "type": "text",
+            "label": "Awards text"
+          }
+        ]
+      }      
+    ]
+  }
+  {% endschema %}
+  
+  
+  

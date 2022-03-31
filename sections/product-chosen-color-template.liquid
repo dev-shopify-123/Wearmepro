@@ -1,0 +1,502 @@
+<!-- sections/product-template.liquid -->
+{%- assign product_display_title = product.title | split: ' ' | first -%}
+{%- if product.tags contains '__settings:full-title' -%}
+  {% assign product_display_title = product.title -%}
+{%- endif -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- assign has_styled_media = false -%}
+{%- assign styled_images = '' -%}
+
+{%- assign enable_bis = settings.enable_bis -%}
+
+{% assign classes = 'new-product' %}
+
+<section class="{{ classes }}"
+        data-section-id="{{ section.id }}"
+         data-section-type="product"
+         data-enable-bis={{ enable_bis | json }}
+         data-product-id="{{ product.id }}"
+         {% if product.selected_variant %}
+         data-selected-variant="true"
+         data-selected-variant-id="{{ product.selected_variant.id }}"
+         {% if product.selected_variant.featured_media %}
+         data-selected-variant-featured-media="true"
+         data-selected-variant-featured-media-id="{{ product.selected_variant.featured_media.id }}"
+         {% endif %}
+         {% else %}
+         data-selected-variant="false"
+         {% endif %}
+         data-enable-history-state="true">
+  <div class="product-section">
+    <div class="product-section__desktop-media lg--px2 lg--pt2 lg--pb0">
+      <div id="product-section-desktop-slideshow-{{ section.id }}"
+           class="product-section__desktop-slideshow"
+           data-product-slideshow>
+        {% for media in product.media %}
+          {% assign media_alt_dc = media.alt | downcase %}
+          {% unless media_alt_dc contains 'styled' %}
+              {% assign filter_alt = media.alt | downcase | replace: ' ', '-' | replace: '/', '-' %}
+            <div class="product-section__media-single {{ filter_alt }}"
+                 data-media-index="{% increment desktop_media_index %}"
+                 {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
+                 data-initial-media
+                 {% endif %}
+                 data-single-media-id="{{ section.id }}-{{ media.id }}">
+              {% render 'media', media: media, ratio: media.aspect_ratio %}
+            </div>
+          {% else %}
+            {% assign has_styled_media = true %}
+            {% if media.media_type == 'video' %}
+              {% assign styled_video = styled_video | append: media.id | append: ' ' %}
+            {% else %}
+              {% assign styled_images = styled_images | append: media.id | append: ' ' %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+        {% assign styled_video_array = styled_video | strip | split: ' ' %}
+        {% assign styled_images_array = styled_images | strip | split: ' ' %}
+        {% assign styled_media_array = styled_video_array | concat: styled_images_array %}
+      </div>
+      <div id="product-section-desktop-thumbnails-{{ section.id }}"
+           class="product-section__desktop-thumbnails my2"
+           data-product-media-thumbnails>
+        {% for media in product.media %}
+          {% assign media_alt_dc = media.alt | downcase %}
+          {% unless media_alt_dc contains 'styled' %}
+              {% assign filter_alt = media.alt | downcase | replace: ' ', '-' | replace: '/', '-' %}
+            <div class="product-section__thumbnail mx2 {{ filter_alt }}"
+                 data-media-index="{% increment desktop_thumbnail_index %}"
+                 {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
+                 data-initial-media
+                 {% endif %}
+                 data-target-media-id="{{ section.id }}-{{ media.id }}">
+              {% render 'media', media: media, ratio: media.aspect_ratio %}
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="product-section__info lg--px3 lg--pt3 lg--pb0 md-dn--mt3 md-dn--text-center">
+      <h1 class="product-section__title f2 fw--bold uppercase mt0 mb2">
+        {{ product_display_title }}
+      </h1>
+      <div class="product-section__mobile-media">
+        <div id="product-section-mobile-slideshow-{{ section.id }}"
+             class="product-section__mobile-slideshow"
+             data-product-slideshow>
+          {% for media in product.media %}
+            {% if forloop.first %}
+              {% assign media_preload = true %}
+            {% else %}
+              {% assign media_preload = false %}
+            {% endif %}
+            {% assign media_alt_dc = media.alt | downcase %}
+            {% unless media_alt_dc contains 'styled' %}
+                {% assign filter_alt = media.alt | downcase | replace: ' ', '-' | replace: '/', '-' %}
+              <div class="product-section__media-single {{ filter_alt }}"
+                   data-media-index="{% increment mobile_media_index %}"
+                   {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
+                   data-initial-media
+                   {% endif %}
+                   data-single-media-id="{{ section.id }}-{{ media.id }}">
+                {% render 'media', media: media,
+                  ratio: media.aspect_ratio,
+                  media_preload: media_preload,
+                %}
+              </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product-section__label">
+        {% render 'product-label', product: product, extra_classes: 'mt2 lg--mt1 mb2' %}
+      </div>
+      <div class="product-section__price ff--heading f1 md-dn--f3 fw--bold uppercase mt1 mb2">
+        {% render 'product-price', variant: current_variant, product: product %}
+      </div>
+      <div class="product-section__stars mb2 lg--text-left"
+           data-stars>
+        <div class="trustspot-inline-simple" data-product-sku="{{ product.id }}"></div>
+      </div>
+      {% unless product.template_suffix == 'variant-select' %}
+      <hr class="separator">
+      <div class="product-section__variant-thumbnails mxn2 my2 py2"
+           data-variant-thumbnails>
+        <div class="md-dn--inline-block mx2">
+          <div class="product-section__variant-thumbnails-scroll-container">
+          {% for variant in product.variants %}
+              {% assign data_filter = variant.title | downcase | replace: ' ', '-' | replace: '/', '-' %}
+          <div class="product-section__variant-thumbnail{% if variant.id == current_variant.id %} is-active{% endif %} mx2 p1 lg--my2 js-tippy"
+               data-tippy-content="{{ variant.title }}"
+               data-variant-id="{{ variant.id }}"
+               data-variant-option1="{{ variant.option1 }}"
+               data-variant-option2="{{ variant.option2 }}"
+               data-variant-option3="{{ variant.option3 }}"
+               data-filter="{{ data_filter }}"
+               data-variant-thumbnail>
+            {% render 'media', media: variant.featured_media, ratio: variant.featured_media.aspect_ratio %}
+          </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endunless %}
+      <hr class="separator">
+      {% if product.tags contains 'Lens Type_Blue Light' and settings.enable_bl_promo %}
+      <div class="product-section__bl-promo-text text-center ls12 color--on-sale uppercase ff--heading fw--bold">
+        <p class="md-dn--mt0 lg--mb0">{{ settings.bl_promo_text }}</p>
+      </div>
+      {% endif %}
+      <div class="product-section__form lg--mt2 lg--mb3">
+        {%- capture form_classes -%}
+        {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+        {%- endcapture -%}
+        {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+        {% unless product.has_only_default_variant %}
+          {% assign show_variant_select = false %}
+          {% if product.template_suffix contains 'variant-select' %}
+            {% assign show_variant_select = true %}
+          {% endif %}
+          <div class="mt2 lg--mb4 {% unless show_variant_select %}visually-hidden{% endunless %}">
+            {% for option in product.options_with_values %}
+              <div class="">
+                <label for="SingleOptionSelector-{{ forloop.index0 }}"
+                       class="block full-width mb2">
+                  {{ option.name }}
+                </label>
+                <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+                        id="SingleOptionSelector-{{ forloop.index0 }}"
+                        data-index="option{{ forloop.index }}">
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}"
+                            {% if option.selected_value == value %} selected="selected"{% endif %}
+                            >
+                      {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                {{ variant.title }}
+              </option>
+            {% else %}
+              <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+        {% comment %}
+            Uncomment this and replace the product ID
+            to show product-specific notices
+        {% if product.id == 4610920644697 %}
+        <div class="product-form__shipping-notice my2">
+          <span class="color--warning">This item will ship by October 6, 2020</span>
+        </div>
+        {% endif %}
+        {% endcomment %}
+        {% if product.handle == 'jules-round-retro-blue-ligh-blocking-glasses' or product.handle == 'alex-square-modern-metal-frame-blue-light-blocking-computer-glasses' %}
+              <div class="mob-show">
+                <div>
+                 {{ section.settings.mobile_title }}
+                </div>
+                  {%- assign img_url = section.settings.mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- assign widths = '[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' -%}
+                <div class="holder-img">
+                  <img id="{{ image_id }}"
+                       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                       class="lazyload"
+                       data-src="{{ img_url }}"
+                       data-widths="{{ widths }}"
+                       data-sizes="auto"
+                       data-image>
+                </div>
+              </div>
+        {% endif %}
+
+        <div class="lg--hide text-right o-50 f6 my2">
+          <a href="#mobile-see-it-styled"
+             class="color--black uppercase underline"
+             data-mobile-see-it-styled-link>
+            See it Styled
+          </a>
+        </div>
+
+        <div class="product-section-form-actions md-dn--mt1 lg--mt2 lg--mxn1{% if enable_bis and current_variant.available == false %} hide{% endif %}"
+             data-available-actions>
+          <div class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__add-to-cart">
+            <button class="btn btn--product-section-form uppercase f--16px--force fw--bold ls03 bg-gradient--green"
+                    {% unless current_variant.available %}
+                    aria-disabled="true"
+                    {% endunless %}
+                    aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}"
+                    {% endunless %}
+                    data-add-to-cart
+                    type="submit">
+              {% unless current_variant.available %}
+                <span data-add-to-cart-text>{{ 'products.product.sold_out' | t }}</span>
+              {% else %}
+                <span data-add-to-cart-text>{{ 'products.product.add_to_cart' | t }}</span>
+              {% endunless %}
+              <span class="hide" data-loader>
+                Loading…
+              </span>
+            </button>
+          </div>
+          <div class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__dynamic-checkout-buttons">
+            {{ form | payment_button }}
+          </div>
+        </div>
+
+        {% if enable_bis %}
+        <div class="product-section-form-actions my3 md-dn--mt1 lg--mxn1 {% if current_variant.available %}hide{% endif %}"
+             data-bis-actions>
+          <div class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__add-to-cart ">
+            <button class="btn btn--product-section-form uppercase f5 bg-gradient--orange"
+                    id="BIS_trigger"
+                    type="button"
+                    data-variant-id="{{ current_variant.id }}"
+                    data-bis-trigger>
+              <span>{{ 'products.product.bis_long' | t }}</span>
+            </button>
+          </div>
+        </div>
+        {% endif %}
+
+        {% endform %}
+      </div>
+      {% if has_styled_media %}
+      <div id="mobile-see-it-styled" class="product-section__mobile-see-it-styled mt3">
+        <h2 class="f3 mt0 mb3 fw--bold uppercase">See It Styled</h2>
+        <div class="mobile-see-it-styled" data-mobile-see-it-styled>
+          {% for media_id in styled_media_array %}
+            {% assign media_id_number = media_id | plus: 0 %}
+            {% assign styled_media = product.media | where: 'id', media_id_number | first %}
+            <div class="mobile-see-it-styled__item see-it-styled-item">
+              {% render 'media', media: styled_media, ratio: styled_media.aspect_ratio %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if product.tags contains 'customer-images' %}
+        {% assign output_customer_images = true %}
+        {% assign total_tabs = 4 %}
+      {% else %}
+        {% assign output_customer_images = false %}
+        {% assign total_tabs = 3 %}
+      {% endif %}
+      <div class="product-section__tabs md-dn--mb3 md-dn--mt3 product-section-tabs"
+           data-tabs-container>
+        
+        {% include 'product-icons' %} 
+        
+        <ul class="product-section-tabs__tabs">
+          {% for i in (1..total_tabs) %}
+          <li class="tabs__tab ff--heading f5 fw--bold uppercase {% if i == 4 %}lg--hide{% endif %}"
+              data-tab="{{ i }}">
+            {%- case i -%}
+              {%- when 1 -%}
+                Description
+              {%- when 2 -%}
+                Shipping
+              {%- when 3 -%}
+                Size Chart
+              {%- when 4 -%}
+                Our Happy Customers
+            {%- endcase -%}
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% for i in (1..total_tabs) %}
+        <div class="tabs__accordion-tab ff--heading f5 fw--bold uppercase"
+             {% if i == 4 %}
+             data-initial-tab
+             {% endif %}
+             data-accordion-tab
+             data-tab="{{ i }}">
+            {%- case i -%}
+              {%- when 1 -%}
+                Description
+              {%- when 2 -%}
+                Shipping
+              {%- when 3 -%}
+                Size Chart
+              {%- when 4 -%}
+                Our Happy Customers
+            {%- endcase -%}
+        </div>
+        <div class="product-section-tabs__content text-left lh--copy"
+             {% if i == 4 %}
+             data-initial-tab-content
+             {% endif %}
+             data-tab-content="{{ i }}">
+          {% case i %}
+            {%- when 1 -%}
+            <div class="product-section-tabs__content-wrapper py3 px4"
+                 data-tab-content-wrapper>
+              <div class="rte f5--force product-section__description"
+                  data-product-description>
+                {{ product.description }}
+              </div>
+            </div>
+            {%- when 2 -%}
+            <div class="product-section-tabs__content-wrapper py3 px3"
+                 data-tab-content-wrapper>
+              <div class="product-section-tabs__shipping-tab">
+                <div class="shipping-tab__text">
+                  {% assign shipping_spend_string = settings.cart_free_shipping_threshold | prepend: '$' %}
+                  {{ section.settings.shipping_html | replace: '__FREE_SHIPPING_SPEND__', shipping_spend_string }}
+                </div>
+                <div class="shipping-tab__image md-dn--mt3">
+                  {% render 'responsive-image', image: section.settings.shipping_image %}
+                </div>
+              </div>
+            </div>
+            {%- when 3 -%}
+            <div class="product-section-tabs__content-wrapper py3 px4"
+                 data-tab-content-wrapper>
+                 {% if product.tags contains "svg_leaf" or  product.tags contains "svg_meadow" or  product.tags contains "svg_willow" %}
+                 {% if product.tags contains "svg_leaf" %}
+                   {% render 'product-svg-leaf' %}
+                 {% endif %}
+                 {% if product.tags contains "svg_meadow" %}
+                  {% render 'product-svg-meadow' %}                  
+                 {% endif %}
+                 {% if product.tags contains "svg_willow" %}
+                  {% render 'product-svg-willow' %}
+                 {% endif %}
+                 {% else %}
+                 {% render 'product-svg' %}
+               {% endif %}
+              {% render 'product-dimensions-style' %}
+            </div>
+            {%- when 4 -%}
+            <div class="product-section-tabs__content-wrapper lg--hide lg--pt1 md-dn--pt2 pb3 lg--px2 md-dn--px1"
+                 data-tab-content-wrapper>
+              <div class="trustspot-photo-carousel"
+                   data-visual-entity-id="17343"
+                   data-product-sku="{{ product.id }}"></div>
+            </div>
+            <style>
+              .wmp h1.trustspot-photo-carousel-title {
+                display: none !important;
+              }
+
+              .wmp .trustspot-photo-carousel-title *, body .trustspot-photo-carousel * {
+                font-family: 'Zona Pro', sans-serif;
+                text-transform: uppercase;
+                font-size: var(--font-size-5);
+                letter-spacing: var(--letter-spacing-03);
+              }
+            </style>
+          {% endcase %}
+          <div class="product-section-tabs__content-overflow hide" data-content-overflow></div>
+        </div><!-- /.product-section-tabs__content -->
+        {% endfor %}
+      </div>
+    </div><!-- /.product-section__info -->
+  </div><!-- /.product-section -->
+
+  {% if has_styled_media %}
+  <div class="desktop-see-it-styled-container mt6 md-dn--mt3 text-center mx--auto">
+    <h2 class="f2 mt0 mb3 fw--bold uppercase">See It Styled</h2>
+    <div class="desktop-see-it-styled mxn2"
+         data-desktop-see-it-styled>
+      {% for media_id in styled_media_array %}
+        {% assign media_id_number = media_id | plus: 0 %}
+        {% assign styled_media = product.media | where: 'id', media_id_number | first %}
+        <div class="desktop-see-it-styled__item mx2 see-it-styled-item">
+          {% render 'media', media: styled_media, ratio: styled_media.aspect_ratio %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if output_customer_images %}
+  <div class="md-dn--hide mt6 text-center">
+    <h2 class="f2 mt0 mb3 fw--bold uppercase">Our Happy Customers</h2>
+    <div class="mx--auto measure--xtra-wide customer-images-desktop">
+      <div class="trustspot-photo-carousel"
+          data-visual-entity-id="17343"
+          data-product-sku="{{ product.id }}"></div>
+    </div>
+    <style>
+      .wmp .customer-images-desktop .trustspot-photo-carousel .carousel-column {
+        margin: 0 var(--space-1) !important;
+      }
+
+      .wmp .customer-images-desktop .trustspot-photo-carousel .carousel-column > div {
+        border-radius: 0 !important;
+      }
+
+      .wmp .customer-images-desktop .trustspot-photo-carousel .trustspot-carousel-container > div:not(.trustspot-reviews-gallery) {
+        margin-left: calc(var(--space-1) * -1) !important;
+      }
+    </style>
+  </div>
+  {% endif %}
+
+  <div class="trustspot-container mb5 measure--xtra-wide product-section__trustspot mt6 md-dn--mt3 text-center mx--auto">
+    <h2 id="product-reviews-{{ section.id }}"
+        class="f2 md-dn--f3 mt0 mb3 fw--bold uppercase">Reviews</h2>
+    <div class="trustspot trustspot-main-widget"
+         data-product-sku="{{ product.id }}"
+         data-name="{{ product.title | escape }}"
+         data-url="{{ shop.url }}{{ product.url }}"
+         data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+         ></div>
+  </div>
+
+  {% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+  {% endunless %}
+</section>
+{% schema %}
+{
+  "name": "Product",
+  "class": "template template--product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Shipping tab"
+    },
+    {
+      "type": "html",
+      "id": "shipping_html",
+      "label": "Shipping tab content"
+    },
+    {
+      "type": "image_picker",
+      "id": "shipping_image",
+      "label": "Shipping tab image"
+    },
+    {
+        "type": "html",
+        "id": "mobile_title",
+        "label": "Title for Jules and Alex"
+    },
+    {
+        "type": "text",
+        "id": "mobile_text",
+        "label": "Text for Jules and Alex"
+    },
+    {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Image for Jules and Alex"
+    }
+  ]
+}
+{% endschema %}

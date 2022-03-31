@@ -1,0 +1,44 @@
+{% comment %}
+    Renders a pagination bar
+
+    Accepts:
+    - paginate: {Object} Paginate Liquid object (required)
+
+    Usage:
+    {% include 'pagination', paginate: paginate %}
+{% endcomment %}
+<ul class="list--inline pagination my4 text-center">
+  {% unless paginate.previous.is_link %}
+    <li aria-hidden="true">
+      <span class="o-50">
+      <span class="material-icons custom-icon-chevron_left"></span>
+        <span>{{ 'general.pagination.previous' | t }}</span>
+      </span>
+    </li>
+    {% else %}
+    <li>
+      <a href="{{ paginate.previous.url }}">
+      <span class="material-icons custom-icon-chevron_left"></span>
+        <span>{{ 'general.pagination.previous' | t }}</span>
+      </a>
+    </li>
+  {% endunless %}
+  <li class="pagination__text mx3">
+    {{ 'general.pagination.current_page' | t: current: paginate.current_page, total: paginate.pages }}
+  </li>
+  {% unless paginate.next.is_link %}
+    <li aria-hidden="true">
+      <span class="o-50">
+        <span>{{ 'general.pagination.next' | t }}</span>
+      <span class="material-icons custom-icon-chevron_right"></span>
+      </span>
+    </li>
+  {% else %}
+    <li>
+      <a href="{{ paginate.next.url }}">
+        <span>{{ 'general.pagination.next' | t }}</span>
+      <span class="material-icons custom-icon-chevron_right"></span>
+      </a>
+    </li>
+  {% endunless %}
+</ul>

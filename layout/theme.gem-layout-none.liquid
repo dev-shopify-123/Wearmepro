@@ -1,0 +1,287 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!DOCTYPE html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+ {%- render 'layouthub_header' -%}
+        <!-- Preconnect domains -->
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://apis.google.com" crossorigin>
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+<!--   {% include 'personizely' %} -->
+    <meta name="theme-color" content="{{ settings.color_primary_accent }}">
+    <link rel="preload" href="https://trustspot.io/assets/js/trustspot_product_reviews.js" as="script">
+    {% if template contains 'product' %}
+        <link rel="preconnect" href="https://trustspot.io" crossorigin>
+      <link rel="preload" href="https://trustspot.io/assets/js/trustspot_product_reviews.js" as="script">
+      <link rel="preload" href="https://trustspot.io/assets/js/trustspot_photo_carousel.js" as="script">
+    {% endif %}
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {%- endif -%}
+
+    <title>{{ page_title }}{% if current_tags %} | {{ filters_string }}{% endif %}{% if current_page != 1 %} &ndash; Page
+      {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if template == 'collection' %}
+    {% if collection %}
+    <link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+    {% endif %}
+    {% elsif current_tags or canonical_url contains '' and canonical_url contains '' %}
+    <link rel="canonical" href="{{ canonical_url | split: "?page=" | first }}" />
+    {% else %}
+    <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+
+    {% if template == 'index' %}
+    <meta name="keywords"
+          content="Sunglasses Subscription Box, Designer Sunglasses Subscription, Affordable Sunglasses for Sale" />
+    {% elsif collection.handle == 'designer-inspired' %}
+    <meta name="keywords" content="Designer Inspired Sunglasses">
+    {% elsif collection.handle == 'men-clear-glasses' %}
+    <meta name="keywords" content="Mens Clear Glasses, Non Prescription Glasses for Men">
+    {% elsif product.handle == 'trishas-vintage-oval-lenses' %}
+    <meta name="keywords" content="Vintage Oval Glasses">
+    {% elsif collection.handle == 'clear-glasses' %}
+    <meta name="keywords" content="Clear Frame Glasses, Vintage Clear Glasses">
+    {% elsif collection.handle == 'women-sunglasses' %}
+    <meta name="keywords" content="Fashion Glasses for Women">
+    {% endif %}
+
+    {% if collection.handle == '/designer-inspired/round' %}
+    <meta name="robots" content="noindex">
+    {% endif %}
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% render 'critical-styles' %}
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" onload="this.rel='stylesheet'">
+
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </noscript>
+
+    {% render 'css-settings' %}
+	
+    <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}" >
+    
+    
+
+    <!-- scripts -->
+    {% render 'rel-preload-polyfill' %}
+
+    {% render 'social-meta-tags' %}
+
+    <script>
+      if ("undefined" == typeof globalTrustSpotURL) {
+        globalTrustSpotURL = "https://trustspot.io";
+      }
+    </script>
+
+    <script>
+      var libraryTypes = {
+        link: 'link',
+        script: 'script'
+      };
+
+      var theme = {
+        strings: {
+          cartError: {{ 'cart.general.cart_error' | t | json }},
+          soldOut: {{ 'products.product.sold_out' | t | json }},
+          addToCart: {{ 'products.product.add_to_cart' | t | json }},
+          bisLong: {{ 'products.product.bis_long' | t | json }},
+          bisShort: {{ 'products.product.bis_short' | t | json }},
+        },
+        moneyFormat: {{ shop.money_format | json }},
+        moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }},
+        cartCurrency: {{ cart.currency.iso_code | json }},
+        cartRecommendations: {
+          matchText: {{ settings.cart_recommendations_type_string | json }},
+          matchCollection: {{ settings.cart_recommendations_match_collection | json }},
+          defaultCollection: {{ settings.cart_recommendations_default_collection | json }},
+        },
+        libraries: {
+          vendorLazy: {
+            tagId: 'vendor-lazy',
+            src: {{ 'vendor--lazy.js' | asset_url | json }},
+            type: libraryTypes.script
+          },
+          dimensions: {
+            tagId: 'wmp-dimensions',
+            src: {{ 'product--dimensions.js' | asset_url | json }},
+            type: libraryTypes.script
+          },
+        }
+      };
+
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    <script>
+      window.ProductBundlerOptionsConfig = {
+        shopId: {{ all_products[settings.cart_free_pair_product].selected_or_first_available_variant.id | times: 2 | json }},
+        variantSwatchesIds: [{{ settings.cart_free_pair_threshold | plus: 3615231737165 | times: 3 | json  }},861459013279280,156795179248853,960580534541804,325572777813251],
+        linkedOptionsIds: [36619323397762,93054756353498,55070302439636,27933170401846,85330569986934,08346305885672,54767659809461,58233936397502,46179810970022,28982150060009,{{ settings.cart_free_shipping_threshold | plus: 2316311524162 | times: 2 | json  }}],
+      };
+    </script>
+    {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    
+
+  
+
+    {% if template contains 'collection' %}
+      <script src="{{ 'theme__filters.js' | asset_url }}" defer="defer"></script>
+      <link rel="preload" as="style" href="{{ 'theme__filters.css' | asset_url }}" onload="this.rel='stylesheet'">
+      <noscript>
+        <link rel="stylesheet" href="{{ 'theme__filters.css' | asset_url }}">
+      </noscript>
+    {% endif %}
+
+    {% if template contains 'shipping' %}
+      <script src="{{ 'theme__shipping.js' | asset_url }}" defer="defer"></script>
+      <link rel="preload" as="style" href="{{ 'theme__shipping.css' | asset_url }}" onload="this.rel='stylesheet'">
+      <noscript>
+        <link rel="stylesheet" href="{{ 'theme__shipping.css' | asset_url }}">
+      </noscript>
+    {% endif %}
+
+    {% if template == 'page.about' %}
+      <link rel="preload" href="{{ 'theme__about-us.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
+      <noscript>
+        <link rel="stylesheet" href="{{ 'theme__about-us.css' | asset_url }}">
+      </noscript>
+    {% endif %}
+
+    {% if template == 'page.why-wmp' %}
+      <script src="{{ 'theme__why-wmp.js' | asset_url }}" defer="defer"></script>
+      <link rel="preload" href="{{ 'theme__why-wmp.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
+      <noscript>
+        <link rel="stylesheet" href="{{ 'theme__why-wmp.css' | asset_url }}">
+      </noscript>
+    {% endif %}
+    
+  
+
+    {% if template == 'blog' %}
+      <script src="{{ 'theme__blog.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+
+ 
+    <script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script>
+     
+    {{ content_for_header }}
+
+        <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PM66M4H');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Snap Pixel Code -->
+    <script type='text/javascript'>
+      (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+      {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+      a.queue=[];var s='script';r=t.createElement(s);r.async=!0;
+      r.src=n;var u=t.getElementsByTagName(s)[0];
+      u.parentNode.insertBefore(r,u);})(window,document,
+      'https://sc-static.net/scevent.min.js');
+
+      snaptr('init', 'e44092e5-b5ff-4ee6-be0d-ab801d71fa76', {
+        {% if customer %}
+        'user_hashed_email': {{ customer.email | strip | sha256 | json }},
+          {% if customer.phone != blank %}
+            'user_hashed_phone_number': {{ customer.phone | strip | handleize | replace: '-', '' | sha256 | json }},
+          {% elsif customer.default_address and customer.default_address.phone != blank %}
+            'user_hashed_phone_number': {{ customer.default_address.phone | strip | handleize | replace: '-', '' | sha256 | json }},
+          {% endif %}
+        {% endif %}
+      });
+
+      {% if template contains 'product' and product.selected_or_first_available_variant %}
+      {% assign tracking_id = product.selected_or_first_available_variant.id %}
+      snaptr('track', 'PAGE_VIEW',
+        {
+          'item_ids': [{{ tracking_id }},]
+        }
+      );
+      {% endif %}
+
+      {% if template == 'search' and search.performed %}
+      snaptr('track', 'SEARCH',
+        {
+          'search_string': {{ search.terms | json }}
+        }
+      );
+      {% endif %}
+
+    </script>
+    <!-- End Snap Pixel Code -->  
+
+	{% comment %}
+     TrustSpot
+    {% endcomment %}
+
+    <link rel="stylesheet"
+          href="https://trustspot.io/index.php/api/pub/product_widget_css/4662/widget.css"
+          media="print"
+          onload="this.media='all'">
+    <link rel="stylesheet"
+          href="https://trustspot.io/assets/css/font-awesome.min.css"
+          media="print"
+          onload="this.media='all'">
+
+    <noscript>
+      <link rel="stylesheet"
+            type="text/css"
+            href="https://trustspot.io/index.php/api/pub/product_widget_css/4662/widget.css">
+      <link rel="stylesheet"
+            type="text/css"
+            href="https://trustspot.io/assets/css/font-awesome.min.css">
+    </noscript>
+    <script>trustspot_key = '7005bfa190ef99dc38d21cc5f6c8348025ad9d0806878aad15dc9c1e62ec23c05e80f7051a6d3240e039fc23d86d045ae6d5df647550d98c77456ecb28ee7515';</script>
+    <script src="https://trustspot.io/assets/js/trustspot_product_reviews.js"></script>
+    <script>
+      function trustspot_full_refresh() { trustspot_pr_methods = [], trustspot_forEachElement(".trustspot-inline-simple", function (t, e) { trustspot_pr_methods.push({ method: "inline_simple", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-inline-category", function (t, e) { trustspot_pr_methods.push({ method: "inline_category", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-inline-product", function (t, e) { trustspot_pr_methods.push({ method: "inline_product", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-main-widget", function (t, e) { trustspot_pr_methods.push({ method: "main_widget", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-photo-carousel", function (t, e) { trustspot_pr_methods.push({ method: "photo_carousel", params: { limit: t.getAttribute("data-photo-limit"), product: t.getAttribute("data-show-product"), company: t.getAttribute("data-show-company"), instagram: t.getAttribute("data-show-instagram"), title: t.getAttribute("data-title"), button: t.getAttribute("data-button-text") } }) }), trustspot_forEachElement(".trustspot-photo-gallery", function (t, e) { trustspot_gallery_params = { product: t.getAttribute("data-show-product"), company: t.getAttribute("data-show-company"), instagram: t.getAttribute("data-show-instagram"), title: t.getAttribute("data-title"), button: t.getAttribute("data-button-text"), limit: t.getAttribute("data-photo-limit"), infinite: t.getAttribute("data-infinite-scroll") }, trustspot_pr_methods.push({ method: "photo_gallery", params: trustspot_gallery_params }) }), trustspot_forEachElement(".trustspot-product-carousel", function (t, e) { trustspot_pr_methods.push({ method: "product_carousel", params: {} }) }), trustspot_forEachElement(".trustspot-review-count", function (t, e) { trustspot_pr_methods.push({ method: "review_count", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_forEachElement(".trustspot-average-rating", function (t, e) { trustspot_pr_methods.push({ method: "average_rating", params: { sku: t.getAttribute("data-product-sku"), name: t.getAttribute("data-name") } }) }), trustspot_refresh("", 1) }
+    </script>
+    
+  
+  {% render 'shogun-head' %}
+ 
+
+ </head> 
+  <body>
+<div class="gem-container">
+	{{ content_for_layout }}
+</div><!-- end .gem-container -->
+<!--Gem_Page_Footer_Script-->
+{% include 'gem-app-footer-scripts' %}
+<!--End_Gem_Page_Footer_Script-->
+</body>
+
+<!-- LensAdvizor snippet starts -->
+{% if request.page_type == 'product' %}
+{% include 'lensadvizor' %}
+{% endif %}
+<!-- LensAdvizor snippet ends -->
+</html>

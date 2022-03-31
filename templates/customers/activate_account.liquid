@@ -1,0 +1,54 @@
+<!-- customers/activate_account.liquid -->
+<section class="with-padding mb5">
+  {% form 'activate_customer_password' %}
+  {%- if form.errors -%}
+  <div class="measure mx--auto mb3 form__status form__status--error">
+    <div class="text-center f5 m0">
+      {{ form.errors | default_errors }}
+    </div>
+  </div>
+  {%- endif -%}
+
+  <h1 class="page__title ff--heading text-center f2 uppercase h-underline">{{ 'customer.activate_account.title' | t }}</h1>
+  <p class="text-center">{{ 'customer.activate_account.subtext' | t }}</p>
+
+  <div class="form__content measure mx--auto mt4">
+    <div class="form__row">
+      <div class="form__input-group">
+        <label for="password" class="form__label label--required">{{ 'customer.activate_account.password' | t }}</label>
+        <input id="password"
+              name="customer[password]"
+              type="password"
+              class="form__input"
+              placeholder="{{ 'customer.activate_account.password' | t }}"
+              required
+              >
+      </div>
+    </div>
+    <div class="form__row">
+      <div class="form__input-group">
+        <label for="password_confirmation" class="form__label label--required">{{ 'customer.reset_password.password_confirm' | t }}</label>
+        <input id="password_confirmation"
+              name="customer[password_confirmation]"
+              type="password"
+              class="form__input"
+              placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+              required
+              >
+      </div>
+    </div>
+    <div class="form__row mt4">
+      <div>
+        <button type="submit" class="btn btn--color-secondary uppercase ff--heading fw--bold ls06">
+          {{ 'customer.reset_password.submit' | t }}
+        </button>
+        <div class="mt3">
+          <input type="submit" name="decline" class="btn btn--plain o-75" value="{{ 'customer.activate_account.cancel' | t }}">
+        </div>
+      </div>
+    </div>
+  </div><!-- /.form__content -->
+
+  {% endform %}
+
+</section>

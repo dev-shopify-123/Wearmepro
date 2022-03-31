@@ -1,0 +1,116 @@
+<section data-section-id="{{ section.id }}"
+         data-section-type="page">
+  <h1 class="page__title ff--heading f2 uppercase">{{ 'contact.form.title' | t }}</h1>
+  <p class="ff--heading uppercase"><strong>Fill out the form below and we will respond within 24-48 hours.</p></strong>
+  <div class="contact-panes mxn2 mb6">
+    <div class="contact-pane mx2">
+      {% form 'contact', class: 'form form--contact mb3' %}
+        {% if form.posted_successfully? %}
+          <div class="form__status text-center form__status--success">
+            <p class="text-center f5 m0">{{ 'contact.form.post_success' | t }}</p>
+          </div>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="form__status text-center form__status--error">
+            <p class="text-center f5 m0">{{ 'contact.form.post_error' | t }}</p>
+            {% for field in form.errors %}
+              <p class="text-center f5 m0">{{ 'contact.form.post_field_error_html' | t: field: field, error: form.errors.messages[field] }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="form__content">
+          <div class="form__row">
+            <div class="form__input-group">
+              <label for="name" class="form__label label--required">{{ 'contact.form.labels.name' | t }}</label>
+              <input id="name"
+                    name="contact[name]"
+                    type="text"
+                    class="form__input"
+                    required>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__input-group">
+              <label for="email" class="form__label label--required">{{ 'contact.form.labels.email' | t }}</label>
+              <input id="email"
+                    name="contact[email]"
+                    type="email"
+                    class="form__input"
+                    required>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__input-group">
+              <label for="phone" class="form__label label--required">{{ 'contact.form.labels.phone' | t }}</label>
+              <input id="phone"
+                    name="contact[phone]"
+                    type="tel"
+                    class="form__input"
+                    required>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__input-group">
+              <label for="inputQuestionType" class="form__label">What can we help you with?</label>
+              <select name="contact[question type]" id="inputQuestionType" class="form__input">
+                <option value="No subject selected">Select a subject</option>
+                <option value="Order Update">Order Update</option>
+                <option value="Return">Return</option>
+                <option value="Wholesale" {% if page.handle == 'wholesale-retail' %}selected{% endif %}>Wholesale</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__input-group">
+              <label for="message" class="form__label label--required">{{ 'contact.form.labels.message' | t }}</label>
+              <textarea id="message"
+                        name="contact[body]"
+                        rows="12"
+                        class="form__textarea"
+                        required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form__row lg--mt3 md-dn--mt2">
+          <button type="submit" class="btn btn--color-secondary uppercase ff--heading fw--bold ls06">{{ 'contact.form.send' | t }}</button>
+        </div>
+      {% endform %}
+    </div>
+    <div class="contact-pane mx2 p2 lg--pt6">
+      {% if page.content != blank %}
+      <div class="ff--heading text-center measure mx--auto contact-pane__rte">
+        {{ page.content }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<style>
+  @media (min-width: 900px) {
+    .contact-panes {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+
+    .contact-pane {
+      flex: 1 1 0%;
+      min-width: 0;
+    }
+  }
+
+  .contact-pane__rte > * {
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+</style>
+{% schema %}
+{
+  "name": "Page",
+  "class": "template template--page--contact"
+}
+{% endschema %}

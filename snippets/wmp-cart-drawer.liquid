@@ -1,0 +1,609 @@
+{% if full_page == true %}
+  {% assign container_class = 'WMPCartModule measure--xtra-wide mx--auto mb5' %}
+{% else %}
+  {% assign container_class = 'WMPCartDrawerModule' %}
+{% endif %}
+
+<div class="{{ container_class }}">
+  <style>
+      	#dcodeOuterWrapper {
+     		display: none; 
+    	}
+        .btn-new.btn.CartDrawerCheckoutPath {
+          width: 100%;
+          text-align: center;
+        }
+
+        .js-cart-drawer-checkout-path.btn-new {
+          background-image: linear-gradient(-180deg,#7dcfb6 54%,#7dcfb6 97%) !important;
+          transition: .2s ease !important;
+          border-radius: 0 !important;
+          background-color: transparent !important;
+        }
+
+        .js-cart-drawer-checkout-path.btn-new:hover {
+          background-image: linear-gradient(-180deg,#7dcfb6 54%,rgba(125,207,182,.25) 97%) !important;
+        }
+
+        .js-cart-drawer-checkout-path.btn-new:active,
+        .js-cart-drawer-checkout-path.btn-new:focus {
+          background-image: linear-gradient(-180deg,#2c9378 54%,#2c9378 100%) !important;
+          animation: gradient 0.2s ease !important;
+          box-shadow: 0px 5px 10px #999 !important;
+        }
+
+        .js-cart-drawer-checkout-path.btn-new [data-loader] {
+          display: none !important;
+        }
+
+        .js-cart-drawer-checkout-path.btn-new[aria-disabled] {
+          opacity: 1;
+        }
+
+        .js-cart-drawer-checkout-path.btn-new span[data-add-to-cart-text] {
+          display: block !important;
+        }
+        @keyframes gradient {
+          0% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 0%, #7dcfb6 50%, #7dcfb6 51%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 0%,#7dcfb6 50%,#7dcfb6 51%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 0%,#7dcfb6 50%,#7dcfb6 51%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+          }
+          10% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 10%, #7dcfb6 50%, #7dcfb6 51%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 10%,#7dcfb6 50%,#7dcfb6 51%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 10%,#7dcfb6 50%,#7dcfb6 51%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+          }
+          25% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 25%, #7dcfb6 75%, #7dcfb6 75%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 25%,#7dcfb6 75%,#7dcfb6 75%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 25%,#7dcfb6 50%,#7dcfb6 75%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+          }
+          50% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 52%, #7dcfb6 75%, #7dcfb6 83%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 52%,#7dcfb6 75%,#7dcfb6 83%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 52%,#7dcfb6 75%,#7dcfb6 83%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+
+          }
+          75% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 75%, #7dcfb6 100%, #7dcfb6 100%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 75%,#7dcfb6 100%,#7dcfb6 100%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 75%,#7dcfb6 100%,#7dcfb6 100%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+
+          }
+          90% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 90%, #7dcfb6 100%, #7dcfb6 100%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 90%,#7dcfb6 100%,#7dcfb6 100%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 90%,#7dcfb6 100%,#7dcfb6 100%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+
+          }
+          100% {
+            background: #2c9378;
+            background: -moz-radial-gradient(center, ellipse cover,  #2c9378 100%, #7dcfb6 100%, #7dcfb6 100%, #7dcfb6 100%);
+            background: -webkit-radial-gradient(center, ellipse cover,  #2c9378 100%,#7dcfb6 100%,#7dcfb6 100%,#7dcfb6 100%);
+            background: radial-gradient(ellipse at center,  #2c9378 100%,#7dcfb6 100%,#7dcfb6 100%,#7dcfb6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c9378', endColorstr='#7dcfb6',GradientType=1 );
+
+          }
+        }
+  </style>  
+  {% unless full_page == true %}
+    <div class="CartDrawerUnderlay js-cart-drawer-underlay"></div>
+  {% endunless %}
+  {% render 'motivator-popups' %}
+  <div class="CartDrawer">
+    <div class="white-square"></div>
+    <div class="CartDrawer__container js-cart-drawer">
+      {% if full_page == true %}
+        <h1 class="page__title ff--heading text-center f2 md-dn--f4 uppercase h-underline mt3 md-dn--mt2 mb0">Shopping Cart</h1>
+      {% else %}
+        <h4 class="my0 f4 uppercase text-center CartDrawer__title"
+            data-cart-drawer-title>Shopping Cart</h4>
+      {% endif %}
+      {% unless full_page == true %}
+      <a href="#" class="material-icons cart__close custom-icon-close" data-cart-close></a>
+      {% endunless %}
+      <div class="CartDrawer__scroll-container"
+           data-cart-drawer-scroll-container>
+        {% if settings.cart_free_pair_enable or settings.cart_free_shipping_enable or settings.cart_free_shipping_enable2 %}
+        <div class="CartDrawerPromoItems">
+          {% if settings.cart_free_shipping_enable %}
+          <div class="CartDrawerPromoItem ff--body fw--bold uppercase text-center ls06 js-cart-promo-item js-cart-promo-shipping animation--refresh-one">
+            <span class="js-promo-element-show-if-in-progress">Spend another <span data-promo-amount-remaining></span> to get<br></span>
+            <span class="js-promo-element-show-if-not-started">Spend ${{ settings.cart_free_shipping_threshold }} and get</span>
+            <span class="cd-green">{{ settings.cart_free_shipping_text }}</span>
+            <span class="CartDrawerPromoItem__achieved js-promo-element-show-if-achieved"></span>
+            <div class="promo-progress-container js-promo-element-show-if-in-progress w-80 mx--auto">
+              <span class="promo-progress" style="width: 0;" data-promo-progress></span>
+            </div>
+          </div>
+          {% endif %}
+          {% if settings.cart_free_shipping_enable2 %}
+            <div class="CartDrawerPromoItem ff--body fw--bold uppercase text-center ls06 js-cart-promo-item js-cart-promo-shipping-2 animation--refresh-one">
+              <span class="js-promo-element-show-if-in-progress">Spend another <span data-promo-amount-remaining></span> to get<br></span>
+              <span class="js-promo-element-show-if-not-started">Spend ${{ settings.cart_free_shipping_threshold2 }} and get</span>
+              <span class="cd-green">{{ settings.cart_free_shipping_text2 }}</span>
+              <span class="CartDrawerPromoItem__achieved js-promo-element-show-if-achieved"></span>
+              <div class="promo-progress-container js-promo-element-show-if-in-progress w-80 mx--auto">
+                <span class="promo-progress" style="width: 0;" data-promo-progress></span>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if settings.cart_free_pair_enable and settings.cart_free_pair_product != blank and all_products[settings.cart_free_pair_product] != empty %}
+          <div class="CartDrawerPromoItem ff--body fw--bold uppercase text-center ls06 js-cart-promo-item js-cart-promo-free-pair animation--refresh-one">
+            <div class="flex justify-content--center align-items--center">
+              <div class="CartDrawerPromoItem__inline-text">
+                <span class="js-promo-element-show-if-in-progress">
+                  Spend
+                  another <span data-promo-amount-remaining></span>
+                  and get a
+                </span>
+                <span class="js-promo-element-show-if-not-started">
+                  Spend ${{ settings.cart_free_pair_threshold }} and get a
+                </span>
+
+                <span class="cd-green">free</span><br>
+                {% if all_products[settings.cart_free_pair_product].title != blank %}
+                <small class="CartDrawerPromoItem__small">({{ all_products[settings.cart_free_pair_product].title }})</small>
+                {% endif %}
+              </div>
+              {% assign free_pair_img_url = all_products[settings.cart_free_pair_product].featured_image %}
+              {% assign crop_img = free_pair_img_url | img_url: '68x' %}
+              <div class="CartDrawerPromoItem__inline-image">
+                <div class="CartDrawerPromoItem__inline-image__wrapper">
+                  <img class="CartDrawerPromoItem__inline-image__img lazyload"
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="68"
+                    height="68" data-src="{{ crop_img }}" alt="Free Pair" style="height: auto; margin-top: -10px;">
+
+                </div>
+              </div>
+              <span class="CartDrawerPromoItem__achieved js-promo-element-show-if-achieved"></span>
+            </div>
+            <div class="promo-progress-container js-promo-element-show-if-in-progress w-80 mx--auto">
+              <span class="promo-progress" style="width: 0;" data-promo-progress></span>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+        <div class="CartDrawer__no-items text-center ff--body js-no-items">You have no items in your cart</div>
+        <ul class="CartDrawerItems js-cart-line-items">
+          <li class="CartDrawerItem js-cart-line-item--template" data-line-item-key="" data-variant-id="" data-fresh="false">
+            <div class="CartDrawerItem__thumb">
+              <div class="CartDrawerItem__thumb__wrapper js-cart-line-item-image-wrapper">
+                  <img class="lazyload CartDrawerItem__image__img js-cart-line-item-image"
+                      data-src=""
+                      alt="">
+              </div>
+            </div>
+            <div class="CartDrawerItem__info">
+              <h5 class="CartDrawerItem__info__name mt0 mb1 f5">
+                  <span class="CartDrawerItem__info__name__small js-cart-line-item-name"></span>
+              </h5>
+              <p class="CartDrawerItem__info__price ff--body js-cart-line-item-price"></p>
+              <a href="#" class="CartDrawerItem__info__remove ff--body js-cart-remove-item">Remove</a>
+            </div>
+            <div class="CartDrawerItem__qty">
+              <div class="wmp-cart-quantity ff--body js-cart-item-quantity-element">
+                <span class="wmp-cart-quantity__button js-cart-quantity-button" data-operation="minus">
+                  <span class="material-icons custom-icon-remove"></span>
+                </span>
+                {% assign inv_qua = item.variant.inventory_quantity %}
+                <input type="number" name="updates[]" id="updates_{{ item.id }}" class="form-control input-desktop wmp-cart-quantity__input js-cart-item-quantity" value="1" min="1" max="1000">
+                <span class="wmp-cart-quantity__button js-cart-quantity-button" data-operation="plus">
+                  <span class="material-icons custom-icon-add"></span>
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        {% if settings.cart_message_heading != blank %}
+        <div class="box-text-cart">
+          
+            <h4>{{settings.cart_message_heading}}</h4>
+          {% endif %}
+          {% if settings.cart_message_text != blank %}
+            <p>{{settings.cart_message_text}} 
+              {% if settings.cart_message_img != blank  %}
+              <img src="{{settings.cart_message_img  | img_url}} ">
+           		{% endif %}
+              </p>
+          
+        </div>
+		{% endif %}
+        {% assign show_offers = false %}
+
+        {% if settings.show_cart_offers == true %}
+            {% assign show_offers = true %}
+        {% endif %}
+        
+        {% if settings.enable_cart_recommendations %}
+        <div class="cart-drawer-recommendations-container"
+            data-cart-recommendations-container>
+          <div id="cart_recommendations" v-show="show" class="CartDrawerRecommendations mt1 mb3">
+            <h4 v-if="products" class="mt2 mb3 f5 uppercase text-center">{{ settings.cart_recommendations_heading }}</h4>
+            <div ref="scrollContainer" class="cart-recommendations-container">
+              <cart-recommendations-item class="cart-recommendations-item"
+                                        v-for="(product, index) in products"
+                                        :key="product.id"
+                                        :data-index="index"
+                                        tabindex="0"
+                                        :initial-current-variant-id="product.current_variant_id"
+                                        :product="product">
+              </cart-recommendations-item>
+            </div>
+            <div class="cart-recommendations-dots">
+              <div v-for="(product, index) in products"
+                  :key="product.id"
+                  class="cart-recommendations-dot"
+                  :class="{ 'shown' : product.is_shown }"></div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        
+        
+
+        {% if show_offers %}
+        <ul class="CartDrawerOffers js-show-if-items" data-cart-drawer-offers>
+          {% assign show_protection = true %}
+          {% if collection.handle == 'rx-frames' or collection.handle == 'rx-frames-man' %}
+            {% assign show_protection = false %}
+          {% endif %}
+          <h4 class="m0 f5 uppercase text-center CartDrawerOffers__title">{{ settings.cart_offers_heading }}</h4>
+          <div class="CartDrawerOffers__scroll-container"
+               data-cart-offers-slick>
+          {% for block in  (1..4) %}
+            {% assign product_hash = 'cart_product' | append: forloop.index %}
+            {% assign product = settings[product_hash] %}
+            {% assign hide_product_hash = 'hide_in_rx_cart' | append: forloop.index %}
+            {% assign hide_product = false %}
+            {% if show_protection == false %}
+              {% assign hide_product = settings[hide_product_hash] %}
+            {% endif %}
+          {% unless all_products[product].price == 0 %}
+            {% if hide_product == false %}
+            {% if product != blank %}
+          <div class="CartDrawerOffers__scroll-item">
+            <li class="CartDrawerOffer {% if all_products[product].price == 0 %}js-cart-drawer-free-offer{% endif %}">
+              <a class="CartDrawerOffer__thumb block"
+                 href="{{ all_products[product].url }}">
+                <div class="CartDrawerOffer__thumb__wrapper {% if all_products[product].featured_image.aspect_ratio < 1 %}CartDrawerOffer__thumb__wrapper--tall{% endif %}">
+                  <div class="CartDrawerOffer__thumb__wrapper__image"
+                       style="padding-top: {{ 100.00 | divided_by: all_products[product].featured_image.aspect_ratio }}%;">
+                      <img class="lazyload CartDrawerOffer__image__img"
+                         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                         data-srcset="{{ all_products[product].featured_image | product_img_url: '85x', scale: 3 }} 3x,
+                         {{ all_products[product].featured_image | product_img_url: '85x', scale: 2 }} 2x,
+                         {{ all_products[product].featured_image | product_img_url: '85x', scale: 1 }} 1x"
+                         alt="">
+                  </div>
+                </div>
+              </a>
+              <div class="CartDrawerOffer__info ff--body fw--bold text-center">
+                <a class="CartDrawerOffer__title block{% if all_products[product].title.size > 28 %} measure--narrow{% endif %}"
+                   href="{{ all_products[product].url }}">
+                  {{ all_products[product].title }}
+                </a>
+                <div class="CartDrawerOffer__price fw--normal">
+                  {% if all_products[product].price == 0 %}
+                    <span class="cd-green">Free</span>
+                  {% else %}
+                    {{ all_products[product].price | money }}
+                  {% endif %}
+                </div>
+              </div>
+              <div class="CartDrawerOffer__action">
+                <a href="#" class="btn btn--CartDrawerOfferAction bg-gradient--blue uppercase ls03 ff--heading fw--bold js-cart-quick-add" data-variant-id="{{ all_products[product].variants.first.id }}">Add</a>
+              </div>
+            </li>
+          </div>
+            {% endif %}
+            {% endif %}
+          {% endunless %}
+          {% endfor %}
+          </div>
+        </ul>
+          <div class="CartDrawerActions ff--body uppercase ls06 js-show-if-items"
+               data-cart-drawer-actions>
+            <div class="CartDrawerActions__line CartDrawerActions__subtotal">
+              <div>Subtotal</div>
+              <div class="CartDrawerActions__subtotal--amount js-cart-drawer-subtotal-amount">{{ cart.total_price | money }}</div>
+            </div>
+
+        {% comment %}
+        <div class="CartDrawerActions__line CartDrawerActions__line--checkout-option js-cart-drawer-checkout-option">
+          <label for="checkoutGuest">
+            <div>Checkout as Guest</div>
+            <div><small>Expedited Checkout</small></div>
+          </label>
+          <input type="radio" name="checkout" value="guest" checked>
+        </div>
+        <div class="CartDrawerActions__line CartDrawerActions__line--checkout-option js-cart-drawer-checkout-option">
+          <label for="checkoutAccount">
+            <div>Checkout With Account</div>
+            <div><small>Save time, track order history, promotions</small></div>
+          </label>
+          <input type="radio" name="checkout" value="account">
+        </div>
+        {% endcomment %}
+
+            <a class="CartDrawerCheckoutPath js-cart-drawer-checkout-path js-cart-drawer-checkout-path--guest btn btn-new" href="/checkout">
+              Checkout
+            </a>
+            {% if additional_checkout_buttons %}
+              <div class="express-checkout-wrapper">
+                <div class="title"><span>EXPRESS CHECKOUT</span></div>
+                <div class="additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              </div>
+            {% endif %}
+
+        {% comment %}
+
+        <div class="CartDrawerCheckoutPath CartDrawerCheckoutPath--account js-cart-drawer-checkout-path js-cart-drawer-checkout-path--account" style="display: none;">
+          <div class="CartDrawerAccountSignIn js-cart-drawer-checkout-with-account js-cart-drawer-checkout-with-account--sign-in">
+            <div class="CartDrawerSignInInline CartDrawerForm js-cart-drawer-sign-in-inline-form">
+              {% form 'customer_login' %}
+                <input type="hidden" name="return_to" value="/checkout">
+                <input type="email" name="customer[email]" placeholder="Email">
+                <input type="password" name="customer[password]" placeholder="Password">
+                <input type="submit" value="Sign In to Checkout" class="CartDrawerCheckoutButton">
+                <a href="#" class="CartDrawerSignInInline__forgot-password js-cart-drawer-forgot-password">Forgot Password?</a>
+              {% endform %}
+            </div>
+
+            <div class="CartDrawerPasswordInline CartDrawerForm js-cart-drawer-forgot-password-inline-form" style="display: none;">
+              {% form 'recover_customer_password' %}
+                <input type="email" name="email" placeholder="Email" validate required>
+                <input type="submit" value="Send Reset Email" class="CartDrawerPasswordResetButton">
+                <a href="#" class="CartDrawerSignInInline__forgot-password js-cart-drawer-forgot-password">Log In</a>
+              {% endform %}
+            </div>
+            <div class="CartDrawerAccountPathDivider"><!--  --></div>
+            <button class="js-cart-drawer-toggle-account-path CartDrawerAccountPathButton CartDrawerAccountPathButton--register">Register</button>
+          </div>
+          <div class="js-cart-drawer-checkout-with-account js-cart-drawer-checkout-with-account--register" style="display: none;">
+            <div class="CartDrawerRegisterInline CartDrawerForm" >
+              {% form 'create_customer' %}
+                <input type="hidden" name="return_to" value="/checkout">
+                <input type="text" name="customer[first_name]" placeholder="Your Name">
+                <input type="email" name="customer[email]" placeholder="Email" validate required>
+                <input type="password" name="customer[password]" placeholder="Password" required>
+                <input type="submit" value="Register to Checkout" class="CartDrawerCheckoutButton">
+              {% endform %}
+            </div>
+            <div class="CartDrawerAccountPathDivider"><!--  --></div>
+            <button class="js-cart-drawer-toggle-account-path CartDrawerAccountPathButton CartDrawerAccountPathButton--sign-in">Sign In</button>
+          </div>
+        </div>
+        {% endcomment %}
+
+
+          </div>
+        {% endif %}
+
+        {% if settings.show_shipping_notice and settings.shipping_notice != blank %}
+        <div class="CartDrawerNotice ff--font js-show-if-items">
+          <p>{{ settings.shipping_notice | escape }}</p>
+        </div>
+        {% endif %}
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div> <!-- /.WMPCartDrawerModule -->
+<style>
+  .express-checkout-wrapper {
+    padding: 10px;
+  }
+
+  .express-checkout-wrapper .additional-checkout-buttons ul {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center;
+  }
+
+  .express-checkout-wrapper .additional-checkout-buttons.checkout-page ul {
+    justify-content: center !important;
+  }
+
+  .express-checkout-wrapper .additional-checkout-buttons ul li:nth-child(0),
+  .express-checkout-wrapper .additional-checkout-buttons ul li:nth-child(1),
+  .express-checkout-wrapper .additional-checkout-buttons ul li:nth-child(4) {
+    display: none !important;
+    width: 0 !important;
+  }
+
+  .express-checkout-wrapper .additional-checkout-buttons ul li {
+    width: 48% !important;
+  }
+
+  .express-checkout-wrapper .title {
+    text-align: center;
+    position: relative;
+  }
+
+  .express-checkout-wrapper .title span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    background: #ffffff;
+    padding: 5px 10px;
+  }
+
+  .express-checkout-wrapper .title:before,
+  .express-checkout-wrapper .title:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    top: 13px;
+    border-top: 1px solid #000000;
+  }
+
+  .express-checkout-wrapper .title:before {
+    left: 0;
+  }
+
+  .express-checkout-wrapper .title:after {
+    right: 0;
+  }
+
+  .discounts-wrapp {
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 570px;
+    display: block;
+    width: 100%;
+  }
+
+  .discounts-wrapp .add-discount-block {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .icon-plus {
+    position: relative;
+  }
+
+  .icon-plus:hover {
+    cursor: pointer;
+  }
+
+  .icon-plus:after {
+    content: "+";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    color: #000;
+    font-weight: 700;
+    transform: translate(0,-50%);
+    font-size: 25px;
+  }
+
+  .dcodeInnerWrapper {
+    box-sizing: border-box;
+    display: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .dcodeInnerWrapper.showed {
+    display: flex;
+  }
+
+  .dcodeInnerWrapper .dcodeInput,
+  .dcodeInnerWrapper .dcodeButton {
+    width: 48%;
+    height: 40px;
+    box-sizing: border-box;
+  }
+
+  .dcodeInnerWrapper p {
+    display: block;
+    width: 100%;
+    order: 3;
+  }
+
+  .dcodeInnerWrapper .dcodeInput {
+    padding: 5px;
+  }
+
+  .dcodeInnerWrapper .dcodeButton {
+    background-image: linear-gradient(-180deg,#7dcfb6 54%,#7dcfb6 97%);
+    transition: .2s ease;
+    border-radius: 0;
+    background-color: transparent!important;
+    color: #ffffff;
+    border: transparent;
+    cursor: pointer;
+  }
+
+  .dcodeInnerWrapper .dcodeButton:hover {
+    background-image: linear-gradient(-180deg,#7dcfb6 54%,rgba(125,207,182,.25) 97%);
+  }
+
+
+
+  /*.dcodeOuterWrapper .dcodeTable {*/
+  /*  display: none !important;*/
+  /*}*/
+</style>
+<script>
+  if(location.pathname === '/cart') {
+    const expressCheckoutButtons = document.querySelector('.express-checkout-wrapper .additional-checkout-buttons');
+    if(expressCheckoutButtons) {
+      expressCheckoutButtons.classList.add('checkout-page')
+    }
+  }
+
+</script>
+
+<script id="cart_recommmendations_item" type="text/x-template">
+  <div>
+    <div class="cart-recommendations-item__thumbnail">
+      <div class="relative responsive-image__img-wrapper"
+           style="padding-top: {{ 1 | divided_by: 2.3 | times: 100 }}%;"
+           v-for="(variant, index) in product.variants"
+           v-show="variant.id === currentVariant.id"
+           :key="variant.id">
+        <img class="responsive-image__img lazyload lazypreload"
+             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+             :data-src="variant.featured_img_template"
+             data-sizes="auto"
+             data-aspectratio="2.3">
+        <div class="responsive-image__placeholder"></div>
+      </div>
+    </div>
+    <div class="cart-recommendations-item__swatches my2">
+      <div class="swatch tippy"
+           v-for="variant in product.variants"
+           @click="currentVariantId = variant.id"
+           :class="{ 'is-selected' : variant.id === currentVariant.id }"
+           :data-tippy="variant.title">
+        <img class="cart-recommendations-item-swatch__img lazyload"
+             srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+             :data-src="variant.swatch_img_template"
+             data-widths="[21, 42, 63, 126]"
+             data-sizes="auto"
+             data-aspectratio="2.3">
+      </div>
+    </div>
+    <div class="cart-recommendations-item__title uppercase ff--heading fw--light ls03 f5"
+         v-html="product.title"></div>
+    <div class="cart-recommendations-item__price uppercase ff--heading fw--light ls03 f6"
+         v-html="currentVariant.price"></div>
+    <div class="cart-recommendations-item__action f6 mt2">
+      <a href="#"
+        class="btn btn--CartDrawerOfferAction bg-gradient--blue uppercase ls03 ff--heading fw--bold js-cart-quick-add"
+        :data-variant-id="currentVariant.id">
+        Add
+      </a>
+    </div>
+  </div>
+</script>

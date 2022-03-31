@@ -1,0 +1,19 @@
+<div class="search-component-container{{ search_component_extra_class | prepend: ' ' }}"
+     data-search-component-container>
+  <form action="/search" class="search-component" data-search-component>
+    <input class="search-component-input ff--body"
+           name="q"
+           type="search"
+           placeholder="Search…"
+           autocomplete="off"
+           data-search-component-input>
+    <input type="hidden" name="type" value="product" />
+    <button class="btn--plain search-component-submit" type="submit">
+      <span class="material-icons custom-icon-search"></span>
+      <span class="visually-hidden">Search</span>
+    </button>
+  </form>
+  <button class="search-component__close btn--plain ff--heading" data-search-toggle>
+    <span class="material-icons custom-icon-close" style="cursor: pointer;"></span>
+  </button>
+</div>

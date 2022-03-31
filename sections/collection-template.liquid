@@ -1,0 +1,378 @@
+<!-- sections/collection-template.liquid -->
+
+{% comment %}
+  If changing the media aspect ratio,
+  do a project search for pgi_media_aspect_ratio
+  and for the current value.
+{% endcomment %}
+{% if template.suffix == 'xhr-filtered' %}
+  {% assign paginate_size = 27 %}
+{% else %}
+  {% assign paginate_size = 9 %}
+{% endif %}
+
+{% assign pgi_media_aspect_ratio = 2.3 %}
+
+{% assign filtered = true %}
+
+
+{% if filtered %}
+  {% include 'wmp-filter-check' %}
+{% endif %}
+
+{% comment %}
+  Look for a collection cover image in Theme Settings
+{% endcomment %}
+
+{% assign collection_has_custom_header_image = false %}
+
+{% assign collection_index = 0 %}
+{% for i in (1..17) %}
+  {% assign cf_setting_address = i | prepend: "collection_header_image_collection_" %}
+  {% assign cf_setting = settings[cf_setting_address] %}
+
+  {% if cf_setting == collection.handle %}
+    {% assign collection_has_custom_header_image = true %}
+    {% assign collection_index = i %}
+  {% endif %}
+{% endfor %}
+{% if collection_has_custom_header_image %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_image_" %}
+  {% assign collection_header_image = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_font_size_desktop_" %}
+  {% assign collection_header_image_font_size_desktop = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_font_size_mobile_" %}
+  {% assign collection_header_image_font_size_mobile = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_font_size_text_desktop_" %}
+  {% assign collection_header_image_font_size_text_desktop = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_font_size_text_mobile_" %}
+  {% assign collection_header_image_font_size_text_mobile = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "header_font_" %}
+  {% assign collection_header_header_font = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_show_title_" %}
+  {% assign collection_header_image_show_title = settings[cf_setting_address] %}
+
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_image_show_title_shadow_" %}
+  {% assign collection_header_image_show_title_shadow = settings[cf_setting_address] %}
+
+
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_text_" %}
+  {% assign collection_header_text = settings[cf_setting_address] %}
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_text_position_" %}
+  {% assign collection_header_text_position = settings[cf_setting_address] %}
+
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_color_" %}
+  {% assign collection_header_color = settings[cf_setting_address] %}
+
+  {% assign cls = 'collection-header__overlay ' | append: collection_header_text_position %}
+
+
+  {% assign cf_setting_address = collection_index | prepend: "collection_header_text_vertical_position_" %}
+  {% assign collection_header_text_vertical_position = settings[cf_setting_address] %}
+
+  {% assign cls = 'collection-header__overlay ' | append: collection_header_text_position | append: ' ' | append: collection_header_text_vertical_position %}
+{% endif %}
+
+{% if collection_has_custom_header_image %}
+{%- assign image_id = collection_header_image.id -%}
+{% capture overlay_content %}
+<div class="collection-header-desc">
+  <h1 class="collection-header-overlay__title{% if collection.handle == 'blue-light-glasses' %} text-center collection-header-overlay__title--blue-light{% endif %}{% if collection.template_suffix == 'kind-collection' %} w-collection-header-image__overlay__title--kind-collection{% endif %}{% if collection_header_image_show_title != blank %} hide-collection-title{% endif %} {% if collection_header_image_show_title_shadow == blank %} hide-collection-title-shadow{% endif %}">
+    {% if collection.title == 'Blue Light Glasses' %}
+      Blue Light<br>
+      Glasses<br>
+    {% else %}
+    {{ collection.title }}
+    {% endif %}
+  </h1>
+	<p>{{ collection_header_text }}</p>
+</div>  
+{% endcapture %}
+<div class="full-width {% unless filtered %}mb2{% endunless %} collection-header collection-header--{{ section.id }}" data-collection-header-image>
+  {% render 'responsive-image-with-overlay',
+     section_id: section.id,
+     image: collection_header_image,
+     overlay_content: overlay_content,
+     overlay_classes: cls %}
+</div>
+{% render 'collection__header-image-style',
+   section_id: section.id,
+   desktop_font_size: collection_header_image_font_size_desktop,
+   desktop_font_size_text: collection_header_image_font_size_text_desktop,
+   font: collection_header_header_font,
+   mobile_font_size: collection_header_image_font_size_mobile,
+   mobile_font_size_text: collection_header_image_font_size_text_mobile 
+   color: collection_header_color %}
+{% endif %}
+
+{% unless collection_has_custom_header_image %}
+<h1 class="ff--heading lg--f2 md-dn--f3 fw--bold text-center my3 uppercase h-underline h-underline--tight">
+  {{ collection.title }}
+</h1>
+{% endunless %}
+
+{% unless template.suffix contains 'xhr' %}
+  {% if filtered %}
+    <div class="collection-toolbar-container">
+      <div class="collection__toolbar text-right">
+        <button class="btn btn--collection-toolbar"
+                data-filter-toggle>
+          Filter
+        </button>
+      </div>
+    </div>
+
+    {% include 'new-filters' %}
+  {% endif %}
+{% endunless %}
+
+{% if collection.handle == 'blue-light-glasses' %}
+  <div class="mt3 mb5 text-center">
+    <a href="/pages/our-blue-light-lens" class="btn btn--color-blue-light-page btn--color-blue-light-page--with-border ff--heading ls03 fw--bold uppercase md-dn--f6--force">
+      Learn More About Our Blue Light Lens
+    </a>
+  </div>
+{% endif %}
+
+<section data-section-id="{{ section.id }}"
+         data-infinite-scroll="{{ settings.enable_infinite_scroll }}"
+         {% if template.suffix == 'variants' %}
+         data-xhr-template="xhr-variants"
+         {% else %}
+         data-xhr-template="xhr"
+         {% endif %}
+         data-section-type="collection">
+  {% paginate collection.products by paginate_size %}
+    <div class="product-listing"
+         data-enable-bis="{{ settings.enable_bis }}"
+         {% unless template.suffix contains 'xhr' %}
+         data-loaded="false"
+         {% endunless %}
+         data-product-listing>
+    {% if template.suffix == 'xhr' or template.suffix == 'xhr-filtered' %}
+      {% for product in collection.products %}
+      {% if collection.handle == 'mens-blue-light' and forloop.index == settings.blue_light_men_number and settings.blue_light_men_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.blue_light_men_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.blue_light_men_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+                {% unless settings.blue_light_men_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_men_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+  {% if collection.handle == 'womens-blue-light-glasses' and forloop.index == settings.blue_light_number and settings.blue_light_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.blue_light_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.blue_light_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+
+                {% unless settings.blue_light_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+  {% if collection.handle == 'mens-new-arrivals' and forloop.index == settings.men_new_arrivals_number and settings.men_new_arrivals_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.men_new_arrivals_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.men_new_arrivals_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+                {% unless settings.men_new_arrivals_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_new_arrivals_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+  {% if collection.handle == 'womens-new-arrivals' and forloop.index == settings.new_arrivals_number and settings.new_arrivals_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.new_arrivals_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.new_arrivals_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+                {% unless settings.new_arrivals_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.new_arrivals_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+
+  {% if collection.handle == 'men-sunglasses' and forloop.index == settings.men_sunglasses_number and settings.men_sunglasses_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.men_sunglasses_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.men_sunglasses_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+
+                {% unless settings.men_sunglasses_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_sunglasses_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+
+    {% if collection.handle == 'womens-sunglasses' and forloop.index == settings.women_sunglasses_number and settings.women_sunglasses_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.women_sunglasses_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.women_sunglasses_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+
+                {% unless settings.women_sunglasses_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.women_sunglasses_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+
+
+    {% if collection.handle == 'rx-frames' and forloop.index == settings.rx_women_image_number and settings.rx_women_mage %}
+      <div class="product-grid-item grid-item-img">
+            {%- assign img_url = settings.rx_women_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.rx_women_image_link }}">
+        <img id="{{ img_id }}"
+                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                 class="responsive-image__img lazyload case-class"
+                 alt="{{ image.alt }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-sizes="auto"
+                 data-image>
+                 {% unless settings.rx_women_image_btn_text == empty %}
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.rx_women_image_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+        
+      </div>
+    {% endif %}
+
+
+    {% if collection.handle == 'active-collection' and forloop.index == settings.active_women_image_number and settings.active_women_mage %}
+      <div class="product-grid-item grid-item-img">
+        {%- assign img_url = settings.active_women_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.active_women_image_link }}">
+          <img id="{{ img_id }}"
+               src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+               class="responsive-image__img lazyload case-class"
+               alt="{{ image.alt }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-sizes="auto"
+               data-image>
+               {% unless settings.active_women_image_btn_text == empty %}              
+                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.active_women_image_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+      	{% if product.template_suffix != 'lense' and product.template_suffix != 'landing' %}
+          {% render 'product-grid-item',
+             product: product,
+             filtering_by_frame_color: filtering_by_frame_color,
+             filtering_by_lens_color: filtering_by_lens_color,
+             current_frame_color: current_frame_color,
+             current_lens_color: current_lens_color,
+             show_variant_thumbnail: show_variant_thumbnail,
+             pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+          %}
+      	{% endif %}
+      {% endfor %}
+    {% elsif template.suffix == 'xhr-variants' %}
+      {% for product in collection.products %}
+      {% if product.template_suffix != 'lense' and product.template_suffix != 'landing' %}
+        {% render 'variant-grid-items',
+           product: product,
+           filtering_by_frame_color: filtering_by_frame_color,
+           filtering_by_lens_color: filtering_by_lens_color,
+           current_frame_color: current_frame_color,
+           current_lens_color: current_lens_color,
+           show_variant_thumbnail: show_variant_thumbnail,
+           pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+        %}
+      {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..9) %}
+        {% render 'product-grid-item-placeholder',
+           pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+        %}
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% if paginate.next.is_link %}
+  <div class="show-more text-center mt3">
+    <a href="{{ paginate.next.url }}"
+        class="btn"
+        data-show-more-button>
+      <span data-show-more-text>{{ 'collection.general.show_more' | t }}</span>
+      <span class="hide"
+            data-show-more-status
+            data-loader>
+        Loading…
+      </span>
+    </a>
+  </div>
+  {% endif %}
+  <div class="last-page-notice my3 text-center{% if paginate.next.is_link %} hide{% endif %}"
+        data-last-page-notice>
+    &mdash; {{ 'collection.general.last_page' | t }} &mdash;
+  </div>
+  {% endpaginate %}
+  <div class="collection__description mt3">
+    <div class="rte f7 measure--xtra-wide mx--auto">
+      {{ collection.description }}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collection",
+  "class": "template template--collection"
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+{% layout none %}
+{
+  "articles": [
+    {% paginate blog.articles by 9 %}
+      {% for article in blog.articles %}
+        {% capture excerpt %}{% include 'blog__excerpt', article: article, truncate: 36 %}{% endcapture %}
+        {% capture srcset %}{% include 'data-srcset', image: article.image, sizes: '185, 370' %}{% endcapture %}
+        {
+          "url": {{ article.url | json }},
+          "title": {{ article.title | json }},
+          "excerpt": {{ excerpt | strip_html | json }},
+          "srcset": {{ srcset | json }},
+          "paddingtop": {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+
+  ],
+  "currentpage_index": {{ paginate.current_page | json }},
+  "total_pages": {{ paginate.pages | json }},
+  "paginate_parts": {{ paginate.parts | json }},
+  {%- capture page_parameter -%}{%- if paginate.current_page != 1 -%}?page={{ paginate.current_page }}{%- endif -%}{%- endcapture -%}
+  "currentpage": {{ request.path | remove: '&view=data' | append: page_parameter | json }},
+  {% if paginate.next.is_link %}
+  "nextpage": {{ paginate.next.url | remove: '&view=data' | json }}
+  {% else %}
+  "nextpage": ""
+  {% endif %}
+  {% endpaginate %}
+}

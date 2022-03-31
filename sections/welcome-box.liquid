@@ -1,0 +1,92 @@
+<section class="welcome-box">
+    <div class="welcome-box__video">
+        <video autoplay="" class="video-frame" id="myPlayer" loop="" muted="" playsinline="" width="100%">
+            <source src="{{section.settings.video_url}}" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="welcome-box__text text-center">
+                <div class="welcome-box__box">
+                    <div class="welcome-box__left">
+                        {% if section.settings.logo_id %}
+                            <img class="lazyload" data-src="{{ section.settings.logo_id | img_url: 'master' }}" alt="{{ section.settings.logo_id.alt }}">
+                        {% endif %}
+                    </div>
+                    <div class="welcome-box__right">
+                        <strong>{{section.settings.top_id}}</strong>
+                        <span>{{section.settings.bottom_id}}</span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="welcome-box__image">
+            {% if section.settings.image_id %}
+                <img class="lazyload" data-src="{{ section.settings.image_id | img_url: 'master' }}" alt="{{ section.settings.image_id.alt }}">
+            {% endif %}
+        </div>
+        <div class="welcome-box__desc">
+            {{ section.settings.text_id }}
+        </div>
+        <!-- <a href="{{section.settings.btn_link}}" class="btn">{{section.settings.btn_text}}</a> -->
+    </div>
+    <div class="collection-products__footer">
+        <a class="btn" href="{{section.settings.btn_link}}">SHOP COLLECTION</a> 
+    </div>
+
+</section>
+
+{% schema %}
+
+{
+    "name": "Welcome box",
+    "settings": [
+        {
+            "type": "text",
+            "id": "video_url",
+            "label": "Video link"
+        }, {
+            "type": "image_picker",
+            "id": "logo_id",
+            "label": "Select image logo"
+        }, {
+            "type": "text",
+            "id": "top_id",
+            "label": "Text top"
+        }, {
+            "type": "text",
+            "id": "bottom_id",
+            "label": "Text bottom"
+        }, {
+            "type": "image_picker",
+            "id": "image_id",
+            "label": "Select image"
+        }, {
+            "type": "richtext",
+            "id": "text_id",
+            "label": "Text info"
+        },
+        {
+            "type": "url",
+            "id": "btn_link",
+            "label": "Mobile link button"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Mobile text button"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Welcome box",
+            "category": "New"
+        }
+    ]
+}
+
+{% endschema %}

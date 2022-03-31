@@ -1,0 +1,526 @@
+.holder-product {
+    position: relative;
+    overflow: hidden;
+
+    .display {
+
+        label {
+            cursor: pointer;
+
+            input {
+                position: absolute;
+                width: 0;
+                height: 0;
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .step-option {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .step-option-image,
+            .step-option-icon {
+                display: flex;
+                align-items: center;
+            }
+
+            .step-option-image {
+                justify-content: flex-end;
+                min-width: 70px;
+                margin-right: 30px;
+            }
+
+            .step-option-description {
+                margin-right: 15px;
+            
+                h2 {
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+            
+                p {
+            
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .lens-description {
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 3px 10px;
+                    border-radius: 8px;
+                    background-color: rgba(126, 207, 185, .25);
+                }
+            }
+
+            .step-option-icon {
+                z-index: 2;
+                margin-left: auto;
+                cursor: pointer;
+
+                &:hover {
+
+                    .extended-tooltip {
+                        z-index: 2;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+                .extended-tooltip {
+                    position: absolute;
+                    display: block;
+                    right: 0;
+                    z-index: -1;
+                    margin-top: -60px;
+                    padding: 3px 10px;
+                    border-radius: 8px;
+                    opacity: 0;
+                    visibility: hidden;
+                    background-color: #ccc;
+                    transition: .3s all;
+
+                    p {
+                        margin: 0 0 5px;
+
+                        &:last-of-type {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .holder-display {
+
+        .steps {
+
+            ul {
+
+                li {
+
+                    &:last-of-type {
+                        display: none;
+                    }
+
+                    &:nth-last-child(-n+2) {
+
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .actions {
+
+            ul {
+
+                li {
+
+                    &.disabled {
+                        cursor: not-allowed;
+
+                        a {
+
+                            &.disabled {
+                                background: #989898;
+                                pointer-events: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .side-container {
+        position: relative;
+        display: flex;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        transform: translateX(150%);
+        background-color: #f4f4f4;
+        transition: .6s all;
+      	width: 100%;
+      	display: none;
+
+        .close {
+            position: absolute;
+        }
+
+        .side-container-left {
+            display: flex;
+            flex: auto;
+            height: 100%;
+            padding: 50px 65px 50px 0;
+            background-color: #fff;
+
+            .side-container-order-review {
+                max-width: 350px;
+                width: 100%;
+                margin-right: 65px;
+
+                h2 {
+                    margin-top: 0;
+                    text-transform: uppercase;
+                    font-size: 24px;
+                }
+
+                figure {
+                    margin: 0;
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .button-row {
+                    text-align: center;
+
+                    a {
+                        display: inline-block;
+                        min-width: 120px;
+                        margin-right: 5px;
+                        padding: 10px 25px;
+                        border: 1px solid #545454;
+                        color: #282828;
+                        text-transform: capitalize;
+
+                        &:last-of-type {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+            .side-container-order-details {
+                
+                width: 100%;
+
+                .title-price {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-family: 'Zona Pro', sans-serif;
+            
+                    h2 {
+                        margin: 0 15px 15px 0 !important;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .order-type {
+                    margin-bottom: 30px;
+                    font-family: 'Zona Pro', sans-serif;
+                    font-weight: 500;
+                }
+
+                .lens-type,
+                .lens-package {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 25px;
+                    font-family: 'Zona Pro', sans-serif;
+                    font-weight: 500;
+
+                    p {
+                        min-width: 108px;
+                        margin: 0 30px 0 0;
+                    }
+
+                    > span {
+                        margin-right: auto;
+                        color: #545454;
+                        font-weight: bold;
+                    }
+
+                    strong {
+                        margin-left: 15px;
+                    }
+                }
+
+                .anti-reflective,
+                .blue-filter {
+                    display: none;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-family: 'Zona Pro', sans-serif;
+                    font-weight: 500;
+
+                    label {
+                        display: flex;                        
+                        width: 100%;
+
+                        input {
+                            position: absolute;
+                        }
+
+                        > span {
+
+                            &:not(.additional-option) {
+                                align-self: flex-start;
+                            }
+                        }
+
+                        .additional-option {
+/*                             display: flex;
+                            align-items: flex-end; */
+                            max-width: 310px;
+                            width: auto;
+                            height: auto;
+                            margin: 0 15px 0 0;
+                            border: none;
+                            background: none;
+                            text-align: left;
+                            line-height: 24px;
+                          min-height: 48px;
+
+                            &::before {
+                                content: none;
+                            }
+
+                            img {
+                                width: 16px;
+                                height: 16px;
+                                margin: 0 0 5px 5px;
+                            }
+                        }
+
+                        strong {
+                            margin-left: auto;
+                        }
+                    }
+                }
+
+                
+
+                hr {
+                    margin: 20px 0;
+                }
+
+                .subtotal {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-family: 'Zona Pro', sans-serif;
+
+
+                    p {
+                        margin: 0 15px 0 0 !important;
+                        text-transform: capitalize;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .side-container-right {
+            flex: auto;
+            max-width: 420px;
+            width: 100%;
+            height: 100%;
+            padding: 50px 40px;
+
+            .items,
+            .subtotal,
+            .shipping-charges,
+            .tax,
+            .order-summary-total {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 25px;
+                font-family: 'Zona Pro', sans-serif;
+
+                p {
+                    margin: 0 15px 0 0 !important;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                }
+            }
+
+            .items {
+                justify-content: flex-start;
+            }
+
+            .tax {
+                margin-bottom: 0;
+            }
+
+            hr {
+                margin: 20px 0;
+            }
+
+            .order-summary-total {
+                margin-bottom: 50px;
+                font-size: 18px;
+            }
+
+            .add-to-cart {
+                display: inline-block;
+                width: 100%;
+                padding: 20px 70px;
+                color: #fff;
+                background-color: #7dcfb9;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+
+        &.side-container_visible {
+            transform: translateX(0);
+          display: flex;
+        }
+    }
+}
+
+
+
+.order-summary {
+    max-width: 600px;
+    width: 100%;
+    font-family: 'Zona Pro', sans-serif;
+
+    .title-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+            margin: 0 15px 15px 0 !important;
+            text-transform: uppercase;
+        }
+    }
+
+    .order-params {
+
+        span {
+            position: relative;
+            text-transform: capitalize;
+            font-family: 'Zona Pro', sans-serif;
+            font-weight: 500;
+
+            &::after {
+                content: '';
+                position: relative;
+                display: inline-block;
+                top: 2px;
+                width: 1px;
+                height: 15px;
+                margin: 0 2px 0 5px;
+                background: #282828;                
+            }
+
+            &:last-of-type {
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .order-prescription {
+
+        h4 {
+            margin: 36px 0 16px;
+            text-transform: uppercase;
+        }
+    }
+
+    table {
+        margin-top: 0;
+        text-align: center;
+
+        th,
+        td {
+            padding: 14px 17px;
+            border: 1px solid #d4d4d4;
+        }
+
+        td {
+            font-family: 'Source Sans Pro', sans-serif;
+
+            &.right-pd,
+            &.left-pd {
+                display: none;
+            }
+        }
+
+        &.prism-activated {
+            display: none;
+        }
+    }
+
+    .lens-type,
+    .lens-package,
+    .prism,
+    .subtotal {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            margin: 0 15px 0 0 !important;
+            text-transform: capitalize;
+            font-family: 'Zona Pro', sans-serif;
+            font-weight: 500;
+        }
+    }
+
+    .lens-type,
+    .lens-package {
+        margin-bottom: 20px;
+    }
+
+    .prism {
+        display: none;
+        margin-bottom: 30px;
+    }
+
+    .confirm {
+        max-width: 575px;
+        width: 100%;
+        font-family: 'Zona Pro', sans-serif;
+        font-weight: 500;
+    }
+
+    hr {
+        margin: 25px 0 20px;
+    }
+}
+.click-row,
+.click-row-step-1{
+  position: relative;
+  cursor: pointer;
+  &:hover,
+  &.active{    
+   &:after {
+    position:absolute;
+     content: '';
+     left: 0;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     border: #7dcfb9 solid 2px;
+   }
+  }
+}
+.hiden-row {
+ opacity: 0.5;
+  &.no-disabled {
+   opacity: 1; 
+  }
+}

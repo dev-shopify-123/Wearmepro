@@ -1,0 +1,128 @@
+<script>
+
+    // document.addEventListener('DOMContentLoaded', (e) => {
+    //     function deviceTypeListener() {
+    //         const deviceWidths = {
+    //             mobile: '(max-width: 768px)',
+    //             // tablet: '(min-width: 768px)',
+    //             desktop: '(min-width: 769px)',
+    //         };
+    //
+    //         window.device = {
+    //             mobile: false,
+    //             // tablet: false,
+    //             desktop: false,
+    //         }
+    //
+    //         const mediaQueryMobile = window.matchMedia(deviceWidths.mobile);
+    //         // const mediaQueryTablet = window.matchMedia(deviceWidths.tablet);
+    //         const mediaQueryDesktop = window.matchMedia(deviceWidths.desktop);
+    //
+    //         function handleChangeMobile(e) {
+    //             if (e.matches) {
+    //                 window.device.mobile = true;
+    //                 //window.device.tablet = false;
+    //                 window.device.desktop = false;
+    //                 loadImagesForDevice();
+    //             }
+    //         }
+    //
+    //         // function handleChangeTablet(e) {
+    //         //     if (e.matches) {
+    //         //         window.device.mobile = false;
+    //         //         window.device.tablet = true;
+    //         //         window.device.desktop = false;
+    //         //         loadImagesForDevice();
+    //         //     }
+    //         // }
+    //
+    //         function handleChangeDesktop(e) {
+    //             if(e.matches) {
+    //                 window.device.mobile = false;
+    //                 // window.device.tablet = false;
+    //                 window.device.desktop = true;
+    //                 loadImagesForDevice();
+    //             }
+    //         }
+    //
+    //         mediaQueryMobile.addListener(handleChangeMobile);
+    //         handleChangeMobile(mediaQueryMobile);
+    //         // mediaQueryTablet.addListener(handleChangeTablet);
+    //         // handleChangeTablet(mediaQueryTablet);
+    //         mediaQueryDesktop.addListener(handleChangeDesktop);
+    //         handleChangeDesktop(mediaQueryDesktop);
+    //
+    //     }
+    //     deviceTypeListener();
+    //
+    //     function loadImagesForDevice() {
+    //         if(window.device.desktop) {
+    //             const desktopImages = document.querySelectorAll('.img-dectop');
+    //             desktopImages.forEach((item) => {
+    //                 item.style.display = 'block';
+    //                 let image = item.querySelector('img');
+    //                 let imageSrc = image.getAttribute('data-src');
+    //                 if(!imageSrc) return;
+    //                 image.setAttribute('src', imageSrc);
+    //                 image.setAttribute('width', window.innerWidth);
+    //                 image.setAttribute('height', window.innerWidth * 1.25);
+    //             })
+    //
+    //             const mobileImages = document.querySelectorAll('.img-mob');
+    //             mobileImages.forEach((item) => {
+    //                 item.style.display = 'none';
+    //             });
+    //
+    //             // const tabletImages = document.querySelectorAll('.img-tablet');
+    //             // tabletImages.forEach((item) => {
+    //             //     item.style.display = 'none';
+    //             // });
+    //         }
+    //         // else if(window.device.tablet) {
+    //         //     const tabletImages = document.querySelectorAll('.img-tablet');
+    //         //     tabletImages.forEach((item) => {
+    //         //         item.style.display = 'block';
+    //         //         let image = item.querySelector('img');
+    //         //         let imageSrc = image.getAttribute('data-src');
+    //         //         if(!imageSrc) return;
+    //         //         image.setAttribute('src', imageSrc);
+    //         //         image.setAttribute('width', window.innerWidth);
+    //         //         image.setAttribute('height', window.innerWidth * 1.25);
+    //         //     })
+    //         //     const mobileImages = document.querySelectorAll('.img-mob');
+    //         //     mobileImages.forEach((item) => {
+    //         //         item.style.display = 'none';
+    //         //     });
+    //         //
+    //         //     const desktopImages = document.querySelectorAll('.img-dectop');
+    //         //     desktopImages.forEach((item) => {
+    //         //         item.style.display = 'none';
+    //         //     });
+    //         // }
+    //         else if(window.device.mobile) {
+    //             const desktopImages = document.querySelectorAll('.img-dectop');
+    //             desktopImages.forEach((item) => {
+    //                 item.style.display = 'none';
+    //             });
+    //             // const tabletImages = document.querySelectorAll('.img-tablet');
+    //             // tabletImages.forEach((item) => {
+    //             //     item.style.display = 'none';
+    //             // });
+    //
+    //             const mobileImages = document.querySelectorAll('.img-mob');
+    //             mobileImages.forEach((item) => {
+    //                 item.style.display = 'block';
+    //                 let image = item.querySelector('img');
+    //                 let imageSrc = image.getAttribute('data-src');
+    //                 if(!imageSrc) return;
+    //                 image.setAttribute('src', imageSrc);
+    //                 image.setAttribute('width', window.innerWidth);
+    //                 image.setAttribute('height', window.innerWidth * 1.25);
+    //             })
+    //         }
+    //     }
+    //
+    //     loadImagesForDevice();
+    // })
+
+</script>

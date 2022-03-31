@@ -1,0 +1,22 @@
+{% liquid
+  layout none
+  assign filter_tags = collection.all_tags | where: '_'
+%}
+{
+  "all_tags": [
+    {% for tag in filter_tags  %}
+    {
+      "name": {{ tag | json }},
+      "handle": {{ tag | handle | json }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "current_tags": [
+    {% for tag in current_tags %}
+    {
+      "name": {{ tag | json }},
+      "handle": {{ tag | handle | json }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

@@ -1,0 +1,252 @@
+<div class="story"> 
+    <h2><span>{{ section.settings.story_title }}</span></h2>       
+     <div class="row">
+        {% for block in section.blocks %}
+            {% if block.type == 'years-blocks' %}        
+            <div class="col">
+                <div class="year"><span>{{ block.settings.years }}</span></div>
+                <figure><img src="{{ block.settings.years_img | img_url: 'master' }}" alt="{{  block.settings.years_img.alt }}"></figure>
+                <div class="desc"><p>{{ block.settings.years_text }}</p></div>
+            </div>
+            {% endif %}      
+        {% endfor %}    
+     </div>
+  </div>
+<style>
+  .story {
+    max-width: 1565px;
+    margin: 0 auto 60px;
+    padding: 0 15px;
+    font-size: 27px;
+    overflow: hidden;
+    font-family: 'SourceSansPro-Light'; 
+  }
+  .story h2 {
+    text-align: center;    
+  }
+  .story p {
+    margin: 0;
+  }
+  .story .year {
+    display: flex;
+    align-items: flex-start;
+    align-self: normal;
+    flex:0 0  130px;
+    margin: 30px 0 0;
+    font-size: 27px;
+    font-weight: 700;
+    font-family: 'Zona Pro', sans-serif;
+  }
+  .story .year::after {
+    content: '';
+    position: absolute;
+    left: 82px;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: #7dcfb6;
+  }
+  .story .year span {
+    display: flex;
+    align-items: center;
+    width: 97px;
+    justify-content: space-between;
+  }
+  .story .year span:after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background: #ffd753;
+    /* margin-left: 9px; */
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 1;
+    position: relative;
+  }
+  .story .col {
+    display: flex;
+    align-items: center;
+    padding-bottom: 100px;
+    position: relative;
+  }
+  .story .col:last-child  {
+   padding: 0;
+  }
+  .story .col:first-child .year::after {
+    top: 50px;
+  }
+  .story .desc {
+    background: #fee9a8;
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+    margin-left: -30px;
+    max-width: 700px;
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+  }
+  .story .desc:after {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 20px 10px 0;
+    border-color: transparent #fee9a8 transparent transparent;
+
+  }
+  .story .desc:before {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: -35px;
+    width: 80px;
+    height: 80px;
+    display: block;
+    border-radius: 100%;
+    background: #e9f7f3;
+    z-index: -1;
+  }
+  .story .col:nth-child(even) .desc:before {
+    right: -15px;
+    bottom: -35px;
+    top: auto;
+  }
+  @media screen and (max-width: 767px) {
+    .story .col {
+      flex-wrap: wrap;
+      padding-bottom: 40px;
+    }
+    .story .col figure {
+      width: calc(100% - 90px);
+    }
+    .story .desc {
+      margin: -20px 0 0 30%;
+    
+    font-size: 11px;
+    min-height: 75px;
+    padding: 20px;
+    }
+    .story .desc:after {
+      border: 10px solid transparent;
+      border-bottom: 20px solid #fee9a8;
+      left: 20px;
+      top: -10px; 
+    }
+    .story .desc:before {
+        content: '';
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        width: 30px;
+        height: 30px;
+        display: block;
+        border-radius: 100%;
+        background: #e9f7f3;
+        z-index: -1;
+    }
+    .story .col:nth-child(even) .desc:before {
+          right: -15px;
+          bottom: -15px;
+          top: auto;
+      }
+      .story .year {
+        flex: 0 0 65px;
+        font-size: 15px;
+        margin: 0;
+      }
+      .story .year::after {
+        width: 3px;
+        left: 48px;
+      }
+      .story .col:first-child .year::after {
+          top: 5px;
+      }
+      .story .year span:after {
+        width: 15px;
+        height: 15px;
+        /* margin-left: 7px; */
+      }
+      .story .year span {
+        width: 57px;
+      }
+    /* .story .col {    
+      flex-direction: column;
+    }
+   
+    .story .year {
+      flex: auto;
+      position: relative;
+      margin: 0 0 30px;
+    }
+    .story .year::after {
+      height: 5px;
+      width: auto;
+      right: 0;
+      left: 90px;
+      bottom: auto;
+      top: 20px !important;
+    }
+    .story .desc {
+      margin: 0;
+    }
+    .story .desc:after {     
+      left: 50%;
+      top: -30px;
+      transform: translate(-50%,0);         
+      border: 10px  solid transparent; border-bottom: 20px solid #fee9a8 ;     
+    }
+    .story .desc:before {
+      top: auto;
+      bottom: -35px;
+      right: auto;
+      left: -20px;
+    } */
+  }
+</style>
+
+
+{% schema %}
+{
+    "name": "Story",
+    "settings": [
+      {
+        "id": "story_title",
+        "type": "text",
+        "label": "Story title"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "years-blocks",
+      "name": "Years blocks",
+      "settings": [
+        {
+          "id": "years",
+          "type": "text",
+          "label": "Years"
+        },
+        {
+          "id": "years_img",
+          "type": "image_picker",
+          "label": "Years img"
+        },
+        {
+          "id": "years_text",
+          "type": "textarea",
+          "label": "Years text"
+        }
+      ]
+    }      
+  ]
+ 
+    
+    
+}
+{% endschema %}

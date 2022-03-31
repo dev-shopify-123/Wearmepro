@@ -1,0 +1,62 @@
+<!-- sections/search-template.liquid -->
+{% assign render_search_form = false %}
+{% assign pgi_media_aspect_ratio = 2.3 %}
+
+<section data-section-id="{{ section.id }}"
+         data-section-type="search-page">
+
+  {% if search.performed %}
+    {% if search.results_count == 0 %}
+      <h1 class="ff--heading lg--f2 md-dn--f3 fw--bold text-center my3 uppercase h-underline h-underline--tight">
+        {{ 'general.search.results_title' | t }} “{{ search.terms }}”
+      </h1>
+      <p class="f4 text-center mt4 mb6">{{ 'general.search.no_results_html' | t: search: search.terms }}</p>
+      {% assign render_search_form = true %}
+    {% else %}
+      <h1 class="ff--heading lg--f2 md-dn--f3 fw--bold text-center my3 uppercase h-underline h-underline--tight">
+        {{ 'general.search.results_title' | t }} “{{ search.terms }}”
+      </h1>
+    {% endif %}
+  {% else %}
+    <h1 class="ff--heading lg--f2 md-dn--f3 fw--bold text-center my3 uppercase h-underline h-underline--tight">
+      Search
+    </h1>
+    {% assign render_search_form = true %}
+  {% endif %}
+
+  {% if render_search_form %}
+    <form action="/search" class="search-page__form mt5">
+      <input class="search-page__input py1 px2 f4 ff--body"
+              name="q"
+              type="search"
+              placeholder="Search…"
+              autocomplete="off">
+      <input type="hidden" name="type" value="product" />
+      <button class="btn f4" type="submit">
+        <span class="material-icons search-component-submit__icon">search</span>
+        <span class="visually-hidden">Search</span>
+      </button>
+    </form>
+  {% endif %}
+
+  {% if search.performed and search.results_count > 0 %}
+  {% paginate search.results by 24 %}
+    <div class="product-listing"
+         data-product-listing>
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% if   item.template_suffix != 'landing' %}
+            {% unless item.price == 0 %}
+              {% render 'product-grid-item',
+                product: item,
+                pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+              %}
+            {% endunless %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      </div>
+  {% endpaginate %}
+  {% endif %}
+
+</section>

@@ -1,0 +1,243 @@
+<div class="desktop-header__top-row"
+     data-section-id="{{ section.id }}"
+     data-section-type="desktop-header">
+  <div class="desktop-header__logo">
+    {% if section.settings.logo != blank %}
+    {% assign logo_image = section.settings.logo %}
+    <div class="header-logo-wrapper">
+      <a href="/" class="ratio-box" style="padding-top:{{ 1 | divided_by: logo_image.aspect_ratio | times: 100}}%;">
+        <img class="header-logo ratio-box-content lazyload"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+             data-srcset="{{ logo_image | img_url: '350x' }} 1x,
+                     {{ logo_image | img_url: '350x', scale: 2 }} 2x,
+                     {{ logo_image | img_url: '350x', scale: 3 }} 3x"
+             alt="WearMe Pro">
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  <div class="desktop-header__bottom-row"
+       data-section-id="{{ section.id }}"
+       data-sticky-nav="{{ section.settings.sticky_nav }}"
+       data-section-type="desktop-nav">
+    <nav class="desktop-header__nav" role="navigation" tabindex="0">
+      <ul class="site-nav">
+        {% for link in linklists[section.settings.main_menu].links %}
+          <li class="site-nav__item{% if link.links != blank %} has-submenu{% endif %}{% if link.title == 'Women' or link.title == 'Men' or link.title == 'Brand' or link.title == 'Community' %} has-submenu has-megamenu{% endif %}">
+            <a class="site-nav-link" href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+            {% if link.links != blank %}
+              <ul class="site-nav-submenu">
+                {% for child_link in link.links %}
+                  <li class="site-nav-submenu__item">
+                    <a class="site-nav-submenu-link" href="{{ child_link.url }}">
+                      {{ child_link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+                {% if link.handle == 'help-desk' %}
+                  <li class="site-nav-submenu__item">
+                    <a class="site-nav-submenu-link" href="{{ routes.account_url }}">
+                      {{ 'layout.customer.account' | t }}
+                    </a>
+                  </li>
+                {% endif %}
+              </ul>
+            {% elsif link.title == 'Women' %}
+              <div class="site-nav-submenu site-nav-megamenu"
+                   data-async-section="megamenu-women">
+
+              </div><!-- .site-nav-megamenu -->
+            {% elsif link.title == 'Men' %}
+            <div class="site-nav-submenu site-nav-megamenu"
+                 data-async-section="megamenu-men">
+
+            </div><!-- .site-nav-megamenu -->
+            {% elsif link.title == 'Brand' %}
+              <div class="site-nav-submenu site-nav-megamenu"
+                   data-async-section="megamenu-brand">
+
+            </div><!-- .site-nav-megamenu -->
+            {% elsif link.title == 'Community' %}
+              <div class="site-nav-submenu site-nav-megamenu"
+                   data-async-section="megamenu-community">
+
+             </div><!-- .site-nav-megamenu -->
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="desktop-header__tools">
+    <button class="btn--plain desktop-header__icon desktop-header__icon--search" data-search-toggle>
+
+      <span class="material-icons custom-icon-search"></span>
+    </button>
+    <div class="user">
+      {% if customer.id == null %}
+      <a href="{{ routes.account_register_url }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24.863" height="25" viewBox="0 0 24.863 25">
+          <path id="account" d="M19.112,15.381a7.5,7.5,0,1,0-9.27,0A12.493,12.493,0,0,0,2.072,25.6a1.257,1.257,0,0,0,2.5.275,9.994,9.994,0,0,1,19.863,0,1.249,1.249,0,0,0,1.249,1.112h.137a1.249,1.249,0,0,0,1.1-1.374,12.493,12.493,0,0,0-7.808-10.232Zm-4.635-.887a5,5,0,1,1,5-5A5,5,0,0,1,14.477,14.494Z" transform="translate(-2.064 -1.995)" fill="#282828"/>
+        </svg>
+      </a>
+      {% else %}
+      <a href="{{ routes.account_url }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24.863" height="25" viewBox="0 0 24.863 25">
+          <path id="account" d="M19.112,15.381a7.5,7.5,0,1,0-9.27,0A12.493,12.493,0,0,0,2.072,25.6a1.257,1.257,0,0,0,2.5.275,9.994,9.994,0,0,1,19.863,0,1.249,1.249,0,0,0,1.249,1.112h.137a1.249,1.249,0,0,0,1.1-1.374,12.493,12.493,0,0,0-7.808-10.232Zm-4.635-.887a5,5,0,1,1,5-5A5,5,0,0,1,14.477,14.494Z" transform="translate(-2.064 -1.995)" fill="#282828"/>
+        </svg>
+      </a>
+      {% endif %}
+      <div class="holder-user">
+        {% if customer.id == null %}
+        <a href="{{ routes.account_register_url }}" class="btn btn-new">SIGN IN / SIGN UP</a>
+        <ul>
+          <li><a href="{{ routes.account_register_url }}">Order History</a></li>
+          <li><a href="{{ routes.account_register_url }}">Track My Order</a></li>
+          <li><a href="/pages/rewards">WMP Rewards</a></li>
+        </ul>
+        {% else %}
+        <a href="{{ routes.account_login_url }}" class="btn btn-new">SIGN IN / SIGN UP</a>
+        <ul>
+          <li><a href="{{ routes.account_url }}#orders">Order History</a></li>
+          <li><a href="{{ routes.account_url }}#orders">Track My Order</a></li>          
+          <li><a href="/pages/rewards">WMP Rewards</a></li>
+          <li><a href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a></li>
+        </ul>
+        {% endif %}
+
+
+        
+       
+
+        
+      </div>
+    </div>
+    {% comment %}
+    <div class="desktop-header__icon desktop-header__icon--account has-submenu">
+      <span class="material-icons custom-icon-person"></span>
+      <ul class="desktop-header-icon-submenu">
+        <li class="desktop-header-icon-submenu__item">
+          <a href="{{ routes.account_url }}" class="desktop-header-icon-submenu-link">
+            <span class="desktop-header-icon-submenu-item-icon material-icons">person</span> Account
+          </a>
+        </li>
+        {% if customer %}
+        <li class="desktop-header-icon-submenu__item">
+          <a href="{{ routes.account_logout_url }}" class="desktop-header-icon-submenu-link">
+            <span class="desktop-header-icon-submenu-item-icon material-icons">lock</span> Log Out
+          </a>
+        </li>
+        {% else %}
+        <li class="desktop-header-icon-submenu__item">
+          <a href="{{ routes.account_login_url }}" class="desktop-header-icon-submenu-link">
+            <span class="desktop-header-icon-submenu-item-icon material-icons">lock</span> Log In
+          </a>
+        </li>
+        <li class="desktop-header-icon-submenu__item">
+          <a href="{{ routes.account_register_url }}" class="desktop-header-icon-submenu-link">
+            <span class="desktop-header-icon-submenu-item-icon material-icons">person_add</span> Register
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endcomment %}
+    <button class="btn--plain desktop-header__icon desktop-header__icon--cart desktop-header__icon--cart--bigger" data-cart-toggle>
+      <span class="material-icons custom-icon-shopping_basket"></span>
+      <span class="desktop-header-cart-icon__count desktop-header-cart-icon__count--bigger ff--body cart-bubble">{{ cart.item_count }}</span>
+    </button>
+  </div>
+  {% render 'search-component', search_component_extra_class: 'search-component-container--desktop' %}
+</div>
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append:'x' %}
+      "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.facebook_url | json }},
+      {{ settings.twitter_url | json }},
+      {{ settings.snapchat_url | json }},
+      {{ settings.instagram_url | json }},
+      {{ settings.pinterest_url | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {%- assign potential_action_target = shop.url | append: routes.search_url | append: "?q={search_term_string}" -%}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+{% if section.settings.sticky_nav %}
+  <style>
+    .desktop-header__bottom-row-wrapper {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 80;
+      width: 100%;
+      transition: box-shadow .2s ease-in-out;
+      background-color: {{ settings.color_body_bg }};
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+    }
+
+    .desktop-header__bottom-row-wrapper.is-stuck {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Desktop Header",
+  "class": "desktop-header__top-row-wrapper desktop-header__bottom-row-wrapper py1",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_nav",
+      "label": "Sticky navigation",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

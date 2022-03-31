@@ -1,0 +1,95 @@
+<div class="desktop-header__bottom-row"
+     data-section-id="{{ section.id }}"
+     data-sticky-nav="{{ section.settings.sticky_nav }}"
+     data-section-type="desktop-nav">
+
+  <nav class="desktop-header__nav" role="navigation" tabindex="0">
+    <ul class="site-nav">
+      {% for link in linklists[section.settings.main_menu].links %}
+      <li class="site-nav__item{% if link.links != blank %} has-submenu{% endif %}{% if link.title == 'Shop' %} has-submenu has-megamenu{% endif %}">
+        <a class="site-nav-link" href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+        {% if link.links != blank %}
+          <ul class="site-nav-submenu">
+            {% for child_link in link.links %}
+            <li class="site-nav-submenu__item">
+              <a class="site-nav-submenu-link" href="{{ child_link.url }}">
+                {{ child_link.title }}
+              </a>
+            </li>
+            {% endfor %}
+            {% if link.handle == 'help-desk' %}
+              <li class="site-nav-submenu__item">
+                <a class="site-nav-submenu-link" href="{{ routes.account_url }}">
+                  {{ 'layout.customer.account' | t }}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        {% elsif link.title == 'Shop' %}
+        <div class="site-nav-submenu site-nav-megamenu"
+             data-async-section="megamenu">
+
+        </div><!-- .site-nav-megamenu -->
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <nav class="desktop-header__sticky-tools" data-show-if-stuck>
+    <button class="btn--plain desktop-header__icon desktop-header__icon--tight desktop-header__icon--search" data-search-toggle>
+      <span class="material-icons custom-icon-search"></span>
+    </button>
+    <button class="btn--plain desktop-header__icon desktop-header__icon--tight desktop-header__icon--cart" data-cart-toggle>
+      <span class="material-icons custom-icon-shopping_basket"></span>
+      <span class="desktop-header-cart-icon__count ff--body cart-bubble">
+        {{ cart.item_count }}
+      </span>
+    </button>
+  </nav>
+</div>
+
+{% if section.settings.sticky_nav %}
+<style>
+  .desktop-header__bottom-row-wrapper {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    width: 100%;
+    transition: box-shadow .2s ease-in-out;
+    background-color: {{ settings.color_body_bg }};
+  }
+
+  .desktop-header__bottom-row-wrapper.is-stuck {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  }
+</style>
+{% endif %}
+{% schema %}
+{
+  "name": "Desktop Navigation",
+  "class": "desktop-header__bottom-row-wrapper py1",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_nav",
+      "label": "Sticky navigation",
+      "default": true
+    }
+  ]
+
+}
+{% endschema %}

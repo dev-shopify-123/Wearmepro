@@ -1,0 +1,3360 @@
+<!-- sections/product-template.liquid -->
+
+{%- assign product_display_title = product.title | split: ' ' | first -%}
+{%- if product.tags contains '__settings:full-title' -%}
+    {% assign product_display_title = product.title -%}
+{%- endif -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- assign has_styled_media = false -%}
+{%- assign styled_images = '' -%}
+
+{%- assign enable_bis = settings.enable_bis -%}
+{% assign styled_class = 'it-styled' %}
+<section class="{{styled_class}}" data-section-id="{{ section.id }}"
+         data-section-type="product"
+         data-enable-bis={{ enable_bis | json }}
+         data-product-id="{{ product.id }}"
+        {% if product.selected_variant %}
+            data-selected-variant="true"
+            data-selected-variant-id="{{ product.selected_variant.id }}"
+            {% if product.selected_variant.featured_media %}
+                data-selected-variant-featured-media="true"
+                data-selected-variant-featured-media-id="{{ product.selected_variant.featured_media.id }}"
+            {% endif %}
+        {% else %}
+            data-selected-variant="false"
+        {% endif %}
+         data-enable-history-state="true">
+
+    <style>
+       .shopify-section.template {
+      margin-top: 0;
+    }
+      .usage {
+        text-align: center;        
+      }
+      .usage h3{
+        margin: 0 0 30px;
+      }
+      .usage .btn {
+        margin: 0 5px 10px;
+        border: #ffd753 solid 1px;
+       
+      }
+      .usage.error .btn {       
+        border: red solid 1px;
+      }
+
+      .usage .btn.active {
+       background: #7dcfb9;
+       border: #7dcfb9 solid 1px;
+      }
+      
+    .hidden-buttons {
+        display: none;
+    }
+      
+      .holder-product {
+	 position: relative;
+	 overflow: hidden;
+}
+     .holder-product .row-variant-lens {
+           display: flex;
+    align-items: center;
+    justify-content: space-between;
+       margin: 0 0 15px;
+     }
+      .holder-product .row-variant-lens p {
+       margin: 0 !important; 
+      }
+ .holder-product .display label {
+	 cursor: pointer;
+}
+ .holder-product .display label input {
+	 position: absolute;
+	 width: 0;
+	 height: 0;
+	 opacity: 0;
+	 visibility: hidden;
+}
+ .holder-product .display .step-option {
+	 position: relative;
+	 display: flex;
+	 align-items: center;
+}
+ .holder-product .display .step-option .step-option-image, .holder-product .display .step-option .step-option-icon {
+	 display: flex;
+	 align-items: center;
+}
+ .holder-product .display .step-option .step-option-image {
+	 justify-content: flex-end;
+	 min-width: 70px;
+	 margin-right: 30px;
+}
+ .holder-product .display .step-option .step-option-description {
+	 margin-right: 15px;
+}
+ .holder-product .display .step-option .step-option-description h2 {
+	 margin-bottom: 5px;
+	 text-transform: uppercase;
+}
+ .holder-product .display .step-option .step-option-description p:last-of-type {
+	 margin-bottom: 0;
+}
+ .holder-product .display .step-option .step-option-description .lens-description {
+	 display: inline-block;
+	 margin-top: 10px;
+	 padding: 3px 10px;
+	 border-radius: 8px;
+	 background-color: rgba(126, 207, 185, 0.25);
+}
+ .holder-product .display .step-option .step-option-icon {
+	 z-index: 2;
+	 margin-left: auto;
+	 cursor: pointer;
+}
+ .holder-product .display .step-option .step-option-icon:hover .extended-tooltip {
+	 z-index: 2;
+	 opacity: 1;
+	 visibility: visible;
+}
+ .holder-product .display .step-option .step-option-icon .extended-tooltip {
+	 position: absolute;
+	 display: block;
+	 right: 0;
+	 z-index: -1;
+	 margin-top: -60px;
+	 padding: 3px 10px;
+	 border-radius: 8px;
+	 opacity: 0;
+	 visibility: hidden;
+	 background-color: #ccc;
+	 transition: 0.3s all;
+}
+ .holder-product .display .step-option .step-option-icon .extended-tooltip p {
+	 margin: 0 0 5px;
+}
+ .holder-product .display .step-option .step-option-icon .extended-tooltip p:last-of-type {
+	 margin: 0;
+}
+ .holder-product .holder-display .steps ul li:last-of-type {
+	 display: none;
+}
+ .holder-product .holder-display .steps ul li:nth-last-child(-n+2)::after {
+	 display: none;
+}
+ .holder-product .holder-display .actions ul li.disabled {
+	 cursor: not-allowed;
+}
+ .holder-product .holder-display .actions ul li.disabled a.disabled {
+	 background: #989898;
+	 pointer-events: none;
+}
+ .holder-product .side-container {
+	 position: relative;
+	 display: flex;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 z-index: 3;
+	 transform: translateX(150%);
+	/* background-color: #f4f4f4;
+	 */
+	 transition: 0.6s all;
+	 width: 100%;
+	 display: none;
+}
+ .holder-product .side-container .button-row {
+	 text-align: center;
+}
+ .holder-product .side-container .button-row a {
+	 display: inline-block;
+	 min-width: 120px;
+	 margin-right: 5px;
+	 padding: 10px 25px;
+	 border: 1px solid #545454;
+	 color: #282828;
+	 text-transform: capitalize;
+}
+ .holder-product .side-container .button-row a:last-of-type {
+	 margin-right: 0;
+}
+ .holder-product .side-container .close {
+	 position: absolute;
+}
+ .holder-product .side-container .side-container-left {
+	 display: flex;
+	 flex: auto;
+	 height: 100%;
+	 padding: 50px 65px 50px 0;
+	 background-color: #fff;
+}
+ @media screen and (max-width: 1100px) {
+	 .holder-product .side-container .side-container-left {
+		 flex-direction: column;
+		 padding: 0 0 30px;
+	}
+}
+ .holder-product .side-container .side-container-left .side-container-order-review {
+	 max-width: 350px;
+	 width: 100%;
+	 margin-right: 65px;
+}
+ @media screen and (max-width: 1100px) {
+	 .holder-product .side-container .side-container-left .side-container-order-review {
+		 max-width: 300px;
+		 margin: 0 auto 20px;
+	}
+}
+ .holder-product .side-container .side-container-left .side-container-order-review h2 {
+	 margin-top: 0;
+	 text-transform: uppercase;
+	 font-size: 24px;
+}
+ .holder-product .side-container .side-container-left .side-container-order-review figure {
+	 margin: 0;
+}
+ .holder-product .side-container .side-container-left .side-container-order-review figure img {
+	 max-width: 100%;
+	 height: auto;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details {
+	 width: 100%;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .title-price {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+	 font-family: 'Zona Pro', sans-serif;
+}
+       .holder-product .side-container .side-container-left .side-container-order-details .title-price {
+        margin: 0 0 15px; 
+       }
+ .holder-product .side-container .side-container-left .side-container-order-details .title-price h2 {
+	 margin: 0 15px 0 0 !important;
+	 text-transform: uppercase;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .order-type {
+	 margin-bottom: 30px;
+	 font-family: 'Zona Pro', sans-serif;
+	 font-weight: 500;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .lens-type, .holder-product .side-container .side-container-left .side-container-order-details .lens-package {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+	 margin-bottom: 25px;
+	 font-family: 'Zona Pro', sans-serif;
+	 font-weight: 500;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .lens-type p, .holder-product .side-container .side-container-left .side-container-order-details .lens-package p {
+	 min-width: 108px;
+	 margin: 0 30px 0 0;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .lens-type > span, .holder-product .side-container .side-container-left .side-container-order-details .lens-package > span {
+	 margin-right: auto;
+	 color: #545454;
+	 font-weight: bold;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .lens-type strong, .holder-product .side-container .side-container-left .side-container-order-details .lens-package strong {
+	 margin-left: 15px;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter {
+	 display: none;
+	 align-items: center;
+	 justify-content: space-between;
+	 font-family: 'Zona Pro', sans-serif;
+	 font-weight: 500;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label {
+	 display: flex;
+	 width: 100%;
+	 align-items: center;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label input, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label input {
+	 position: absolute;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label > span:not(.additional-option), .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label > span:not(.additional-option) {
+	/* align-self: flex-start;
+	 */
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label .additional-option, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label .additional-option {
+	/* display: flex;
+	 align-items: flex-end;
+	 */
+	 max-width: 310px;
+	 width: auto;
+	 height: auto;
+	 margin: 0 15px 15px 0;
+	 border: none;
+	 background: none;
+	 text-align: left;
+	 line-height: 24px;
+	/* min-height: 48px;
+	 */
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label .additional-option::before, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label .additional-option::before {
+	 content: none;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label .additional-option img, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label .additional-option img {
+	/* width: 16px;
+	 height: 16px;
+	 */
+	/* margin: 0 0 5px 5px;
+	 */
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .anti-reflective label strong, .holder-product .side-container .side-container-left .side-container-order-details .blue-filter label strong {
+	 margin-left: auto;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details hr {
+	 margin: 20px 0;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .subtotal {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+	 font-family: 'Zona Pro', sans-serif;
+}
+ .holder-product .side-container .side-container-left .side-container-order-details .subtotal p {
+	 margin: 0 15px 0 0 !important;
+	 text-transform: capitalize;
+	 font-weight: 500;
+}
+ .holder-product .side-container .side-container-right {
+	 flex: auto;
+	 max-width: 420px;
+	 width: 100%;
+	 background-color: #f4f4f4;
+	 padding: 50px 40px;
+}
+      .holder-product .side-container .side-container-right form button {
+       height: 60px !important; 
+      }
+ @media screen and (max-width: 1440px) {
+	 .holder-product .side-container .side-container-right {
+		 max-width: none;
+	}
+   .holder-product .side-container .side-container-right form button {
+           width: 280px !important;
+    margin: 0 auto !important;
+      }
+}
+ @media screen and (max-width: 1100px) {
+	 .holder-product .side-container .side-container-right {
+		 padding: 10px 10px 30px;
+	}
+   .holder-product .side-container .side-container-right form button {
+               height: 40px !important;
+    width: 200px !important;
+    margin: 0 auto !important;
+    
+    min-height: auto !important;
+      }
+}
+ .holder-product .side-container .side-container-right .items, .holder-product .side-container .side-container-right .subtotal, .holder-product .side-container .side-container-right .shipping-charges, .holder-product .side-container .side-container-right .tax, .holder-product .side-container .side-container-right .order-summary-total {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+	 margin-bottom: 25px;
+	 font-family: 'Zona Pro', sans-serif;
+}
+ .holder-product .side-container .side-container-right .items p, .holder-product .side-container .side-container-right .subtotal p, .holder-product .side-container .side-container-right .shipping-charges p, .holder-product .side-container .side-container-right .tax p, .holder-product .side-container .side-container-right .order-summary-total p {
+	 margin: 0 15px 0 0 !important;
+	 text-transform: capitalize;
+	 font-weight: 500;
+}
+ .holder-product .side-container .side-container-right .items {
+	 justify-content: flex-start;
+}
+ .holder-product .side-container .side-container-right .tax {
+	 margin-bottom: 0;
+}
+ .holder-product .side-container .side-container-right hr {
+	 margin: 20px 0;
+}
+ .holder-product .side-container .side-container-right .order-summary-total {
+	 margin-bottom: 50px;
+	 font-size: 18px;
+}
+ @media screen and (max-width: 1100px) {
+	 .holder-product .side-container .side-container-right .order-summary-total {
+		 margin-bottom: 30px;
+	}
+}
+ .holder-product .side-container .side-container-right .add-to-cart {
+	 display: inline-block;
+	 width: 100%;
+	 padding: 20px 0;
+	 color: #fff;
+	 background-color: #7dcfb9;
+	 text-align: center;
+	 font-size: 16px;
+}
+ @media screen and (max-width: 1440px) {
+	 .holder-product .side-container .side-container-right .add-to-cart {
+		 width: 280px;
+		 margin: 0 auto;
+		 display: block;
+	}
+}
+ @media screen and (max-width: 1100px) {
+	 .holder-product .side-container .side-container-right .add-to-cart {
+		 width: 200px;
+		 padding: 8px 0;
+	}
+}
+ .holder-product .side-container.side-container_visible {
+	 transform: translateX(0);
+	 display: flex;
+	 flex-wrap: wrap;
+}
+ .order-summary {
+	 max-width: 600px;
+	 width: 100%;
+	 font-family: 'Zona Pro', sans-serif;
+}
+ .order-summary .title-price {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+}
+ .order-summary .title-price h2 {
+	 margin: 0 15px 15px 0 !important;
+	 text-transform: uppercase;
+}
+ .order-summary .order-params span {
+	 position: relative;
+	 text-transform: capitalize;
+	 font-family: 'Zona Pro', sans-serif;
+	 font-weight: 500;
+}
+ .order-summary .order-params span::after {
+	 content: '';
+	 position: relative;
+	 display: inline-block;
+	 top: 2px;
+	 width: 1px;
+	 height: 15px;
+	 margin: 0 2px 0 5px;
+	 background: #282828;
+}
+ .order-summary .order-params span:last-of-type::after {
+	 display: none;
+}
+ .order-summary .order-prescription {
+	 overflow-x: auto;
+}
+ .order-summary .order-prescription h4 {
+	 margin: 36px 0 16px;
+	 text-transform: uppercase;
+}
+ .order-summary table {
+	 margin-top: 0;
+	 text-align: center;
+	 max-width: none;
+}
+ .order-summary table th, .order-summary table td {
+	 padding: 14px 17px;
+	 border: 1px solid #d4d4d4;
+}
+ .order-summary table td {
+	 font-family: 'Source Sans Pro', sans-serif;
+}
+ .order-summary table td.right-pd, .order-summary table td.left-pd {
+	 display: none;
+}
+ .order-summary table.prism-activated {
+	 display: none;
+}
+ .order-summary .lens-type, .order-summary .lens-package, .order-summary .prism, .order-summary .subtotal {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+}
+ .order-summary .lens-type p, .order-summary .lens-package p, .order-summary .prism p, .order-summary .subtotal p {
+	 margin: 0 15px 0 0 !important;
+	 text-transform: capitalize;
+	 font-family: 'Zona Pro', sans-serif;
+	 font-weight: 500;
+}
+ .order-summary .lens-type, .order-summary .lens-package {
+	 margin-bottom: 20px;
+}
+ .order-summary .prism {
+	 display: none;
+	 margin-bottom: 30px;
+}
+ .order-summary .confirm {
+	 max-width: 575px;
+	 width: 100%;
+	 font-family: 'Zona Pro', sans-serif;
+	 font-weight: 500;
+}
+ .order-summary hr {
+	 margin: 25px 0 20px;
+}
+ .click-row, .click-row-step-1 {
+	 position: relative;
+	 cursor: pointer;
+}
+ .click-row:hover:after, .click-row.active:after, .click-row-step-1:hover:after, .click-row-step-1.active:after {
+	 position: absolute;
+	 content: '';
+	 left: 0;
+	 top: 0;
+	 bottom: 0;
+	 right: 0;
+	 border: #7dcfb9 solid 2px;
+}
+ .hiden-row {
+	 opacity: 0.5;
+}
+ .hiden-row.no-disabled {
+	 opacity: 1;
+}
+ 
+      
+      
+      
+      
+      .additional-option span {
+            vertical-align: top;
+         margin: 0 0 0 5px; 
+      }
+      .additional-option span img {
+       margin: 0; 
+      }
+      .custom-select {
+       position: relative; 
+      }
+      	.error-text {
+              color: #f00;
+              text-transform: uppercase;
+              font-weight: 700;
+              display: none;
+              text-align: center;
+              margin: 50px 0 0;
+        }
+		.holder-product select.error {
+              border: red solid 1px;
+        }
+        .holder-product {
+          font-family: 'Zona Pro';
+            display: flex;
+            align-items: center;
+              flex-wrap: wrap;
+          display: none;
+        }
+      .holder-product  .right-icon {
+       float: right; 
+        margin-left: auto;
+      }
+      .holder-product .steps ul {
+        font-size: 14px;
+      }
+        .holder-product input[type="checkbox"] {
+            visibility: hidden;
+        }
+        .holder-product input[type="checkbox"] + span {
+            width: 15px;
+            height: 15px;
+            border: #000 solid 1px;
+            background: #fff;
+            display: inline-block;
+            margin: 0 5px 0 0;
+            
+            vertical-align: top;
+            position: relative;
+            line-height: 13px;
+            text-align: center;
+              flex: 0 0 15px;
+        }
+      .holder-product  .blue-filter input[type="checkbox"] + span,
+      .holder-product .anti-reflective input[type="checkbox"] + span {
+        margin: 0 5px 27px 0;
+      }
+        .holder-product input[type="checkbox"]:checked + span:before {
+            color: #000;
+            content: "\2713";
+            font-size: 15px;
+            text-align: center;
+        }
+        .holder-product input[type="checkbox"]:checked + span {
+            background: #fed753;
+            border-color: #fed753;
+        }
+
+
+        .holder-product p {
+            margin: 0 0 15px;
+        }
+        .holder-product .title-col {
+            margin: 0 0 5px;
+              text-transform: uppercase;
+        }
+        .holder-product .final-price {
+            font-size: 30px;
+        }
+        .holder-product .final-price strong {
+            font-size: 40px;
+        }
+        .holder-product .col {
+            padding: 0 40px;
+        }
+        .holder-product .col-left {
+            width: 40%;
+        }
+        .holder-product .col-left img {
+            width: 100%;
+            height:  auto;
+        }
+        .holder-product .col-right {
+            width: 60%;
+        }
+
+        .holder-product .display {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        .holder-product .display .row {
+            background: #f4f4f4;
+            border-bottom: #fff solid 2px;
+            padding: 40px;
+        }
+        .holder-product .display .row h2 {
+            margin: 0 0 15px;
+        }
+        .holder-product .display .row p {
+            margin: 0 0 15px;
+        }
+
+        .holder-display {
+            position: relative;
+        }
+        .holder-display .content {
+            position: relative;
+            overflow: hidden;
+        }
+        .holder-display .actions ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 50px 0 0;
+            padding: 0;
+        }
+        .holder-display .actions ul li {
+            margin: 0 10px;
+        }
+        .holder-display .actions ul li a {
+            display: block;
+            font-size: 20px;
+            color: #fff;
+            width: 200px;
+            height: 50px;
+            line-height: 48px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: #7dcfb9;
+        }
+        .holder-display .actions ul li a[href="#previous"] {
+            background: #989898;
+        }
+
+        .holder-display .steps ul {
+            list-style: none;
+            display: flex;
+            max-width: 450px;
+            margin: 0 auto 30px;
+            justify-content: space-between;
+        }
+        .holder-display .steps ul li {
+            padding: 0 5px;
+            width: 25%;
+            text-align: center;
+            position: relative;
+        }
+        .holder-display .steps ul li:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 50%;
+            top: 20px;
+            right: -25%;
+            background: #989898;
+        }
+        .holder-display .steps ul li.done:after {
+            background: #7dcfb9;
+        }
+        .holder-display .steps ul li:last-child:after {
+            display: none;
+        }
+        .holder-display .steps ul li .number {
+            display: block;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            line-height: 38px;
+            border-radius: 100%;
+            border: #7dcfb9 solid 2px;
+            color: #7dcfb9;
+            font-weight: 700;
+            margin: 0 auto 5px;
+            overflow: hidden;
+            position: relative;
+            opacity: 1;
+        }
+        .holder-display .steps ul li.done .number {
+            text-indent: -9999px;
+            background: #7dcfb9;
+        }
+        .holder-display .steps ul li.done a {
+            font-size: 0;
+        }
+        .holder-display .steps ul li.done .number:after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 10px;
+            top: 19px;
+            left: 6px;
+            background: #fff;
+            transform: rotate(45deg);
+        }
+        .holder-display .steps ul li.done .number:before {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 20px;
+            top: 17px;
+            left: 11px;
+            background: #fff;
+            transform: rotate(-45deg);
+        }
+        .holder-display .steps ul li.disabled .number {
+            border-color:  #989898;
+            color:  #989898;
+        }
+        .holder-display .steps .current-info {
+            display: none;
+        }
+        .holder-display h3.title {
+            display: none;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px 0;
+        }
+        table td{
+            border: #000 solid 1px;
+        }
+        .color-lenses {
+            display: flex;
+        }
+        .color-lenses li {
+            margin: 0 5px;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .holder-product .hide {
+            display: none;
+        }
+        .holder-product h1 {
+            text-align: center;
+        }
+        .holder-product .row-select {
+            display: flex;
+          flex-wrap: wrap;
+            align-items: center;
+            margin: 0 0 10px;
+        }
+        .holder-product select {
+            border: #dbdbdb solid 1px;
+            border-radius: 0;
+            width: 100px;
+            position: relative;
+            z-index: 1;
+            background-color: transparent;
+        }
+        .holder-product .custom-select:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            top: 0;
+            left:  70px;
+            background: #fed753;
+        }
+        .holder-product .row-select .col-select {
+            width: 20%;
+            position: relative;
+        }
+        .holder-product .select-hide {
+            display: none;
+        }
+        .holder-product .row-hide {
+            display: none;
+        }
+        .holder-product .display .row .finish-input p {
+            margin: 0 0 5px;
+        }
+        .holder-product .display .row .finish-input input {
+            display: block;
+            margin: 0 0 15px;
+        }
+        .popup-step {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .popup-step.visible {
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-step-content {
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #dddddd;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 50px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 23px;
+            max-height: 100%;
+            overflow: auto;
+        }
+        .popup-step-content .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .popup-step-content .close:after {
+            content: "";
+            left: 0;
+            top: 8px;
+            width: 20px;
+            height: 3px;
+            background: #000;
+            position: absolute;
+            transform: rotate(45deg);
+        }
+        .popup-step-content .close:before {
+            content: "";
+            left: 0;
+            top: 8px;
+            width: 20px;
+            height: 3px;
+            background: #000;
+            position: absolute;
+            transform: rotate(-45deg);
+        }
+      .show-mob {
+          display: none; 
+         }
+     
+      @media screen and (max-width: 1366px) {
+        .holder-product .col {
+			padding: 0 15px;
+        }
+      }
+       @media screen and (max-width: 1170px) {
+         .holder-product {
+          flex-direction: column;
+           padding: 20px 0 0;
+         }
+         .holder-product .col-left {
+          text-align: center; 
+         }
+         .holder-product .col-left figure {
+          margin: 0 0 20px; 
+         }
+         .holder-product .col {
+          width: 100%;
+           padding: 0;
+           margin: 0 0 30px;
+         }
+         .holder-product .col-left img {
+          max-width: 300px; 
+         }
+         .holder-product .final-price strong {
+    font-size: 20px;
+}
+         .holder-product .final-price {
+    font-size: 18px;
+}
+         .holder-product .display .row {
+           padding: 15px 15px 30px;
+         }
+         .holder-product .display .step-option {
+  
+    flex-direction: column;
+    text-align: center;
+}
+         .holder-product .display .step-option .step-option-image {
+          margin: 0 0 20px; 
+         }
+         .holder-product .display .step-option .step-option-icon {
+          order: -1; 
+         }
+         .show-mob {
+          display: block; 
+         }
+         .holder-product .row-select .col-select.w-40-mob  {
+           width: 40%;
+         }
+         .holder-product .row-select .col-select.w-100-mob  {
+           width: 100%;
+         }
+         .holder-product .row-select .col-select {
+          padding:0 5px; 
+         }
+         .holder-product .custom-select:after {
+          left: auto;
+           right: 0;
+         }
+         .holder-product select {
+          width: 100%; 
+         }
+         .custom-select {
+             
+              margin: 0 0 10px;
+          }
+         .indent-mob {
+          margin-left: 20%; 
+         }
+         .title-centr-mob {
+               margin: 0 0 -70px;
+         }
+          .mob-hide {
+          display: none !important; 
+         }
+         .holder-display .actions ul {
+			margin: 25px 0 0;
+         }
+         .holder-display .actions ul li a {            
+            width: 155px;
+            height: 40px;
+            line-height: 40px;
+         }
+         .error-text {
+           margin: 30px 0 0;
+         }
+         .order-summary {
+    		max-width: none;
+         }
+         .button-row {
+               width: 100%;
+    margin: 0 0 30px;
+         }
+       }
+      @media screen and (max-width: 540px) {
+      	.order-summary table th,
+	 	.order-summary table td {
+        	padding: 5px;
+          font-size: 13px;
+      	}
+      }
+      
+    </style>
+   
+  
+   
+  
+
+  
+  
+  
+  
+  
+  <div class="holder-product">
+     
+      
+     
+      
+        <div class="col col-left">
+            {%- assign img_url = product.featured_media | img_url: '1080x1080', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+            <figure>
+                <img class="img-frame" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="{{ img_url }}" alt="">
+            </figure>
+            <div class="desc">
+                <h2 class="title-col"><a href="#">{{ product.title }}</a></h2>  
+              <p ><strong class="variant-lens"></strong></p>
+ 
+                <p class="variant-text">{{ current_variant.title  }}</p>
+                <div data-price="" class="final-price">
+                    Subtotal:  <strong>$<span></span></strong>
+
+                </div>
+            </div>
+          
+        </div>
+        <div class="col col-right">
+          
+            <h1>PICK YOUR LENS</h1>
+            <div class="holder-display">
+                <h3></h3>
+                <div id="display-1" class="display">
+                    <input class="eye hide" value="54" type="number">
+                    <input class="dbl hide" value="20" type="number">
+                    <input class="b hide" value="40" type="number">
+                    <input class="ed hide" value="56" type="number">
+                  
+ 
+
+                    <div class="row click-row-step-1 active">
+                     
+                        <div class="step-option">
+                            <div class="step-option-image"><img src="{{ 'lens1.png' | asset_img_url }}" alt="Lens"></div>
+                            <div class="step-option-description">
+                                <h2>SINGLE VISION</h2>
+
+                                <p>General use with one Rx power throughout the lens.</p>
+                            </div>
+                            <div class="step-option-icon">
+                              	<div >
+                                	<img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-1" >
+                                  <div id="tippy-step-1" style="display: none;">
+  									<strong>SINGLE VISION</strong> <br>
+Single vision lenses are the most common lens type and have one prescription power throughout the entire lens. For most people under 45 years old, one single vision prescription corrects all sight ranges and is the only lens type needed. For those over 45, single vision lenses will correct for either DISTANCE, INTERMEDIATE, or READING, meaning the lenses will work for only one of these purposes. You can select which purpose on the next step in the ordering process.
+									</div>          
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if product.tags contains "Prescription Only" %}
+
+                    {% else %}                      
+                    
+                    <div class="row click-row-step-1 hide-steps non-prescription">
+                        <div class="step-option">
+                            <div class="step-option-image"><img src="{{ 'glasses-1.png' | asset_img_url }}" alt="Glasses"></div>
+                            <div class="step-option-description">
+                                <h2>NON-PRESCRIPTION</h2>
+                                <p>Lenses without any prescription.</p>
+                            </div>
+                            <div class="step-option-icon">
+                               <div data-variant-thumbnails>
+                                	<img class="js-tippy" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-tippy-content="Looking to get glasses as accessories but don't require a prescription? Select non-prescription, with a blue light coating." >
+								                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endif %}
+                </div>
+                <h3>Prescription</h3>
+
+                <div id="display-2" class="display">
+                    <div class="row">
+                      	
+                        <div class="row-select">
+                            <div class="col-select mob-hide">
+
+                            </div>
+                            <div class="col-select mob-hide">
+                                Sphere (SPH)
+                            </div>
+                            <div class="col-select mob-hide">
+                                Cylinder (CYL)
+                            </div>
+                            <div class="col-select mob-hide">
+                                Axis
+                            </div>
+                            <div class="col-select w-100-mob">
+                              <span class="mob-hide">ADD</span>
+                              <div class="right-icon">
+                                	<img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-2" >
+                                  <div id="tippy-step-2" style="display: none;">
+  									<strong>Rx Entry</strong> <br>
+Your prescription consists of the required lens powers to correct your vision. Enter your Rx EXACTLY as your doctor has provided. You normally will have values for both OD (Right Eye) and OS (Left Eye). The SPH, or Sphere power, is the first correction that indicates the magnification or magnification necessary to correct your vision. The CYL, or Cylinder power, is the first component of astigmatism, and corrects for the football shaping of your lens, which causes the unwanted angling of light. The AXIS indicates the angle of the astigmatism correction and is present on any prescription with Cylinder power. Some people have astigmatism and some do not. The ADD power is an additional magnification for those who need a different power for distance and reading.  This is usually for those who are presbyopic, aged over 45. On our single vision lenses, you will need to select whether you want Distance, Intermediate, or Reading if you have an ADD power as the lenses will only work for one of these purposes.
+									</div>  
+								</div>
+                            </div>
+                        </div>
+                        <div class="row-select">
+                            <div class="col-select title-centr-mob">
+                                Right (OD)
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Sphere (SPH)</span>
+                              <div class="custom-select">
+                                {%- assign sph_od = settings.sph_od | split: "||" -%}
+                                <select name="od_sph">
+                                    <option value="-8.00">-8.00</option>
+                                    <option value="-7.75">-7.75</option>
+                                    <option value="-7.50">-7.50</option>
+                                    <option value="-7.25">-7.25</option>
+                                    <option value="-7.00">-7.00</option>
+                                    <option value="-6.75">-6.75</option>
+                                    <option value="-6.50">-6.50</option>
+                                    <option value="-6.25">-6.25</option>
+                                    <option value="-6.00">-6.00</option>
+                                    <option value="-5.75">-5.75</option>
+                                    <option value="-5.50">-5.50</option>
+                                    <option value="-5.25">-5.25</option>
+                                    <option value="-5.00">-5.00</option>
+                                    <option value="-4.75">-4.75</option>
+                                    <option value="-4.50">-4.50</option>
+                                    <option value="-4.25">-4.25</option>
+                                    <option value="-4.00">-4.00</option>
+                                    <option value="-3.75">-3.75</option>
+                                    <option value="-3.50">-3.50</option>
+                                    <option value="-3.25">-3.25</option>
+                                    <option value="-3.00">-3.00</option>
+                                    <option value="-2.75">-2.75</option>
+                                    <option value="-2.50">-2.50</option>
+                                    <option value="-2.25">-2.25</option>
+                                    <option value="-2.00">-2.00</option>
+                                    <option value="-1.75">-1.75</option>
+                                    <option value="-1.50">-1.50</option>
+                                    <option value="-1.25">-1.25</option>
+                                    <option value="-1.00">-1.00</option>
+                                    <option value="-0.75">-0.75</option>
+                                    <option value="-0.50">-0.50</option>
+                                    <option value="-0.25">-0.25</option>
+                                    <option selected value="0.00">0 (PL)</option>
+                                    <option value="0.25">+0.25</option>
+                                    <option value="0.50">+0.50</option>
+                                    <option value="0.75">+0.75</option>
+                                    <option value="1.00">+1.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="2.25">+2.25</option>
+                                    <option value="2.50">+2.50</option>
+                                    <option value="2.75">+2.75</option>
+                                    <option value="3.00">+3.00</option>
+                                    <option value="3.25">+3.25</option>
+                                    <option value="3.50">+3.50</option>
+                                    <option value="3.75">+3.75</option>
+                                    <option value="4.00">+4.00</option>
+                                    <option value="4.25">+4.25</option>
+                                    <option value="4.50">+4.50</option>
+                                    <option value="4.75">+4.75</option>
+                                    <option value="5.00">+5.00</option>
+                                    <option value="5.25">+5.25</option>
+                                    <option value="5.50">+5.50</option>
+                                    <option value="5.75">+5.75</option>
+                                    <option value="6.00">+6.00</option>
+                                    <option value="6.25">+6.25</option>
+                                    <option value="6.50">+6.50</option>
+                                    <option value="6.75">+6.75</option>
+                                    <option value="7.00">+7.00</option>
+                                    <option value="7.25">+7.25</option>
+                                    <option value="7.50">+7.50</option>
+                                    <option value="7.75">+7.75</option>
+                                    <option value="8.00">+8.00</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Cylinder (CYL)</span>
+                              <div class="custom-select">
+                                {%- assign syl_od = settings.syl_od | split: "||" -%}
+                                <select name="od_cyl">
+                                    <option value="-5.00">-5.00</option>
+                                    <option value="-4.75">-4.75</option>
+                                    <option value="-4.50">-4.50</option>
+                                    <option value="-4.25">-4.25</option>
+                                    <option value="-4.00">-4.00</option>
+                                    <option value="-3.75">-3.75</option>
+                                    <option value="-3.50">-3.50</option>
+                                    <option value="-3.25">-3.25</option>
+                                    <option value="-3.00">-3.00</option>
+                                    <option value="-2.75">-2.75</option>
+                                    <option value="-2.50">-2.50</option>
+                                    <option value="-2.25">-2.25</option>
+                                    <option value="-2.00">-2.00</option>
+                                    <option value="-1.75">-1.75</option>
+                                    <option value="-1.50">-1.50</option>
+                                    <option value="-1.25">-1.25</option>
+                                    <option value="-1.00">-1.00</option>
+                                    <option value="-0.75">-0.75</option>
+                                    <option value="-0.50">-0.50</option>
+                                    <option value="-0.25">-0.25</option>
+                                    <option selected value="0.00">0 (DS)</option>
+                                    <option value="0.25">+0.25</option>
+                                    <option value="0.50">+0.50</option>
+                                    <option value="0.75">+0.75</option>
+                                    <option value="1.00">+1.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="2.25">+2.25</option>
+                                    <option value="2.50">+2.50</option>
+                                    <option value="2.75">+2.75</option>
+                                    <option value="3.00">+3.00</option>
+                                    <option value="3.25">+3.25</option>
+                                    <option value="3.50">+3.50</option>
+                                    <option value="3.75">+3.75</option>
+                                    <option value="4.00">+4.00</option>
+                                    <option value="4.25">+4.25</option>
+                                    <option value="4.50">+4.50</option>
+                                    <option value="4.75">+4.75</option>
+                                    <option value="5.00">+5.00</option>
+                                </select>
+                                </div>
+                            </div>
+							
+                            <div class="col-select w-40-mob indent-mob">
+                              <span class="show-mob">Axis</span>
+                               <div class="custom-select">
+                                {%- assign axis_od = settings.axis_od | split: "||" -%}
+                                <select name="od_axis" disabled>
+                                    <option selected value="0.00">&ndash;</option>
+                                    <option value="1.00">1</option>
+                                    <option value="2.00">2</option>
+                                    <option value="3.00">3</option>
+                                    <option value="4.00">4</option>
+                                    <option value="5.00">5</option>
+                                    <option value="6.00">6</option>
+                                    <option value="7.00">7</option>
+                                    <option value="8.00">8</option>
+                                    <option value="9.00">9</option>
+                                    <option value="10.00">10</option>
+                                    <option value="11.00">11</option>
+                                    <option value="12.00">12</option>
+                                    <option value="13.00">13</option>
+                                    <option value="14.00">14</option>
+                                    <option value="15.00">15</option>
+                                    <option value="16.00">16</option>
+                                    <option value="17.00">17</option>
+                                    <option value="18.00">18</option>
+                                    <option value="19.00">19</option>
+                                    <option value="20.00">20</option>
+                                    <option value="21.00">21</option>
+                                    <option value="22.00">22</option>
+                                    <option value="23.00">23</option>
+                                    <option value="24.00">24</option>
+                                    <option value="25.00">25</option>
+                                    <option value="26.00">26</option>
+                                    <option value="27.00">27</option>
+                                    <option value="28.00">28</option>
+                                    <option value="29.00">29</option>
+                                    <option value="30.00">30</option>
+                                    <option value="31.00">31</option>
+                                    <option value="32.00">32</option>
+                                    <option value="33.00">33</option>
+                                    <option value="34.00">34</option>
+                                    <option value="35.00">35</option>
+                                    <option value="36.00">36</option>
+                                    <option value="37.00">37</option>
+                                    <option value="38.00">38</option>
+                                    <option value="39.00">39</option>
+                                    <option value="40.00">40</option>
+                                    <option value="41.00">41</option>
+                                    <option value="42.00">42</option>
+                                    <option value="43.00">43</option>
+                                    <option value="44.00">44</option>
+                                    <option value="45.00">45</option>
+                                    <option value="46.00">46</option>
+                                    <option value="47.00">47</option>
+                                    <option value="48.00">48</option>
+                                    <option value="49.00">49</option>
+                                    <option value="50.00">50</option>
+                                    <option value="51.00">51</option>
+                                    <option value="52.00">52</option>
+                                    <option value="53.00">53</option>
+                                    <option value="54.00">54</option>
+                                    <option value="55.00">55</option>
+                                    <option value="56.00">56</option>
+                                    <option value="57.00">57</option>
+                                    <option value="58.00">58</option>
+                                    <option value="59.00">59</option>
+                                    <option value="60.00">60</option>
+                                    <option value="61.00">61</option>
+                                    <option value="62.00">62</option>
+                                    <option value="63.00">63</option>
+                                    <option value="64.00">64</option>
+                                    <option value="65.00">65</option>
+                                    <option value="66.00">66</option>
+                                    <option value="67.00">67</option>
+                                    <option value="68.00">68</option>
+                                    <option value="69.00">69</option>
+                                    <option value="70.00">70</option>
+                                    <option value="71.00">71</option>
+                                    <option value="72.00">72</option>
+                                    <option value="73.00">73</option>
+                                    <option value="74.00">74</option>
+                                    <option value="75.00">75</option>
+                                    <option value="76.00">76</option>
+                                    <option value="77.00">77</option>
+                                    <option value="78.00">78</option>
+                                    <option value="79.00">79</option>
+                                    <option value="80.00">80</option>
+                                    <option value="81.00">81</option>
+                                    <option value="82.00">82</option>
+                                    <option value="83.00">83</option>
+                                    <option value="84.00">84</option>
+                                    <option value="85.00">85</option>
+                                    <option value="86.00">86</option>
+                                    <option value="87.00">87</option>
+                                    <option value="88.00">88</option>
+                                    <option value="89.00">89</option>
+                                    <option value="90.00">90</option>
+                                    <option value="91.00">91</option>
+                                    <option value="92.00">92</option>
+                                    <option value="93.00">93</option>
+                                    <option value="94.00">94</option>
+                                    <option value="95.00">95</option>
+                                    <option value="96.00">96</option>
+                                    <option value="97.00">97</option>
+                                    <option value="98.00">98</option>
+                                    <option value="99.00">99</option>
+                                    <option value="100.00">100</option>
+                                    <option value="101.00">101</option>
+                                    <option value="102.00">102</option>
+                                    <option value="103.00">103</option>
+                                    <option value="104.00">104</option>
+                                    <option value="105.00">105</option>
+                                    <option value="106.00">106</option>
+                                    <option value="107.00">107</option>
+                                    <option value="108.00">108</option>
+                                    <option value="109.00">109</option>
+                                    <option value="110.00">110</option>
+                                    <option value="111.00">111</option>
+                                    <option value="112.00">112</option>
+                                    <option value="113.00">113</option>
+                                    <option value="114.00">114</option>
+                                    <option value="115.00">115</option>
+                                    <option value="116.00">116</option>
+                                    <option value="117.00">117</option>
+                                    <option value="118.00">118</option>
+                                    <option value="119.00">119</option>
+                                    <option value="120.00">120</option>
+                                    <option value="121.00">121</option>
+                                    <option value="122.00">122</option>
+                                    <option value="123.00">123</option>
+                                    <option value="124.00">124</option>
+                                    <option value="125.00">125</option>
+                                    <option value="126.00">126</option>
+                                    <option value="127.00">127</option>
+                                    <option value="128.00">128</option>
+                                    <option value="129.00">129</option>
+                                    <option value="130.00">130</option>
+                                    <option value="131.00">131</option>
+                                    <option value="132.00">132</option>
+                                    <option value="133.00">133</option>
+                                    <option value="134.00">134</option>
+                                    <option value="135.00">135</option>
+                                    <option value="136.00">136</option>
+                                    <option value="137.00">137</option>
+                                    <option value="138.00">138</option>
+                                    <option value="139.00">139</option>
+                                    <option value="140.00">140</option>
+                                    <option value="141.00">141</option>
+                                    <option value="142.00">142</option>
+                                    <option value="143.00">143</option>
+                                    <option value="144.00">144</option>
+                                    <option value="145.00">145</option>
+                                    <option value="146.00">146</option>
+                                    <option value="147.00">147</option>
+                                    <option value="148.00">148</option>
+                                    <option value="149.00">149</option>
+                                    <option value="150.00">150</option>
+                                    <option value="151.00">151</option>
+                                    <option value="152.00">152</option>
+                                    <option value="153.00">153</option>
+                                    <option value="154.00">154</option>
+                                    <option value="155.00">155</option>
+                                    <option value="156.00">156</option>
+                                    <option value="157.00">157</option>
+                                    <option value="158.00">158</option>
+                                    <option value="159.00">159</option>
+                                    <option value="160.00">160</option>
+                                    <option value="161.00">161</option>
+                                    <option value="162.00">162</option>
+                                    <option value="163.00">163</option>
+                                    <option value="164.00">164</option>
+                                    <option value="165.00">165</option>
+                                    <option value="166.00">166</option>
+                                    <option value="167.00">167</option>
+                                    <option value="168.00">168</option>
+                                    <option value="169.00">169</option>
+                                    <option value="170.00">170</option>
+                                    <option value="171.00">171</option>
+                                    <option value="172.00">172</option>
+                                    <option value="173.00">173</option>
+                                    <option value="174.00">174</option>
+                                    <option value="175.00">175</option>
+                                    <option value="176.00">176</option>
+                                    <option value="177.00">177</option>
+                                    <option value="178.00">178</option>
+                                    <option value="179.00">179</option>
+                                    <option value="180.00">180</option>
+                                </select>
+                                 </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">ADD</span>
+                               <div class="custom-select">
+                                {%- assign add_od = settings.add_od | split: "||" -%}
+                                <select name="od_add" class="select-add" >
+                                  	<option selected value="0.00">&ndash;</option>
+                                    <option value="0.25">0.25</option>
+                                    <option value="0.50">0.50</option>
+                                    <option value="0.75">0.75</option>
+                                    <option value="1.00">1.00</option>
+                                    <option value="1.25">1.25</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="1.75">1.75</option>
+                                    <option value="2.00">2.00</option>
+                                    <option value="2.25">2.25</option>
+                                    <option value="2.50">2.50</option>
+                                    <option value="2.75">2.75</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="3.25">3.25</option>
+                                    <option value="3.50">3.50</option>
+                                    <option value="3.75">3.75</option>
+                                    <option value="4.00">4.00</option>
+                                </select>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="row-select">
+                            <div class="col-select title-centr-mob">
+                                Left (OS)
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Sphere (SPH)</span>
+                              <div class="custom-select">
+                                {%- assign sph_os = settings.sph_os | split: "||" -%}
+                                <select name="os_sph">
+                                    <option value="-8.00">-8.00</option>
+                                    <option value="-7.75">-7.75</option>
+                                    <option value="-7.50">-7.50</option>
+                                    <option value="-7.25">-7.25</option>
+                                    <option value="-7.00">-7.00</option>
+                                    <option value="-6.75">-6.75</option>
+                                    <option value="-6.50">-6.50</option>
+                                    <option value="-6.25">-6.25</option>
+                                    <option value="-6.00">-6.00</option>
+                                    <option value="-5.75">-5.75</option>
+                                    <option value="-5.50">-5.50</option>
+                                    <option value="-5.25">-5.25</option>
+                                    <option value="-5.00">-5.00</option>
+                                    <option value="-4.75">-4.75</option>
+                                    <option value="-4.50">-4.50</option>
+                                    <option value="-4.25">-4.25</option>
+                                    <option value="-4.00">-4.00</option>
+                                    <option value="-3.75">-3.75</option>
+                                    <option value="-3.50">-3.50</option>
+                                    <option value="-3.25">-3.25</option>
+                                    <option value="-3.00">-3.00</option>
+                                    <option value="-2.75">-2.75</option>
+                                    <option value="-2.50">-2.50</option>
+                                    <option value="-2.25">-2.25</option>
+                                    <option value="-2.00">-2.00</option>
+                                    <option value="-1.75">-1.75</option>
+                                    <option value="-1.50">-1.50</option>
+                                    <option value="-1.25">-1.25</option>
+                                    <option value="-1.00">-1.00</option>
+                                    <option value="-0.75">-0.75</option>
+                                    <option value="-0.50">-0.50</option>
+                                    <option value="-0.25">-0.25</option>
+                                    <option selected value="0.00">0 (PL)</option>
+                                    <option value="0.25">+0.25</option>
+                                    <option value="0.50">+0.50</option>
+                                    <option value="0.75">+0.75</option>
+                                    <option value="1.00">+1.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="2.25">+2.25</option>
+                                    <option value="2.50">+2.50</option>
+                                    <option value="2.75">+2.75</option>
+                                    <option value="3.00">+3.00</option>
+                                    <option value="3.25">+3.25</option>
+                                    <option value="3.50">+3.50</option>
+                                    <option value="3.75">+3.75</option>
+                                    <option value="4.00">+4.00</option>
+                                    <option value="4.25">+4.25</option>
+                                    <option value="4.50">+4.50</option>
+                                    <option value="4.75">+4.75</option>
+                                    <option value="5.00">+5.00</option>
+                                    <option value="5.25">+5.25</option>
+                                    <option value="5.50">+5.50</option>
+                                    <option value="5.75">+5.75</option>
+                                    <option value="6.00">+6.00</option>
+                                    <option value="6.25">+6.25</option>
+                                    <option value="6.50">+6.50</option>
+                                    <option value="6.75">+6.75</option>
+                                    <option value="7.00">+7.00</option>
+                                    <option value="7.25">+7.25</option>
+                                    <option value="7.50">+7.50</option>
+                                    <option value="7.75">+7.75</option>
+                                    <option value="8.00">+8.00</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Cylinder (CYL)</span>
+                              <div class="custom-select">
+                                {%- assign syl_os = settings.syl_os | split: "||" -%}
+                                <select name="os_cyl">
+                                    <option value="-5.00">-5.00</option>
+                                    <option value="-4.75">-4.75</option>
+                                    <option value="-4.50">-4.50</option>
+                                    <option value="-4.25">-4.25</option>
+                                    <option value="-4.00">-4.00</option>
+                                    <option value="-3.75">-3.75</option>
+                                    <option value="-3.50">-3.50</option>
+                                    <option value="-3.25">-3.25</option>
+                                    <option value="-3.00">-3.00</option>
+                                    <option value="-2.75">-2.75</option>
+                                    <option value="-2.50">-2.50</option>
+                                    <option value="-2.25">-2.25</option>
+                                    <option value="-2.00">-2.00</option>
+                                    <option value="-1.75">-1.75</option>
+                                    <option value="-1.50">-1.50</option>
+                                    <option value="-1.25">-1.25</option>
+                                    <option value="-1.00">-1.00</option>
+                                    <option value="-0.75">-0.75</option>
+                                    <option value="-0.50">-0.50</option>
+                                    <option value="-0.25">-0.25</option>
+                                    <option selected value="0.00">0 (DS)</option>
+                                   <option value="0.25">+0.25</option>
+                                    <option value="0.50">+0.50</option>
+                                    <option value="0.75">+0.75</option>
+                                    <option value="1.00">+1.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="1.25">+1.25</option>
+                                    <option value="1.50">+1.50</option>
+                                    <option value="1.75">+1.75</option>
+                                    <option value="2.00">+2.00</option>
+                                    <option value="2.25">+2.25</option>
+                                    <option value="2.50">+2.50</option>
+                                    <option value="2.75">+2.75</option>
+                                    <option value="3.00">+3.00</option>
+                                    <option value="3.25">+3.25</option>
+                                    <option value="3.50">+3.50</option>
+                                    <option value="3.75">+3.75</option>
+                                    <option value="4.00">+4.00</option>
+                                    <option value="4.25">+4.25</option>
+                                    <option value="4.50">+4.50</option>
+                                    <option value="4.75">+4.75</option>
+                                    <option value="5.00">+5.00</option>                      
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob indent-mob">
+                              <span class="show-mob">Axis</span>
+                              <div class="custom-select">
+                                {%- assign axis_os = settings.axis_os | split: "||" -%}
+                                <select name="os_axis" disabled>
+                                   <option selected value="0.00">&ndash;</option>
+                                    <option value="1.00">1</option>
+                                    <option value="2.00">2</option>
+                                    <option value="3.00">3</option>
+                                    <option value="4.00">4</option>
+                                    <option value="5.00">5</option>
+                                    <option value="6.00">6</option>
+                                    <option value="7.00">7</option>
+                                    <option value="8.00">8</option>
+                                    <option value="9.00">9</option>
+                                    <option value="10.00">10</option>
+                                    <option value="11.00">11</option>
+                                    <option value="12.00">12</option>
+                                    <option value="13.00">13</option>
+                                    <option value="14.00">14</option>
+                                    <option value="15.00">15</option>
+                                    <option value="16.00">16</option>
+                                    <option value="17.00">17</option>
+                                    <option value="18.00">18</option>
+                                    <option value="19.00">19</option>
+                                    <option value="20.00">20</option>
+                                    <option value="21.00">21</option>
+                                    <option value="22.00">22</option>
+                                    <option value="23.00">23</option>
+                                    <option value="24.00">24</option>
+                                    <option value="25.00">25</option>
+                                    <option value="26.00">26</option>
+                                    <option value="27.00">27</option>
+                                    <option value="28.00">28</option>
+                                    <option value="29.00">29</option>
+                                    <option value="30.00">30</option>
+                                    <option value="31.00">31</option>
+                                    <option value="32.00">32</option>
+                                    <option value="33.00">33</option>
+                                    <option value="34.00">34</option>
+                                    <option value="35.00">35</option>
+                                    <option value="36.00">36</option>
+                                    <option value="37.00">37</option>
+                                    <option value="38.00">38</option>
+                                    <option value="39.00">39</option>
+                                    <option value="40.00">40</option>
+                                    <option value="41.00">41</option>
+                                    <option value="42.00">42</option>
+                                    <option value="43.00">43</option>
+                                    <option value="44.00">44</option>
+                                    <option value="45.00">45</option>
+                                    <option value="46.00">46</option>
+                                    <option value="47.00">47</option>
+                                    <option value="48.00">48</option>
+                                    <option value="49.00">49</option>
+                                    <option value="50.00">50</option>
+                                    <option value="51.00">51</option>
+                                    <option value="52.00">52</option>
+                                    <option value="53.00">53</option>
+                                    <option value="54.00">54</option>
+                                    <option value="55.00">55</option>
+                                    <option value="56.00">56</option>
+                                    <option value="57.00">57</option>
+                                    <option value="58.00">58</option>
+                                    <option value="59.00">59</option>
+                                    <option value="60.00">60</option>
+                                    <option value="61.00">61</option>
+                                    <option value="62.00">62</option>
+                                    <option value="63.00">63</option>
+                                    <option value="64.00">64</option>
+                                    <option value="65.00">65</option>
+                                    <option value="66.00">66</option>
+                                    <option value="67.00">67</option>
+                                    <option value="68.00">68</option>
+                                    <option value="69.00">69</option>
+                                    <option value="70.00">70</option>
+                                    <option value="71.00">71</option>
+                                    <option value="72.00">72</option>
+                                    <option value="73.00">73</option>
+                                    <option value="74.00">74</option>
+                                    <option value="75.00">75</option>
+                                    <option value="76.00">76</option>
+                                    <option value="77.00">77</option>
+                                    <option value="78.00">78</option>
+                                    <option value="79.00">79</option>
+                                    <option value="80.00">80</option>
+                                    <option value="81.00">81</option>
+                                    <option value="82.00">82</option>
+                                    <option value="83.00">83</option>
+                                    <option value="84.00">84</option>
+                                    <option value="85.00">85</option>
+                                    <option value="86.00">86</option>
+                                    <option value="87.00">87</option>
+                                    <option value="88.00">88</option>
+                                    <option value="89.00">89</option>
+                                    <option value="90.00">90</option>
+                                    <option value="91.00">91</option>
+                                    <option value="92.00">92</option>
+                                    <option value="93.00">93</option>
+                                    <option value="94.00">94</option>
+                                    <option value="95.00">95</option>
+                                    <option value="96.00">96</option>
+                                    <option value="97.00">97</option>
+                                    <option value="98.00">98</option>
+                                    <option value="99.00">99</option>
+                                    <option value="100.00">100</option>
+                                    <option value="101.00">101</option>
+                                    <option value="102.00">102</option>
+                                    <option value="103.00">103</option>
+                                    <option value="104.00">104</option>
+                                    <option value="105.00">105</option>
+                                    <option value="106.00">106</option>
+                                    <option value="107.00">107</option>
+                                    <option value="108.00">108</option>
+                                    <option value="109.00">109</option>
+                                    <option value="110.00">110</option>
+                                    <option value="111.00">111</option>
+                                    <option value="112.00">112</option>
+                                    <option value="113.00">113</option>
+                                    <option value="114.00">114</option>
+                                    <option value="115.00">115</option>
+                                    <option value="116.00">116</option>
+                                    <option value="117.00">117</option>
+                                    <option value="118.00">118</option>
+                                    <option value="119.00">119</option>
+                                    <option value="120.00">120</option>
+                                    <option value="121.00">121</option>
+                                    <option value="122.00">122</option>
+                                    <option value="123.00">123</option>
+                                    <option value="124.00">124</option>
+                                    <option value="125.00">125</option>
+                                    <option value="126.00">126</option>
+                                    <option value="127.00">127</option>
+                                    <option value="128.00">128</option>
+                                    <option value="129.00">129</option>
+                                    <option value="130.00">130</option>
+                                    <option value="131.00">131</option>
+                                    <option value="132.00">132</option>
+                                    <option value="133.00">133</option>
+                                    <option value="134.00">134</option>
+                                    <option value="135.00">135</option>
+                                    <option value="136.00">136</option>
+                                    <option value="137.00">137</option>
+                                    <option value="138.00">138</option>
+                                    <option value="139.00">139</option>
+                                    <option value="140.00">140</option>
+                                    <option value="141.00">141</option>
+                                    <option value="142.00">142</option>
+                                    <option value="143.00">143</option>
+                                    <option value="144.00">144</option>
+                                    <option value="145.00">145</option>
+                                    <option value="146.00">146</option>
+                                    <option value="147.00">147</option>
+                                    <option value="148.00">148</option>
+                                    <option value="149.00">149</option>
+                                    <option value="150.00">150</option>
+                                    <option value="151.00">151</option>
+                                    <option value="152.00">152</option>
+                                    <option value="153.00">153</option>
+                                    <option value="154.00">154</option>
+                                    <option value="155.00">155</option>
+                                    <option value="156.00">156</option>
+                                    <option value="157.00">157</option>
+                                    <option value="158.00">158</option>
+                                    <option value="159.00">159</option>
+                                    <option value="160.00">160</option>
+                                    <option value="161.00">161</option>
+                                    <option value="162.00">162</option>
+                                    <option value="163.00">163</option>
+                                    <option value="164.00">164</option>
+                                    <option value="165.00">165</option>
+                                    <option value="166.00">166</option>
+                                    <option value="167.00">167</option>
+                                    <option value="168.00">168</option>
+                                    <option value="169.00">169</option>
+                                    <option value="170.00">170</option>
+                                    <option value="171.00">171</option>
+                                    <option value="172.00">172</option>
+                                    <option value="173.00">173</option>
+                                    <option value="174.00">174</option>
+                                    <option value="175.00">175</option>
+                                    <option value="176.00">176</option>
+                                    <option value="177.00">177</option>
+                                    <option value="178.00">178</option>
+                                    <option value="179.00">179</option>
+                                    <option value="180.00">180</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">ADD</span>
+                              <div class="custom-select">
+                                {%- assign add_os = settings.add_os | split: "||" -%}
+                                <select name="os_add"class="select-add" >
+                                  	<option selected value="0.00">&ndash;</option>
+                                    <option value="0.25">0.25</option>
+                                    <option value="0.50">0.50</option>
+                                    <option value="0.75">0.75</option>
+                                    <option value="1.00">1.00</option>
+                                    <option value="1.25">1.25</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="1.75">1.75</option>
+                                    <option value="2.00">2.00</option>
+                                    <option value="2.25">2.25</option>
+                                    <option value="2.50">2.50</option>
+                                    <option value="2.75">2.75</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="3.25">3.25</option>
+                                    <option value="3.50">3.50</option>
+                                    <option value="3.75">3.75</option>
+                                    <option value="4.00">4.00</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row usage row-hide">
+                      <h3>Please select whether you want the lenses for Distance, Intermediate, or Reading</h3>
+                     <label class="btn" for="usage-1"> 
+                        Distance
+                       <input name="usage" value="Distance" type="radio" id="usage-1">
+                      </label>
+                      <label class="btn" for="usage-2">
+                        Intermediate
+                        <input name="usage" value="Intermediate" type="radio" id="usage-2">
+                      </label>
+                      <label class="btn" for="usage-3">
+                        Reading
+                        <input name="usage" value="Reading" type="radio" id="usage-3">
+                      </label>
+                    </div>
+                    <div class="row">
+                        <div class="row-select">
+                          
+                            <div class="col-select">
+                                PD
+                            </div>
+                            <div class="col-select select-show w-40-mob">
+                              <div class="custom-select">
+                                <select name="pd">
+                                  	<option selected value="0">PD</option>
+                                    <option value="40.00">40.0</option>
+                                    <option value="40.50">40.5</option>
+                                    <option value="41.00">41.0</option>
+                                    <option value="41.50">41.5</option>
+                                    <option value="42.00">42.0</option>
+                                    <option value="42.50">42.5</option>
+                                    <option value="43.00">43.0</option>
+                                    <option value="43.50">43.5</option>
+                                    <option value="44.00">44.0</option>
+                                    <option value="44.50">44.5</option>
+                                    <option value="45.00">45.0</option>
+                                    <option value="45.50">45.5</option>
+                                    <option value="46.00">46.0</option>
+                                    <option value="46.50">46.5</option>
+                                    <option value="47.00">47.0</option>
+                                    <option value="47.50">47.5</option>
+                                    <option value="48.00">48.0</option>
+                                    <option value="48.50">48.5</option>
+                                    <option value="49.00">49.0</option>
+                                    <option value="49.50">49.5</option>
+                                    <option value="50.00">50.0</option>
+                                    <option value="50.50">50.5</option>
+                                    <option value="51.00">51.0</option>
+                                    <option value="51.50">51.5</option>
+                                    <option value="52.00">52.0</option>
+                                    <option value="52.50">52.5</option>
+                                    <option value="53.00">53.0</option>
+                                    <option value="53.50">53.5</option>
+                                    <option value="54.00">54.0</option>
+                                    <option value="54.50">54.5</option>
+                                    <option value="55.00">55.0</option>
+                                    <option value="55.50">55.5</option>
+                                    <option value="56.00">56.0</option>
+                                    <option value="56.50">56.5</option>
+                                    <option value="57.00">57.0</option>
+                                    <option value="57.50">57.5</option>
+                                    <option value="58.00">58.0</option>
+                                    <option value="58.50">58.5</option>
+                                    <option value="59.00">59.0</option>
+                                    <option value="59.50">59.5</option>
+                                    <option value="60.00">60.0</option>
+                                    <option value="60.50">60.5</option>
+                                    <option value="61.00">61.0</option>
+                                    <option value="61.50">61.5</option>
+                                    <option value="62.00">62.0</option>
+                                    <option value="62.50">62.5</option>
+                                    <option value="63.00">63.0</option>
+                                    <option value="63.50">63.5</option>
+                                    <option value="64.00">64.0</option>
+                                    <option value="64.50">64.5</option>
+                                    <option value="65.00">65.0</option>
+                                    <option value="65.50">65.5</option>
+                                    <option value="66.00">66.0</option>
+                                    <option value="66.50">66.5</option>
+                                    <option value="67.00">67.0</option>
+                                    <option value="67.50">67.5</option>
+                                    <option value="68.00">68.0</option>
+                                    <option value="68.50">68.5</option>
+                                    <option value="69.00">69.0</option>
+                                    <option value="69.50">69.5</option>
+                                    <option value="70.00">70.0</option>
+                                    <option value="70.50">70.5</option>
+                                    <option value="71.00">71.0</option>
+                                    <option value="71.50">71.5</option>
+                                    <option value="72.00">72.0</option>
+                                    <option value="72.50">72.5</option>
+                                    <option value="73.00">73.0</option>
+                                    <option value="73.50">73.5</option>
+                                    <option value="74.00">74.0</option>
+                                    <option value="74.50">74.5</option>
+                                    <option value="75.00">75.0</option>
+                                    <option value="75.50">75.5</option>
+                                    <option value="76.00">76.0</option>
+                                    <option value="76.50">76.5</option>
+                                    <option value="77.00">77.0</option>
+                                    <option value="77.50">77.5</option>
+                                    <option value="78.00">78.0</option>
+                                    <option value="78.50">78.5</option>
+                                    <option value="79.00">79.0</option>
+                                    <option value="79.50">79.5</option>
+                                    <option value="80.00">80.0</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select select-hide w-40-mob">
+                              <div class="custom-select">
+                                <select name="od_pd">
+                                  	<option selected value="0">Right PD</option>
+                                    <option value="20.00">20.00</option>
+                                    <option value="20.25">20.25</option>
+                                    <option value="20.50">20.50</option>
+                                    <option value="20.75">20.75</option>
+                                    <option value="21.00">21.00</option>
+                                    <option value="21.25">21.25</option>
+                                    <option value="21.50">21.50</option>
+                                    <option value="21.75">21.75</option>
+                                    <option value="22.00">22.00</option>
+                                    <option value="22.25">22.25</option>
+                                    <option value="22.50">22.50</option>
+                                    <option value="22.75">22.75</option>
+                                    <option value="23.00">23.00</option>
+                                    <option value="23.25">23.25</option>
+                                    <option value="23.50">23.50</option>
+                                    <option value="23.75">23.75</option>
+                                    <option value="24.00">24.00</option>
+                                    <option value="24.25">24.25</option>
+                                    <option value="24.50">24.50</option>
+                                    <option value="24.75">24.75</option>
+                                    <option value="25.00">25.00</option>
+                                    <option value="25.25">25.25</option>
+                                    <option value="25.50">25.50</option>
+                                    <option value="25.75">25.75</option>
+                                    <option value="26.00">26.00</option>
+                                    <option value="26.25">26.25</option>
+                                    <option value="26.50">26.50</option>
+                                    <option value="26.75">26.75</option>
+                                    <option value="27.00">27.00</option>
+                                    <option value="27.25">27.25</option>
+                                    <option value="27.50">27.50</option>
+                                    <option value="27.75">27.75</option>
+                                    <option value="28.00">28.00</option>
+                                    <option value="28.25">28.25</option>
+                                    <option value="28.50">28.50</option>
+                                    <option value="28.75">28.75</option>
+                                    <option value="29.00">29.00</option>
+                                    <option value="29.25">29.25</option>
+                                    <option value="29.50">29.50</option>
+                                    <option value="29.75">29.75</option>
+                                    <option value="30.00">30.00</option>
+                                    <option value="30.25">30.25</option>
+                                    <option value="30.50">30.50</option>
+                                    <option value="30.75">30.75</option>
+                                    <option value="31.00">31.00</option>
+                                    <option value="31.25">31.25</option>
+                                    <option value="31.50">31.50</option>
+                                    <option value="31.75">31.75</option>
+                                    <option value="32.00">32.00</option>
+                                    <option value="32.25">32.25</option>
+                                    <option value="32.50">32.50</option>
+                                    <option value="32.75">32.75</option>
+                                    <option value="33.00">33.00</option>
+                                    <option value="33.25">33.25</option>
+                                    <option value="33.50">33.50</option>
+                                    <option value="33.75">33.75</option>
+                                    <option value="34.00">34.00</option>
+                                    <option value="34.25">34.25</option>
+                                    <option value="34.50">34.50</option>
+                                    <option value="34.75">34.75</option>
+                                    <option value="35.00">35.00</option>
+                                    <option value="35.25">35.25</option>
+                                    <option value="35.50">35.50</option>
+                                    <option value="35.75">35.75</option>
+                                    <option value="36.00">36.00</option>
+                                    <option value="36.25">36.25</option>
+                                    <option value="36.50">36.50</option>
+                                    <option value="36.75">36.75</option>
+                                    <option value="37.00">37.00</option>
+                                    <option value="37.25">37.25</option>
+                                    <option value="37.50">37.50</option>
+                                    <option value="37.75">37.75</option>
+                                    <option value="38.00">38.00</option>
+                                    <option value="38.25">38.25</option>
+                                    <option value="38.50">38.50</option>
+                                    <option value="38.75">38.75</option>
+                                    <option value="39.00">39.00</option>
+                                    <option value="39.25">39.25</option>
+                                    <option value="39.50">39.50</option>
+                                    <option value="39.75">39.75</option>
+                                    <option value="40.00">40.00</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select select-hide w-40-mob">
+                              <div class="custom-select">
+                                <select name="os_pd">
+                                  	<option selected value="0">Left PD</option>
+                                    <option value="20.00">20.00</option>
+                                    <option value="20.25">20.25</option>
+                                    <option value="20.50">20.50</option>
+                                    <option value="20.75">20.75</option>
+                                    <option value="21.00">21.00</option>
+                                    <option value="21.25">21.25</option>
+                                    <option value="21.50">21.50</option>
+                                    <option value="21.75">21.75</option>
+                                    <option value="22.00">22.00</option>
+                                    <option value="22.25">22.25</option>
+                                    <option value="22.50">22.50</option>
+                                    <option value="22.75">22.75</option>
+                                    <option value="23.00">23.00</option>
+                                    <option value="23.25">23.25</option>
+                                    <option value="23.50">23.50</option>
+                                    <option value="23.75">23.75</option>
+                                    <option value="24.00">24.00</option>
+                                    <option value="24.25">24.25</option>
+                                    <option value="24.50">24.50</option>
+                                    <option value="24.75">24.75</option>
+                                    <option value="25.00">25.00</option>
+                                    <option value="25.25">25.25</option>
+                                    <option value="25.50">25.50</option>
+                                    <option value="25.75">25.75</option>
+                                    <option value="26.00">26.00</option>
+                                    <option value="26.25">26.25</option>
+                                    <option value="26.50">26.50</option>
+                                    <option value="26.75">26.75</option>
+                                    <option value="27.00">27.00</option>
+                                    <option value="27.25">27.25</option>
+                                    <option value="27.50">27.50</option>
+                                    <option value="27.75">27.75</option>
+                                    <option value="28.00">28.00</option>
+                                    <option value="28.25">28.25</option>
+                                    <option value="28.50">28.50</option>
+                                    <option value="28.75">28.75</option>
+                                    <option value="29.00">29.00</option>
+                                    <option value="29.25">29.25</option>
+                                    <option value="29.50">29.50</option>
+                                    <option value="29.75">29.75</option>
+                                    <option value="30.00">30.00</option>
+                                    <option value="30.25">30.25</option>
+                                    <option value="30.50">30.50</option>
+                                    <option value="30.75">30.75</option>
+                                    <option value="31.00">31.00</option>
+                                    <option value="31.25">31.25</option>
+                                    <option value="31.50">31.50</option>
+                                    <option value="31.75">31.75</option>
+                                    <option value="32.00">32.00</option>
+                                    <option value="32.25">32.25</option>
+                                    <option value="32.50">32.50</option>
+                                    <option value="32.75">32.75</option>
+                                    <option value="33.00">33.00</option>
+                                    <option value="33.25">33.25</option>
+                                    <option value="33.50">33.50</option>
+                                    <option value="33.75">33.75</option>
+                                    <option value="34.00">34.00</option>
+                                    <option value="34.25">34.25</option>
+                                    <option value="34.50">34.50</option>
+                                    <option value="34.75">34.75</option>
+                                    <option value="35.00">35.00</option>
+                                    <option value="35.25">35.25</option>
+                                    <option value="35.50">35.50</option>
+                                    <option value="35.75">35.75</option>
+                                    <option value="36.00">36.00</option>
+                                    <option value="36.25">36.25</option>
+                                    <option value="36.50">36.50</option>
+                                    <option value="36.75">36.75</option>
+                                    <option value="37.00">37.00</option>
+                                    <option value="37.25">37.25</option>
+                                    <option value="37.50">37.50</option>
+                                    <option value="37.75">37.75</option>
+                                    <option value="38.00">38.00</option>
+                                    <option value="38.25">38.25</option>
+                                    <option value="38.50">38.50</option>
+                                    <option value="38.75">38.75</option>
+                                    <option value="39.00">39.00</option>
+                                    <option value="39.25">39.25</option>
+                                    <option value="39.50">39.50</option>
+                                    <option value="39.75">39.75</option>
+                                    <option value="40.00">40.00</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob indent-mob">
+                                <label  for="sow-input">
+                                    <input id="sow-input" type="checkbox">
+                                    <span></span>
+                                    Two PD numbers
+                                </label>
+                            </div>
+                          <div class="right-icon" >
+                                	<img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-3" >
+                                  <div id="tippy-step-3" style="display: none;">
+  									<strong>PD Entry</strong> <br>
+The PD (pupillary distance), tells us where to place the optical center of the lens horizontally and is the horizontal measurement between the pupils in your eyes. Your PD will be written as either one number or two.  If you have two PD numbers, click on the ‘Two PD Numbers.’ Enter your PD exactly as provided.
+									</div>  
+								</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label  for="sow-input2">
+                          <input id="sow-input2" type="checkbox"
+                                 data-title="{{ all_products[settings.prism_product].selected_or_first_available_variant.title }}"
+                                 data-add-price="{{ all_products[settings.prism_product].selected_or_first_available_variant.price | money }}"
+                                 data-id="{{ all_products[settings.prism_product].selected_or_first_available_variant.id }}"
+                                 data-price-without-currency="{{ all_products[settings.prism_product].selected_or_first_available_variant.price | divided_by: 100.00 }}">
+                                        <span></span>
+                          My Rx contains Prism {{ all_products[settings.prism_product].selected_or_first_available_variant.price | money }}
+
+                        </label>
+                       <div class="right-icon" >
+                                  <img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-4" >
+                                  <div id="tippy-step-4" style="display: none;">
+  									<strong>Prism Entry</strong> <br>
+									Your Rx may or may not contain a Prism correction. Prism is usually prescribed to correct for double vision. As prism is a more complex correction, there will be an additional fee. Prism corrections can be for one eye or both, and can be horizontal or vertical. If you have Prism on your Rx, click ‘Add Prism’ and enter the prism exactly as provided.
+								  </div>  
+								</div>
+                    </div>
+                    <div class="row row-hide">
+                        <div class="row-select mob-hide">
+                            <div class="col-select">
+
+                            </div>
+                            <div class="col-select">
+                                Vertical (Δ)
+                            </div>
+                            <div class="col-select">
+                                Base Direction
+                            </div>
+                            <div class="col-select">
+                                Horizontal (Δ)
+                            </div>
+                            <div class="col-select">
+                                Base Direction
+                            </div>
+                        </div>
+                        <div class="row-select">
+                            <div class="col-select  title-centr-mob">
+                                Right (OD)
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Vertical (Δ)</span>
+                              <div class="custom-select">                                
+                                <select name="od_v_prism">
+                                    <option selected value="0.00">0.00</option>
+                                    <option value="0.25">0.25</option>
+                                    <option value="0.50">0.50</option>
+                                    <option value="0.75">0.75</option>
+                                    <option value="1.00">1.00</option>
+                                    <option value="1.25">1.25</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="1.75">1.75</option>
+                                    <option value="2.00">2.00</option>                                   
+                                    <option value="2.25">2.25</option>
+                                    <option value="2.50">2.50</option>
+                                    <option value="2.75">2.75</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="3.25">3.25</option>
+                                    <option value="3.50">3.50</option>
+                                    <option value="3.75">3.75</option>
+                                    <option value="4.00">4.00</option>
+                                    <option value="4.25">4.25</option>
+                                    <option value="4.50">4.50</option>
+                                    <option value="4.75">4.75</option>
+                                    <option value="5.00">5.00</option>
+                                    <option value="5.25">5.25</option>
+                                    <option value="5.50">5.50</option>
+                                    <option value="5.75">5.75</option>
+                                    <option value="6.00">6.00</option>
+                                    <option value="6.25">6.25</option>
+                                    <option value="6.50">6.50</option>
+                                    <option value="6.75">6.75</option>
+                                    <option value="7.00">7.00</option>
+                                    <option value="7.25">7.25</option>
+                                    <option value="7.50">7.50</option>
+                                    <option value="7.75">7.75</option>
+                                    <option value="8.00">8.00</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Base Direction</span>
+                              <div class="custom-select">
+                                <select name="od_v_direction" disabled>
+                                  	<option value="0" selected>n/a</option>
+                                    <option value="1">Up</option>
+                                  	<option value="2">Down</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob indent-mob">
+                              <span class="show-mob">Horizontal (Δ)</span>
+                              <div class="custom-select">
+                                <select name="od_h_prism">
+                                    <option selected value="0.00">0.00</option>
+                                    <option value="0.25">0.25</option>
+                                    <option value="0.50">0.50</option>
+                                    <option value="0.75">0.75</option>
+                                    <option value="1.00">1.00</option>
+                                    <option value="1.25">1.25</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="1.75">1.75</option>
+                                    <option value="2.00">2.00</option>                                    
+                                    <option value="2.25">2.25</option>
+                                    <option value="2.50">2.50</option>
+                                    <option value="2.75">2.75</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="3.25">3.25</option>
+                                    <option value="3.50">3.50</option>
+                                    <option value="3.75">3.75</option>
+                                    <option value="4.00">4.00</option>
+                                    <option value="4.25">4.25</option>
+                                    <option value="4.50">4.50</option>
+                                    <option value="4.75">4.75</option>
+                                    <option value="5.00">5.00</option>
+                                    <option value="5.25">5.25</option>
+                                    <option value="5.50">5.50</option>
+                                    <option value="5.75">5.75</option>
+                                    <option value="6.00">6.00</option>
+                                    <option value="6.25">6.25</option>
+                                    <option value="6.50">6.50</option>
+                                    <option value="6.75">6.75</option>
+                                    <option value="7.00">7.00</option>
+                                    <option value="7.25">7.25</option>
+                                    <option value="7.50">7.50</option>
+                                    <option value="7.75">7.75</option>
+                                    <option value="8.00">8.00</option>
+                                </select>
+                                 </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Base Direction</span>
+                              <div class="custom-select">
+                                <select name="od_h_direction" disabled>
+                                    <option value="0" selected>n/a</option>
+                                    <option value="1">In</option>
+                                  	<option value="2">Out</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-select">
+                            <div class="col-select title-centr-mob ">
+                                Left (OS)
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Vertical (Δ)</span>
+                              <div class="custom-select">
+                                <select name="os_v_prism">
+                                    <option selected value="0.00">0.00</option>
+                                    <option value="0.25">0.25</option>
+                                    <option value="0.50">0.50</option>
+                                    <option value="0.75">0.75</option>
+                                    <option value="1.00">1.00</option>
+                                    <option value="1.25">1.25</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="1.75">1.75</option>
+                                    <option value="2.00">2.00</option>                                    
+                                    <option value="2.25">2.25</option>
+                                    <option value="2.50">2.50</option>
+                                    <option value="2.75">2.75</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="3.25">3.25</option>
+                                    <option value="3.50">3.50</option>
+                                    <option value="3.75">3.75</option>
+                                    <option value="4.00">4.00</option>
+                                    <option value="4.25">4.25</option>
+                                    <option value="4.50">4.50</option>
+                                    <option value="4.75">4.75</option>
+                                    <option value="5.00">5.00</option>
+                                    <option value="5.25">5.25</option>
+                                    <option value="5.50">5.50</option>
+                                    <option value="5.75">5.75</option>
+                                    <option value="6.00">6.00</option>
+                                    <option value="6.25">6.25</option>
+                                    <option value="6.50">6.50</option>
+                                    <option value="6.75">6.75</option>
+                                    <option value="7.00">7.00</option>
+                                    <option value="7.25">7.25</option>
+                                    <option value="7.50">7.50</option>
+                                    <option value="7.75">7.75</option>
+                                    <option value="8.00">8.00</option>
+                                </select>
+                                 </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Base Direction</span>
+                              <div class="custom-select">
+                                <select name="os_v_direction" disabled>
+                                    <option value="0" selected>n/a</option>
+                                    <option value="1">Up</option>
+                                  	<option value="2">Down</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob indent-mob">
+                              <span class="show-mob">Horizontal (Δ)</span>
+                              <div class="custom-select">
+                                <select name="os_h_prism">
+                                    <option selected value="0.00">0.00</option>
+                                    <option value="0.25">0.25</option>
+                                    <option value="0.50">0.50</option>
+                                    <option value="0.75">0.75</option>
+                                    <option value="1.00">1.00</option>
+                                    <option value="1.25">1.25</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="1.75">1.75</option>
+                                    <option value="2.00">2.00</option>                                   
+                                    <option value="2.25">2.25</option>
+                                    <option value="2.50">2.50</option>
+                                    <option value="2.75">2.75</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="3.25">3.25</option>
+                                    <option value="3.50">3.50</option>
+                                    <option value="3.75">3.75</option>
+                                    <option value="4.00">4.00</option>
+                                    <option value="4.25">4.25</option>
+                                    <option value="4.50">4.50</option>
+                                    <option value="4.75">4.75</option>
+                                    <option value="5.00">5.00</option>
+                                    <option value="5.25">5.25</option>
+                                    <option value="5.50">5.50</option>
+                                    <option value="5.75">5.75</option>
+                                    <option value="6.00">6.00</option>
+                                    <option value="6.25">6.25</option>
+                                    <option value="6.50">6.50</option>
+                                    <option value="6.75">6.75</option>
+                                    <option value="7.00">7.00</option>
+                                    <option value="7.25">7.25</option>
+                                    <option value="7.50">7.50</option>
+                                    <option value="7.75">7.75</option>
+                                    <option value="8.00">8.00</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-select w-40-mob">
+                              <span class="show-mob">Base Direction</span>
+                              <div class="custom-select">
+                                <select name="os_h_direction" disabled>
+                                     <option value="0" selected>n/a</option>
+                                    <option value="1">In</option>
+                                  	<option value="2">Out</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                  <div class="error-text">
+                          make your choice to continue
+                      	</div>
+
+                </div>
+                <h3>Pick Your Lens</h3>
+                <div id="display-3" class="display">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'step_three_product' %}
+                            <label for="price-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}">
+                                <div class="row click-row title-products">
+                                    <div class="step-option">
+                                        <div class="step-option-image">
+                                            {%- assign img_url = all_products[block.settings.product].featured_media | img_url: '100x100', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+                                            <img src="{{ img_url }}">
+                                        </div>
+                                        <div class="step-option-description ">
+                                            <h2 data-title="{{ all_products[block.settings.product].title }}">{{ all_products[block.settings.product].title }}<span class="option-price">- {{ all_products[block.settings.product].price | money }}</span></h2>
+                                            <p>{{ all_products[block.settings.product].description }}</p>
+                                        </div>
+                                        <div class="step-option-icon">
+                                            <div>
+                                                 <img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" >
+                                                <div id="tippy-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" style="display: none;">
+                                                  <strong>{{ block.settings.info_text }}</strong> <br>
+                                                    {{ block.settings.info_textarea }}
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input data-title="{{ all_products[block.settings.product].title }}" class="step-3-service-{{ forloop.index }} add-product-{{ block.settings.text }}" data-id-current="{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" id="price-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}"  data-price-diff-without-currency="{{ all_products[block.settings.product].price | divided_by: 100 }}" data-add-service="{{ block.settings.text }}" name="price-step1" type="radio">
+                                </div>
+
+                            </label>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+                <h3>Lens Package</h3>
+                <div id="display-4" class="display">
+
+                        <label for="price-step-1" class="custom-rx-1">
+                            <div class="row hiden-row add-service2">
+                                <div class="step-option">
+                                    <div class="step-option-image">
+                                        <img src="{{ 'standard_lens.png' | asset_img_url }}" alt="standart lens">
+                                    </div>
+                                    <div class="step-option-description">
+                                      <h2><span class="name-lens-package">Standard Lenses</span> -
+
+                                        <span class="price-lens-package">FREE</span>
+
+                                        </h2>
+                                        <p>Anti-scratch and UV blocking.</p>
+                                        <span class="lens-description"><strong>Index thin Polycarbonate lenses.</strong></span>
+                                    </div>
+                                    <div class="step-option-icon">
+                                        <div>
+                                            <img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-free_lenses" >
+                                            <div id="tippy-step-free_lenses" style="display: none;">
+                                                <strong>STANDARD LENSES</strong> <br>
+                                                Standard lenses are thin and light Polycarbonate 1.59 index and include 99% UV protection, an anti-scratch coating, and impact resistance.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input data-title="Standard lenses" data-delete="true" data-add-service="1" data-price-diff-without-currency="0.0" data-custom-rx="1" id="price-step-1" name="price-step2" type="radio">
+
+                            </div>
+                        </label>
+
+                    {% for block in section.blocks %}
+                        {%  if block.type == 'lenses_product' %}
+                            <label class="custom-rx-{{ block.settings.text }}" for="price-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}">
+                                <div class="row hiden-row add-service2">
+                                    <div class="step-option">
+                                        <div class="step-option-image">
+                                            {%- assign img_url = all_products[block.settings.product].featured_media | img_url: '100x100', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+                                            <img src="{{ img_url }}">
+                                        </div>
+                                        <div class="step-option-description">
+                                            <h2><span class="name-lens-package">{{ all_products[block.settings.product].title }}</span> -
+
+                                                <span class="price-lens-package">{{ all_products[block.settings.product].price | money }}</span>
+
+                                            </h2>
+                                            {{ all_products[block.settings.product].description }}
+                                        </div>
+                                        <div class="step-option-icon">
+                                            <div>
+                                                <img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" >
+                                                <div id="tippy-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" style="display: none;">
+                                                    <strong>{{ block.settings.info_text }}</strong> <br>
+                                                    {{ block.settings.info_textarea }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input data-title="{{ all_products[block.settings.product].title }}" class="add-product-{{ block.settings.anti_reflective }}" data-lense-id="{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" data-add-service="0" data-custom-rx="{{ block.settings.text }}" data-price-diff-without-currency="{{ all_products[block.settings.product].price | divided_by: 100 }}" id="price-step-{{ all_products[block.settings.product].selected_or_first_available_variant.id }}" name="price-step2" type="radio">
+                                </div>
+                            </label>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <h3>Hidden step</h3>
+                <div id="display-5" class="display">
+                    <div class="row">
+                        <div class="order-summary">
+                            <div class="title-price">
+                                <h2>{{product.title}}</h2>
+                              <strong>$<span></span></strong>
+                            </div>
+                          <div class="row-variant-lens">
+                          <p><strong class="variant-lens"></strong></p>
+                            <strong>$<span class="variant-lens-price"></span></strong>
+                          </div>
+
+                            <div class="order-prescription">
+                                <h4>Your prescription</h4>
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <th>SPH</th>
+                                        <th>CYL</th>
+                                        <th>AXIS</th>
+                                        <th>ADD</th>
+                                        <th>PD</th>
+                                    </tr>
+                                    <tr>
+                                        <th>RIGHT(OD)</th>
+                                        <td class="right-sph"></td>
+                                        <td class="right-cyl"></td>
+                                        <td class="right-axis"></td>
+                                        <td class="right-add"></td>
+                                        <td class="single-pd" rowspan="2"></td>
+                                        <td class="right-pd"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>LEFT(OS)</th>
+                                        <td class="left-sph"></td>
+                                        <td class="left-cyl"></td>
+                                        <td class="left-axis"></td>
+                                        <td class="left-add"></td>
+                                        <td class="left-pd"></td>
+                                    </tr>
+                                </table>
+                                <table class="prism-activated">
+                                    <tr>
+                                        <td></td>
+                                        <th>Vertical Prism (Δ)</th>
+                                        <th>Base Direction</th>
+                                        <th>Horizontal Prism (Δ)</th>
+                                        <th>Base Direction</th>
+                                    </tr>
+                                    <tr>
+                                        <th>OD</th>
+                                        <td class="right-v-prism"></td>
+                                        <td class="right-v-direction"></td>
+                                        <td class="right-h-prism"></td>
+                                        <td class="right-h-direction"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>OS</th>
+                                        <td class="left-v-prism"></td>
+                                        <td class="left-v-direction"></td>
+                                        <td class="left-h-prism"></td>
+                                        <td class="left-h-direction"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="order-extra-info">
+                                <div class="lens-type">
+                                    <p>Lens Type</p>
+                                    <strong>Single Vision</strong>
+                                </div>
+                                <div class="lens-package">
+                                    <p>Lens Package</p>
+                                  	 <span class="name-lens-package-text">Srandard lenses 1.50</span>
+                        			<strong><span class="price-lens-package-text">15.00</span></strong>
+                                </div>
+                                <div class="prism">
+                                    <p>Prism</p>
+                                    <strong>$<span></span></strong>
+                                </div>
+                            </div>
+                            <div class="confirm">
+                                <label for="confirm">
+                                    <input type="checkbox" id="confirm">
+                                    <span></span>
+                                    I confirm that the lens selection is accurate. I understand no changes can be made once the order is completed.
+                                </label>
+                            </div>
+                            <hr>
+                            <div class="subtotal">
+                                <p>Subtotal:</p>
+                                <strong>$<span>{{ product.selected_variant.price | divided_by: 100 | round: 2 | times: 100 | round | money_without_currency }}</span></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-step popup-step-erorr">
+            <div class="popup-step-content">
+                <span class="close"></span>
+                <p>please choose a price</p>
+            </div>
+        </div>
+        <div class="popup-step popup-step-add">
+            <div class="popup-step-content">
+                <span class="close"></span>
+                <p>Due to your Rx, your lenses
+                    will need custom manufacturing
+                    to ensure the thinnest and optically</p>
+                <p>The fee for this is <span class="final-price">$<span>{{ product.selected_variant.price | divided_by: 100.00 }}</span></p>
+                <a href="#"  class="btn addToCart-step">Add to Cart</a>
+            </div>
+        </div>
+        <div class="side-container">
+            <div class="side-container-left">
+                <div class="side-container-order-review">
+                    <h2>Review your order</h2>
+                  {%- assign img_url = product.featured_media | img_url: '1080x1080', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+                    <figure>                      
+                        <img class="img-frame" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="{{ img_url }}" alt="">
+                    </figure>
+                    <div class="button-row mob-hide"> 
+                        <a class="edit-lenses" href="#">Edit lenses</a>
+                        <a href="/products/{{product.handle}}">Remove</a>
+                    </div>
+                </div>
+                <div class="side-container-order-details">
+                    <div class="title-price">
+                        <h2>{{ product.title }}</h2>
+                        <strong>$<span></span></strong>
+                    </div>
+                  <div class="row-variant-lens">
+                          <p><strong class="variant-lens"></strong></p>
+                            <strong>$<span class="variant-lens-price"></span></strong>
+                          </div>
+                    <div class="order-type">
+                        <p class="variant-text">{{ current_variant.title  }}</p>
+                    </div>
+                    <div class="lens-type">
+                        <p>Lens Type:</p>
+                        <span>Single Vision</span>
+                    </div>
+                    <div class="lens-package">
+                        <p>Lens Package:</p>
+                        <span class="name-lens-package-text">Srandard lenses 1.50</span>
+                        <strong><span class="price-lens-package-text">15.00</span></strong>
+                    </div>
+                    <div class="anti-reflective">
+                        <label for="anti-reflective">
+                            <input type="checkbox" id="anti-reflective" data-price-diff-without-currency="15">
+                            <span></span>
+                            <p class="additional-option">
+                              Add anti-reflective coating 
+                          		<span>
+                                	<img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-5" >
+                                  <div id="tippy-step-5" style="display: none;">
+  									Some basic info about option
+									</div>          
+                                </span>
+
+                          </p>
+                          	
+                            <strong>$<span>15.00</span></strong>
+                        </label>
+                    </div>
+                    <div class="blue-filter">
+                        <label for="blue-filter">
+                            <input type="checkbox" id="blue-filter" data-price-diff-without-currency="15">
+                            <span></span>
+                            <p class="additional-option">Add blue light glasses filter 
+                          		<span>
+                                	<img class="tippy-step" src="{{ 'info.png' | asset_img_url }}" alt="Info" data-template="tippy-step-5" >
+                                  <div id="tippy-step-5" style="display: none;">
+  									Some basic info about option
+									</div>          
+                                </span>
+                          
+                          	</p>
+                          	
+                            <strong>$<span>15.00</span></strong>
+                        </label>
+                    </div>
+                    <hr>
+                    <div class="subtotal">
+                        <p>Subtotal:</p>
+                        <strong>$<span>{{ product.selected_variant.price | divided_by: 100 | round: 2 | times: 100 | round | money_without_currency }}</span></strong>
+                    </div>
+                </div> 
+            </div>
+           <div class="button-row show-mob">
+                        <a class="edit-lenses" href="#">Edit lenses</a>
+                        <a href="/products/{{product.handle}}">Remove</a>
+                    </div>
+            <div class="side-container-right">
+                <div class="side-container-order-summary">
+                    <h2>SUMMARY</h2>
+                    <div class="items">
+                        <p>Items:</p>
+                        <strong>1</strong>
+                    </div>
+<!--                     <div class="subtotal">
+                        <p>Subtotal:</p>
+                        <strong>$<span>{{ product.selected_variant.price | divided_by: 100 | round: 2 | times: 100 | round | money_without_currency }}</span></strong>
+                    </div>
+                    <div class="shipping-charges">
+                        <p>Shipping charges:</p>
+                        <strong>$<span>10.00</span></strong>
+                    </div>
+                    <div class="tax">
+                        <p>Tax:</p>
+                        <strong>$<span>5.00</span></strong>
+                    </div> -->
+                    <hr>
+                    <div class="order-summary-total subtotal">
+                        <p>Subtotal:</p>
+                        <strong>$<span>59.00</span></strong>
+                    </div>
+                     <a href="#" class="add-to-cart add-to-cart-prescription btn-new">Checkout</a>
+                  
+                  
+           
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="product-section">
+    <div class="product-section__desktop-media lg--px2 lg--pt2 lg--pb0">
+      <div id="product-section-desktop-slideshow-{{ section.id }}"
+           class="product-section__desktop-slideshow"
+           data-product-slideshow>
+        {% for media in product.media %}
+          {% assign media_alt_dc = media.alt | downcase %}
+          {% unless media_alt_dc contains 'styled' %}
+              {% assign alt_split = media.alt | split: ' || '  %}
+              {% assign filter_alt = alt_split[0] | downcase | replace: ' ', '-' | replace: '/', '-' %}
+              {% assign original_alt = alt_split[1] %}
+            <div class="product-section__media-single {{ filter_alt }}"
+                 data-media-index="{% increment desktop_media_index %}"
+                 {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
+                 data-initial-media
+                 {% endif %}
+                 data-single-media-id="{{ section.id }}-{{ media.id }}">
+              {% render 'media', media: media, ratio: media.aspect_ratio, alt: original_alt %}
+            </div>
+          {% else %}
+            {% assign has_styled_media = true %}
+            {% if media.media_type == 'video' %}
+              {% assign styled_video = styled_video | append: media.id | append: ' ' %}
+            {% else %}
+              {% assign styled_images = styled_images | append: media.id | append: ' ' %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+        {% assign styled_video_array = styled_video | strip | split: ' ' %}
+        {% assign styled_images_array = styled_images | strip | split: ' ' %}
+        {% assign styled_media_array = styled_video_array | concat: styled_images_array %}
+      </div>
+      <div id="product-section-desktop-thumbnails-{{ section.id }}"
+           class="product-section__desktop-thumbnails my2"
+           data-product-media-thumbnails>
+        {% for media in product.media %}
+          {% assign media_alt_dc = media.alt | downcase %}
+          {% unless media_alt_dc contains 'styled' %}
+              {% assign alt_split = media.alt | split: ' || '  %}
+              {% assign filter_alt = alt_split[0] | downcase | replace: ' ', '-' | replace: '/', '-' %}
+              {% assign original_alt = alt_split[1] %}
+            <div class="product-section__thumbnail mx2 {{ filter_alt }}"
+                 data-media-index="{% increment desktop_thumbnail_index %}"
+                 {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
+                 data-initial-media
+                 {% endif %}
+                 data-target-media-id="{{ section.id }}-{{ media.id }}">
+              {% render 'media', media: media, ratio: media.aspect_ratio, alt: original_alt %}
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="product-section__info lg--px3 lg--pt3 lg--pb0  md-dn--text-center">
+      <h1 class="product-section__title f2 fw--bold uppercase mt0 mb2">
+        {{ product_display_title }}
+      </h1>
+      <div class="product-section__mobile-media">
+        <div id="product-section-mobile-slideshow-{{ section.id }}"
+             class="product-section__mobile-slideshow"
+             data-product-slideshow>
+          {% for media in product.media %}
+            {% if forloop.first %}
+              {% assign media_preload = true %}
+            {% else %}
+              {% assign media_preload = false %}
+            {% endif %}
+            {% assign media_alt_dc = media.alt | downcase %}
+            {% unless media_alt_dc contains 'styled' %}
+                {% assign alt_split = media.alt | split: ' || '  %}
+                {% assign filter_alt = alt_split[0] | downcase | replace: ' ', '-' | replace: '/', '-' %}
+                {% assign original_alt = alt_split[1] %}
+              <div class="product-section__media-single {{ filter_alt }}"
+                   data-media-index="{% increment mobile_media_index %}"
+                   {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
+                   data-initial-media
+                   {% endif %}
+                   data-single-media-id="{{ section.id }}-{{ media.id }}">
+                {% render 'media', media: media,
+                  ratio: media.aspect_ratio,
+                  media_preload: media_preload,
+                  alt: original_alt
+                %}
+              </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product-section__label">
+        {% render 'product-label', product: product, extra_classes: 'mt2 lg--mt1 mb2 md-dn--hide' %}
+      </div>
+
+        {% assign show_coutdown = false %}
+        {% for colletion in product.collections %}
+            {% if colletion.handle == settings.countdown_collection %}
+                {% assign show_coutdown = true %}
+            {% endif %}
+        {%endfor%}
+      
+        {% assign countdown_date_in_seconds = settings.countdown_date | date: '%s' %}
+        {% assign now_in_seconds = 'now' | date: '%s' %}
+        
+        {% if show_coutdown and countdown_date_in_seconds > now_in_seconds %}
+      
+          <div class="timer">
+              <div class="timer-display">
+                  <div class="timer-block">
+                      <span class="timer-block__num js-timer-days">00</span>
+                      <span class="timer-block__unit">Days</span>
+                  </div>
+                  <div class="timer-block">
+                      <span class="timer-block__num js-timer-hours">00</span>
+                      <span class="timer-block__unit">Hours</span>
+                  </div>
+                  <div class="timer-block">
+                      <span class="timer-block__num js-timer-minutes">00</span>
+                      <span class="timer-block__unit">Minutes</span>
+                  </div>
+                  <div class="timer-block">
+                      <span class="timer-block__num js-timer-seconds">00</span>
+                      <span class="timer-block__unit">Seconds</span>
+                  </div>
+              </div>
+          </div>
+        {% endif %}
+      <div class="product-section__price ff--heading f3 md-dn--f3   uppercase ">
+        {% render 'product-price', variant: current_variant, product: product %}
+
+
+      </div>
+
+
+      <div class="product-section__stars mb2 lg--text-left md-dn--hide ">
+        {% render 'okendo-reviews-product-rating-summary', product: product %}
+      </div>
+      {% unless product.template_suffix == 'variant-select' %}
+
+      <hr class="separator">
+
+      <div class="product-section__variant-thumbnails mxn2 my2 py2"
+           data-variant-thumbnails>
+
+        <div class="md-dn--inline-block mx2">
+          <div class="product-section__variant-thumbnails-scroll-container">
+          {% for variant in product.variants %}
+              {% assign data_filter = variant.title | downcase | replace: ' ', '-' | replace: '/', '-' %}
+
+          <div class="product-section__variant-thumbnail{% if variant.id == current_variant.id %} is-active{% endif %} mx2 p1 lg--my2 js-tippy"
+               data-variant-price="{{ variant.price  | divided_by: 100 }}"
+               data-tippy-content="{{ variant.title }}"
+               data-variant-id="{{ variant.id }}"
+               data-variant-option1="{{ variant.option1 }}"
+               data-variant-option2="{{ variant.option2 }}"
+               data-variant-option3="{{ variant.option3 }}"
+               data-filter="{{ data_filter }}"
+               data-variant-thumbnail>
+            {% render 'media', media: variant.featured_media, ratio: variant.featured_media.aspect_ratio %}
+          </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endunless %}
+      <hr class="separator">
+        <div class="variation-name" style="order: 6;">
+            {% for variant in product.variants %}
+                {% if variant.id == current_variant.id %}
+                    Color: <span>{{ variant.title }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="variation-name-desktop">
+            {% for variant in product.variants %}
+                {% if variant.id == current_variant.id %}
+                    Color: <span>{{ variant.title }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+      {% if product.tags contains 'Lens Type_Blue Light' and settings.enable_bl_promo %}
+      <div class="product-section__bl-promo-text text-center ls12 color--on-sale uppercase ff--heading fw--bold">
+        <p class="md-dn--mt0 lg--mb0">{{ settings.bl_promo_text }}</p>
+      </div>
+      {% endif %}
+      <div class="product-section__form lg--mt2 lg--mb3">
+        {%- capture form_classes -%}
+        {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+        {%- endcapture -%}
+        {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+        <input id="od" name="properties[od]" type="hidden">
+                    <input id="os" name="properties[os]" type="hidden">
+                    <input id="mb-od" name="properties[mb-od]" type="hidden">
+                    <input id="mb-os" name="properties[mb-os]" type="hidden">
+                    <input id="mb-ou" name="properties[mb-ou]" type="hidden">
+                    <input id="custom-l" name="properties[custom-l]" type="hidden">
+                    <input id="custom-s" name="properties[custom-s]" type="hidden">
+                    <input id="custom-c" name="properties[custom-c]" type="hidden">
+                    <input id="custom-p" name="properties[custom-p]" type="hidden">
+                    <input id="high-power" name="properties[high-power]" type="hidden">
+        {% unless product.has_only_default_variant %}
+          {% assign show_variant_select = false %}
+          {% if product.template_suffix contains 'variant-select' %}
+            {% assign show_variant_select = true %}
+          {% endif %}
+          <div class="mt2 lg--mb4 {% unless show_variant_select %}visually-hidden{% endunless %}">
+            {% for option in product.options_with_values %}
+              <div class="">
+                <label for="SingleOptionSelector-{{ forloop.index0 }}"
+                       class="block full-width mb2">
+                  {{ option.name }}
+                </label>
+                <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+                        id="SingleOptionSelector-{{ forloop.index0 }}"
+                        data-index="option{{ forloop.index }}">
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}"
+                            {% if option.selected_value == value %} selected="selected"{% endif %}
+                            >
+                      {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          </div>
+        {% endunless %}
+
+        <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                {{ variant.title }}
+              </option>
+            {% else %}
+              <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+        {% comment %}
+            Uncomment this and replace the product ID
+            to show product-specific notices
+        {% if product.id == 4610920644697 %}
+        <div class="product-form__shipping-notice my2">
+          <span class="color--warning">This item will ship by October 6, 2020</span>
+        </div>
+        {% endif %}
+        {% endcomment %}
+        {% if product.handle == 'jules-round-retro-blue-ligh-blocking-glasses' or product.handle == 'alex-square-modern-metal-frame-blue-light-blocking-computer-glasses' %}
+              <div class="mob-show">
+                <div>
+                 {{ section.settings.mobile_title }}
+                </div>
+                  {%- assign img_url = section.settings.mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- assign widths = '[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' -%}
+                <div class="holder-img">
+                  <img id="{{ image_id }}"
+                       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                       class="lazyload"
+                       data-src="{{ img_url }}"
+                       data-widths="{{ widths }}"
+                       data-sizes="auto"
+                       data-image>
+                </div>
+              </div>
+        {% endif %}
+
+        <div class="lg--hide text-right  f6 my2 mob-reviews-product">
+          <div>{% render 'okendo-reviews-product-rating-summary', product: product %}</div>
+          <!-- <a href="#mobile-see-it-styled"
+             class="color--black uppercase underline"
+             data-mobile-see-it-styled-link>
+            See it Styled
+          </a> -->
+          {% render 'product-label', product: product, extra_classes: 'mt2 lg--mt1 mb2' %}
+        </div>
+
+        <div class="product-section-form-actions"><a class="btn uppercase show-steps" href="#">Select Lenses</a></div>
+        <div class="hidden-buttons product-section-form-actions md-dn--mt1 lg--mt2 lg--mxn1{% if enable_bis and current_variant.available == false %} hide{% endif %}"
+             data-available-actions>
+            {% if product.handle != 'nevada-retro-round-polarized-metal-frame-hipster-sunglasses' %}
+          <div class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__add-to-cart">
+            <button class="btn btn--product-section-form uppercase f--16px--force fw--bold ls03 bg-gradient--green btn-new"
+                    {% unless current_variant.available %}
+                    aria-disabled="true"
+                    {% endunless %}
+                    aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}"
+                    {% endunless %}
+                    data-add-to-cart
+                    type="submit">
+              {% unless current_variant.available %}
+                <span data-add-to-cart-text>{{ 'products.product.sold_out' | t }}</span>
+              {% else %}
+                <span data-add-to-cart-text>{{ 'products.product.add_to_cart' | t }}</span>
+              {% endunless %}
+              <span class="hide" data-loader>
+                Loading…
+              </span>
+            </button>
+          </div>
+            {% endif %}
+          <div class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__dynamic-checkout-buttons">
+            {{ form | payment_button }}
+          </div>
+        </div>
+
+        {% if enable_bis %}
+        <div class="product-section-form-actions my3 md-dn--mt1 lg--mxn1 {% if current_variant.available %}hide{% endif %}"
+             data-bis-actions>
+          <div class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__add-to-cart ">
+            <button class="btn btn--product-section-form uppercase f5 bg-gradient--orange"
+                    id="BIS_trigger"
+                    type="button"
+                    data-variant-id="{{ current_variant.id }}"
+                    data-bis-trigger>
+              <span>{{ 'products.product.bis_long' | t }}</span>
+            </button>
+          </div>
+        </div>
+        {% endif %}
+
+        {% endform %}
+      </div>
+      
+      <div class="product-badge mob">
+        {% render 'product-template-badges', product: product, current_variant: current_variant %}
+        </div>
+        <div style="order: 9;">
+          {% if product.tags contains 'customer-images' %}
+            {% assign output_customer_images = true %}
+            {% assign total_tabs = 4 %}
+          {% else %}
+            {% assign output_customer_images = false %}
+            {% assign total_tabs = 4 %}
+           {% endif %}
+         
+          {% if output_customer_images %}
+          <div id="foursixty-hideable-container" class="lg--hide ">
+                <h2 class="f2 mt0 mb3 fw--bold uppercase ">STYLE INSPIRATION</h2>
+                <p class="ff--heading ">Shop our best looks, styled by you</p>
+                <div class="  md-dn--mt3  mx--auto">
+                <script src="//foursixty.com/media/scripts/fs.slider.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="slider_v2_5" data-open-links-in-same-page="true" data-show-okendo-stars="true" data-cell-size="400" data-has-posts-selector="#foursixty-hideable-container" data-for-url="true"></script>
+            </div>
+                </div>
+          <style>
+           
+            .fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-entry-container { width:400px !important; height: 400px !important } path.fs-arrow { stroke: #222 } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:2px }
+            #foursixty-hideable-container h2 { text-align: center;     margin: 30px 0 0;} 
+            #foursixty-hideable-container p {
+                font-size: 25px;
+            text-align: center;
+                    margin: 0 0 20px;
+            }
+          </style>
+         {% endif %}
+         
+        </div>
+      
+      <div class="product-section__tabs md-dn--mb3 md-dn--mt3 product-section-tabs"
+           data-tabs-container>
+        
+        {% include 'product-icons' %} 
+        
+        <ul class="product-section-tabs__tabs">
+          {% for i in (1..total_tabs) %}
+          <li class="tabs__tab ff--heading f5 fw--bold uppercase {% if i == 4 %}lg--hide{% endif %}"
+              data-tab="{{ i }}">
+            {%- case i -%}
+              {%- when 1 -%}
+                Description
+              {%- when 2 -%}
+                Shipping
+              {%- when 3 -%}
+                Size Chart 
+              {%- when 4 -%}
+                FIT GUIDE             
+            {%- endcase -%}
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% for i in (1..total_tabs) %}
+        <div class="tabs__accordion-tab ff--heading f5 fw--bold uppercase"
+             {% if i == 4 %}
+             data-initial-tab
+             {% endif %}
+             data-accordion-tab
+             data-tab="{{ i }}">
+            {%- case i -%}
+              {%- when 1 -%}
+                Description
+              {%- when 2 -%}
+                Shipping
+              {%- when 3 -%}
+                Size Chart 
+              {%- when 4 -%}
+                FIT GUIDE               
+            {%- endcase -%}
+        </div>
+        
+        <div class="product-section-tabs__content text-left lh--copy"
+             {% if i == 4 %}
+             data-initial-tab-content
+             {% endif %}
+             data-tab-content="{{ i }}">
+          {% case i %}
+            {%- when 1 -%}
+            <div class="product-section-tabs__content-wrapper py3 px4"
+                 data-tab-content-wrapper>
+              <div class="rte f5--force product-section__description"
+                  data-product-description>
+                {{ product.description }}
+              </div>
+            </div>
+            {%- when 2 -%}
+            <div class="product-section-tabs__content-wrapper py3 px3"
+                 data-tab-content-wrapper>
+              <div class="product-section-tabs__shipping-tab">
+                <div class="shipping-tab__text">
+                  {% assign shipping_spend_string = settings.cart_free_shipping_threshold | prepend: '$' %}
+                  {{ section.settings.shipping_html | replace: '__FREE_SHIPPING_SPEND__', shipping_spend_string }}
+                </div>
+                <div class="shipping-tab__image md-dn--mt3">
+                  {% render 'responsive-image', image: section.settings.shipping_image %}
+                </div>
+              </div>
+            </div>
+            {%- when 3 -%}
+            <div class="product-section-tabs__content-wrapper py3 px4"
+                 data-tab-content-wrapper>
+                 {% if product.tags contains "svg_leaf" or  product.tags contains "svg_meadow" or  product.tags contains "svg_willow" %}
+                 {% if product.tags contains "svg_leaf" %}
+                   {% render 'product-svg-leaf' %}
+                 {% endif %}
+                 {% if product.tags contains "svg_meadow" %}
+                  {% render 'product-svg-meadow' %}                  
+                 {% endif %}
+                 {% if product.tags contains "svg_willow" %}
+                  {% render 'product-svg-willow' %}
+                 {% endif %}
+                 {% else %}
+                 {% render 'product-svg' %}
+               {% endif %}
+              {% render 'product-dimensions-style' %}
+            </div>
+            {%- when 4 -%}
+            <div class="product-section-tabs__content-wrapper py3 px4"
+                 data-tab-content-wrapper>
+              <div class="rte f5--force product-section__description font-zona"
+                  data-product-description>               
+                  <p><strong>Head Size:</strong></p>                  
+                  <ul class="head-size-list">
+                    <li><span class="{%- if product.tags contains 'Head_Small' -%}active{%- endif -%}"></span> Small</li>
+                    <li><span class="{%- if product.tags contains 'Head_Medium' -%}active{%- endif -%}"></span> Medium</li>
+                    <li><span class="{%- if product.tags contains 'Head_Large' -%}active{%- endif -%}"></span> Large</li>
+                  </ul>
+                  <p><strong>Ideal Face Shape:</strong></p>
+                  <p class="text-center">
+                    {%- if product.tags contains 'Shape_Oval' -%}Oval,&ensp;{%- endif -%}
+                    {%- if product.tags contains 'Shape_Round' -%}Round,&ensp;{%- endif -%}
+                    {%- if product.tags contains 'Shape_Square' -%}Square,&ensp;{%- endif -%}
+                    {%- if product.tags contains 'Shape_Diamond' -%}Diamond,&ensp;{%- endif -%}
+                    {%- if product.tags contains 'Shape_Heart' -%}Heart&ensp;{%- endif -%}
+                  </p>
+              </div>
+            </div>
+           
+          {% endcase %}
+          
+          <div class="product-section-tabs__content-overflow hide" data-content-overflow></div>
+        </div><!-- /.product-section-tabs__content -->
+        {% endfor %}
+      </div>
+    </div><!-- /.product-section__info -->
+  </div><!-- /.product-section -->
+
+  {% if has_styled_media %}
+  <div class="desktop-see-it-styled-container filter-it-styled mt6 md-dn--mt3 text-center mx--auto md-dn--hide">
+    <h2 class="f2 mt0 mb3 fw--bold uppercase">See It Styled</h2>
+    <div class="desktop-see-it-styled mxn2"
+         data-desktop-see-it-styled>
+      {% for media_id in styled_media_array %}
+        {% assign media_id_number = media_id | plus: 0 %}
+        {% assign styled_media = product.media | where: 'id', media_id_number | first %}
+      	{% assign alt_split = styled_media.alt | split: ' || '  %}
+          {% assign filter_alt = alt_split[0] | downcase | replace: ' ', '-' | replace: '/', '-' %}
+        <div class="desktop-see-it-styled__item mx2 see-it-styled-item {{ filter_alt }}">
+          {% render 'media', media: styled_media, ratio: styled_media.aspect_ratio %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  {% if has_styled_media %}
+      <div id="mobile-see-it-styled" class="product-section__mobile-see-it-styled mt3">
+        <h2 class="f3 mt0 mb3 fw--bold uppercase" style="text-align: center;">See It Styled</h2>
+        <div class="mobile-see-it-styled" data-mobile-see-it-styled>
+          {% for media_id in styled_media_array %}
+            {% assign media_id_number = media_id | plus: 0 %}
+            {% assign styled_media = product.media | where: 'id', media_id_number | first %}
+          	{% assign alt_split = styled_media.alt | split: ' || '  %}
+            {% assign filter_alt = alt_split[0] | downcase | replace: ' ', '-' | replace: '/', '-' %}
+            <div class="mobile-see-it-styled__item see-it-styled-item {{filter_alt}}">
+              {% render 'media', media: styled_media, ratio: styled_media.aspect_ratio %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if output_customer_images %}
+      <div id="foursixty-hideable-container" class="md-dn--hide">
+            <h2 class="f2 mt0 mb3 fw--bold uppercase ">STYLE INSPIRATION</h2>
+            <p class="ff--heading ">Shop our best looks, styled by you</p>
+            <div class="desktop-see-it-styled-container  md-dn--mt3  mx--auto">
+            <script src="//foursixty.com/media/scripts/fs.slider.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="slider_v2_5" data-open-links-in-same-page="true" data-show-okendo-stars="true" data-cell-size="400" data-has-posts-selector="#foursixty-hideable-container" data-for-url="true"></script>
+        </div>
+            </div>
+      <style>
+         
+        .fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-entry-container { width:400px !important; height: 400px !important } path.fs-arrow { stroke: #222 } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:2px }
+        #foursixty-hideable-container h2 { text-align: center;     margin: 30px 0 0;} 
+        #foursixty-hideable-container p {
+            font-size: 25px;
+        text-align: center;
+                margin: 0 0 20px;
+        }
+      </style>
+      {% endif %}
+    <div class="mb5 measure--xtra-wide product-section__trustspot mt6 md-dn--mt3 text-center mx--auto">
+        <h2 id="product-reviews-{{ section.id }}"
+            class="f2 md-dn--f3 mt0 mb3 fw--bold uppercase">Reviews</h2>
+    </div>
+  {% render 'okendo-reviews-widget', product: product %}
+    
+    {% unless product == empty %}
+        <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+
+  </script>
+
+    {% endunless %}
+</section>
+<script src="https://unpkg.com/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6.0.0/dist/tippy-bundle.umd.min.js"></script>
+   
+  
+
+    
+
+  <script src="{{ 'step.js' | asset_url }}" defer="defer"></script>
+
+
+
+{% schema %}
+{
+    "name": "Product",
+    "class": "template template--product",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Shipping tab"
+        },
+        {
+            "type": "html",
+            "id": "shipping_html",
+            "label": "Shipping tab content"
+        },
+        {
+            "type": "image_picker",
+            "id": "shipping_image",
+            "label": "Shipping tab image"
+        },
+        {
+            "type": "html",
+            "id": "mobile_title",
+            "label": "Title for Jules and Alex"
+        },
+        {
+            "type": "text",
+            "id": "mobile_text",
+            "label": "Text for Jules and Alex"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Image for Jules and Alex"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "step_three_product",
+            "name": "Step Three product",
+            "settings": [
+                {
+                "type": "product",
+                "id": "product",
+                "label": "Product"
+                },
+                {
+                    "type": "text",
+                    "id": "info_text",
+                    "label": "Info Box Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "info_textarea",
+                    "label": "Info Box Text"
+                },
+                {
+                    "type": "select",
+                    "id": "text",
+                    "label": "Show checkbox",
+                    "options": [
+                        {
+                        "value": "1",
+                        "label": "1"
+                        },
+                        {
+                        "value": "0",
+                        "label": "0"
+                        }
+                    ],
+                "default": "1"
+                }
+            ]
+        },
+        {
+            "type": "lenses_product",
+            "name": "Lenses product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                },
+                {
+                    "type": "text",
+                    "id": "info_text",
+                    "label": "Info Box Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "info_textarea",
+                    "label": "Info Box Text"
+                },
+                {
+                    "type": "select",
+                    "id": "text",
+                    "label": "Custom rx",
+                    "options": [
+                        {
+                            "value": "1",
+                            "label": "1"
+                        },
+                        {
+                            "value": "0",
+                            "label": "0"
+                        }
+                    ],
+                    "default": "1"
+                },
+                {
+                    "type": "select",
+                    "id": "anti_reflective",
+                    "label": "Add anti-reflective coating Product",
+                    "options": [
+                        {
+                            "value": "not_reflective",
+                            "label": "No"
+                        },
+                        {
+                            "value": "reflective",
+                            "label": "Yes anti reflective"
+                        }
+                    ],
+                    "default": "not_reflective"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

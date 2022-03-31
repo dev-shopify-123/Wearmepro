@@ -1,0 +1,21 @@
+{%- assign sizes_array = sizes | split: ',' -%}
+{%- for size in sizes_array -%}
+  {%- capture size_x -%}{{ size | strip | append: 'x' }}{%- endcapture -%}
+  {% if height_factor %}
+    {%- capture size_x -%}{{ size | strip | append: 'x' }}{{ size | strip | times: height_factor | round  }}{%- endcapture -%}
+  {% endif %}
+  {%- capture size_w -%}{{ size | strip | append: 'w' }}{%- endcapture -%}
+  {%- capture size2x_w -%}{{ size | strip | times: 2 | append: 'w' }}{%- endcapture -%}
+  {%- capture size3x_w -%}{{ size | strip | times: 3 | append: 'w' }}{%- endcapture -%}
+
+  {% unless crop %}
+    {{- image | img_url: size_x, scale: 1 }} {{ size_w }},
+    {{- image | img_url: size_x, scale: 2 }} {{ size2x_w -}},
+    {{- image | img_url: size_x, scale: 3 }} {{ size3x_w -}}{%- unless forloop.last %},{% endunless -%}
+  {% else %}
+    {{- image | img_url: size_x, crop: crop, scale: 1 }} {{ size_w }},
+    {{- image | img_url: size_x, crop: crop, scale: 2 }} {{ size2x_w -}},
+    {{- image | img_url: size_x, crop: crop, scale: 3 }} {{ size3x_w -}}{%- unless forloop.last %},{% endunless -%}
+  {% endunless %}
+
+{%- endfor -%}

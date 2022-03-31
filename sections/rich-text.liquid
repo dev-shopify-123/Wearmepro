@@ -1,0 +1,64 @@
+<!-- sections/rich-text.liquid -->
+<section class="full-bleed lg--py5 lg--px4 md-dn--p3{% if section.settings.use_custom_bg_pattern %} lazyload{% endif %}"
+         {% if section.settings.use_custom_bg_pattern %}
+         data-bgset="{% render 'data-srcset-asset', asset_image_name: 'pattern-white.png', sizes: '200, 500, 1000, 1500' %}"
+         data-sizes="auto"
+         style="background-size: cover;"
+         {% endif %}
+         data-section-id="{{ section.id }}"
+         data-section-type="rich-text">
+  <div class="rich-text measure--xtra-wide mx--auto">
+    {% if section.settings.heading != blank %}
+      <h2 class="uppercase lg--f2 md-dn--f4 mt0 mb3 ff--heading h-underline text-center">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {% endif %}
+    {% if section.settings.content != blank %}
+    <div class="ff--heading text-center my2 rich-text__content">
+      {{ section.settings.content }}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  [data-section-id~="{{ section.id }}"] {
+    background-color: {{ section.settings.bg_base_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "class": "homepage-section section--rich-text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Rich text"
+    },
+    {
+      "type": "color",
+      "id": "bg_base_color",
+      "label": "Background Color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_bg_pattern",
+      "label": "Use custom background pattern"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

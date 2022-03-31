@@ -1,0 +1,25 @@
+{% assign filtering_by_frame_color = false %}
+{% assign filtering_by_lens_color = false %}
+{% assign exclude_from_results = false %}
+{% assign show_variant_thumbnail = false %}
+
+{% if current_tags.size > 0 %}
+  {% for tag in current_tags %}
+    {% if tag contains "Frame Color" %}
+      {% assign show_variant_thumbnail = true %}
+      {% assign filtering_by_frame_color = true %}
+      {% assign current_frame_color = tag | split: '_' | last %}
+      {% if collection.title contains "Reading Glasses" %}
+        {% if current_frame_color == "Clear" %}
+          {% assign current_frame_color = "Full Clear" %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    {% if tag contains "Lens Color" %}
+      {% assign show_variant_thumbnail = true %}
+      {% assign filtering_by_lens_color = true %}
+      {% assign current_lens_color = tag | split: '_' | last %}
+
+    {% endif %}
+  {% endfor %}
+{% endif %}

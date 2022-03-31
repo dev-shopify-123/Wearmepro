@@ -1,0 +1,213 @@
+<!-- sections/collection-list.liquid -->
+{% assign extra_classes = '' %}
+
+{% if section.settings.buttons_on_hover %}
+  {% assign extra_classes = extra_classes | append: ' collection-list--buttons-on-hover' %}
+{% endif %}
+
+{% if section.settings.tint_on_hover %}
+  {% assign extra_classes = extra_classes | append: ' collection-list--tint-on-hover' %}
+{% endif %}
+
+{% assign block_size_modulo = section.blocks.size | modulo: 2 %}
+{% if block_size_modulo == 1 %}
+  {% assign extra_classes = extra_classes | append: ' collection-list--odd' %}
+{% endif %}
+
+<section class="full-bleed"
+         data-section-id="{{ section.id }}"
+         data-section-type="collection-list">
+  <div class="collection-list collection-list--{{ section.settings.grid }} {{ extra_classes }}">
+    {% for block in section.blocks %}
+    <div class="collection-list__grid-item" {{ shopify.block_attributes }}>
+      {% if block.settings.collection != blank %}
+        {% assign collection = collections[block.settings.collection] %}
+        {% if block.settings.image != blank %}
+          {% assign image = block.settings.image %}
+        {% else %}
+          {% assign image = collection.image %}
+        {% endif %}
+      <a class="collection-list-item"
+         href="{{ collection.url }}"
+         style="padding-top: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"
+         {{ block.shopify_attributes }}>
+        <div class="collection-list-item__image">
+          <div style="position: relative;">
+            {% comment %}
+            {% render 'responsive-image', image: image,  %}
+            {% endcomment %}
+            <div class="responsive-image">
+              <div class="responsive-image__img-wrapper">
+                <figure class="img-dectop" style="margin: 0;">
+                  <img src="{{ image | img_url: '1874x'}}" >
+                </figure>
+                <figure class="img-mob" style="margin: 0;">
+                  <img src="{{ image | img_url: '828x'}}">
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="collection-list-item__overlay bg--{{ section.settings.tint_color }}"></div>
+        {% if section.settings.show_buttons %}
+        <div class="collection-list-item__content">
+          <div class="collection-list__button mt1">
+            {% if section.settings.color != 'primary-accent' %}
+              {% assign button_extra_classes = ' btn--color-' | append: section.settings.color | replace: '-accent', '' %}
+            {% endif %}
+            <div class="btn ff--heading fw--bold uppercase ls03{{ button_extra_classes }}">
+              {{ block.settings.button_text | default: 'Shop now' }}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </a>
+      {% else %}
+      <div class="collection-list-item collection-list-item--placeholder"
+           {{ block.shopify_attributes }}>
+        <div class="collection-list-item__placeholder">
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg-bg' }}
+        </div>
+        <div class="collection-list-item__overlay bg--{{ section.settings.tint_color }}"></div>
+        {% if section.settings.show_buttons %}
+        <div class="collection-list-item__content">
+          <div class="collection-list__button mt1">
+            {% if section.settings.color != 'primary-accent' %}
+              {% assign button_extra_classes = ' btn--color-' | append: section.settings.color | replace: '-accent', '' %}
+            {% endif %}
+            <div class="btn ff--heading fw--bold uppercase ls03{{ button_extra_classes }}">
+              {{ block.settings.button_text | default: 'Shop now' }}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collections list",
+  "class": "homepage-section section--collection-list",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "grid",
+      "label": "Grid – Desktop",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "primary-accent",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary-accent",
+          "label": "Secondary"
+        },
+        {
+          "value": "white",
+          "label": "White"
+        },
+        {
+          "value": "black",
+          "label": "Black"
+        }
+      ],
+      "default": "secondary-accent"
+    },
+    {
+      "type": "checkbox",
+      "id": "tint_on_hover",
+      "label": "Tint on hover",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "tint_color",
+      "label": "Tint color",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_buttons",
+      "label": "Show buttons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "buttons_on_hover",
+      "label": "Buttons only on hover",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image",
+          "info": "If empty, will default to Collection image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button name",
+          "default": "Shop"
+          }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

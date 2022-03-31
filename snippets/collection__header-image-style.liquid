@@ -1,0 +1,23 @@
+<style>
+  .collection-header--{{ section_id }} .collection-header-overlay__title {
+    font-size: {{ mobile_font_size }}px;
+    color: {{color}};
+  }
+  .collection-header--{{ section_id }} .collection-header-desc p {
+    font-size: {{ mobile_font_size_text }}px;
+    font-family: {{ font }}, sans-serif;
+    color: {{color}};
+  }
+
+  @media screen and (min-width: 901px) {
+    .collection-header--{{ section_id }} .collection-header-overlay__title {
+      font-size: {{ desktop_font_size }}px;
+      color: {{color}};
+    }
+      .collection-header--{{ section_id }} .collection-header-desc p {
+        font-size: {{ desktop_font_size_text }}px;
+        font-family: {{ font }}, sans-serif;
+        color: {{color}};
+      }
+  }
+</style>

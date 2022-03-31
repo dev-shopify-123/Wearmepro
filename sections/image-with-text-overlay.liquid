@@ -1,0 +1,147 @@
+<!-- sections/image-with-text-overlay.liquid -->
+{% if section.settings.display == 'desktop' %}
+  {% assign section_display_extra_classes = ' md-dn--hide' %}
+{% elsif section.settings.display == 'mobile' %}
+  {% assign section_display_extra_classes = ' lg--hide' %}
+{% endif %}
+
+<section class="full-bleed{{ section_display_extra_classes }}"
+         data-section-id="{{ section.id }}"
+         data-section-type="image-with-text-overlay">
+<!--   {% if section.settings.url != blank %}
+  <a class="image-with-text-overlay block"
+     {% if section.settings.url != blank %}
+     href="{{ section.settings.url }}"
+     {% endif %}
+     >
+  {% else %}
+  <div class="image-with-text-overlay">
+  {% endif %}
+
+    <div class="image-with-text-overlay__image">
+      {% if section.settings.image != blank %}
+        {% render 'responsive-image', image: section.settings.image %}
+      {% else %}
+        <div class="placeholder-svg-container placeholder-svg-container--dark">
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+      <div class="image-with-text-overlay__image__text image-with-text-overlay__image__text--{{ section.settings.content_align_x }} image-with-text-overlay__image__text--{{ section.settings.content_align_y }} ">
+        <div class="text-{{ section.settings.text_align }}">
+          <h3 class="image-with-text-overlay__image__text__text f3">{{ section.settings.title }}</h3>
+          {% if section.settings.button_text != blank %}
+            <div class="btn btn--color-secondary ff--heading uppercase ls03 fw--bold">
+                {{ section.settings.button_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  {% if section.settings.url != blank %}
+  </a><!-- /.image-with-text-overlay -->
+  {% else %}
+  </div><!-- /.image-with-text-overlay -->
+  {% endif %} 
+  <div class="new-banner">
+    <figure class="img-dectop">
+      <img src="https://cdn.shopify.com/s/files/1/0896/5742/files/goal-3.jpg">
+    </figure>
+    <figure class="img-mob">
+      <img src="https://cdn.shopify.com/s/files/1/0896/5742/files/goal-4.jpg">
+    </figure>
+    <div class="holder-btn"> 
+      <a href="https://shopwearmepro.com/collections/men-sunglasses/" class="btn ff--heading fw--bold uppercase ls03 btn--color-secondary">SHOP MEN</a>
+      <a href="https://shopwearmepro.com/collections/women-sunglasses/" class="btn ff--heading fw--bold uppercase ls03 btn--color-secondary">SHOP WOMEN</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Image with text overlay",
+  "class": "homepage-section section--image-with-text-overlay",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop now"
+    },
+    {
+      "type": "header",
+      "content": "Content Align"
+    },
+    {
+      "type": "select",
+      "id": "content_align_x",
+      "options": [
+          { "value": "left", "label": "Left"},
+          { "value": "center", "label": "Center"},
+          { "value": "right", "label": "Right"}
+      ],
+      "label": "Content Align – Horizontal"
+      },
+      {
+        "type": "select",
+        "id": "content_align_y",
+        "options": [
+            { "value": "top", "label": "Top"},
+            { "value": "middle", "label": "Middle"},
+            { "value": "bottom", "label": "Bottom"}
+        ],
+       "label": "Content Align – Vertical"
+      },
+      {
+        "type": "header",
+        "content": "Text Align"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "options": [
+            { "value": "left", "label": "Left"},
+            { "value": "center", "label": "Center"},
+            { "value": "right", "label": "Right"}
+         ],
+         "label": "Text Align"
+      },
+      {
+        "type": "header",
+        "content": "Display"
+      },
+      {
+        "type": "select",
+        "id": "display",
+        "options": [
+            { "value": "both", "label": "Everywhere"},
+            { "value": "mobile", "label": "Mobile only"},
+            { "value": "desktop", "label": "Desktop only"}
+         ],
+         "default": "both",
+         "label": "Display section"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Image with text overlay",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

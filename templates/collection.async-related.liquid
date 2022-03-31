@@ -1,0 +1,12 @@
+{% layout none %}
+{% assign pgi_media_aspect_ratio = 2.3 %}
+
+{% for product in collection.products limit: 8 %}
+  <div class="related-products__item">
+    {% render 'product-grid-item',
+       product: product,
+       extra_classes: 'mx2 pt1',
+       pgi_media_aspect_ratio: pgi_media_aspect_ratio
+    %}
+  </div>
+{% endfor %}

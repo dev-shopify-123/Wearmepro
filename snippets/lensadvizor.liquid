@@ -1,0 +1,1684 @@
+{% if shop.metafields.lensadvisor.BASE_URL != blank and product.available %}
+    <script src="//cdn.shopify.com/s/javascripts/currencies.js"></script>
+    {{ 'lensadvizor.scss.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+        String.prototype.title = function() {
+            if (this == "None" || this == "") {
+                return "-"
+            }
+            var string = this.toLowerCase()
+            string = string.replace(/(^|\s)[a-z]/g,function(f){return f.toUpperCase();});
+            string = string.replace(/_/g, " ").replace(/-/g, " ")
+            let con = ''
+            for (let i=0; i< string.split(' ').length; i++) {
+                con += ' ' + string.split(' ')[i].replace(/(^|\s)[a-z]/g,function(f){return f.toUpperCase();})
+            }
+            return con
+        }
+
+        {% assign collection_id = "" %}
+        {% assign assign_by = "product" %}
+        {% for collection in product.collections %}
+            {% if collection.metafields.lensadvisor.collection_id  != blank %}
+                {% assign assign_by = "collection" %}
+                {% assign collection_id = collection.metafields.lensadvisor.collection_id %}
+            {% endif %}
+        {% endfor %}
+
+        var LensAdvisor = function() {
+            this.setDefaultResponse()
+            LensAdvisor.$(".js-select-pd-left-value, .js-select-pd-left-p").hide()
+            LensAdvisor.$(".js-select-pd-right-value, .js-select-pd-right-p").hide()
+            LensAdvisor.$(".js-prism-values-od-right-left-wrapper").hide()
+            this.collection_id = {{collection_id | json}}
+            this.assign_by = {{assign_by | json}}
+        };
+
+        LensAdvisor.variants = {
+            {% for variant in product.variants %}
+                {% if variant.available %}
+                    {% if variant.metafields.lensadvisor.collection_id != blank %}
+                        {{ variant.id | json}}: {
+                            price: {{ variant.price | divided_by: 100 }},
+                            collection_id: {{ variant.metafields.lensadvisor.collection_id | json }},
+                            json: {{ variant | json }},
+                            image: {% if variant.image.src != blank %} "{{ variant.featured_image | img_url: 'master' }}" {% else %} "{{ product.featured_image | img_url: 'master' }}" {% endif %},
+                        },
+                    {% elsif collection_id != blank %}
+                        {{ variant.id | json }}: {
+                            price: {{variant.price | divided_by: 100}},
+                            collection_id: {{ collection_id | json }},
+                            json: {{variant | json}},
+                            image: {% if variant.image.src != blank %} "{{ variant.featured_image | img_url: 'master' }}" {% else %} "{{ product.featured_image | img_url: 'master' }}" {% endif %},
+                        },
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        }
+
+        {% for variant in product.variants %}
+            {% if variant.metafields.lensadvisor.collection_id != blank %}
+                {% assign collection_id = variant.metafields.lensadvisor.collection_id %}
+                {% assign assign_by = "product" %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+
+        LensAdvisor.spin = '<span class="" data-loader="">' +
+                '<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"></path></svg></span>  PROCESSING !'
+
+        LensAdvisor.Collection_id = {{collection_id | json}}
+        LensAdvisor.assign_by = {{assign_by | json}}
+
+        LensAdvisor.BASE_URL = '{{ shop.metafields.lensadvisor.BASE_URL }}/api'
+
+        LensAdvisor.SPH = [-20.00, -19.75, -19.50, -19.25, -19.00, -18.75, -18.50, -18.25, -18.00, -17.75, -17.50, -17.25, -17.00, -16.75, -16.50, -16.25, -16.00, -15.75, -15.50, -15.25, -15.00, -14.75, -14.50, -14.25, -14.00, -13.75, -13.50, -13.25, -13.00, -12.75, -12.50, -12.25, -12.00, -11.75, -11.50, -11.25, -11.00, -10.75, -10.50, -10.25, -10.00, -9.75, -9.50, -9.25, -9.00, -8.75, -8.50, -8.25, -8.00, -7.75, -7.50, -7.25, -7.00, -6.75, -6.50, -6.25, -6.00, -5.75, -5.50, -5.25, -5.00, -4.75, -4.50, -4.25, -4.00, -3.75, -3.50, -3.25, -3.00, -2.75, -2.50, -2.25, -2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.25, 3.50, 3.75, 4.00, 4.25, 4.50, 4.75, 5.00, 5.25, 5.50, 5.75, 6.00, 6.25, 6.50, 6.75, 7.00, 7.25, 7.50, 7.75, 8.00, 8.25, 8.50, 8.75, 9.00, 9.25, 9.50, 9.75, 10.00, 10.25, 10.50, 10.75, 11.00, 11.25, 11.50, 11.75, 12.00]
+        LensAdvisor.CYL = [-6.00, -5.75, -5.50, -5.25, -5.00, -4.75, -4.50, -4.25, -4.00, -3.75, -3.50, -3.25, -3.00, -2.75, -2.50, -2.25, -2.00, -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25, 0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.25, 3.50, 3.75, 4.00, 4.25, 4.50, 4.75, 5.00, 5.25, 5.50, 5.75, 6.00]
+        LensAdvisor.AXIS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180]
+        LensAdvisor.ADD = [1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.25, 3.50]
+
+        LensAdvisor.SINGLE_PD = [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,]
+
+        LensAdvisor.PDS = [17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5, 37, 37.5, 38, 38.5, 39, 39.5, 40]
+
+        LensAdvisor.PRISM_HORIZONTAL = [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5]
+
+
+        LensAdvisor.BASE_DIRECTION_HORIZONTAL = ['IN', 'OUT']
+        LensAdvisor.BASE_DIRECTION_VERTICAL = ['UP', 'DOWN']
+
+        LensAdvisor.PRESCRIPTION_METHODS = {
+                email_later: "Email Later",
+                uploaded: "Uploaded",
+                entered_manually: "Entered Manually"
+                }
+
+        LensAdvisor.DECIMAL_POINTS = 2
+        LensAdvisor.FREE_TEXT = "FREE"
+        LensAdvisor.HIDE_ADD_TO_CART_BUTTONS = true
+
+        LensAdvisor.prototype.setDefaultResponse = function () {
+            this.lens_types = []
+            this.responses = {
+                prescription_type: null,
+                prescription_file: {},
+                lens: '',
+                method: "",
+                manually: {
+                    sph: '',
+                    od_right: {sph: '0.00', cyl: '0.00', axis: '0.00', add: null},
+                    od_left: {sph: '0.00', cyl: '0.00', axis: '0.00', add: null},
+                    pd: { type: 'Single PD', value: null, left: null, right: null },
+                    segment_height: null,prism_value: false,
+                    prism_fields: {
+                        od_right: {sph: null, cyl: null, axis: null, add: null},
+                        od_left: {sph: null, cyl: null, axis: null, add: null},
+                    }
+                },
+            }
+            this.lensSubtotal = 0.0
+            LensAdvisor.$('.prescription-body a[href="#select_prescription"]').tab('show');
+            LensAdvisor.$('#prescription-upload').val('')
+            LensAdvisor.$('#prescription-upload-manually').val('')
+            // LensAdvisor.$('.choose-file-text').html('Choose File');
+            LensAdvisor.$('#la_Rx_upload_chooseFile_label').show()
+            LensAdvisor.$('#la_Rx_upload_changeFile_label').hide()
+            LensAdvisor.$('#la_Rx_manual_upload_chooseFile_label').show()
+            LensAdvisor.$('#la_Rx_manual_upload_changeFile_label').hide()
+            LensAdvisor.$('.selected-file').html('').hide()
+            LensAdvisor.$(".js-select-pd-left-value, .js-select-pd-left-p").hide()
+            LensAdvisor.$(".js-select-pd-right-value, .js-select-pd-right-p").hide()
+            LensAdvisor.$(".js-select-pd-on-upload-left-value, .js-select-pd-on-upload-left-p").hide()
+            LensAdvisor.$(".js-select-pd-on-upload-right-value, .js-select-pd-on-upload-right-p").hide()
+
+            let prescription_type = LensAdvisor.$('input.radio-prescription-select:checked')
+            if (prescription_type.length > 0) {
+                LensAdvisor.$('input.radio-prescription-select:checked')[0].checked = false
+            }
+            LensAdvisor.$('.order-notes').val('')
+            LensAdvisor.$('#choose-lens-card').empty()
+            LensAdvisor.$('#review-selected-priscription-method').empty()
+            LensAdvisor.addCSSToUL()
+        }
+
+        LensAdvisor.updateSelect = function (){
+            LensAdvisor.updateSPH()
+            LensAdvisor.updateCYL()
+            LensAdvisor.updateAXIS()
+            LensAdvisor.updateADD()
+            LensAdvisor.updateSinglePD()
+            LensAdvisor.updatePDRight()
+            LensAdvisor.updatePrism()
+        }
+
+        LensAdvisor.resetSelect = function (){
+            LensAdvisor.$(".la-dropdown").prop('selectedIndex',0)
+        }
+
+        LensAdvisor.updatePrism = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.PRISM_HORIZONTAL.length; i++) {
+                content += '<option value="' + LensAdvisor.PRISM_HORIZONTAL[i].toFixed(2) + '">' + LensAdvisor.PRISM_HORIZONTAL[i].toFixed(2) + '</option>'
+            }
+            LensAdvisor.$('select[name="prism_horizontal"]').html(content)
+            LensAdvisor.$('select[name="prism_veritical"]').html(content)
+
+            content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.BASE_DIRECTION_HORIZONTAL.length; i++) {
+                content += '<option value="' + LensAdvisor.BASE_DIRECTION_HORIZONTAL[i] + '">' + LensAdvisor.BASE_DIRECTION_HORIZONTAL[i] + '</option>'
+            }
+
+            LensAdvisor.$('select[name="base_direction_horizontal"]').html(content)
+
+            content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.BASE_DIRECTION_VERTICAL.length; i++) {
+                content += '<option value="' + LensAdvisor.BASE_DIRECTION_VERTICAL[i] + '">' + LensAdvisor.BASE_DIRECTION_VERTICAL[i] + '</option>'
+            }
+
+            LensAdvisor.$('select[name="base_direction_veritical"]').html(content)
+        }
+
+        LensAdvisor.updateSPH = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            let sphArray = LensAdvisor.SPH
+            if (LensAdvisor.advisor.responses.prescription_type == "reading") {
+                sphArray = [0.25,0.5,0.75,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3]
+            }
+            for (let i=0; i < sphArray.length; i++) {
+                content += '<option value="' + (sphArray[i] > 0 ? '+' : '') + sphArray[i].toFixed(2) + '" ' + (sphArray[i] == 0 ? ' selected ': '') +  '>' + (sphArray[i] > 0 ? '+' : '') + sphArray[i].toFixed(2) + '</option>'
+            }
+            LensAdvisor.$('select[name="sph"]').html(content)
+        }
+        LensAdvisor.updateCYL = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.CYL.length; i++) {
+                content += '<option value="' + (LensAdvisor.CYL[i] > 0 ? '+' : '') + LensAdvisor.CYL[i].toFixed(2) + '" ' + (LensAdvisor.CYL[i] == 0 ? ' selected ': '') +  '>' + (LensAdvisor.CYL[i] > 0 ? '+' : '') + LensAdvisor.CYL[i].toFixed(2) + '</option>'
+            }
+            LensAdvisor.$('select[name="cyl"]').html(content)
+        }
+
+        LensAdvisor.updateAXIS = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.AXIS.length; i++) {
+                content += '<option value="' + LensAdvisor.AXIS[i] + '" ' + (LensAdvisor.AXIS[i] == 0 ? ' selected ': '') +  '>' + LensAdvisor.AXIS[i] + '</option>'
+            }
+            LensAdvisor.$('select[name="axis"]').html(content)
+        }
+
+        LensAdvisor.updateADD = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.ADD.length; i++) {
+                content += '<option value="' + (LensAdvisor.ADD[i] > 0 ? '+' : '') + LensAdvisor.ADD[i].toFixed(2) + '" ' + (LensAdvisor.ADD[i] == 0 ? ' selected ': '') +  '>' + (LensAdvisor.ADD[i] > 0 ? '+' : '') + LensAdvisor.ADD[i].toFixed(2) + '</option>'
+            }
+            LensAdvisor.$('select[name="add"]').html(content)
+        }
+
+        LensAdvisor.updateSinglePD = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.SINGLE_PD.length; i++) {
+                content += '<option value="' + LensAdvisor.SINGLE_PD[i] + '" ' + (LensAdvisor.SINGLE_PD[i] == 0 ? ' selected ': '') +  '>' + LensAdvisor.SINGLE_PD[i] + '</option>'
+            }
+            LensAdvisor.$('select.pd-value').html(content)
+            LensAdvisor.$('select.pd-on-upload-value').html(content)
+        }
+
+        // Pd left and right option values
+        LensAdvisor.updatePDRight = function () {
+            let content = '<option class="la-option-select" value="">Select</option>'
+            for (let i=0; i < LensAdvisor.PDS.length; i++) {
+                content += '<option value="' + LensAdvisor.PDS[i].toFixed(2) + '" ' + (LensAdvisor.PDS[i] == 0 ? ' selected ': '') +  '>' + LensAdvisor.PDS[i].toFixed(2) + '</option>'
+            }
+            LensAdvisor.$('select.js-select-pd-left-value').html(content)
+            LensAdvisor.$('select.js-select-pd-right-value').html(content)
+            LensAdvisor.$('select.js-select-pd-on-upload-left-value').html(content)
+            LensAdvisor.$('select.js-select-pd-on-upload-right-value').html(content)
+        }
+
+        LensAdvisor.render = function () {
+            let data = LensAdvisor.get_prescription_types()
+            LensAdvisor.advisor.item_groups = data.item_groups
+            LensAdvisor.advisor.prescription_types = data.prescription_types.filter(obj => obj.checked)
+            if (LensAdvisor.advisor.prescription_types.filter(obj => obj.prescription_type === 'contact_lenses').length > 0) {
+                LensAdvisor.advisor.appendContactLens()
+            } else {
+                LensAdvisor.advisor.appendPrescriptionTypes()
+                LensAdvisor.addEvents()
+            }
+        }
+
+        LensAdvisor.prototype.appendContactLens = function() {
+            const product = this.getProductDetails()
+            const meta_data = product.meta_data
+            LensAdvisor.$('.la-nav-pills').css({visibility: 'hidden'})
+            LensAdvisor.$('.js-back-button').remove()
+            LensAdvisor.$('#la_prescriptionSelect_title').html('Enter yours prescription details')
+
+            let contact_lenses = '<form class="js-contact-lens-form"><div class="od-right-container od-container--modifier js-od-container manual-option" style="display: block;">'
+            contact_lenses +=  this.prescriptionSkeleton('Right', meta_data)
+            contact_lenses +=  this.prescriptionSkeleton('Left', meta_data)
+            contact_lenses += '</div>'
+            contact_lenses += '<button type="submit" class="la-add-to-cart save-continue save-continue--modifier">Add to Cart</button></form>'
+            LensAdvisor.$('.prescription-type').html(contact_lenses)
+            LensAdvisor.$('.js-contact-lens-form').on('submit', LensAdvisor.addContactLensToCart)
+        }
+
+        LensAdvisor.prototype.prescriptionSkeleton = function (od_title, meta_data) {
+            let name_type = od_title == 'Right' ? 'OD' : 'OS'
+            let _ = '<h6 id="la_Rx_manual_ODright_label" class="text-left">' + name_type + ' ('.concat(od_title, ' Eye)</h6>')
+            _ = _.concat('<div class="od-right enter-manually-od-right" style="justify-content: unset !important;">', '')
+
+            var fields = {"sph": "SPH", "cyl": "CYL", "axis": "Axis", "add": "ADD", "base_curve": "Base Curve",  "diameter": "Diameter", "d/n": "D/N" }
+            for (let key in fields) {
+                if (!meta_data[key]) { continue }
+                _ = _.concat('<div class="od-dropdown"><p id="la_Rx_manual_CYLright_label" class="od-dropdown-text" style="">'.concat(fields[key], '</p>'), '')
+                let values = meta_data[key].split(',')
+                if (values.length > 1) {
+                    _ += '<select field_name="' + key + '" class="js-od-right la-dropdown" name="'.concat(od_title, '-' + key) + '" style="" required >'
+                    _ += '<option value="">-</option>'
+                    for (let i=0; i < values.length; i++) {
+                        let selected = parseFloat(values[i]) == 0 && fields[key] == 'CYL' ? " selected " : ""
+                        _ += '<option value="' + values[i] + '" ' + selected + ' >' +  values[i] + '</option>'
+                        //_ += '<option value="'.concat(values[i], ('" ' + (values[i] == '0' ? ' selected ' ? '') + ' >')).concat(values[i], '</option>')
+                    }
+                    _ += '</select>'
+                } else {
+                    _ += '<input type="hidden" value="'.concat(values, '" name="'.concat(od_title, '-' + key) + '" />')
+                    _ += '<input type="text" value="'.concat(values, '" readonly disabled name="'.concat(od_title, '-' + key) + '" />')
+                }
+                _ += '</div>'
+            }
+            _ = _.concat('<div class="od-dropdown"><p id="la_Rx_manual_CYLright_label" class="od-dropdown-text" style="">Quantity</p>', '')
+            _ += '<input type="number" value="1" min="1" max="10" name="' + od_title + '-quantity"/></div>'
+            return _ += '</div>'
+        }
+
+        LensAdvisor.prototype.getProductDetails = function () {
+            return LensAdvisor.request("GET", LensAdvisor.BASE_URL + '/collection/product/{{product.id}}/')
+        }
+
+        LensAdvisor.get_prescription_endpoint = function () {
+            return LensAdvisor.BASE_URL + '/collection/' + LensAdvisor.variants[LensAdvisor.selectedVariant].collection_id + '/prescriptions/'
+        }
+
+        LensAdvisor.get_prescription_types = function() {
+            return LensAdvisor.request("GET", LensAdvisor.get_prescription_endpoint())
+        }
+
+        LensAdvisor.get_lens_types = function() {
+            const url = LensAdvisor.BASE_URL + '/collection/' + LensAdvisor.variants[LensAdvisor.selectedVariant].collection_id + '/items/?prescription_type=' + LensAdvisor.advisor.responses.prescription_type + '&product_id={{product.id}}'
+            LensAdvisor.$.getJSON(url, function (items) {
+                    LensAdvisor.advisor.lens_types = items
+                    LensAdvisor.advisor.renderLensTypes()
+                }
+            )
+        }
+
+        LensAdvisor.init = function () {
+            return new LensAdvisor()
+        }
+
+        LensAdvisor.prototype.appendPrescriptionTypes = function() {
+            LensAdvisor.$('.prescription-type').empty()
+            for (var i=0; i < this.prescription_types.length; i++) {
+                let prescription = this.prescription_types[i]
+                let content = '<div class="text-left select-prescription-container"><input type="radio" id="' + prescription.name + '" name="prescription_type" value="' + prescription.name + '" class="radio-prescription-select">'
+                content += '<label for="' + prescription.name + '">' + prescription.title + '</label><p class="text-select-prescription">' + prescription.description + '</p></div>'
+                LensAdvisor.$('.prescription-type').append(content)
+            }
+        }
+
+        LensAdvisor.getPrescriptionTitle = function (prescription_type) {
+            for (var i=0; i < LensAdvisor.advisor.prescription_types.length; i++) {
+                if (LensAdvisor.advisor.prescription_types[i].prescription_type == LensAdvisor.advisor.responses.prescription_type) {
+                    return LensAdvisor.advisor.prescription_types[i].title
+                }
+            }
+        }
+
+        LensAdvisor.handleSubmitButtons = function (show) {
+            var submit_buttons = []
+            if (LensAdvisor.advisor.settings.unique_css_class != '') {
+                submit_buttons.push(LensAdvisor.$('.' + LensAdvisor.advisor.settings.unique_css_class))
+            }
+            submit_buttons.push(LensAdvisor.$('form[action="/cart/add"]').find(':submit'))
+            for (let i=0; i < submit_buttons.length; i ++) {
+                submit_buttons[i][(show ? 'show' : 'hide')]()
+                break;
+            }
+        }
+
+        LensAdvisor.detectVariant = function () {
+            LensAdvisor.interval = setInterval(function () {
+                if (LensAdvisor.$('select[name="id"], input[name="id"]').val() != LensAdvisor.selectedVariant) {
+                    LensAdvisor.selectedVariant = LensAdvisor.$('select[name="id"], input[name="id"]').val()
+                    if (LensAdvisor.variants.hasOwnProperty(LensAdvisor.selectedVariant)) {
+                        if (LensAdvisor.HIDE_ADD_TO_CART_BUTTONS) {
+                            LensAdvisor.handleSubmitButtons(false)    
+                        }
+                        LensAdvisor.$('.la-select-lenses-btn').show()
+                        LensAdvisor.$('#lensadvisor-fetaured-image').attr('src', LensAdvisor.variants[LensAdvisor.selectedVariant].image)
+                        let variant_summary = ''
+                        if (LensAdvisor.variants[LensAdvisor.selectedVariant].json.options.length > 0) {
+                            // <div class="review-item-variant">Variant 1 information</div>
+                            for (var i = 0; i < LensAdvisor.variants[LensAdvisor.selectedVariant].json.options.length; i++) {
+                                variant_summary += '<div class="review-item-variant">'
+                                variant_summary += LensAdvisor.variants[LensAdvisor.selectedVariant].json.options[i]
+                                variant_summary += '</div>'    
+                            }
+                        }
+                        let variant_title = LensAdvisor.variants[LensAdvisor.selectedVariant].json.name
+                        LensAdvisor.$('#selected_variant_title').html(variant_title)
+                        LensAdvisor.$('#selected_variant_summary').html(variant_summary)
+                        LensAdvisor.render()
+                    } else {
+                        LensAdvisor.handleSubmitButtons(true)
+                        LensAdvisor.$('.la-select-lenses-btn').hide()
+                    }
+                }
+            })
+        }
+
+        LensAdvisor.getAppStylesheet = function () {
+            var stylesheet = document.getElementById('my-styles');
+            if (!stylesheet) {
+                stylesheet = LensAdvisor.$('<style id="lensadvisor-styles">').appendTo('head')[0];
+            }
+            stylesheet = stylesheet.sheet;
+            return stylesheet;
+        }
+
+        LensAdvisor.addStyle = function (selector, rulename, value) {
+            var stylesheet = LensAdvisor.getAppStylesheet();
+            var cssRules = stylesheet.cssRules || stylesheet.rules;
+            var rule = stylesheet.insertRule(selector + ' { ' + rulename + ':' + value + ';}', cssRules.length);
+        }
+
+        LensAdvisor.addStylesheet = function(styleString) {
+            const style = document.createElement('style');
+            style.textContent = styleString;
+            document.body.append(style);
+        }
+
+        LensAdvisor.addStyles = function (selector, rules) {
+            var stylesheet = LensAdvisor.getAppStylesheet();
+            var cssRules = stylesheet.cssRules || stylesheet.rules;
+            for (var prop in rules) {
+                LensAdvisor.addStyle(selector, prop, rules[prop]);
+            }
+        }
+
+        LensAdvisor.addCSSToUL = function () {
+            let $selector = LensAdvisor.$('.la-modal-wrapper .prescription-body .la-nav-link')
+            $selector.removeClass('complete')
+            for (let i=0; i< $selector.length; i++) {
+                if ($selector[i].classList.contains('active')) {
+                    $selector[i].classList.add('complete')
+                    break;
+                }
+                $selector[i].classList.add('complete')
+            }
+        }
+
+        LensAdvisor.injectButton = function() {
+
+            if (LensAdvisor.advisor.settings.unique_css_class != '') {
+                LensAdvisor.$(LensAdvisor.$('.' + LensAdvisor.advisor.settings.unique_css_class)[0]).before('<button type="button" id="la-select-lenses-btn" class="la-select-lenses-btn" data-toggle="la-modal" data-target="#myPrescription" >Select Lens and Purchase</button>')
+                return true
+            }
+            var submit_buttons = LensAdvisor.$('form[action="/cart/add"]').find(':submit')
+            for (let i=0; i < submit_buttons.length; i ++) {
+                let $button = LensAdvisor.$(submit_buttons[i])
+                $button.before('<button type="button" id="la-select-lenses-btn" class="la-select-lenses-btn" data-toggle="la-modal" data-target="#myPrescription" >Select Lens and Purchase</button>')
+                break;
+            }
+            return true
+        }
+
+        LensAdvisor.getSettings = function(){
+            LensAdvisor.updateSelect()
+            LensAdvisor.$.getJSON(LensAdvisor.BASE_URL.concat("/store/settings?store=", Shopify.shop).concat("&collection_id=", LensAdvisor.Collection_id), function(res){
+                LensAdvisor.advisor.defaultCurrency = res.default_currency
+                LensAdvisor.advisor.settings = res.settings
+                LensAdvisor.injectButton()
+                LensAdvisor.detectVariant();
+                let vh = window.innerHeight * 0.01;
+                // Then we set the value in the --vh custom property to the root of the document
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+                LensAdvisor.$('.prescription-modal').css('height', window.innerHeight)
+                LensAdvisor.$('.prescription-modal').css('height', 'calc(var(--vh, 1vh) * 100)')
+                window.addEventListener('resize', () => {
+                    // We execute the same script as before
+                    let vh = window.innerHeight * 0.01;
+                    document.documentElement.style.setProperty('--vh', `${vh}px`);
+                });
+
+                if (!LensAdvisor.advisor.settings.prism_required) {
+                    LensAdvisor.$('#prism_value').remove()
+                }
+
+                if (res.billing_plan.code !== 'trial') {
+                    LensAdvisor.$('.js-la-trail-logo').remove()
+                }
+
+                LensAdvisor.addStyle('.la-modal-wrapper .prescription-upload input[type="radio"]:checked+label', 'border-color', LensAdvisor.advisor.settings.button_background_color)
+                LensAdvisor.addStyle('.la-select-lenses-btn', 'color', LensAdvisor.advisor.settings.button_color)
+                LensAdvisor.addStyle('.la-select-lenses-btn', 'background-color', LensAdvisor.advisor.settings.button_background_color)
+                LensAdvisor.addStyle('.la-select-lenses-btn:hover', 'background-color', LensAdvisor.LightenDarkenColor(LensAdvisor.advisor.settings.button_background_color, -20))
+
+                LensAdvisor.addStyle('.la-modal-wrapper .prescription-body .la-nav-link.complete', 'background-color', LensAdvisor.advisor.settings.modal_button_background_color + ' !important')
+
+                LensAdvisor.addStyle('.la-modal-wrapper .save-continue, .la-modal-wrapper .add-cart', 'background-color', LensAdvisor.advisor.settings.modal_button_background_color + ' !important')
+                LensAdvisor.addStyle('.la-modal-wrapper .save-continue, .la-modal-wrapper .add-cart, .la-modal-wrapper .add-cart > p, .la-modal-wrapper .save-continue > p', 'color', LensAdvisor.advisor.settings.modal_button_color + ' !important ')
+
+                if (LensAdvisor.advisor.settings.custom_css) {
+                    LensAdvisor.addStylesheet(LensAdvisor.advisor.settings.custom_css)
+                }
+
+                LensAdvisor.addCSSToUL()
+
+                LensAdvisor.$('.la-select-lenses-btn').html(LensAdvisor.advisor.settings.button_text)
+                LensAdvisor.$("#support_email_modal").html(LensAdvisor.advisor.settings.support_email)
+
+                if (LensAdvisor.advisor.settings.pd_on_upload == "hidden") {
+                    LensAdvisor.$('.upload-manual-option').remove()
+                }
+
+                if (LensAdvisor.advisor.settings.segment_height == "hidden") {
+                    LensAdvisor.$('#segment_height').remove()
+                }
+
+                if (!LensAdvisor.advisor.settings.can_email_prescription_after_placing_order) {
+                    LensAdvisor.$('#can_email_prescription_after_placing_order').remove()
+                }
+                if (!LensAdvisor.advisor.settings.can_enter_prescription_manullly) {
+                    LensAdvisor.$('#can_enter_prescription_manullly').remove()
+                }
+    
+                if (!LensAdvisor.advisor.settings.can_upload_their_prescription) {
+                    LensAdvisor.$('#can_upload_their_prescription').remove()
+                }
+
+                if (LensAdvisor.advisor.settings.custom_html) {
+                    let json = JSON.parse(LensAdvisor.advisor.settings.custom_html)
+                    for (let key in json) {
+                        LensAdvisor.$(key)[json[key].method](json[key].html)
+                    }
+                }
+
+            })
+            .fail(function(event, jqxhr, exception) {
+                if (jqxhr.status == 404) {
+                    LensAdvisor.$('.la-select-lenses-btn').remove()
+                    LensAdvisor.$('.la-iso-bootstrap').remove()
+                }
+            })
+        }
+
+        LensAdvisor.LightenDarkenColor = function (col, amt) {
+            col = col.replace(/^#/, '')
+            if (col.length === 3) col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2]
+
+            let [r, g, b] = col.match(/.{2}/g);
+            ([r, g, b] = [parseInt(r, 16) + amt, parseInt(g, 16) + amt, parseInt(b, 16) + amt])
+
+            r = Math.max(Math.min(255, r), 0).toString(16)
+            g = Math.max(Math.min(255, g), 0).toString(16)
+            b = Math.max(Math.min(255, b), 0).toString(16)
+
+            const rr = (r.length < 2 ? '0' : '') + r
+            const gg = (g.length < 2 ? '0' : '') + g
+            const bb = (b.length < 2 ? '0' : '') + b
+
+            return `#${rr}${gg}${bb}`
+        }
+
+        LensAdvisor.saveManualPrescription = function () {
+            LensAdvisor.$(".la-error-popdown").hide();
+            var error = false;
+            if (LensAdvisor.advisor.responses.prescription_type != 'reading') {
+                LensAdvisor.$(".js-od-right").map( function (index, element) {
+                    if (LensAdvisor.advisor.responses.prescription_type == 'single_vision' && element.name == 'add') {
+                        console.log("Exeception")
+                    } else if (element.value == '' && !["cyl", "axis"].includes(element.name)) {
+                        error = true
+                        LensAdvisor.$(element).css({"border-color": "red"});
+                    } else if (element.name === 'axis' && element.value === '0' && LensAdvisor.$('select.js-od-right[name="cyl"]').val() !== '0.00') {
+                        error = true
+                        LensAdvisor.$(element).css({"border-color": "red"});
+                    }
+                })
+
+                LensAdvisor.$(".js-od-left").map( function (index, element) {
+                    if (LensAdvisor.advisor.responses.prescription_type == 'single_vision' && element.name == 'add') {
+                        console.log("Exeception")
+                    } else if (element.value == '' && !["cyl", "axis"].includes(element.name)) {
+                        error = true
+                        LensAdvisor.$(element).css({"border-color": "red"});
+                    } else if (element.name === 'axis' && element.value === '0' && LensAdvisor.$('select.js-od-left[name="cyl"]').val() !== '0.00') {
+                        error = true
+                        LensAdvisor.$(element).css({"border-color": "red"});
+                    }
+                })
+            }
+
+            if (LensAdvisor.advisor.responses.prescription_type == 'reading' && LensAdvisor.advisor.responses.manually.sph == '') {
+                LensAdvisor.$('.js-od-sph').css({"border-color": "red"});
+                error = true
+            } else if (LensAdvisor.advisor.responses.prescription_type == 'reading' && LensAdvisor.advisor.responses.manually.sph != '') {
+                LensAdvisor.advisor.responses.manually.od_right.sph = LensAdvisor.advisor.responses.manually.sph
+                LensAdvisor.advisor.responses.manually.od_left.sph = LensAdvisor.advisor.responses.manually.sph
+            }
+
+            // ONLY FOR SINGLE VISION AND PROGRESSIVE
+            if (LensAdvisor.advisor.responses.manually.prism_value && LensAdvisor.advisor.responses.prescription_type != 'reading' && LensAdvisor.advisor.settings.prism_required) {
+                LensAdvisor.$(".js-prism-od-right").map( function (index, element) {
+                    if (element.value == '') {
+                        error = true
+                        LensAdvisor.$(element).css({"border-color": "red"});
+                    }
+                })
+                LensAdvisor.$(".js-prism-od-left").map( function (index, element) {
+                    if (element.value == '') {
+                        error = true
+                        LensAdvisor.$(element).css({"border-color": "red"});
+                    }
+                })
+            }
+
+            let pd_type = LensAdvisor.advisor.responses.manually.pd.type
+            let prescription_type = LensAdvisor.advisor.responses.prescription_type
+            let settings = LensAdvisor.advisor.settings
+            let pd_right = LensAdvisor.$('.js-select-pd-right-value').val()
+            let pd_left = LensAdvisor.$('.js-select-pd-left-value').val()
+
+            if (pd_type == 'Single PD' && ((LensAdvisor.$('.pd-value').val() == '' && prescription_type != 'reading' && settings.pd_required == true) || (LensAdvisor.advisor.settings.pd_on_readers == true && prescription_type == 'reading' && LensAdvisor.$('.pd-value').val() == ''))) {
+                error = true
+                LensAdvisor.$('.pd-value').css({"border-color": "red"})
+            }
+
+            if (pd_type == 'Dual PD' && prescription_type == 'reading' && (settings.pd_on_readers == true || (pd_right == '' && pd_left != '') || (pd_right != '' && pd_left == '')) && (LensAdvisor.$('.js-select-pd-right-value').val() == '' || LensAdvisor.$('.js-select-pd-left-value').val() == '')) {
+                error = true
+                LensAdvisor.$('.js-select-pd-right-value').css({"border-color": "red"})
+                LensAdvisor.$('.js-select-pd-left-value').css({"border-color": "red"})
+            }
+            if (LensAdvisor.advisor.responses.prescription_type === 'progressive' && settings.segment_height == true && LensAdvisor.$('.segment_height').val() == '') {
+                error = true
+                LensAdvisor.$('.segment_height').css({"border-color": "red"})
+            }
+            if (error == true) {
+                LensAdvisor.$("#la_error_select_prescription").show()
+                setTimeout (function () {
+                    LensAdvisor.$("#la_error_select_prescription").hide()
+                }, 2000)
+            }
+            let val_return = error ? false : LensAdvisor.$('.prescription-body a[href="#choose_lens"]').tab('show')
+            LensAdvisor.addCSSToUL()
+            return val_return
+        }
+
+        LensAdvisor.saveODRight = function () {
+            LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+            LensAdvisor.advisor.responses.manually.od_right[LensAdvisor.$(this).attr('field_name')] = this.value
+            if (this.name === 'cyl' && this.value === '0.00') {
+                LensAdvisor.$('select.js-od-right[name="axis"]').css({"border-color": "#C1C1C1"})
+            }
+        }
+
+        LensAdvisor.saveODLeft = function () {
+            LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+            LensAdvisor.advisor.responses.manually.od_left[LensAdvisor.$(this).attr('field_name')] = this.value
+            if (this.name === 'cyl' && this.value === '0.00') {
+                LensAdvisor.$('select.js-od-left[name="axis"]').css({"border-color": "#C1C1C1"})
+            }
+        }
+
+        LensAdvisor.savePrismODRight = function () {
+            LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+            LensAdvisor.advisor.responses.manually.prism_fields.od_right[LensAdvisor.$(this).attr('field_name')] = this.value
+        }
+
+        LensAdvisor.savePrismODLeft = function () {
+            LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+            LensAdvisor.advisor.responses.manually.prism_fields.od_left[LensAdvisor.$(this).attr('field_name')] = this.value
+        }
+
+        LensAdvisor.savePDS = function () {
+            LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+            LensAdvisor.advisor.responses.manually.pd.value = null
+            LensAdvisor.advisor.responses.manually.pd[LensAdvisor.$(this).attr('field')] = this.value
+        }
+
+        LensAdvisor.prototype.getGroupName = function(group_type) {
+            return {
+                'clear_standard': 'Clear Lenses',
+                'clear_bluelight_blocking': 'Blue-Light-Blocking Lenses',
+                'clear_photochromic': 'Photochromic (Light-Responsive) Lenses',
+                'tinted_non_polorised': 'Non-Polarized Sunglasses Lenses',
+                'tinted_polorised': 'Polarized Sunglasses Lenses',
+            }[group_type]
+        }
+
+        LensAdvisor.prototype.renderLensTypes = function () {
+            LensAdvisor.$('#choose-lens-card').empty()
+            LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 0},50);;
+            LensAdvisor.advisor.lensSubtotal = parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price)
+            const groups = ['clear_standard', 'clear_bluelight_blocking', 'clear_photochromic', 'tinted_polorised', 'tinted_non_polorised']
+            this.group_lens = [];
+
+            var addOnPrice = 0.0
+
+            let checked = ''
+            if (this.lens_types.length === 1) {
+                checked = 'checked'
+                this.responses.lens = this.lens_types[0].id
+            }
+            for (let i=0; i < groups.length; i++) {
+                let group_name = groups[i]
+                let group_lens = this.lens_types.filter(function(obj) {
+                    return obj.group_type === group_name
+                })
+
+                if (group_lens.length === 0) {
+                    continue
+                }
+
+                this.group_lens.push(group_name)
+
+                item_group = this.item_groups[this.responses.prescription_type][group_name]
+
+                let content = '<div class="choose-lens-card">'
+                content += '<h6 ' + (item_group.description ? 'style="margin-bottom: 5px !important" ': '') + '>' +  item_group.title + '</h6>'
+                content += item_group.description ? ('<p>' +  item_group.description + '</p>') : ''
+                content += '<div>'
+
+                for (let i=0; i < group_lens.length; i++) {
+                    let lens = group_lens[i]
+                    if (LensAdvisor.advisor.defaultCurrency && LensAdvisor.advisor.defaultCurrency != "" && LensAdvisor.advisor.defaultCurrency != Shopify.currency.active) {
+                        lens.price = Currency.convert(parseInt(lens.price.toString().replace(/[^0-9]/g, ''), 10), LensAdvisor.advisor.defaultCurrency, Shopify.currency.active);
+                    }
+                    if (this.responses.lens === lens.id || lens.default ) {
+                        this.responses.lens = lens.id
+                        checked = 'checked'
+                        addOnPrice += lens.price
+                    } else {
+                        checked = ''
+                    }
+                    let lens_price = parseFloat(lens.price) == 0 ?  LensAdvisor.FREE_TEXT : LensAdvisor.formatCurrency(parseFloat(lens.price))
+
+                    content += '<div class="form-check">'
+                    content += '<input class="form-check-input" type="radio" name="lens-' + lens.prescription_type + '" id="' + lens.group_type + '-' + lens.id + '" value="' + lens.id + '" style="margin-top: 5px;" price="' + lens.price + '"'
+                    content += ' group_type="' + lens.group_type + '" onchange="LensAdvisor.saveLensType(this)" ' + checked + '>'
+                    content += '<label class="form-check-label form-check-label-color" for="' + lens.group_type + '-' + lens.id + '" style="margin-left: 20px;">' + lens.name + '</label>'
+                    content += '<span class="radio-pricing" id="radio_pricing_normal_style">' + lens_price + '</span>'
+                    content += '</div>'
+                }
+
+                content += '</div></div>'
+
+                LensAdvisor.$('#choose-lens-card').append(content)
+            }
+
+            LensAdvisor.advisor.lensSubtotal += addOnPrice
+
+            LensAdvisor.advisor.lensSubtotal = LensAdvisor.advisor.lensSubtotal.toFixed(LensAdvisor.DECIMAL_POINTS)
+
+            LensAdvisor.$('#lens-subtotal').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.advisor.lensSubtotal)))
+        }
+
+        LensAdvisor.saveLensType = function (that) {
+            LensAdvisor.advisor.responses.lens = that.value
+            LensAdvisor.advisor.lensSubtotal = parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price) + parseFloat(LensAdvisor.$(that).attr('price'))
+            LensAdvisor.$('#lens-subtotal').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.advisor.lensSubtotal)))
+            LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 1400},50);
+        }
+
+        LensAdvisor.review = function () {
+            LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 0},50);;
+            let subtotal = LensAdvisor.variants[LensAdvisor.selectedVariant].price
+            if (LensAdvisor.$('input[name="lens-' + LensAdvisor.advisor.responses.prescription_type + '"]:checked').length === 0) {
+                LensAdvisor.$("#la_error_select_lens").show()
+                setTimeout (function () {
+                    LensAdvisor.$("#la_error_select_lens").hide()
+                }, 2000)
+                return false;
+            }
+            LensAdvisor.$("#la_error_select_lens").hide()
+            LensAdvisor.$('.prescription-body a[href="#review_selection"]').tab('show');
+
+            // if (LensAdvisor.$('#review-selected-priscription-method').html() !== '') {
+            //     LensAdvisor.$(".js-review-precription-type").show()
+            // } else {
+            //     LensAdvisor.$(".js-review-precription-type").hide()
+            // }
+
+            lens = LensAdvisor.advisor.lens_types.filter(function(obj) {
+                return obj.id == LensAdvisor.advisor.responses.lens
+            })[0]
+
+            // let lens_price = parseFloat(lens.price) == 0 ? 'Free' : LensAdvisor.formatCurrency(lens_price)
+            // content = '<div class="pricing-list">'
+            // content += '<strong class="text-left pr-5">' + lens.name + '</strong>'
+            // content += '<span>' + lens_price + '</span>'
+            // content += '</div>'
+
+            // LensAdvisor.$('#review-lens-types').html(content)
+            LensAdvisor.$('#review-lens-title').html(lens.name)
+            LensAdvisor.$('#review-lens-price').html(LensAdvisor.formatCurrency(parseFloat(lens.price)))
+
+            LensAdvisor.$('#review-selected-priscription').html(LensAdvisor.getPrescriptionTitle(LensAdvisor.advisor.responses.prescription_type))
+
+            // LensAdvisor.$('#review-variant-price').html(parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price).toFixed(2))
+
+            LensAdvisor.$('#review-variant-price').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price)))
+            subtotal += parseFloat(lens.price)
+            LensAdvisor.$('#reivew-subtotal').html(LensAdvisor.formatCurrency(subtotal))
+            LensAdvisor.addCSSToUL()
+        }
+
+        LensAdvisor.prototype.get_prescription_request_data = function (cart_token) {
+            let data = {
+                cart_token: cart_token,
+                prescription_type: this.responses.prescription_type,
+                method: this.responses.method,
+                prescription_file: this.responses.prescription_file,
+                prescription_setting: {},
+                product_id: '{{product.id}}',
+                order_note: LensAdvisor.$('.order-notes').val(),
+                lens: this.responses.lens,
+                unique_identifier: this.responses.unique_identifier
+            }
+            if (this.responses.method === 'uploaded' && this.settings.pd_on_upload) {
+                data.prescription_setting.pd = this.responses.manually.pd
+            }
+            if (this.responses.method === 'entered_manually') {
+                data.prescription_setting = this.responses.manually
+            }
+            return data
+        }
+
+        LensAdvisor.request = function (method, url, data) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open(method, url, false);
+            xhttp.send(data);
+            return JSON.parse(xhttp.response)
+        }
+
+        LensAdvisor.addContactLensToCart = function (event) {
+            event.preventDefault()
+            console.log(this)
+            let form_data = $(this).serializeArray()
+            let od_right_quantity = 1
+            let od_left_quantity = 1
+            var od_right = Object.assign({}, LensAdvisor.advisor.responses.manually.od_right)
+            var od_left = Object.assign({}, LensAdvisor.advisor.responses.manually.od_left)
+            for (let i=0; i< form_data.length; i++) {
+                let row = form_data[i]
+                if (row.name.includes('Right')) {
+                    if (row.name.includes('quantity')) {
+                        od_right_quantity = parseInt(row.value)
+                    }
+                    od_right[row.name.replace('Right-', '')] = row.value
+                } else {
+                    if (row.name.includes('quantity')) {
+                        od_left_quantity = parseInt(row.value)
+                    }
+                    LensAdvisor.advisor.responses.manually.od_left[row.name.replace('Left-', '')] = row.value
+                }
+            }
+
+            LensAdvisor.advisor.responses.prescription_type = 'contact_lenses'
+            LensAdvisor.advisor.responses.unique_identifier = LensAdvisor.advisor.responses.prescription_type + '__{{product.id}}__' + new Date().toJSON()
+            LensAdvisor.advisor.responses.method = 'entered_manually'
+            LensAdvisor.advisor.responses.manually.contact_lenses = 'left'
+
+            let items = [{
+                quantity: od_left_quantity,
+                id: LensAdvisor.selectedVariant,
+                properties: {
+                    "_unique_identifier": LensAdvisor.advisor.responses.unique_identifier,
+                    "Prescription Type": LensAdvisor.getPrescriptionTitle(LensAdvisor.advisor.responses.prescription_type),
+                    "Method": LensAdvisor.getPrescriptionMethodDisplayName(LensAdvisor.advisor.responses.method),
+                    "OD": "Left",
+                }
+            }]
+            LensAdvisor.$(this).find('button').html(LensAdvisor.spin)
+            LensAdvisor.$.post('/cart/add.js', {items: items}, function (response) {
+                LensAdvisor.$.getJSON('/cart.json', function (cart) {
+                    let data = LensAdvisor.advisor.get_prescription_request_data(cart.token)
+                    LensAdvisor.$.ajax({
+                        type: "POST",
+                        url: LensAdvisor.BASE_URL + '/prescriptions/?shop=' + Shopify.shop,
+                        headers: { 'Content-Type': 'application/json' },
+                        data: JSON.stringify(data),
+                        success: function (response) {
+                            LensAdvisor.advisor.responses.manually.od_left = od_left
+                            LensAdvisor.advisor.responses.manually.od_right = od_right
+                            LensAdvisor.advisor.responses.manually.contact_lenses = 'right'
+                            LensAdvisor.advisor.responses.unique_identifier = LensAdvisor.advisor.responses.prescription_type + '__{{product.id}}__' + new Date().toJSON()
+                            let items = [{
+                                quantity: od_right_quantity,
+                                id: LensAdvisor.selectedVariant,
+                                properties: {
+                                    "_unique_identifier": LensAdvisor.advisor.responses.unique_identifier,
+                                    "Prescription Type": LensAdvisor.getPrescriptionTitle(LensAdvisor.advisor.responses.prescription_type),
+                                    "Method": LensAdvisor.getPrescriptionMethodDisplayName(LensAdvisor.advisor.responses.method),
+                                    "OD": "Right",
+                                }
+                            }]
+                            LensAdvisor.$.post('/cart/add.js', {items: items}, function (response) {
+                                let data = LensAdvisor.advisor.get_prescription_request_data(cart.token)
+                                LensAdvisor.advisor.send_prescription_request(data)
+                            })
+                        }
+                    });
+                })
+            });
+            return false;
+        }
+
+        LensAdvisor.prototype.addToCart = function (that) {
+            if (this.adding_to_cart) {
+                return false
+            }
+            this.adding_to_cart = true
+            let lens = this.lens_types.filter(function(obj) {
+                return obj.id == LensAdvisor.advisor.responses.lens
+            })[0]
+            this.responses.unique_identifier = this.responses.prescription_type + '__{{product.id}}__' + new Date().toJSON()
+            items = []
+            let product_data = {
+                quantity: 1,
+                id: LensAdvisor.selectedVariant,
+                properties: {
+                    "_unique_identifier": this.responses.unique_identifier,
+                    "Prescription Type": LensAdvisor.getPrescriptionTitle(this.responses.prescription_type),
+                    "Method": LensAdvisor.getPrescriptionMethodDisplayName(this.responses.method),
+                }
+            }
+            if (lens) {
+                items.push({
+                    quantity: 1,
+                    id: lens.raw_data.product.variants[0].id,
+                    properties: {
+                        "_unique_identifier": this.responses.unique_identifier,
+                        "Prescription Type": LensAdvisor.getPrescriptionTitle(this.responses.prescription_type),
+                        "Prescription Method": LensAdvisor.getPrescriptionMethodDisplayName(this.responses.method),
+                        "Product": "{{product.title}}",
+                        "_base_variant_id": LensAdvisor.selectedVariant
+                    }
+                })
+                product_data.properties["Lens"] = lens.name + ": " + (parseFloat(lens.price) == 0 ?  "FREE" : LensAdvisor.formatCurrency(parseFloat(lens.price)))
+                product_data.properties["_lens_variant_id"] = lens.raw_data.product.variants[0].id
+            }
+            items.push(product_data)
+            let spin = '<span class="" data-loader="">' +
+                '<svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"></path></svg></span>  PROCESSING !'
+            LensAdvisor.$('#la_review_addToCart_label').html(spin)
+            LensAdvisor.$('.js-back-button').hide()
+            LensAdvisor.$(that).css({"opacity": "0.8"})
+            LensAdvisor.$.post('/cart/add.js', {items: items}, function (response) {
+                LensAdvisor.$.getJSON('/cart.json', function (cart) {
+                    let data = LensAdvisor.advisor.get_prescription_request_data(cart.token)
+                    LensAdvisor.advisor.send_prescription_request(data)
+                })
+            });
+        }
+
+        LensAdvisor.prototype.send_prescription_request = function (data) {
+            LensAdvisor.$.ajax({
+                type: "POST",
+                url: LensAdvisor.BASE_URL + '/prescriptions/?shop=' + Shopify.shop,
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify(data),
+                success: function (response) {
+                    window.location.href = '/cart'
+                }
+            });
+        }
+
+        LensAdvisor.convertB64 = function (file) {
+            let reader = new FileReader();
+            reader.onload = (function(file) {
+                return function(e) {
+                    let binaryData = e.target.result;
+                    let base64String = window.btoa(binaryData);
+                    let filename = new Date().getTime() + '.' + file.name.split('.')[file.name.split('.').length - 1]
+                    LensAdvisor.advisor.responses.prescription_file = {
+                        content_type: file.type,
+                        filename: file.name,
+                        b64Content: base64String
+                    }
+                    LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 1400},50);
+                };
+            })(file);
+            reader.readAsBinaryString(file);
+        }
+
+        LensAdvisor.formatCurrency = function (amount) {
+            return Currency.formatMoney(amount * 100, Currency.moneyFormats[Shopify.currency.active].money_format)
+            let currency_position = LensAdvisor.advisor.settings.currency_position || 'prefix'
+            let currency_symbol = LensAdvisor.advisor.settings.currency_symbol || '$'
+            amount = amount.toFixed(LensAdvisor.DECIMAL_POINTS)
+            if (currency_position != 'prefix') {
+                return amount.concat(" ", currency_symbol)
+            }
+            return currency_symbol.concat("", amount)
+        }
+
+        LensAdvisor.getPrescriptionMethodDisplayName = function (method) {
+            return LensAdvisor.PRESCRIPTION_METHODS[method]
+        } || ""
+
+        LensAdvisor.addEvents = function () {
+            LensAdvisor.$('.js-back-button').hide();
+            LensAdvisor.$('.js-select-pd-left-value, .js-select-pd-right-value, .js-select-pd-on-upload-left-value, .js-select-pd-on-upload-right-value').on('change', LensAdvisor.savePDS)
+            LensAdvisor.$('.js-od-sph').on('change', function () {
+                LensAdvisor.advisor.responses.manually.sph = this.value
+            })
+            // Select Prescription
+            LensAdvisor.$('.radio-prescription-select').click(function() {
+                LensAdvisor.advisor.responses.prescription_type = this.value
+                LensAdvisor.get_lens_types()
+                LensAdvisor.resetSelect()
+                LensAdvisor.updateSPH()
+                LensAdvisor.$('.js-back-button').show()
+                LensAdvisor.$('#segment_height').show()
+                LensAdvisor.$('#prism_value').show()
+                LensAdvisor.$(".js-review-lenses").show()
+                LensAdvisor.$(".js-review-precription-type").show()
+                LensAdvisor.$('.js-sph-only').hide()
+                LensAdvisor.$('.js-od-container').show()
+                LensAdvisor.$('#prescription_upload_manually_wrapper').show()
+                LensAdvisor.$('#la_Rx_reading_title').hide()
+                LensAdvisor.$('#la_Rx_manual_title').show()
+                if (LensAdvisor.advisor.settings.pd_required == "hidden") {
+                    LensAdvisor.$('.lensadvizor-manual-pd').hide()
+                } else {
+                    LensAdvisor.$('.lensadvizor-manual-pd').show()
+                }
+                if (LensAdvisor.advisor.responses.prescription_type != null && LensAdvisor.$(window).width() <= 1024) {
+                    LensAdvisor.$(".product-title-below-modal-image").hide();
+                }
+                if (LensAdvisor.advisor.responses.prescription_type == 'single_vision') {
+                    LensAdvisor.$('select.js-od-left').show()
+                    LensAdvisor.$('select.js-od-right').show()
+                    LensAdvisor.$('select.js-od-left').parent().find('p').show()
+                    LensAdvisor.$('select.js-od-right').parent().find('p').show()
+                    LensAdvisor.$('select.js-od-left[name="add"]').hide()
+                    LensAdvisor.$('select.js-od-right[name="add"]').hide()
+                    LensAdvisor.$('select.js-od-left[name="add"]').parent().find('p').hide()
+                    LensAdvisor.$('select.js-od-right[name="add"]').parent().find('p').hide()
+                    LensAdvisor.$('#segment_height').hide()
+                    LensAdvisor.$('.prescription-body a[href="#add_prescription"]').tab('show');
+                }  else if (LensAdvisor.advisor.responses.prescription_type == 'reading') {
+                    LensAdvisor.$('select.js-od-right').parent().find('p').hide()
+                    LensAdvisor.$('select.js-od-left').parent().find('p').hide()
+                    LensAdvisor.$('select.js-od-right').hide()
+                    LensAdvisor.$('select.js-od-left').hide()
+                    LensAdvisor.$('select.js-od-left[name="sph"]').show()
+                    LensAdvisor.$('select.js-od-right[name="sph"]').show()
+                    LensAdvisor.$('select.js-od-left[name="sph"]').parent().find('p').show()
+                    LensAdvisor.$('select.js-od-right[name="sph"]').parent().find('p').show()
+                    LensAdvisor.$('#segment_height').hide()
+                    LensAdvisor.$('#prism_value').hide()
+                    LensAdvisor.$('.radio-type-manual').click()
+                    LensAdvisor.$('.js-sph-only').show()
+                    LensAdvisor.$('.lensadvizor-manual-pd').show()
+                    if (LensAdvisor.advisor.settings.pd_on_readers == 'hidden') {
+                        LensAdvisor.$('.lensadvizor-manual-pd').hide()
+                    }
+                    LensAdvisor.$('.js-od-container').hide()
+                    LensAdvisor.$('#prescription_upload_manually_wrapper').hide()
+                    LensAdvisor.$('#la_Rx_manual_title').hide()
+                    LensAdvisor.$('#la_Rx_reading_title').show()
+                } else if (LensAdvisor.advisor.responses.prescription_type == 'frame_only') {
+                    LensAdvisor.$('#reivew-subtotal').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price)))
+                    LensAdvisor.$('#review-variant-price').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price)))
+                    // LensAdvisor.$('.prescription-body a[href="#review_selection"]').tab('show');
+                    LensAdvisor.$(".js-review-lenses").hide()
+                    LensAdvisor.$(".js-review-precription-type").hide()
+                    LensAdvisor.$('#cover-spin').show(0)
+                    LensAdvisor.advisor.addToCart(this)
+    
+                } else if (LensAdvisor.advisor.responses.prescription_type == 'non_prescription'){
+                    LensAdvisor.$('#reivew-subtotal').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price)))
+                    LensAdvisor.$('#review-variant-price').html(LensAdvisor.formatCurrency(parseFloat(LensAdvisor.variants[LensAdvisor.selectedVariant].price)))
+                    LensAdvisor.$('.prescription-body a[href="#choose_lens"]').tab('show');
+                } else {
+                    LensAdvisor.$('select.js-od-left').show()
+                    LensAdvisor.$('select.js-od-right').show()
+                    LensAdvisor.$('select.js-od-left').parent().find('p').show()
+                    LensAdvisor.$('select.js-od-right').parent().find('p').show()
+                    LensAdvisor.$('.prescription-body a[href="#add_prescription"]').tab('show');
+                }
+                setTimeout(function () {
+                    LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 0},50);;
+                })
+                LensAdvisor.addCSSToUL()
+            })
+
+            LensAdvisor.$('.radio-type-upload').click( function() {
+                LensAdvisor.advisor.responses.method = "uploaded"
+                LensAdvisor.$('.prescription-body a[href="#add_prescription_method"]').tab('show');
+                LensAdvisor.$('.upload-option').css({"display": "block"});
+                LensAdvisor.$('.manual-option').css({"display": "none"});
+                LensAdvisor.get_lens_types()
+                LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 0},50);
+                LensAdvisor.$('#review-selected-priscription-method').html(LensAdvisor.getPrescriptionMethodDisplayName('uploaded'))
+                LensAdvisor.addCSSToUL()
+            })
+
+            LensAdvisor.$('.radio-type-manual').click( function(){
+                LensAdvisor.advisor.responses.method = "entered_manually"
+                LensAdvisor.get_lens_types()
+                LensAdvisor.$('.prescription-body a[href="#add_prescription_method"]').tab('show');
+                LensAdvisor.$('.upload-option').css({"display": "none"});
+                LensAdvisor.$('.manual-option').css({"display": "block"});
+                LensAdvisor.$('.prescription-modal-content').animate({scrollTop: 0},50);
+                LensAdvisor.$('#review-selected-priscription-method').html(LensAdvisor.getPrescriptionMethodDisplayName('entered_manually'))
+                LensAdvisor.addCSSToUL()
+                $('select[name="cyl"]').val("0.00")
+            })
+
+            LensAdvisor.$('.radio-type-later').click( function(){
+                LensAdvisor.advisor.responses.method = "email_later"
+                LensAdvisor.get_lens_types()
+                LensAdvisor.$('.prescription-body a[href="#choose_lens"]').tab('show');
+                LensAdvisor.$(".prescription-tabs .active").addClass('directlyReview');
+                LensAdvisor.$('#review-selected-priscription-method').html(LensAdvisor.getPrescriptionMethodDisplayName('email_later'))
+                LensAdvisor.addCSSToUL()
+            })
+
+            LensAdvisor.$('.js-back-button').click( function(){
+                let id = LensAdvisor.$(".prescription-tabs .active").attr('href');
+                let containClass = LensAdvisor.$(".prescription-tabs .active").hasClass('directlyReview');
+                console.log(id)
+                if( id == "#review_selection" && containClass){
+                    // $jQuery('.prescription-body a[href="#choose_lens"]').tab('show');
+                    LensAdvisor.$('.prescription-body a[href="#add_prescription"]').tab('show');
+                    LensAdvisor.$(".prescription-tabs .active").removeClass('directlyReview');
+                } else if (id == "#review_selection" && LensAdvisor.advisor.responses.prescription_type == "frame_only") {
+                    LensAdvisor.$('.js-back-button').hide();
+                    LensAdvisor.$(".product-title-below-modal-image").show();
+                    LensAdvisor.$('.prescription-body a[href="#select_prescription"]').tab('show');
+                    LensAdvisor.advisor.setDefaultResponse()
+                } else if (id == "#add_prescription_method" && LensAdvisor.advisor.responses.prescription_type == "reading") {
+                    LensAdvisor.$('.js-back-button').hide();
+                    LensAdvisor.$(".product-title-below-modal-image").show();
+                    LensAdvisor.$('.prescription-body a[href="#select_prescription"]').tab('show');
+                    LensAdvisor.advisor.setDefaultResponse()
+                } else if (id == "#add_prescription"){
+                    LensAdvisor.$('.prescription-body a[href="#select_prescription"]').tab('show');
+                    LensAdvisor.$('.js-back-button').hide();
+                    LensAdvisor.$(".product-title-below-modal-image").show();
+                    LensAdvisor.advisor.setDefaultResponse()
+                }  else if(id == "#add_prescription_method"){
+                LensAdvisor.$('.prescription-body a[href="#add_prescription"]').tab('show');
+                } 
+                else if(id == "#choose_lens" && LensAdvisor.advisor.responses.method == "email_later" ){
+                    LensAdvisor.$('.prescription-body a[href="#add_prescription"]').tab('show');
+                }
+                else if (id == "#choose_lens" && LensAdvisor.advisor.responses.prescription_type == "non_prescription") {
+                    LensAdvisor.$('.prescription-body a[href="#select_prescription"]').tab('show');
+                    LensAdvisor.$('.js-back-button').hide();
+                    LensAdvisor.$(".product-title-below-modal-image").show();
+                    LensAdvisor.advisor.setDefaultResponse()
+                }
+                else if(id == "#choose_lens"){
+                    LensAdvisor.$('.prescription-body a[href="#add_prescription_method"]').tab('show');
+                    LensAdvisor.advisor.renderLensTypes()
+                }
+                else if(id == "#review_selection"){
+                    LensAdvisor.$('.prescription-body a[href="#choose_lens"]').tab('show');
+                }
+                if (LensAdvisor.$(".prescription-tabs .active").attr('href') == "#select_prescription" && LensAdvisor.$(window).width() <= 767 ) {
+                    LensAdvisor.$(".product-title-below-modal-image").show();
+                }
+                LensAdvisor.addCSSToUL()
+            });
+
+            LensAdvisor.$('.js-save-continue-upload').click( function() {
+                let error = false;
+                console.log(this)
+                if (LensAdvisor.advisor.responses.manually.pd.type == 'Single PD' && LensAdvisor.$('.pd-on-upload-value').val() == '' &&  LensAdvisor.advisor.responses.prescription_type != 'reading' && LensAdvisor.advisor.settings.pd_on_upload == true) {
+                    error = true
+                    LensAdvisor.$('.pd-on-upload-value').css({"border-color": "red"})
+                }
+                if (LensAdvisor.advisor.responses.manually.pd.type == 'Dual PD' &&  LensAdvisor.advisor.responses.prescription_type != 'reading' && LensAdvisor.advisor.settings.pd_on_upload == true && (LensAdvisor.$('.js-select-pd-on-upload-right-value').val() == '' || LensAdvisor.$('.js-select-pd-on-upload-left-value').val() == '') ) {
+                    error = true
+                    if (LensAdvisor.$('.js-select-pd-on-upload-right-value').val() == '') {
+                        LensAdvisor.$('.js-select-pd-on-upload-right-value').css({"border-color": "red"})
+                    }
+                    if (LensAdvisor.$('.js-select-pd-on-upload-left-value').val() == '') {
+                        LensAdvisor.$('.js-select-pd-on-upload-left-value').css({"border-color": "red"})
+                    }
+                }
+                LensAdvisor.$('.selected-file').css({"display": "block"});
+                if(LensAdvisor.$("#prescription-upload").get(0).files.length === 0){
+                    LensAdvisor.$('.selected-file').html('<p>Please Upload File</p>');
+                    LensAdvisor.$('.selected-file').css({"border": "none"});
+                    error = true
+                }
+                if (!error) {
+                    LensAdvisor.$('.prescription-body a[href="#choose_lens"]').tab('show');
+                }
+                LensAdvisor.addCSSToUL()
+            });
+
+            // choose lens save and continue cta 
+            LensAdvisor.$(".js-choose-lens-button").click(LensAdvisor.review)
+
+            // enter prescription manually save and continue cta 
+            LensAdvisor.$(".js-save-and-continue-prescription-manually").click(LensAdvisor.saveManualPrescription)
+
+            LensAdvisor.$('#prescription-upload').change(function(){
+                if (this.files.length != 0){
+                    LensAdvisor.$('.selected-file').html(this.files[0].name)
+                    LensAdvisor.$('.selected-file').show()
+                    LensAdvisor.$('.selected-file').css({"border": "1px solid #000"});
+                    // LensAdvisor.$('.choose-file-text').html('Change File');
+                    LensAdvisor.$('#la_Rx_upload_chooseFile_label').hide()
+                    LensAdvisor.$('#la_Rx_upload_changeFile_label').show()
+                    setTimeout(function () {
+                        LensAdvisor.convertB64(LensAdvisor.$("#prescription-upload").get(0).files[0])
+                    }, 1000)
+                }
+            });
+            LensAdvisor.$('#prescription-upload-manually').change(function(){
+                if (this.files.length != 0){
+                    LensAdvisor.$('.js-manually-selected-file').html(this.files[0].name).show()
+                    LensAdvisor.$('.js-manually-selected-file').css({"border": "1px solid #000"});
+                    LensAdvisor.$('#la_Rx_manual_upload_chooseFile_label').hide()
+                    LensAdvisor.$('#la_Rx_manual_upload_changeFile_label').show()
+                    // LensAdvisor.$('.js-choose-file-text-manually').html('Change File');
+                    setTimeout(function () {
+                        LensAdvisor.convertB64(LensAdvisor.$("#prescription-upload-manually").get(0).files[0])
+                    })
+                }
+            });
+
+            LensAdvisor.$('#myPrescription').on('hidden.bs.la-modal', LensAdvisor.advisor.setDefaultResponse)
+
+            LensAdvisor.$(".js-od-right").on('change', LensAdvisor.saveODRight)
+            LensAdvisor.$(".js-od-left").on('change', LensAdvisor.saveODLeft)
+            LensAdvisor.$(".js-prism-od-right").on('change', LensAdvisor.savePrismODRight)
+            LensAdvisor.$(".js-prism-od-left").on('change', LensAdvisor.savePrismODLeft)
+
+            LensAdvisor.$('input[name="pd"]').on('change', function () {
+                LensAdvisor.$('.pd-text').css({"color": "unset"})
+                LensAdvisor.advisor.responses.manually.pd.type = this.value
+                LensAdvisor.$(".js-select-pd-left-value, .js-select-pd-left-p").show();
+                LensAdvisor.$(".js-select-pd-right-value, .js-select-pd-right-p").show();
+                LensAdvisor.$(".js-pd-value-dropdown").show();
+                if (LensAdvisor.advisor.responses.manually.pd.type == "Single PD") {
+                    LensAdvisor.$(".js-select-pd-left-value, .js-select-pd-left-p").hide();
+                    LensAdvisor.$(".js-select-pd-right-value, .js-select-pd-right-p").hide();
+                }
+
+                if (LensAdvisor.advisor.responses.manually.pd.type == "Dual PD") {
+                    LensAdvisor.$(".js-pd-value-dropdown").hide();
+                }
+            })
+
+            LensAdvisor.$('input[name="pd_on_upload"]').on('change', function () {
+                LensAdvisor.$('#pd-on-upload-value').css({"color": "unset"})
+                LensAdvisor.advisor.responses.manually.pd.type = this.value
+                LensAdvisor.$(".js-select-pd-on-upload-left-value, .js-select-pd-on-upload-left-p").show();
+                LensAdvisor.$(".js-select-pd-on-upload-right-value, .js-select-pd-on-upload-right-p").show();
+                LensAdvisor.$(".js-pd-on-upload-value-dropdown").show();
+                if (LensAdvisor.advisor.responses.manually.pd.type == "Single PD") {
+                    LensAdvisor.$(".js-select-pd-on-upload-left-value, .js-select-pd-on-upload-left-p").hide();
+                    LensAdvisor.$(".js-select-pd-on-upload-right-value, .js-select-pd-on-upload-right-p").hide();
+                }
+
+                if (LensAdvisor.advisor.responses.manually.pd.type == "Dual PD") {
+                    LensAdvisor.$(".js-pd-on-upload-value-dropdown").hide();
+                }
+            })
+
+            LensAdvisor.$('.pd-value, .pd-on-upload-value').on('change', function() { 
+                LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+                LensAdvisor.advisor.responses.manually.pd.value = this.value
+            })
+
+            LensAdvisor.$('.segment_height').on('change', function () {
+                LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+                LensAdvisor.advisor.responses.manually.segment_height = this.value
+            })
+
+            LensAdvisor.$('input[name="prism_value"]').on('change', function () {
+                LensAdvisor.$(this).css({"border-color": "#C1C1C1"})
+                LensAdvisor.advisor.responses.manually.prism_value = this.value == 'No' ? false : true
+                LensAdvisor.$(".js-prism-values-od-right-left-wrapper").hide()
+                if (LensAdvisor.advisor.responses.manually.prism_value == true) {
+                    LensAdvisor.$(".js-prism-values-od-right-left-wrapper").show()
+                }
+            })
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{ 'la-iso-bootstrap.js' | asset_url | script_tag }}
+    <script type="text/javascript">
+        LensAdvisor.$ = $.noConflict(true);
+        LensAdvisor.$(document).ready(function() {
+            LensAdvisor.advisor = LensAdvisor.init()
+            LensAdvisor.getSettings()
+        })
+    </script>
+    <div id="LensAdvizorModalWrapper" class="la-modal-wrapper">
+    <div class="la-iso-bootstrap">
+        <div id="cover-spin"></div>
+        <div class="la-modal la-fade" id="myPrescription">
+            <div class="la-modal-dialog la-modal-xl prescription-modal">
+                <div class="la-modal-content prescription-modal-content">
+                    <!-- Modal body -->
+                    <div class="row row--modifier">
+                        <div class="col-12 col-xl-7 la-modal-columns">
+                            <div class="banner-image-container">
+                                <img data-src="{{ product.featured_image | img_url: 'master' }}" alt="banner-image" class="img-fluid lazyload" id="lensadvisor-fetaured-image" />
+                            </div>
+                            <div class="product-title-below-modal-image">
+                                <p id="selected_variant_title">
+                                    {{product.selected_or_first_available_variant.title}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-5 la-modal-columns" id="la-modal-columns-box-shadow">
+                            <div class="la-modal-body prescription-body">
+                                <div class="header">
+                                    <p id="la_error_select_prescription" class="col-xl-5 la-error-popdown">Please Enter Prescription details</p>
+                                    <p id="la_error_select_lens" class="col-xl-5 la-error-popdown">Please select any one lens</p>
+                                    <div class="back-button js-back-button">
+                                        <img src="https://cdn.shopify.com/s/files/1/0341/4907/3029/files/Back_arrow.svg?v=1592319226" />
+                                    </div>
+                                    <button type="button" class="close js-modal-close" id="advisor-close" data-dismiss="la-modal">&times;</button>
+                                    <!-- Nav pills -->
+                                    <ul class="la-nav la-nav-pills prescription-tabs" role="tablist">
+                                        <li class="la-nav-item">
+                                            <a class="la-nav-link active" data-toggle="pill" href="#select_prescription"></a>
+                                        </li>
+                                        <li class="la-nav-item">
+                                            <a class="la-nav-link" data-toggle="pill" href="#add_prescription"></a>
+                                        </li>
+                                        <li class="la-nav-item">
+                                            <a class="la-nav-link" data-toggle="pill" href="#add_prescription_method"></a>
+                                        </li>
+                                        <li class="la-nav-item">
+                                            <a class="la-nav-link" data-toggle="pill" href="#choose_lens"></a>
+                                        </li>
+                                        <li class="la-nav-item">
+                                            <a class="la-nav-link" data-toggle="pill" href="#review_selection"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Tab panes -->
+                                <div class="tab-content prescription-details">
+                                    <div id="select_prescription" class="la-tab-pane active">
+                                        <h3 id="la_prescriptionSelect_title" class="tab-heading text-center">Select Your Prescription Type</h3>
+                                        <div class="prescription-type"></div>
+                                        <p class="text-center la-prescription_type_trail js-la-trail-logo">
+                                            Powered By <img src="https://d15as34r88kmuk.cloudfront.net/media/lenzadvizor+500x500.png" style="vertical-align: bottom;height:30px" > <strong>LensAdvizor</strong>
+                                        </p>
+                                    </div>
+                                    <div id="add_prescription" class="la-tab-pane la-fade prescription-upload">
+                                        <h3 id="la_Rx_main_title" class="tab-heading text-center">Add your prescription</h3>
+                                        <div class="text-center" id="can_upload_their_prescription">
+                                            <input type="radio" id="upload" name="prescription_type" value="value" class="radio-prescription-upload-type radio-type-upload">
+                                            <label for="upload">
+                                                <div class="image-container m-auto mt-3">
+                                                    <img src="https://cdn.shopify.com/s/files/1/0341/4907/3029/files/communication.svg?v=1592228773" />
+                                                </div>
+                                                <h6 id="la_Rx_main_upload_label" class="text-center">Upload Your Prescription</h6>
+                                            </label>
+                                        </div>
+                                        <div class="text-center">
+                                            <input type="radio" id="manually" name="prescription_type" value="value" class="radio-prescription-upload-type radio-type-manual">
+                                            <label for="manually" id="can_enter_prescription_manullly">
+                                                <div class="image-container m-auto mt-3">
+                                                    <img src="https://cdn.shopify.com/s/files/1/0341/4907/3029/files/edit.svg?v=1592228773" />
+                                                </div>
+                                                <h6 id="la_Rx_main_manual_label" class="text-center">Enter Your Prescription Manually</h6>
+                                            </label>
+                                        </div>
+                                        <div class="text-center" id="can_email_prescription_after_placing_order">
+                                            <input type="radio" id="later" name="prescription_type" value="value" class="radio-prescription-upload-type radio-type-later">
+                                            <label for="later">
+                                                <div class="image-container m-auto mt-3">
+                                                    <img src="https://cdn.shopify.com/s/files/1/0341/4907/3029/files/mail.svg?v=1592228773" />
+                                                </div>
+                                                <h6 id="la_Rx_main_email_label" class="text-center">Email Your Prescription Later</h6>
+                                            </label>
+                                        </div>
+                                        <p class="text-center js-la-trail-logo">
+                                            Powered By <img src="https://d15as34r88kmuk.cloudfront.net/media/lenzadvizor+500x500.png" style="vertical-align: bottom;height:30px"><strong>LensAdvizor</strong>
+                                        </p>
+                                    </div>
+                                    <div id="add_prescription_method" class="la-tab-pane la-fade">
+                                        <div class="upload-option">
+                                            <div class="od-right-container od-container--modifier js-od-container">
+                                                <h3 id="la_Rx_upload_title" class="tab-heading text-center">Upload Prescription</h3>
+                                                <div class="text-center upload-file">
+                                                    <p id="la_Rx_upload_fileType_label" class="text-center">Please upload your prescription as a PNG, JPG or PDF file.</p>
+                                                  
+                                                    <input type="file" id="prescription-upload" accept="image/png, image/jpeg, application/pdf" required>
+                                                    <label for="prescription-upload" id="label-prescription-upload">                                        
+                                                        <img src="https://cdn.shopify.com/s/files/1/0341/4907/3029/files/clip.svg?v=1592302286" class="choose-file-image">
+                                                        <span id="la_Rx_upload_chooseFile_label" class="choose-file-text">Choose File</span>
+                                                        <span id="la_Rx_upload_changeFile_label" class="choose-file-text">Change File</span>
+                                                    </label>
+                                                    <div class="selected-file"></div>
+                                                </div>
+                                            </div>
+                                            <div class="upload-manual-option">
+                                                <div class="od-left-container od-container--modifier pd-container pd_on_upload" id="pd-container-upload">
+                                                    <h6 class="text-left" id="la_Rx_upload_pdText_label">Pupillary Distance (PD)</h6>
+                                                    <div class="od-left">
+                                                        <div style="display: inline-block; margin-bottom: 10px;">
+                                                            <div class="form-check" style="padding-left: 0;margin-bottom: 10px;display: inline-flex;">
+                                                                <input class="form-check-input" type="radio" name="pd_on_upload" id="pd_on_upload1" value="Single PD" style="margin-top: 5px;" checked>
+                                                                <label id="la_Rx_upload_singlePD_label" class="form-check-label form-check-label-color pd-label-text-initial" for="pd_on_upload1" style="margin-left: 20px;">Single PD</label>
+                                                            </div>
+                                                            <div class="form-check" style="padding-left: 0;margin-bottom: 10px;display: inline-flex;padding-left: 20px;">
+                                                                <input class="form-check-input" type="radio" name="pd_on_upload" id="pd_on_upload2" value="Dual PD" style="margin-top: 5px;">
+                                                                <label id="la_Rx_upload_dualPD_label" class="form-check-label form-check-label-color pd-label-text-initial" for="pd_on_upload2" style="margin-left: 20px;">Dual PD</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="od-left od-left-pd-on-upload--modifier">
+                                                        <div class="od-dropdown js-pd-on-upload-value-dropdown">
+                                                            <select class="pd-on-upload-value la-dropdown"></select>
+                                                        </div>
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_upload_PDLeft_label" class="od-dropdown-text js-select-pd-on-upload-left-p">Left</p>
+                                                            <select class="js-select-pd-on-upload-left-value la-dropdown"  field="left"></select>
+                                                        </div>
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_upload_PDRight_label" class="od-dropdown-text js-select-pd-on-upload-right-p">Right</p>
+                                                            <select class="js-select-pd-on-upload-right-value la-dropdown" field="right"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-center js-la-trail-logo" style="margin-top: 1rem;">
+                                                Powered By <img src="https://d15as34r88kmuk.cloudfront.net/media/lenzadvizor+500x500.png" style="vertical-align: bottom;height:30px" > <strong>LensAdvizor</strong>
+                                            </p>
+                                            <div class="save-continue js-save-continue-upload save-continue--modifier enter-prescription-save-and-continue js-get-cta-styling" id="full-width-cta-modifier-css">
+                                                <p class="la-save-continue-btn-text">Save and Continue</p>
+                                            </div>
+                                        </div>
+                                        <div class="manual-option">
+                                            <h3 class="tab-heading heading-border-bottom text-center" id="la_Rx_manual_title">Enter Your Prescription Manually</h3>
+                                            <h3 class="tab-heading heading-border-bottom text-center" id="la_Rx_reading_title" style="display: none;">Select Your Reading Strength Level</h3>
+                                            <div class="diopters-select od-right-container od-container--modifier js-sph-only" style="display: none;">
+                                                <div class="od-right">
+                                                    <div class="od-dropdown">
+                                                        <h6 id="la_Rx_reading_diopters_label" class="od-dropdown-text">Diopters</h6>
+                                                        <select class="js-od-sph la-dropdown" name="sph"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="od-right-container od-container--modifier js-od-container">
+                                                <h6 id="la_Rx_manual_ODright_label" class="text-left">OD (Right Eye)</h6>
+                                                <div class="od-right enter-manually-od-right">
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_SPHright_label" class="od-dropdown-text">SPH</p>
+                                                        <select field_name="sph" class="js-od-right la-dropdown" name="sph"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_CYLright_label"class="od-dropdown-text">CYL</p>
+                                                        <select field_name="cyl" class="js-od-right la-dropdown" name="cyl"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_axisright_label"class="od-dropdown-text">Axis</p>
+                                                        <select field_name="axis" class="js-od-right la-dropdown" name="axis"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_ADDright_label" class="od-dropdown-text">Add</p>
+                                                        <select field_name="add" class="js-od-right la-dropdown" name="add"></select>
+                                                    </div>
+                                                </div>
+                                                <h6 id="la_singlevision_manual_OSleft_label" class="text-left">OS (Left Eye)</h6>
+                                                <div class="od-left">
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_SPHleft_label" class="od-dropdown-text">SPH</p>
+                                                        <select field_name="sph" class="js-od-left la-dropdown" name="sph"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_CYLleft_label" class="od-dropdown-text">CYL</p>
+                                                        <select field_name="cyl" class="js-od-left la-dropdown" name="cyl"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_axisleft_label" class="od-dropdown-text">Axis</p>
+                                                        <select field_name="axis" class="js-od-left la-dropdown" name="axis"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_ADDleft_label" class="od-dropdown-text">Add</p>
+                                                        <select field_name="add" class="js-od-left la-dropdown" name="add"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="od-left-container od-container--modifier pd-container lensadvizor-manual-pd" id="pd-text-reading">
+                                                <h6 class="text-left" id="la_Rx_manual_pdText_reading">Pupillary Distance (PD)</h6>
+                                                <div class="od-left">
+                                                    <div style="display: inline-block; margin-bottom: 10px;">
+                                                        <div class="form-check" style="padding-left: 0;margin-bottom: 10px;display: inline-flex;">
+                                                            <input class="form-check-input" type="radio" name="pd" id="exampleRadios1" value="Single PD" style="margin-top: 5px;" checked>
+                                                            <label id="la_Rx_manual_singlePD_label" class="form-check-label form-check-label-color pd-label-text-initial" for="exampleRadios1" style="margin-left: 20px;">Single PD</label>
+                                                        </div>
+                                                        <div class="form-check" style="padding-left: 0;margin-bottom: 10px;display: inline-flex;padding-left: 20px;">
+                                                            <input class="form-check-input" type="radio" name="pd" id="exampleRadios2" value="Dual PD" style="margin-top: 5px;">
+                                                            <label id="la_Rx_manual_dualPD_label" class="form-check-label form-check-label-color pd-label-text-initial" for="exampleRadios2" style="margin-left: 20px;">Dual PD</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="od-left od-left-pd--modifier">
+                                                    <div class="od-dropdown js-pd-value-dropdown">
+                                                        <select class="pd-value la-dropdown"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_dualPDleft_label" class="od-dropdown-text js-select-pd-left-p">Left</p>
+                                                        <select class="js-select-pd-left-value la-dropdown"  field="left"></select>
+                                                    </div>
+                                                    <div class="od-dropdown">
+                                                        <p id="la_Rx_manual_dualPDright_label" class="od-dropdown-text js-select-pd-right-p">Right</p>
+                                                        <select class="js-select-pd-right-value la-dropdown" field="right"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="od-right-container od-container--modifier" id="segment_height">
+                                                <h6 id="la_Rx_manual_segmentHeight_label" class="text-left">Segment Height</h6>
+                                                <div class="od-right">
+                                                    <div class="od-dropdown">
+                                                        <select class="segment_height la-dropdown">
+                                                            <option id="la_Rx_manual_segmentHeightSelect_label" value="">Select</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                            <option value="17">17</option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
+                                                            <option value="20">20</option>
+                                                            <option value="21">21</option>
+                                                            <option value="22">22</option>
+                                                            <option value="23">23</option>
+                                                            <option value="24">24</option>
+                                                            <option value="25">25</option>
+                                                            <option value="26">26</option>
+                                                            <option value="27">27</option>
+                                                            <option value="28">28</option>
+                                                            <option value="29">29</option>
+                                                            <option value="30">30</option>
+                                                            <option value="31">31</option>
+                                                            <option value="32">32</option>
+                                                            <option value="33">33</option>
+                                                            <option value="34">34</option>
+                                                            <option value="35">35</option>
+                                                            <option value="36">36</option>
+                                                            <option value="37">37</option>
+                                                            <option value="38">38</option>
+                                                            <option value="39">39</option>
+                                                            <option value="40">40</option>
+                                                            <option value="41">41</option>
+                                                            <option value="42">42</option>
+                                                            <option value="43">43</option>
+                                                            <option value="44">44</option>
+                                                            <option value="45">45</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="od-left-container od-container--modifier" id="prism_value">
+                                                <h6 id="la_Rx_manual_prismValues_label" class="text-left">Prism Values</h6>
+                                                <div class="od-left">
+                                                    <div style="display: inline-block;">
+                                                        <div class="form-check" style="padding-left: 0;display: inline-flex;">
+                                                            <input class="form-check-input" type="radio" name="prism_value" id="primeRadio1" value="No" checked style="margin-top: 5px;">
+                                                            <label id="la_Rx_manual_prismNo_label" class="form-check-label form-check-label-color" for="primeRadio1" style="margin-left: 20px;">No</label>
+                                                        </div>
+                                                        <div class="form-check" style="padding-left: 0; display: inline-flex;padding-left: 20px;">
+                                                            <input class="form-check-input" type="radio" name="prism_value" id="primeRadio2" value="Yes" style="margin-top: 5px;">
+                                                            <label id="la_Rx_manual_prismYes_label" class="form-check-label form-check-label-color" for="primeRadio2" style="margin-left: 20px;">Yes</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="js-prism-values-od-right-left-wrapper">
+                                                    <h6 id="la_Rx_manual_prismODright_label" class="text-left">OD (Right Eye)</h6>
+                                                    <div class="od-right enter-manually-od-right">
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_manual_prismHorizontalRight_label" class="od-dropdown-text">Horizontal</p>
+                                                            <select field_name="sph" class="js-prism-od-right la-dropdown" name="prism_horizontal"></select>
+                                                        </div>
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_manual_BDirectionHorizontalRight_label" class="od-dropdown-text">B. Direction</p>
+                                                            <select field_name="cyl" class="js-prism-od-right la-dropdown" name="base_direction_horizontal"></select>
+                                                        </div>
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_manual_prismVerticalRight_label" class="od-dropdown-text">Vertical</p>
+                                                            <select field_name="axis" class="js-prism-od-right la-dropdown" name="prism_veritical"></select>
+                                                        </div>
+                                                        <div class="od-dropdown b-direction-last">
+                                                            <p id="la_Rx_manual_BDirectionVerticalRight_label" class="od-dropdown-text">B. Direction</p>
+                                                            <select field_name="add" class="js-prism-od-right la-dropdown" name="base_direction_veritical"></select>
+                                                        </div>
+                                                    </div>
+                                                    <h6 id="la_singlevision_manual_prismOSleft_label" class="text-left">OS (Left Eye)</h6>
+                                                    <div class="od-left">
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_manual_prismHorizontalLeft_label" class="od-dropdown-text">Horizontal</p>
+                                                            <select field_name="sph" class="js-prism-od-left la-dropdown" name="prism_horizontal"></select>
+                                                        </div>
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_manual_BDirectionHorizontalLeft_label" class="od-dropdown-text">B. Direction</p>
+                                                            <select field_name="cyl" class="js-prism-od-left la-dropdown" name="base_direction_horizontal"></select>
+                                                        </div>
+                                                        <div class="od-dropdown">
+                                                            <p id="la_Rx_manual_prismVerticalLeft_label" class="od-dropdown-text">Vertical</p>
+                                                            <select field_name="axis" class="js-prism-od-left la-dropdown" name="prism_veritical"></select>
+                                                        </div>
+                                                        <div class="od-dropdown b-direction-last">
+                                                            <p id="la_Rx_manual_BDirectionVerticalLeft_label" class="od-dropdown-text">B. Direction</p>
+                                                            <select field_name="add" class="js-prism-od-left la-dropdown" name="base_direction_veritical"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="od-left-container od-container--modifier" id="prescription_upload_manually_wrapper">
+                                                <input type="file" id="prescription-upload-manually" accept="image/png, image/jpeg, application/pdf" required>
+                                                <label for="prescription-upload-manually" id="label-prescription-upload-manually">
+                                                    <p id="la_Rx_manual_uploadDescription_label" class="upload-paragraph">Upload your prescription for us to confirm that you have entered it correctly (optional).</p>
+                                                    <p class="paragraph-wrapper-choose-file">                                            
+                                                        <img src="https://cdn.shopify.com/s/files/1/0341/4907/3029/files/clip.svg?v=1592302286" class="choose-file-image">
+                                                        <span id="la_Rx_manual_upload_chooseFile_label" class="choose-file-text js-choose-file-text-manually">Choose File</span>
+                                                        <span id="la_Rx_manual_upload_changeFile_label" class="choose-file-text">Change File</span>
+                                                    </p>                                        
+                                                </label>
+                                                <div class="js-manually-selected-file"></div>
+                                            </div>
+                                            <p class="text-center js-la-trail-logo" style="margin-top: 1rem;">
+                                                Powered By <img src="https://d15as34r88kmuk.cloudfront.net/media/lenzadvizor+500x500.png" style="vertical-align: bottom;height:30px" > <strong>LensAdvizor</strong>
+                                            </p>
+                                            <div class="save-continue save-continue--modifier enter-prescription-save-and-continue js-save-and-continue-prescription-manually js-get-cta-styling" id="full-width-choose-lens-cta-modifier">
+                                                    <!-- modal-footer -->
+                                                <p class="la-save-continue-btn-text">Save and Continue</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="choose_lens" class="la-tab-pane la-fade prescription-choose-lens">
+                                        <div class="headings-wrapper-choose-lens heading-border-bottom">
+                                            <h3 id="la_chooseLens_title" class="tab-heading text-center">Choose Your Lenses</h3>
+                                            <p class="tab-subheading"></p>
+                                        </div>
+                                        <div id="choose-lens-card"></div>
+                                        <p class="text-center js-la-trail-logo" style="margin-top: 1rem;">
+                                            Powered By <img src="https://d15as34r88kmuk.cloudfront.net/media/lenzadvizor+500x500.png" style="vertical-align: bottom;height:30px" > <strong>LensAdvizor</strong>
+                                        </p>
+                                        <div class="subtotal" id="full-width-choose-lens-cta-modifier">
+                                            <div class="row">
+                                                <div id="la_chooseLens_subtotal_label" class="col">Subtotal</div>
+                                                <div class="col col-lens-subtotal" style="text-align: right;">
+                                                    <span id="lens-subtotal">0.0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="save-continue js-choose-lens-button save-continue--modifier enter-prescription-save-and-continue js-get-cta-styling" id="full-width-choose-lens-cta-modifier">
+                                            <p class="la-save-continue-btn-text">Save and Continue</p>
+                                        </div>
+                                    </div>
+                                    <div id="review_selection" class="la-tab-pane la-fade">
+                                        <h3 id="la_review_title" class="tab-heading text-center heading-border-bottom">Please Review Your Order</h3>
+                                        <div class="review-item">
+                                            <div class="review-left">
+                                                <div class="review-item-title">{{product.title}}</div>
+                                                <div id="selected_variant_summary"></div>
+                                            </div>
+                                            <div class="review-right">
+                                                <span id="review-variant-price" class="radio-pricing"></span>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <hr />
+                                        <div class="review-item">
+                                            <div class="review-left">
+                                                <div class="review-item-title" id="review-lens-title"></div>
+                                                <div class="review-item-variant js-review-precription-type" id="review-selected-priscription"></div>
+                                                <div class="review-item-variant js-review-precription-type" id="review-selected-priscription-method"></div>
+                                            </div>
+                                            <div class="review-right radio-pricing" id="review-lens-price"></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <hr />
+                                        <p id="la_review_orderNotes_label" class="text-left review-text">Order Notes</p>
+                                        <textarea class="order-notes"></textarea>
+                                        <p class="text-center js-la-trail-logo" style="margin-top: 1rem;">
+                                            Powered By <img src="https://d15as34r88kmuk.cloudfront.net/media/lenzadvizor+500x500.png" style="vertical-align: bottom;height:25px" > <strong>LensAdvizor</strong>
+                                        </p>
+                                        <hr/>
+                                        <div class="subtotal" id="full-width-cta-modifier-css">
+                                            <div class="row">
+                                                <div id="la_review_subtotal_label" class="col">Subtotal</div>
+                                                <div class="col" style="text-align: right;">
+                                                    <span id="reivew-subtotal">0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="save-continue save-continue--modifier enter-prescription-save-and-continue js-get-cta-styling" onclick="LensAdvisor.advisor.addToCart(this)" id="full-width-cta-modifier-css">
+                                            <p id="la_review_addToCart_label">Add to Cart</p>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>   
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{ 'la-iso-bootstrap.css' | asset_url | stylesheet_tag | async }}
+    {{ 'lensadvizor-currencies.js' | asset_url | script_tag | async }}
+{% endif %}

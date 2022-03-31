@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'custom-icon';
+  src:  url('custom-icon.eot?wrfnr');
+  src:  url('custom-icon.eot?wrfnr#iefix') format('embedded-opentype'),
+    url('custom-icon.ttf?wrfnr') format('truetype'),
+    url('custom-icon.woff?wrfnr') format('woff'),
+    url('custom-icon.svg?wrfnr#custom-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.material-icons {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'custom-icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-icon-person_add:before {
+  content: "\e917";
+}
+.custom-icon-vpn_key:before {
+  content: "\e910";
+}
+.custom-icon-shopping_basket:before {
+  content: "\e90a";
+}
+.custom-icon-keyboard_backspace:before {
+  content: "\e915";
+}
+.custom-icon-menu:before {
+  content: "\e916";
+}
+.custom-icon-chevron_right:before {
+  content: "\e911";
+}
+.custom-icon-chevron_left:before {
+  content: "\e912";
+}
+.custom-icon-navigate_before:before {
+  content: "\e913";
+}
+.custom-icon-expand_more:before {
+  content: "\e914";
+}
+.custom-icon-facebook:before {
+  content: "\e90b";
+}
+.custom-icon-instagram:before {
+  content: "\e90c";
+}
+.custom-icon-pinterest:before {
+  content: "\e90d";
+}
+.custom-icon-snapchat:before {
+  content: "\e90e";
+}
+.custom-icon-tiktok:before {
+  content: "\e90f";
+}
+.custom-icon-add:before {
+  content: "\e900";
+}
+.custom-icon-close:before {
+  content: "\e901";
+}
+.custom-icon-comment:before {
+  content: "\e902";
+}
+.custom-icon-folder:before {
+  content: "\e903";
+}
+.custom-icon-home:before {
+  content: "\e904";
+}
+.custom-icon-keyboard_arrow_up:before {
+  content: "\e905";
+}
+.custom-icon-navigate_next:before {
+  content: "\e906";
+}
+.custom-icon-person:before {
+  content: "\e907";
+}
+.custom-icon-remove:before {
+  content: "\e908";
+}
+.custom-icon-search:before {
+  content: "\e909";
+}

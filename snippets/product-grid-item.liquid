@@ -1,0 +1,361 @@
+{%- assign product_display_title = product.title | split: ' ' | first -%}
+{%- if product.tags contains '__settings:full-title' -%}
+  {% assign product_display_title = product.title -%}
+{%- endif -%}
+
+{%- if product.type == 'Case' -%}
+  {%- assign product_display_title = product.title -%}
+{%- endif -%}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- assign has_unavailable = false -%}
+
+{%- assign on_sale = false -%}
+{%- assign color_price = settings.color_price -%}
+{%- assign color_on_sale = settings.color_price -%}
+{%- assign font_weight = ' font-weight: 700;' -%}
+{%- if current_variant.compare_at_price > current_variant.price -%}
+  {%- assign on_sale = true -%}
+  {%- assign color_on_sale = settings.color_on_sale -%}
+{%- endif -%}
+
+{% comment %}
+  Required variables:
+    filtering_by_frame_color (bool)
+    filtering_by_lens_color (bool)
+    current_frame_color (string)
+    current_lens_color (string)
+{% endcomment %}
+
+{% if filtering_by_frame_color == true and filtering_by_lens_color == true %}
+  {% for variant in product.variants %}
+    {% assign variant_frame_color = variant.title | split: '/' | first %}
+    {% assign variant_lens_color = variant.title | split: '/' | last %}
+    {% assign exclude_from_results = true %}
+
+    {% comment %}
+      Equivalencies - Colors
+    {% endcomment %}
+
+    {% if variant_lens_color == 'Smoke Green' %}
+      {% assign variant_lens_color = 'Green Smoke' %}
+    {% endif %}
+
+    {% if variant_lens_color == 'Red-Orange' %}
+      {% assign variant_lens_color = 'Orange' %}
+    {% endif %}
+
+    {% if variant_lens_color  == 'Pink-Gold' or
+       variant_lens_color == 'Flashing Pink' or
+       variant_lens_color == 'Pink-Red' %}
+      {% assign variant_lens_color = 'Pink' %}
+    {% endif %}
+
+    {% if variant_lens_color  == 'Flashing Gold' %}
+      {% assign variant_lens_color = 'Gold' %}
+    {% endif %}
+
+    {% if variant_frame_color == 'White Tortoise' %}
+      {% assign variant_frame_color = 'Grey' %}
+    {% endif %}
+
+    {% if variant_frame_color contains current_frame_color and variant_lens_color contains current_lens_color %}
+      {% assign current_variant = variant %}
+      {% assign exclude_from_results = false %}
+      {% break %}
+    {% else %}
+      {% if variant.title == 'Full Black' %}
+        {% if current_frame_color and current_lens_color == 'Black' %}
+          {% assign current_variant = variant %}
+          {% assign exclude_from_results = false %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% if show_variant_thumbnail == true and filtering_by_frame_color == true %}
+    {% for variant in product.variants %}
+      {% if collection.title contains 'Reading Glasses' %}
+          {% assign variant_frame_color = variant.option1 %}
+      {% else %}
+          {% assign variant_frame_color = variant.title | split: '/' | first %}
+      {% endif %}
+
+      {% assign exclude_from_results = true %}
+
+      {% comment %}
+        Equivalencies
+      {% endcomment %}
+
+      {% if variant_frame_color == 'White Tortoise' %}
+        {% assign variant_frame_color = 'Grey' %}
+      {% endif %}
+
+      {% if variant_frame_color contains current_frame_color %}
+        {% assign current_variant = variant %}
+        {% assign exclude_from_results = false %}
+        {% break %}
+      {% else %}
+        {% if variant.title == 'Full Black' %}
+          {% if current_frame_color == 'Black' %}
+            {% assign current_variant = variant %}
+            {% assign exclude_from_results = false %}
+            {% break %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% elsif show_variant_thumbnail == true and filtering_by_lens_color == true %}
+    {% for variant in product.variants %}
+      {% assign exclude_from_results = true %}
+
+      {% assign variant_lens_color = variant.title | split: '/' | last %}
+
+      {% if variant_lens_color == 'Smoke Green' %}
+        {% assign variant_lens_color = 'Green Smoke' %}
+      {% endif %}
+
+      {% if variant_lens_color == 'Red-Orange' %}
+        {% assign variant_lens_color = 'Orange' %}
+      {% endif %}
+
+      {% if variant_lens_color  == 'Pink-Gold' or
+        variant_lens_color == 'Flashing Pink' or
+        variant_lens_color == 'Pink-Red' %}
+        {% assign variant_lens_color = 'Pink' %}
+      {% endif %}
+
+      {% if variant_lens_color  == 'Flashing Gold' %}
+        {% assign variant_lens_color = 'Gold' %}
+      {% endif %}
+
+      {% if variant_lens_color contains current_lens_color %}
+        {% assign current_variant = variant %}
+        {% assign exclude_from_results = false %}
+        {% break %}
+      {% else %}
+        {% if variant.title == 'Full Black' %}
+          {% if current_lens_color == 'Black' %}
+            {% assign current_variant = variant %}
+            {% assign exclude_from_results = false %}
+            {% break %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% assign exclude_from_results = false %}
+  {% endif %}
+{% endif %}
+
+{% unless exclude_from_results %}
+<div class="product-grid-item{{ extra_classes | prepend: ' ' }}"
+     data-product-id="{{ product.id }}"
+     data-current-variant-id="{{ current_variant.id }}"
+     data-current-variant-available="{{ current_variant.available }}"
+     data-current-variant-on-sale="{{ on_sale }}"
+     data-product-grid-item>
+  <div class="product-grid-item__badges">
+    {%- if on_sale -%}
+      {%- assign percentage = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | money_without_currency | replace: ',', '.' | times: 100 | remove: '.0' -%}
+    {%- endif -%}
+    {%- if settings.enable_sale_badge -%}
+    {%- endif -%}
+    {%- if product.available != false -%}
+      {% assign class_hide = 'hide' %}
+    {% endif %}
+    {% assign top_rated = false %}
+    {% assign show_add_to_cart = true %}
+    {% for collection in product.collections %}
+      {% if collection.handle == 'top-rated-womens' or collection.handle == 'top-rated-mens' %}
+        {% assign top_rated = true %}
+      {% endif %}
+      {% if collection.handle == 'rx-frames' or collection.handle == 'prescription-glasses-men' %}
+          {% assign show_add_to_cart = true %}
+    	{% assign class = 'hide' %}
+        {% endif %}
+      {%endfor%}
+    {% if top_rated %}
+    {% endif %}
+    {% render 'product-template-badges', product: product, current_variant: current_variant %}
+    {% render 'product-grid-item__badges' with product as product %}
+  </div>
+  {%- assign main_media = product.media | where: 'id', current_variant.featured_media.id | first -%}
+
+  {%- assign hover_media_position = main_media.position | plus: 1 -%}
+  {%- assign hover_media = product.media | where: 'position', hover_media_position | first -%}
+
+  {%- if hover_media == blank -%}
+    {%- assign total_media = 1 -%}
+  {%- else -%}
+    {%- assign total_media = 2 -%}
+  {%- endif -%}
+  <a href="{{ product.url | within: collection }}"
+     class="product-grid-item__media functional mt4 mb2{% if hover_media == blank %} has-no-hover-image{% endif %}"
+     data-link-to-product
+     data-product-grid-item-media-wrapper>
+    <div class="product-grid-item__single-media responsive-image">
+      <div class="responsive-image__img-wrapper main-item-img"
+           style="padding-top: {{ 1 | divided_by: pgi_media_aspect_ratio | times: 100 }}%;"
+           data-variant-id="{{ current_variant.id }}"
+           data-image-wrapper>
+
+        {%- for i in (1..total_media) -%}
+          {%- if forloop.index == 1 -%}
+            {%- assign image = main_media -%}
+          {%- else -%}
+            {%- assign image = hover_media -%}
+          {%- endif -%}
+
+          {%- assign img_url = image | img_url: '1x1', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
+
+          {% for c in product.collections %}
+            {% if c.handle == "gift-box" or c.handle == 'accessories' %}
+              {%- assign img_url = image | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+              {%- assign class_case = 'case-class' -%}
+            {% endif %}
+          {% endfor %}
+        
+              <img id="{{ img_id }}"
+                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                   class="responsive-image__img lazyload case-class"
+                   alt="{{ image.alt }}"
+                   data-src="{{ img_url }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ pgi_media_aspect_ratio }}"
+                   data-sizes="auto"
+                   {% if forloop.index == 2 %}
+                   data-product-grid-item-hover-image
+                   {% else %}
+                   data-product-grid-item-main-image
+                   {% endif %}
+                   data-image>
+        {% endfor %}
+        <div class="responsive-image__placeholder"></div>
+      </div>
+    </div>
+  </a>
+{%- if product.available -%}
+    {%- assign new_data = false -%}
+    {%- assign top_data = false -%}
+    {%- for collection in product.collections -%}
+      {%- if collection.handle == settings.new_items_collection or collection.handle == settings.new_items_collection2 -%}
+        {%- assign new_data = true -%}
+      {%- endif -%}
+      {% if collection.handle == 'top-rated-womens' or collection.handle == 'top-rated-mens' %}
+        {% assign top_data = true %}
+      {% endif %}
+    {%- endfor -%}
+  {% endif %}
+  <div class="product-grid-item__swatches mb2 md-dn--mt2 text-center">
+    {% for variant in product.variants %}
+    {% if variant.available == false %}
+      {% assign has_unavailable = true %}
+    {% endif %}
+      {%- capture swatch_image_name -%}{%- render 'swatch-name-generator', variant_title: variant.title -%}{%- endcapture -%}
+      {%- assign swatch_image_name = swatch_image_name | strip -%}
+      <a href="{{ variant.url }}"
+         class="swatch js-tippy{% if current_variant.id == variant.id %} is-selected{% endif %}"
+         data-tippy-content="{{ variant.title }}"
+         {%- assign variant_main_image_url = variant.featured_media | img_url: '1x1', crop: 'center' | replace: '_1x1', '_{width}x{height}'-%}
+         {% for c in product.collections %}
+            {% if c.handle == "gift-box" or c.handle == 'accessories' %}
+                {%- assign variant_main_image_url = variant.featured_media | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+            {% endif %}
+         {% endfor %}
+         data-variant-main-image="{{ variant_main_image_url }}"
+         {%- if product.media[variant.featured_media.position] != blank -%}
+         {%- assign variant_hover_image_url = product.media[variant.featured_media.position] | img_url: '1x1', crop: 'center' | replace: '_1x1', '_{width}x{height}'-%}
+         {% for c in product.collections %}
+             {% if c.handle == "gift-box" or c.handle == 'accessories' %}
+               {%- assign variant_hover_image_url = product.media[variant.featured_media.position] | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+             {% endif %}
+         {% endfor %}
+         data-variant-hover-image="{{ variant_hover_image_url }}"
+         {%- endif -%}
+         data-variant-id="{{ variant.id }}"
+         data-variant-price="{{ variant.price }}"
+         data-variant-compare-at-price="{{ variant.compare_at_price }}"
+         data-variant-available="{{ variant.available }}"
+         data-variant-image-preloaded="false"
+         data-is-stock="{{  variant.available }}"
+         data-sale="{{  on_sale }}"
+         data-new="{{ new_data }}"
+         data-top="{{ top_data }}"
+         data-product-grid-item-swatch>
+         {%- render 'swatch-image', name: swatch_image_name, variant_title: variant.title -%}
+      </a>
+    {% endfor %}
+  </div>
+  <div class="product-grid-item__label text-center collection-holder-star">
+    {% render 'okendo-reviews-product-rating-summary', product: product %}
+    {% render 'product-label', product: product, extra_classes: 'mb2' %}
+  </div>
+
+  <a href="{{ product.url | within: collection }}"
+     class="product-grid-item__info functional mb2 lg--mt1 text-center"
+     data-link-to-product>
+
+    {%- if current_variant.compare_at_price > current_variant.price -%}
+      {%- assign on_sale = true -%}
+      {%- assign color_on_sale = settings.color_on_sale -%}
+    {%- endif -%}
+
+    <div class="product-grid-item__price f5 md-dn--f4 fw--normal uppercase ff--heading lh--headline" data-price>
+      <span class="price-price-sale__price" style="color: {{ color_on_sale }}; " data-regular-price="">{{- current_variant.price | money_without_trailing_zeros -}}</span>
+      {%- if on_sale -%}
+        &nbsp;&nbsp;<span class="price-sale__compare" style="color: {{ color_price }}" data-regular-price="">{{- current_variant.compare_at_price | money_without_trailing_zeros -}}</span>
+      {%- endif -%}
+    </div>
+    <h2 class="product-grid-item__title my0 f5 fw--bold uppercase ff--heading lh--headline">
+      {{- product_display_title -}}
+    </h2>
+    {% assign product_title_dc = product.title | downcase %}
+  </a>
+
+
+ 
+  {% if show_add_to_cart %}
+  <div class="product-grid-item__actions my2 text-center {% if settings.enable_bis and current_variant.available == false %} hide{% endif %}"
+       data-available-actions>
+    <a href="{{ routes.cart_add_url }}/{{ current_variant.id }}"
+       class="{{ class }} btn btn--product-grid-item-action fw--bold ls03 md-dn--full-width bg-gradient--green-to-transparent"
+       data-product-id="{{ current_variant.id }}"
+       {% unless current_variant.available %}
+       aria-disabled="true"
+       {% endunless %}
+       aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
+       data-add-to-cart>
+       {% unless current_variant.available %}
+         <span>{{ 'products.product.sold_out' | t }}</span>
+       {% else %}
+        <span>{{ 'products.product.add_to_cart' | t }}</span>
+       {% endunless %}
+         
+    </a>
+  </div>
+  {% if settings.enable_bis and has_unavailable %}
+  <div class="product-grid-item__actions my2 text-center {% if current_variant.available %}hide{% endif %}"
+       data-bis-actions>
+    <a href="#"
+       class="btn btn--product-grid-item-action fw--bold ls03 md-dn--full-width bg-gradient--orange BIS_trigger"
+       data-variant-id="{{ current_variant.id }}"
+       data-product-data='{{ product | json | escape }}'
+       data-bis-trigger
+       >
+      <span 
+             class="BIS_trigger"
+       data-variant-id="{{ current_variant.id }}"
+       data-product-data='{{ product | json | escape }}'
+       data-bis-trigger
+
+>{{ 'products.product.bis_short' | t }}</span>
+    </a>
+  </div>
+  {% endif %}
+  {% endif %}
+</div>
+{% endunless %}

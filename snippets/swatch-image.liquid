@@ -1,0 +1,15 @@
+{%- assign img_url = name | asset_img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+<div class="responsive-image">
+  <div class="responsive-image__img-wrapper"
+    style="padding-top: 100%;">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      class="responsive-image__img swatch__img lazyload"
+      alt="{{ variant_title }}"
+      data-src="{{ img_url }}"
+      data-widths="[23, 46, 69]"
+      data-aspectratio="1"
+      data-sizes="auto"
+      onerror="this.alt='';this.style.opacity=0;"
+      data-image>
+  </div>
+</div>

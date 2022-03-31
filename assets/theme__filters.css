@@ -1,0 +1,299 @@
+.collection-filters {
+  position: relative;
+}
+
+.collection-filters__mobile-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: var(--font-size-4);
+}
+
+@media screen and (max-width: 900px) {
+  .collection-filters__modal-ui {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: var(--color-body-bg);
+    z-index: 95;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform .2s ease-out;
+  }
+
+  .collection-filters__modal-ui.shown {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .collection-filters__group-toggle {
+    width: 100%;
+    background-color: rgba(var(--color-body-text-rgb), .033);
+    font-size: var(--font-size-5);
+    padding: 15px 30px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(var(--color-body-text-rgb), .11);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .group-toggle__icon {
+    font-size: var(--font-size-4);
+    line-height: var(--font-size-4);
+  }
+
+  .collection-filters__group:first-child .collection-filters__group-toggle {
+    border-top: 1px solid rgba(var(--color-body-text-rgb), .2);
+  }
+
+  .collection-filters__filters-list:not(.shown) {
+    display: none;
+  }
+
+  .collection-filters__groups-list,
+  .collection-filters__filters-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .collection-filters__filters-list {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .collection-filters__filter {
+    padding-top: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .collection-filters__filter:last-child {
+    padding-bottom: 15px;
+  }
+
+  .collection-filters__filter--has-swatch:not(:first-child) {
+    margin-top: 2.2em;
+  }
+
+  .filter__name__swatch {
+    width: 43%;
+  }
+
+  .filter__radio {
+    width: .8em;
+    height: .8em;
+    border: 1px solid rgba(var(--color-body-text-rgb), .3);
+    border-radius: 50%;
+  }
+
+  .collection-filters__filter.active .filter__radio {
+    background-color: rgba(var(--color-body-text-rgb), .95);
+  }
+
+  .collection-filters__close {
+    margin-top: 20px;
+  }
+
+  .btn.btn--filters {
+    min-width: 38%;
+  }
+
+  .icon--filters-close--desktop {
+    display: none;
+  }
+
+  .collection-filters__clear {
+    opacity: .7;
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 901px) {
+  .collection-filters__title {
+    display: none;
+  }
+
+  [data-filter-toggle] {
+    cursor: pointer;
+  }
+
+  .collection-filters__modal-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: var(--color-body-bg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 60;
+  }
+
+  .collection-filters__modal-ui.shown {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .collection-filters__groups-list {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: var(--font-size-6);
+    padding: 15px 30px;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .collection-filters__group-toggle {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    margin-bottom: 12px;
+  }
+
+  .collection-filters__filters-list {
+    list-style-type: none;
+    font-size: var(--font-size-6);
+  }
+
+  .collection-filters__filter {
+    margin-bottom: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    cursor: pointer;
+    min-width: 110px;
+  }
+
+  .collection-filters__filter::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: currentColor;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 7px;
+    left: -14px;
+    display: none;
+  }
+
+  .collection-filters__filter.active {
+    font-weight: 700;
+  }
+
+  .collection-filters__filter.active::before {
+    display: block;
+  }
+
+  .collection-filters__filter--has-swatch:not(:first-child) {
+    margin-top: 2.5em;
+  }
+
+  .filter__name__swatch {
+    width: 75%;
+  }
+
+  .filter__radio {
+    display: none;
+  }
+
+  .group-toggle__icon {
+    display: none;
+  }
+
+  .icon--filters-close--mobile {
+    display: none;
+  }
+
+  body.collection-filters-shown section[data-section-id="collection-template"] {
+    opacity: 0.9;
+    position: relative;
+    pointer-events: none;
+    min-height: 800px;
+  }
+
+  body.collection-filters-shown section[data-section-id="collection-template"]::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--color-body-text-rgb), 0.8);
+  }
+
+  .collection-filters__clear {
+    opacity: .5;
+    transition: opacity .1s ease-in-out;
+  }
+
+  .collection-filters__clear:hover {
+    opacity: 1;
+  }
+}
+
+
+.filter__name {
+  width: 100%;
+}
+
+.filter__swatch__img {
+  width: 100%;
+  height: auto;
+}
+
+.collection-filters__actions {
+  margin-top: 30px;
+}
+
+.btn.btn--filters {
+  background-color: var(--color-body-bg);
+  border: 2px solid var(--color-body-text);
+  color: var(--color-body-text);
+  font-variant-caps: all-small-caps;
+  letter-spacing: .03em;
+  margin: 0 4px;
+  padding: 0.8em 2.75em;
+}
+
+.btn.btn--filters .material-icons {
+  font-variant-caps: normal;
+  margin-bottom: 1px;
+}
+
+.btn.btn--filters[disabled] {
+  opacity: .3;
+}
+
+.btn.btn--filters--submit {
+  background-color: var(--color-body-text);
+  color: var(--color-body-bg);
+}
+
+.btn.btn--filters.btn--filters--transparent {
+  border-color: rgb(var(--color-body-text-rgb), 0);
+}
+.template--collection .okeReviews.oke-sr .oke-sr-label-text {display: none; } .product-section__stars .okeReviews.okeReviews--theme .okeReviews-reviewsSummary-ratingCount,.product-section__stars .oke-sr-count { text-decoration: underline; }

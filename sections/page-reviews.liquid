@@ -1,0 +1,242 @@
+<section data-section-id="{{ section.id }}"  data-section-type="page">
+
+  {%- assign page_setts = section.settings -%}
+
+  {%- assign header_image = page_setts.header_image -%}
+  {%- assign header_text = page_setts.header_text -%}
+  {%- assign header_color = page_setts.header_color -%}
+  {%- assign header_text_position = page_setts.header_text_position -%}
+  {%- assign header_text_alignment = page_setts.header_vertical_alignment -%}
+  {%- assign header_image_font_size_desktop = page_setts.header_image_font_size_desktop -%}
+  {%- assign header_image_font_size_mobile = page_setts.header_image_font_size_mobile -%}
+  {%- assign header_image_font_size_text_desktop = page_setts.header_image_font_size_text_desktop -%}
+  {%- assign header_image_font_size_text_mobile = page_setts.header_image_font_size_text_mobile -%}
+  {%- assign header_font = page_setts.header_font -%}
+
+  {% assign cls = 'collection-header__overlay ' | append: header_text_position | append: ' ' | append: header_text_alignment %}
+
+{% capture overlay_content %}
+<div class="collection-header-desc">
+  {% unless section.settings.header_image_show_title %}
+    <h1 class="collection-header-overlay__title"> {{ page.title }}</h1>
+  {% endunless %}
+	<p>{{ header_text }}</p>
+</div>  
+{% endcapture %}
+
+    <div class="full-width {% unless filtered %}mb2{% endunless %} collection-header collection-header--{{ section.id }}" data-collection-header-image>
+    {% render 'responsive-image-with-overlay',
+        section_id: section.id,
+        image: header_image,
+        overlay_content: overlay_content,
+        overlay_classes: cls %}
+    </div>
+
+    {% render 'collection__header-image-style',
+      section_id: section.id,
+      desktop_font_size: header_image_font_size_desktop,
+      desktop_font_size_text: header_image_font_size_text_desktop,
+      font: header_font,
+      mobile_font_size: header_image_font_size_mobile,
+      mobile_font_size_text: header_image_font_size_text_mobile 
+      color: header_color %}
+  
+    <div>
+        {{ page.content }}
+    </div>
+ 
+</section>
+<div class="okendo-reviews-pad">
+{% render 'okendo-reviews-widget' %}
+</div>
+<style>
+  .okendo-reviews-pad {
+    padding: 10px;
+  }
+  .collection-header__overlay.vertical-top-text {
+    justify-content: flex-start;
+  }
+  .collection-header__overlay.vertical-bottom-text {
+    justify-content: flex-end; 
+}
+
+  #pageContent #trustspot-widget-wrapper,
+  #pageContent #trustspot-tab-modal,
+  #pageContent .trustspot-inline-rating {
+    font-family: var(--font-heading-stack) !important;
+  }
+
+  #pageContent #trustspot-product-reviews #trustspot-widget-review-block p {
+    font-family: var(--font-base-stack) !important;
+  }
+
+  #pageContent #trustspot-widget-wrapper {
+    font-family: var(--font-heading-stack) !important;
+  }
+
+  #pageContent #trustspot-widget-wrapper
+  div#trustspot-widget-review-block .result-box {
+    flex-flow: row wrap;
+  }
+
+  #pageContent #trustspot-widget-wrapper .user-name {
+    padding-left: 0 !important;
+    width: 100%;
+  }
+
+  #pageContent #trustspot-widget-wrapper .stars {
+    width: 100%;
+  }
+
+  #pageContent #trustspot-widget-wrapper .ts-widget-review-star {
+    font-size: 16px;
+  }
+
+  #pageContent #trustspot-widget-wrapper .ts-stars-1 {
+    margin-bottom: 3px;
+  }
+
+  @media (min-width: 901px) {
+    #pageContent #trustspot-widget-wrapper .date {
+      margin-left: 0;
+      float: none;
+      width: 100%;
+    }
+  }
+
+  #pageContent #trustspot-widget-wrapper .description-block h4 a {
+    font-style: normal;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Reviews Page",
+  "class": "template template--page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_image_show_title",
+      "default": true,
+      "label": "Hide Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Text for Page"
+    },
+    {
+      "type": "color",
+      "id": "header_color",
+      "label": "Page Header Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "header_text_position",
+      "options": [
+        {
+          "value": "left-text",
+          "label": "Left"
+        },
+        {
+          "value": "right-text",
+          "label": "Right"
+        },
+        {
+          "value": "center-text",
+          "label": "Center"
+        }
+      ],
+      "default": "center-text",
+      "label": "Text Position"
+    },
+    {
+      "type": "select",
+      "id": "header_vertical_alignment",
+      "label": "Text Vertical alignment",
+      "options": [
+        {
+          "value": "vertical-top-text",
+          "label": "Top"
+        },
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "vertical-bottom-text",
+          "label": "Bottom"
+        }
+      ],
+      "default": "middle"
+    },
+    {
+      "type": "range",
+      "id": "header_image_font_size_desktop",
+      "min": 24,
+      "max": 112,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size – Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "header_image_font_size_mobile",
+      "min": 12,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size – Mobile",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "header_image_font_size_text_desktop",
+      "min": 24,
+      "max": 112,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size for Text – Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "header_image_font_size_text_mobile",
+      "min": 12,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size for Text – Mobile",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "header_font",
+      "label": "Header Font",
+      "options": [
+        {
+          "value": "WFHavanaSunset",
+          "label": "Havana Sunset"
+        },
+        {
+          "value": "ZonaPro",
+          "label": "Zona Pro"
+        }
+      ],
+      "default": "WFHavanaSunset"
+    }
+  ]
+}
+{% endschema %}

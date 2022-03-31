@@ -1,0 +1,31 @@
+<!-- customers/login.liquid -->
+
+
+{% section 'login.liquid' %}
+<style>
+  .login-panes {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+  }
+
+  .login-pane {
+    border: 1px solid rgb(var(--color-body-text-rgb), 0.1);
+  }
+
+  @media screen and (max-width: 900px) {
+    .login-pane:not(:last-of-type) {
+      margin-top: var(--space-2);
+    }
+  }
+
+  @media screen and (min-width: 901px) {
+    .login-panes {
+      flex-flow: row nowrap;
+    }
+
+    .login-pane {
+      flex: 1 1 0%;
+      min-width: 0;
+    }
+  }
+</style>

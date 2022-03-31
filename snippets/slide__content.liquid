@@ -1,0 +1,25 @@
+{% if slide.settings.heading != blank %}
+  {% if slide.settings.text == blank and slide.settings.button_text != blank %}
+    {% assign h_extra_class = 'mb2' %}
+  {% else %}
+    {% assign h_extra_class = 'mb1' %}
+  {% endif %}
+
+  <h2 class="mt0 {{ h_extra_class }} f1 uppercase ls06 color--{{ slide.settings.heading_color }}">
+    {{ slide.settings.heading | escape }}
+  </h2>
+{% endif %}
+
+{% if slide.settings.text != blank %}
+  <p class="mt0 mb2 f5 color--{{ slide.settings.text_color }}">
+    {{ slide.settings.text | escape }}
+  </p>
+{% endif %}
+
+{% if slide.settings.button_text != blank %}
+  {% assign button_color = slide.settings.button_color | replace: '-accent', '' %}
+
+  <div class="btn btn--color-{{ button_color }} uppercase ff--heading fw--bold ls03">
+    {{ slide.settings.button_text | escape }}
+  </div>
+{% endif %}
