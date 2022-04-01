@@ -78,6 +78,7 @@
       <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}" >
     {% endcomment %}
     {% include 'theme-min-css' %}
+    <link href="{{ 'custom.scss.css' | asset_url }}" rel="stylesheet">
 
     <!-- scripts -->
     {% render 'rel-preload-polyfill' %}
@@ -408,7 +409,9 @@
      }]);
   }
 </script>
-   
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ 'custom.js' | asset_url}}"></script>
+
 </body>
 <!-- LensAdvizor snippet starts -->
 {% if request.page_type == 'product' %}

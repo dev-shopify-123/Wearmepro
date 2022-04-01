@@ -5794,7 +5794,7 @@ a.mobile-nav-link:focus a.mobile-nav-link:active a.mobile-nav-link:hover {
 /* new banner */
 .new-banner {
   position: relative;
-  padding: 40% 0 0 !important;
+  
 }
 .new-banner img {
   position: absolute;
@@ -5803,7 +5803,7 @@ a.mobile-nav-link:focus a.mobile-nav-link:active a.mobile-nav-link:hover {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 .new-banner figure {
   margin: 0;
@@ -5873,7 +5873,7 @@ a.mobile-nav-link:focus a.mobile-nav-link:active a.mobile-nav-link:hover {
   }
   .new-banner {
     position: relative;
-    padding: 100% 0 0 !important;
+    
   }
   .new-banner .holder-btn {
     display: flex;
