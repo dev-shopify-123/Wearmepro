@@ -1,6 +1,6 @@
 @font-face {
     font-family: "ZonaPro";
-    src: url('ZonaPro-ExtraLight.woff') format('woff');
+    src: url('ZonaPro-Bold.woff') format('woff');
 }
 @font-face {
     font-family: "Proxima Nova";
@@ -74,6 +74,17 @@
             .item {
                 img {
                     width: 100%;
+                    // max-height: 700px;
+                    // object-fit: cover;
+                    // @media (max-width: 1440px) {
+                    //     max-height: 600px;
+                    // }
+                    // @media (max-width: 1260px) {
+                    //     max-height: 450px;
+                    // }
+                    // @media (max-width: 900px) {
+                    //     max-height: 450px;
+                    // }
                 }
             }
             .slick-arrow {
@@ -85,18 +96,13 @@
             }
             .slick-next {
                 right: -18px;
-                top: 51%;
-                @media (max-width: 900px) {
-                    top: 53%;
-                }
+                
+                transform: unset;
             }
             .slick-prev {
                 left: -18px;
                 transform: rotate(180deg);
-                top: 49%;
-                @media (max-width: 900px) {
-                    top: 47%;
-                }
+               
             }
         }
         .text_content {
@@ -141,7 +147,7 @@
                 }
                 @media (max-width: 900px) {
                     text-align: center;
-                    font-size: 21px;
+                    font-size: 20px;
                     line-height: 30px;
                     svg {
                         width: 20px;
@@ -184,36 +190,40 @@
         margin-top: 5px;
         font-weight: 900;
         text-shadow: -4px 4px 0px white, -7px 7px 0px #d8c1ab;
+        margin-bottom: 20px;
+        @media (max-width: 1290px) {
+            font-size: 6.5vw;
+        }
         @media (max-width: 990px) {
             flex-direction: column;
-            margin-top: 25px;
+            margin-top: 10px;
             text-shadow: -2px 2px 0px white, -5px 5px 0px #d8c1ab;
         }
         .number_heading {
             @media (max-width: 990px) {
                 font-size: 74px;
-                line-height: 44px;
+                line-height: 80px;
             }
         }
         .heading {
             letter-spacing: 1.5px;
             @media (max-width: 990px) {
-                font-size: 38px;
+                font-size: 35px;
                 line-height: 44px;
             }
         }
     }
-    .subheading {
-        font-size: 34px;
-        line-height: 46px;
-        font-weight: 900;
-        color: #282828;
-        margin-top: 20px;
-        @media (max-width: 990px) {
-            font-size: 18px;
-            line-height: 24px;
-        }
-    }
+    // .subheading {
+    //     font-size: 34px;
+    //     line-height: 46px;
+    //     font-weight: 900;
+    //     color: #282828;
+    //     margin-top: 20px;
+    //     @media (max-width: 990px) {
+    //         font-size: 18px;
+    //         line-height: 24px;
+    //     }
+    // }
 }
 
 // image with icon blocks style
@@ -320,11 +330,23 @@
                 max-width: 260px;
                 width: 100%;
                 margin: auto;
+                position: relative;
+                strong {
+                    font-size: 13px;
+                    display: inline-block;
+                    position: absolute;
+                    transform: translate(0px, -6px);
+                }
                 @media (max-width: 990px) {
                     font-size: 16px;
                     line-height: 22px;
                     max-width: 100%;
+                    strong {
+                        font-size: 9px;
+                        transform: translate(0px, -4px);
+                    }
                 }
+               
             }
             .description {
                 font-family: "Proxima Nova";

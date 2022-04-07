@@ -1,3 +1,5 @@
 $(document).ready(function(){
-    $('.image_content').slick();
+    $('.image_content').slick({
+        adaptiveHeight: true
+    });
 })

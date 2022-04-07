@@ -4409,6 +4409,7 @@
                                 return (this.activeGroups.indexOf(group) !== -1);
                             },
                             selectTag: function (tag) {
+                                console.log('select tag here')
                                 if (this.tagIsProposed(tag)) {
                                     this.removeProposedTag(tag);
                                 } else {

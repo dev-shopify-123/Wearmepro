@@ -346,6 +346,11 @@
         "type": "image_picker",
         "id": "megamenu_brand_image_3",
         "label": "Megamenu Brand Image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "megamenu_brand_image_4",
+        "label": "Megamenu Brand Image 4"
       }
     ]
   },
@@ -366,6 +371,11 @@
         "type": "image_picker",
         "id": "megamenu_mobile_brand_image_3",
         "label": "Megamenu Brand Image 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "megamenu_mobile_brand_image_4",
+        "label": "Megamenu Brand Image 4"
       }
     ]
   },

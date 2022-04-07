@@ -3722,11 +3722,11 @@
                     return false;
                 }
 
-                if ($.cookie(this.popupCookieName)) {
-                    if ($.cookie(this.popupCookieName) === this.options.md5) {
-                        return false;
-                    }
-                }
+                // if ($.cookie(this.popupCookieName)) {
+                //     if ($.cookie(this.popupCookieName) === this.options.md5) {
+                //         return false;
+                //     }
+                // }
 
                 return true;
             },
@@ -4316,16 +4316,17 @@
                                 if (!this.proposedTags) {
                                     return [];
                                 }
-
+                                console.log(this.proposedTags);
                                 var proposedTagHandlesArr = [];
 
                                 for (let group in this.proposedTags) {
                                     for (let tagIndex in this.proposedTags[group]) {
+                                        console.log(tagIndex);
                                         var tag = this.proposedTags[group][tagIndex];
                                         proposedTagHandlesArr.push(tag.handle);
                                     }
                                 }
-
+                                console.log(proposedTagHandlesArr);
                                 return proposedTagHandlesArr;
                             },
                             proposedTagsFlat: function () {
@@ -4409,6 +4410,7 @@
                                 return (this.activeGroups.indexOf(group) !== -1);
                             },
                             selectTag: function (tag) {
+                                console.log('select tag here')
                                 if (this.tagIsProposed(tag)) {
                                     this.removeProposedTag(tag);
                                 } else {
@@ -4416,11 +4418,15 @@
                                 }
                             },
                             addProposedTag: function (tag) {
-                                // only one tag from a group can be proposed
-                                this.$set(this.proposedTags, tag.group, [tag]);
+                                console.log(tag)
+                                // only one tag from a group can be proposed: tag.group
+                                // multi tag from a group can be proposed: tag.fullTagName.
+                                this.$set(this.proposedTags, tag.fullTagName, [tag]);
+                                // this.processedTags.push(tag)
                             },
                             removeProposedTag: function (tag) {
-                                this.$delete(this.proposedTags, tag.group);
+                                this.$delete(this.proposedTags, tag.fullTagName);
+                                // this.processedTags.remove(tag)
                             },
                             submitProposedTags: function () {
                                 var currentFilterPath = window.location.href.split(window.collectionBaseUrl)[1].split('?')[0];
