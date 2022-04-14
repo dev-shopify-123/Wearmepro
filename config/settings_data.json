@@ -39,9 +39,11 @@
     "megamenu_brand_image_1": "shopify:\/\/shop_images\/BlueBackground_Model-30_1.jpg",
     "megamenu_brand_image_2": "shopify:\/\/shop_images\/Luna_popular.jpg",
     "megamenu_brand_image_3": "shopify:\/\/shop_images\/3b8c5888-4ee4-4b4f-b6fd-7f423b1ee78c.jpg",
+    "megamenu_brand_image_4": "shopify:\/\/shop_images\/Copy_of_4R0A4895_600x600_7514c4ea-c036-4888-b8c0-c7e36a9b7733.jpg",
     "megamenu_mobile_brand_image_1": "shopify:\/\/shop_images\/BlueBackground_Model-30_1.jpg",
     "megamenu_mobile_brand_image_2": "shopify:\/\/shop_images\/Luna-Image-for-SMSLandingPage_bcc0683b-8a6b-4340-b153-b9ea70d90a36.png",
     "megamenu_mobile_brand_image_3": "shopify:\/\/shop_images\/3b8c5888-4ee4-4b4f-b6fd-7f423b1ee78c.jpg",
+    "megamenu_mobile_brand_image_4": "shopify:\/\/shop_images\/Copy_of_4R0A4895_600x600_7514c4ea-c036-4888-b8c0-c7e36a9b7733.jpg",
     "megamenu_community_image_1": "shopify:\/\/shop_images\/367A5360_1.jpg",
     "megamenu_community_image_2": "shopify:\/\/shop_images\/edite.jpg",
     "megamenu_community_image_3": "shopify:\/\/shop_images\/4P6A0554edit.jpg",
@@ -75,7 +77,7 @@
     "collection_icons_product_img_1": "shopify:\/\/shop_images\/polarized_lens_cropped.png",
     "collection_icons_product_text_1": "Polarized lens",
     "collection_icons_product_img_2": "shopify:\/\/shop_images\/ships_for_free_cropped.png",
-    "collection_icons_product_text_2": "Ships for FREE",
+    "collection_icons_product_text_2": "Free 2 day shipping over $55",
     "collection_icons_product_img_3": "shopify:\/\/shop_images\/animal_helped_cropped.png",
     "collection_icons_product_text_3": "1 order = 1 animal helped",
     "collection_icons_product_img_4": "shopify:\/\/shop_images\/hassle_free_returns_cropped_8e26985b-e988-4802-beaf-d3255cb4648c.png",
@@ -83,7 +85,7 @@
     "collection_icons_product_img_5": "shopify:\/\/shop_images\/uv_block_v1_811efdc0-d84f-4303-87de-0482db299806.png",
     "collection_icons_product_text_5": "100% UV Protection",
     "collection_icons_product_img_6": "shopify:\/\/shop_images\/ships_for_free_1_e5f4210f-8cfc-4fe1-8da8-e0a9ef7884cb.png",
-    "collection_icons_product_text_6": "Ships for FREE",
+    "collection_icons_product_text_6": "Free 2 day shipping over $55",
     "collection_icons_product_img_7": "shopify:\/\/shop_images\/animal_helped_1_01c30554-67ed-44f1-a53d-df12738443e6.png",
     "collection_icons_product_text_7": "1 order = 1 animal helped",
     "collection_icons_product_img_8": "shopify:\/\/shop_images\/hassle_free_returns_1_copy_b2b4784a-bc8e-440a-b3ca-7fb0f014c170.png",
@@ -118,9 +120,9 @@
     "rx_women_mage": "shopify:\/\/shop_images\/S5A6412-Edit_1.jpg",
     "rx_women_image_link": "shopify:\/\/products\/daisy-women-cat-eye-prescription-glasses-beige-tortoise",
     "rx_women_image_btn_text": "SHOP DAISY",
-    "women_sunglasses_mage": "shopify:\/\/shop_images\/Lucy-TwoProduct_1.jpg",
-    "women_sunglasses_link": "shopify:\/\/products\/lucy-oversized-square-flat-lens-mirror-sunglasses-for-women",
-    "women_sunglasses_btn_text": "SHOP LUCY",
+    "women_sunglasses_mage": "shopify:\/\/shop_images\/Chloe-TwoProduct-2_1_860ded8b-ada4-481e-b542-edd5591a6f01.jpg",
+    "women_sunglasses_link": "shopify:\/\/products\/chloe-square-oversized-flat-lens-polarized-sunglasses-for-women",
+    "women_sunglasses_btn_text": "SHOP CHLOE",
     "women_sunglasses_number": 4,
     "men_sunglasses_mage": "shopify:\/\/shop_images\/Nick_CLRG15-1_e3f24daa-857a-425e-8ffc-a6632a906ca1.jpg",
     "men_sunglasses_link": "https:\/\/shopwearmepro.com\/products\/nick-square-modern-flat-lens-polarized-mirrored-lens-sunglasses?variant=18526608719961",
@@ -547,7 +549,7 @@
       "product-template": {
         "type": "product-template",
         "settings": {
-          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>Free US shipping via USPS<\/li>\n<li>2-Day US Fedex Shipping for $4.99<\/li>\n  <li>Free 2-Day FedEx Shipping on domestic orders over $55<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 2-4 business days to arrive once they leave the FedEx facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
+          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>US shipping via USPS for $2.99<\/li>\n<li>2-Day US Fedex Shipping for $6.99<\/li>\n  <li>Free 2-Day FedEx Shipping on domestic orders over $55<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 2-4 business days to arrive once they leave the FedEx facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
           "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_79f6c84d-8757-49f0-aea6-84b6aa3485e7.png",
           "mobile_title": "<div class=\"title\">\n<span>Protect your eyes f<\/span>rom<\/div>\n <div>screen time<\/div>",
           "mobile_text": "screen time",
@@ -562,7 +564,7 @@
           "footer_color": "#ffffff",
           "footer_border": "#93b2aa",
           "footer_icon": "#efebe4",
-          "show_id": true,
+          "show_id": false,
           "email_url": "mailto:service@wearmepro.com",
           "email_text": "service@wearmepro.com",
           "phone_url": "tel:14806872287",
@@ -1567,8 +1569,8 @@
             "type": "footer_icons",
             "settings": {
               "image_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0896\/5742\/files\/ships_for_free_1e7757e1-7df9-4833-a3c5-5ffa762c4ac9.svg?v=1641313758",
-              "title": "FREE SHIPPING",
-              "text": "On all domestic US orders"
+              "title": "FREE 2-DAY SHIPPING",
+              "text": "Express shipping on US orders over $55"
             }
           },
           "3082fe5b-7db2-4625-b67e-e838d5aa0404": {
@@ -2148,7 +2150,7 @@
       "product-template-eco": {
         "type": "product-template-eco",
         "settings": {
-          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>Free US shipping via USPS<\/li>\n<li>2-Day US Fedex Shipping for $4.99<\/li>\n  <li>Free 2-Day FedEx Shipping on domestic orders over $55<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 2-4 business days to arrive once they leave the FedEx facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
+          "shipping_html": "<h3>Shipping<\/h3>\n<ul>\n  <li>US shipping via USPS for $2.99<\/li>\n<li>2-Day US Fedex Shipping for $6.99<\/li>\n  <li>Free 2-Day FedEx Shipping on domestic orders over $55<\/li>\n  <li>Orders are shipped 12–24h after purchase<\/li>\n  <li>Orders placed on Saturday &amp; Sunday will be shipped on Monday<\/li>\n  <li>Domestic orders generally take 2-4 business days to arrive once they leave the FedEx facility in our location<\/li>\n  <li>International orders generally take 1–6 business days to arrive once they leave the FedEx or DHL facility in our location<\/li>\n<\/ul>\n\n<h3>100% Satisfaction Guarantee<\/h3>\n<p>At WearMe Pro, we’re all about making our customer’s experience the best it can possibly be! If you’re not satisfied with your order please reach out to us at <a href=\"service@wearmepro.com\">service@wearmepro.com<\/a> and we will always address all of your concerns.<\/p>",
           "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_9128fcbb-096c-4a0a-a80e-c55f3de365df.png",
           "mobile_title": "",
           "mobile_text": "",

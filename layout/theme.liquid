@@ -373,8 +373,10 @@
     {% include 'slick-slider-js' %}
 
     <script src="{{ 'vendor.js' | asset_url }}" defer></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom.js' | asset_url}}"></script>
     <script src="{{ 'vendor-js.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'common-js.js' | asset_url }}" defer="defer"></script>
 
@@ -409,8 +411,7 @@
      }]);
   }
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ 'custom.js' | asset_url}}"></script>
+
 
 </body>
 <!-- LensAdvizor snippet starts -->

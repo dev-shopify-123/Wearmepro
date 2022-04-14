@@ -3,7 +3,7 @@
     window.theme.state = window.theme.state || {};
     window.slate = window.slate || {};
     var globalCount = 1;
-
+    var tagTotalCount = 0;
     /* ================ UTILS ================ */
     /**
      * Returns n amount of random items
@@ -4106,6 +4106,8 @@
                 lastPageNotice: '[data-last-page-notice]',
                 filters: '#collection-filters-' + this.sectionId,
                 mobileFilterToggles: '[data-filter-toggle]',
+                tagCount: 0,
+                tags: []
             };
 
             this.XHRTemplateSuffix = this.$container.data('xhr-template') || 'xhr';
@@ -4431,7 +4433,7 @@
                             submitProposedTags: function () {
                                 var currentFilterPath = window.location.href.split(window.collectionBaseUrl)[1].split('?')[0];
                                 var newFilterPath = this.proposedTagHandles.join('+');
-
+                                self.selectors.tags = this.proposedTagHandles;
                                 var newUrl = window.collectionBaseUrl + '/' + newFilterPath;
 
                                 if($('.collection-filters__filter').hasClass('active')){
@@ -4689,32 +4691,15 @@
 
                 });
             },
-            _getPage: function (url, replace) {
-                if (typeof this.productListing === 'undefined') {
-                    return;
-                }
-
+            _getProduct: function (tagCount) {
+                var newUrl = window.collectionBaseUrl + '/' + this.selectors.tags[tagCount];
+                var xhrTemplateSuffix = 'xhr-filtered';
+                var xhrUrl = this._getXHRTemplateUrl(newUrl, xhrTemplateSuffix);
                 var self = this;
-
-                $(this.selectors.showMoreButton, this.$container)
-                    .css(
-                        'min-width',
-                        $(this.selectors.showMoreButton, this.$container)
-                            .outerWidth()
-                    );
-                $(this.selectors.showMoreText, this.$container).addClass('hide');
-                $(this.selectors.showMoreStatus, this.$container).removeClass('hide');
-
+                console.log(newUrl)
                 $.ajax({
-                    url: url,
-                    beforeSend: function () {
-                        if (replace === true) {
-                            $(self.selectors.productGridItems, this.$container).remove();
-                            self.$productGridItemPlaceholders.removeClass('hide');
-                        }
-
-                        self.loadingInfiniteScroll = true;
-                    },
+                    url: xhrUrl,
+                    
                     success: function (data, textStatus, jqXHR) {
                         var newProductListingEls = $(data).find(self.selectors.productListing).html();
                         var returnUrl = new Url($(data).find(self.selectors.showMoreButton).attr('href'));
@@ -4726,7 +4711,7 @@
                             })
                         }
                         $(self.selectors.productListing, this.$container).append(newProductListingEls);
-                        self.productListing.initTS();
+                        
                         var newNextPageUrl = self._getXHRTemplateUrl($(data).find(self.selectors.showMoreButton).attr('href'));
                         if (typeof newNextPageUrl !== 'undefined') {
                             $(self.selectors.showMoreButton, this.$container).attr('href', newNextPageUrl);
@@ -4751,15 +4736,112 @@
                         console.warn(error)
                     },
                     complete: function (data) {
-                        self.$productGridItemPlaceholders.addClass('hide');
-                        $(self.selectors.showMoreText, self.$container).removeClass('hide');
-                        $(self.selectors.showMoreStatus, self.$container).addClass('hide');
-                        $(self.selectors.showMoreButton, self.$container).css('min-width', '');
-                        self.loadingInfiniteScroll = false;
-                        self._checkCompletion(data);
+                        
                         //self._initProductListing(); 
+                        if (tagCount == tagTotalCount) {
+                            console.log('completed ajax')
+                            self.productListing.initTS();
+                            self.$productGridItemPlaceholders.addClass('hide');
+                            $(self.selectors.showMoreText, self.$container).removeClass('hide');
+                            $(self.selectors.showMoreStatus, self.$container).addClass('hide');
+                            $(self.selectors.showMoreButton, self.$container).css('min-width', '');
+                            self.loadingInfiniteScroll = false;
+                            self._checkCompletion(data);
+                        } else if (tagCount < tagTotalCount) {
+                            console.log('again ajax')
+                            self._getProduct(tagCount+1);
+                        }
                     }
                 });
+            },
+            _getPage: function (url, replace) {
+                if (typeof this.productListing === 'undefined') {
+                    return;
+                }
+
+                var self = this;
+
+                $(this.selectors.showMoreButton, this.$container)
+                    .css(
+                        'min-width',
+                        $(this.selectors.showMoreButton, this.$container)
+                            .outerWidth()
+                    );
+                $(this.selectors.showMoreText, this.$container).addClass('hide');
+                $(this.selectors.showMoreStatus, this.$container).removeClass('hide');
+                console.log(url)
+                if (url.path.indexOf('%20') > -1) {
+                    console.log('multi filter')
+                    console.log(this.selectors.tags)
+                    tagTotalCount = this.selectors.tags.length;
+                    
+                    if (replace === true) {
+                        $(self.selectors.productGridItems, this.$container).remove();
+                        self.$productGridItemPlaceholders.removeClass('hide');
+                    }
+
+                    self.loadingInfiniteScroll = true;
+                    
+                    this._getProduct(0);
+                } else {
+                    console.log('single filter')
+                    $.ajax({
+                        url: url,
+                        beforeSend: function () {
+                            if (replace === true) {
+                                $(self.selectors.productGridItems, this.$container).remove();
+                                self.$productGridItemPlaceholders.removeClass('hide');
+                            }
+    
+                            self.loadingInfiniteScroll = true;
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            var newProductListingEls = $(data).find(self.selectors.productListing).html();
+                            var returnUrl = new Url($(data).find(self.selectors.showMoreButton).attr('href'));
+                            if (returnUrl.query.page == 1) {
+                                globalCount++;
+                                var elems = $(data).find(self.selectors.productListing + ' .product-grid-item');
+                                elems.each(function () {
+                                    $(this).addClass(globalCount);
+                                })
+                            }
+                            $(self.selectors.productListing, this.$container).append(newProductListingEls);
+                            self.productListing.initTS();
+                            var newNextPageUrl = self._getXHRTemplateUrl($(data).find(self.selectors.showMoreButton).attr('href'));
+                            if (typeof newNextPageUrl !== 'undefined') {
+                                $(self.selectors.showMoreButton, this.$container).attr('href', newNextPageUrl);
+                                theme.state.renderedProducts = $('.product-listing .product-grid-item');
+                                theme.collectionTemplate === 'infinity-scroll' && self._checkSelectedVariants();
+                            } else {
+                                // Do not disconnect as it may be needed for
+                                // filtered views
+                                // self.infiniteScrollObserver.disconnect();
+                                $(self.selectors.showMoreButton).addClass('hide');
+                                $(self.selectors.lastPageNotice).removeClass('hide');
+                                theme.state.renderedProducts = $('.product-listing .product-grid-item');
+                                theme.collectionTemplate === 'infinity-scroll' && self._checkSelectedVariants();
+                            }
+                            $('.product-listing .product-grid-item.grid-item-img').each((idx, item) => {
+                                if(idx === 0) {
+                                    $(item).addClass('active');
+                                }
+                            })
+                        },
+                        error: function (error) {
+                            console.warn(error)
+                        },
+                        complete: function (data) {
+                            self.$productGridItemPlaceholders.addClass('hide');
+                            $(self.selectors.showMoreText, self.$container).removeClass('hide');
+                            $(self.selectors.showMoreStatus, self.$container).addClass('hide');
+                            $(self.selectors.showMoreButton, self.$container).css('min-width', '');
+                            self.loadingInfiniteScroll = false;
+                            self._checkCompletion(data);
+                            //self._initProductListing(); 
+                        }
+                    });
+                }
+                
             },
             _checkCompletion: function (data) {
                 /**

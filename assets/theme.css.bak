@@ -6231,7 +6231,7 @@ padding: 12px 0 !important;
 .product-grid-item .btn:focus,
 .btn-new:active,
 .btn-new:focus {
-  background-image: linear-gradient(-180deg,#2c9378 54%,#2c9378 100%);
+  background-image: linear-gradient(-180deg,#93b2aa 54%,#93b2aa 100%);
   animation: gradient 0.2s ease;
   box-shadow: 0px 5px 10px #999;
 

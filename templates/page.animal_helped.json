@@ -2,18 +2,18 @@
   "sections": {
     "main": {
       "type": "page-animal_helped",
-      "disabled": true,
       "settings": {}
     },
     "1648663764b67c187c": {
       "type": "banner_with_buttons",
       "settings": {
         "image_desctop": "shopify:\/\/shop_images\/AD000610.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/AD000610_86f986af-45ef-4a2a-bcfd-e32cf80388a0.jpg",
         "button_position": "customization-left",
         "button_position_in_block": "btn-left",
         "show_shadow": true,
-        "top_desktop": 70,
-        "top_mobile": 70,
+        "top_desktop": 0,
+        "top_mobile": 0,
         "is_enable_banner_link": true,
         "banner_link": "",
         "left_url": "",
@@ -26,10 +26,111 @@
         "text_right_button_color": "#ffffff",
         "display": "both"
       }
+    },
+    "164873644939871799": {
+      "type": "slider-image-with-text",
+      "blocks": {
+        "3e3f63e5-19f8-436e-a91f-13054d14ffb8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Copy_of_4R0A4895_600x600_7514c4ea-c036-4888-b8c0-c7e36a9b7733.jpg"
+          }
+        },
+        "5910b6b4-13f3-45eb-a1ed-d4fe60d5d74c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3_85e477e9-3b7a-4a0c-a4f3-aa3996bd6140.png"
+          }
+        },
+        "e4b578cc-a611-44b1-9d07-de776820b52c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_70b72c64-2789-47c3-86c5-1e26999c4e57.png"
+          }
+        },
+        "81a935f3-a90d-4a56-95eb-b34f95165f43": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_d00cfed3-e240-4055-827f-6e6ceb16a118.png"
+          }
+        }
+      },
+      "block_order": [
+        "3e3f63e5-19f8-436e-a91f-13054d14ffb8",
+        "5910b6b4-13f3-45eb-a1ed-d4fe60d5d74c",
+        "e4b578cc-a611-44b1-9d07-de776820b52c",
+        "81a935f3-a90d-4a56-95eb-b34f95165f43"
+      ],
+      "settings": {
+        "heading": "Giving Back",
+        "heading_position": "center",
+        "text": "<p>Our Arizona based company boasts a team of proud pet parents and animal advocates who never miss the chance to give a good scratch behind the ear. Because of our fondness for all four-legged friends we formed an ongoing partnership with Arizona Humane Society, allowing us to support animals in need throughout the year - with your help!<\/p>",
+        "subtext": "<span class=\"animal\">1 ORDER<\/span><span> = 1 ANIM <\/span>  <svg id=\"Group_169\" data-name=\"Group 169\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"32.735\" height=\"28.642\" viewbox=\"0 0 32.735 28.642\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\n  <defs>\n    <clippath id=\"clip-path1\">\n      <rect id=\"Rectangle_153\" data-name=\"Rectangle 153\" width=\"32.735\" height=\"28.642\" fill=\"#93b2aa\"><\/rect>\n    <\/clippath>\n  <\/defs>\n  <g id=\"Group_152\" data-name=\"Group 152\" transform=\"translate(0 0)\" clip-path=\"url(#clip-path)\">\n    <path id=\"Path_246\" data-name=\"Path 246\" d=\"M11.6,14.18c3.231.178,8.244,5.715,11,0,2.9-6.01-4.328-6.738-5.536-8.814C15.582,2.826,15.75.024,12.063,0c-3.8-.025-3.891,3.066-5.672,5.377C5.049,7.118-2.58,7.965.9,14.208c3.278,5.876,7.184-.221,10.694-.028Z\" transform=\"translate(4.374 11.872)\" fill=\"#93b2aa\" fill-rule=\"evenodd\"><\/path>\n    <path id=\"Path_247\" data-name=\"Path 247\" d=\"M.892.766c3.4-3.2,10.594,4.452,7.191,7.651S-2.511,3.965.892.766Z\" transform=\"translate(0 8.015)\" fill=\"#93b2aa\" fill-rule=\"evenodd\"><\/path>\n    <path id=\"Path_248\" data-name=\"Path 248\" d=\"M2.538.063C7.11-.892,9.257,9.385,4.685,10.341S-2.034,1.018,2.538.063Z\" transform=\"translate(8.202 0)\" fill=\"#93b2aa\" fill-rule=\"evenodd\"><\/path>\n    <path id=\"Path_249\" data-name=\"Path 249\" d=\"M5.038.1c4.51,1.213,1.784,11.352-2.726,10.14S.528-1.112,5.038.1\" transform=\"translate(17.37 0.031)\" fill=\"#93b2aa\" fill-rule=\"evenodd\"><\/path>\n    <path id=\"Path_250\" data-name=\"Path 250\" d=\"M8.083.766C4.68-2.433-2.511,5.218.892,8.417S11.486,3.965,8.083.766\" transform=\"translate(23.76 8.989)\" fill=\"#93b2aa\" fill-rule=\"evenodd\"><\/path>\n  <\/g>\n<\/svg>\n\n <span>L HELPED<\/span>",
+        "image_position": "left",
+        "padding_top": 90,
+        "padding_bottom": 30
+      }
+    },
+    "1648741342f656eaed": {
+      "type": "simple-text",
+      "settings": {
+        "subheading": "WE DONATED:",
+        "number_heading": "110,000",
+        "heading": "CANS OF FOOD",
+        "subtext": "TO ANIMALS IN NEED",
+        "bg_color": "#f6efe5",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "164874432480169a38": {
+      "type": "image-with-icon-blocks",
+      "blocks": {
+        "331571a0-8892-45b1-a6b3-8da6d4c608f2": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Bottle_Baby_Kitten.jpg",
+            "svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"84.099\" height=\"84\" viewbox=\"0 0 84.099 84\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\n  <defs>\n    <clippath id=\"clip-path\">\n      <rect id=\"Rectangle_156\" data-name=\"Rectangle 156\" width=\"84.099\" height=\"84\" transform=\"translate(-2 -2)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/rect>\n    <\/clippath>\n  <\/defs>\n  <g id=\"Group_161\" data-name=\"Group 161\" transform=\"translate(2 2)\">\n    <g id=\"Group_160\" data-name=\"Group 160\" clip-path=\"url(#clip-path)\">\n      <path id=\"Path_255\" data-name=\"Path 255\" d=\"M10.362,49.626c-.008.292-.022.584-.022.878a29.711,29.711,0,0,0,59.421,0c0-.3-.014-.6-.023-.907.013-.013.03-.019.042-.034a43.844,43.844,0,0,0,9.538-18.489C82.711,15.908,74.5,5.1,65.426,1.483c-9.393-3.752-19.2-.242-25.377,8.936C33.875,1.241,24.066-2.265,14.67,1.484,5.6,5.105-2.613,15.91.781,31.077,2.545,38.964,6.941,45.5,10.36,49.626ZM40.051,78A27.5,27.5,0,1,1,67.761,50.5,27.635,27.635,0,0,1,40.051,78ZM15.413,3.341C22.484.52,32.439,1.521,39.194,12.8a1.039,1.039,0,0,0,1.716,0C47.66,1.522,57.618.519,64.687,3.341c8.307,3.316,15.819,13.274,12.681,27.3a40.938,40.938,0,0,1-7.862,16.055,29.732,29.732,0,0,0-58.912.011,42.4,42.4,0,0,1-7.86-16.065C-.4,16.615,7.106,6.657,15.413,3.341Z\" transform=\"translate(0 0)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_256\" data-name=\"Path 256\" d=\"M169.1,274.014a8.689,8.689,0,0,0-12.981,0l-5.014,5.637a7.108,7.108,0,0,0-1.923,6.589,7.314,7.314,0,0,0,4.792,5.308,6.748,6.748,0,0,0,7.25-1.829h0a1.934,1.934,0,0,1,2.771,0,6.868,6.868,0,0,0,5.016,2.226,6.469,6.469,0,0,0,2.234-.4,7.315,7.315,0,0,0,4.792-5.308,7.078,7.078,0,0,0-1.882-6.546Zm4.983,11.8a5.353,5.353,0,0,1-3.526,3.861,4.747,4.747,0,0,1-5.1-1.313,3.89,3.89,0,0,0-5.7,0,4.745,4.745,0,0,1-5.1,1.313,5.352,5.352,0,0,1-3.526-3.861,5.15,5.15,0,0,1,1.424-4.787l5.054-5.68a6.69,6.69,0,0,1,9.993,0l5.094,5.723a5.118,5.118,0,0,1,1.383,4.744Z\" transform=\"translate(-122.403 -222.697)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_257\" data-name=\"Path 257\" d=\"M167.7,195.915a4.2,4.2,0,0,0,2.663,1,3.873,3.873,0,0,0,.4-.021c2.7-.282,4.531-3.279,4.171-6.822a7.137,7.137,0,0,0-2.4-4.839,4.111,4.111,0,0,0-3.062-.983c-2.7.282-4.534,3.278-4.172,6.822A7.128,7.128,0,0,0,167.7,195.915Zm1.977-9.672a1.691,1.691,0,0,1,.186-.01,2.272,2.272,0,0,1,1.407.556,5.206,5.206,0,0,1,1.674,3.49c.239,2.35-.854,4.47-2.388,4.63a2.189,2.189,0,0,1-1.594-.546,5.208,5.208,0,0,1-1.674-3.49C167.048,188.525,168.141,186.4,169.677,186.244Z\" transform=\"translate(-135.747 -151.339)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_258\" data-name=\"Path 258\" d=\"M123.218,227.745a6.765,6.765,0,0,0-3.812-3.462,3.967,3.967,0,0,0-3.1.206c-2.312,1.21-2.91,4.531-1.36,7.562a6.769,6.769,0,0,0,3.812,3.463,4.461,4.461,0,0,0,1.352.219,3.741,3.741,0,0,0,1.748-.425C124.17,234.1,124.768,230.776,123.218,227.745Zm-2.288,5.79a2.038,2.038,0,0,1-1.565.073,4.843,4.843,0,0,1-2.638-2.468c-1.01-1.974-.777-4.208.506-4.88a1.763,1.763,0,0,1,.825-.2,2.461,2.461,0,0,1,.742.122,4.837,4.837,0,0,1,2.637,2.468c1.01,1.975.778,4.209-.506,4.88Z\" transform=\"translate(-93.716 -184.058)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_259\" data-name=\"Path 259\" d=\"M234.826,196.891a3.881,3.881,0,0,0,.4.021,4.194,4.194,0,0,0,2.661-1,7.135,7.135,0,0,0,2.4-4.839c.361-3.544-1.472-6.54-4.172-6.822a4.12,4.12,0,0,0-3.062.983,7.136,7.136,0,0,0-2.4,4.839C230.294,193.613,232.127,196.609,234.826,196.891Zm-2.182-6.619a5.2,5.2,0,0,1,1.674-3.49,2.208,2.208,0,0,1,1.594-.546c1.535.161,2.629,2.281,2.389,4.63a5.2,5.2,0,0,1-1.674,3.49,2.193,2.193,0,0,1-1.594.546C233.5,194.742,232.405,192.622,232.645,190.272Z\" transform=\"translate(-189.435 -151.332)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_260\" data-name=\"Path 260\" d=\"M288.051,224.486a3.962,3.962,0,0,0-3.1-.206,6.771,6.771,0,0,0-3.812,3.462c-1.549,3.031-.951,6.352,1.361,7.562a3.741,3.741,0,0,0,1.748.425,4.444,4.444,0,0,0,1.352-.219,6.773,6.773,0,0,0,3.812-3.463C290.961,229.017,290.363,225.7,288.051,224.486Zm-.42,6.652a4.846,4.846,0,0,1-2.638,2.468,2.038,2.038,0,0,1-1.565-.073c-1.284-.671-1.516-2.906-.507-4.88a4.84,4.84,0,0,1,2.637-2.468,2.461,2.461,0,0,1,.743-.122,1.753,1.753,0,0,1,.823.2c1.285.672,1.517,2.906.508,4.88Z\" transform=\"translate(-230.236 -184.056)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+            "title": "<p>Transformative Impact<\/p>",
+            "description": "<p>Each year AHS helps more than 30k pets through adoption, rescue, placement, care for the sick and injured along with spay and neuter.<\/p>"
+          }
+        },
+        "9a0d6026-03d7-4c54-82ce-0ac00992fd2a": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Critically_injured_puppy.jpg",
+            "svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"83.992\" height=\"84\" viewbox=\"0 0 83.992 84\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\n  <defs>\n    <clippath id=\"clip-path\">\n      <rect id=\"Rectangle_155\" data-name=\"Rectangle 155\" width=\"83.992\" height=\"84\" transform=\"translate(-2 -2)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/rect>\n    <\/clippath>\n  <\/defs>\n  <g id=\"Group_159\" data-name=\"Group 159\" transform=\"translate(2 2)\">\n    <g id=\"Group_158\" data-name=\"Group 158\" clip-path=\"url(#clip-path)\">\n      <path id=\"Path_253\" data-name=\"Path 253\" d=\"M79.99,15.265a15.253,15.253,0,0,0-26.051-10.8L40,18.4,26.063,4.465a15.271,15.271,0,0,0-21.6,21.6L18.4,40,4.467,53.938a15.271,15.271,0,0,0,21.6,21.6L40,61.6,53.939,75.534a15.271,15.271,0,0,0,21.6-21.6L61.6,40,75.534,26.062a15.158,15.158,0,0,0,4.456-10.8ZM5.88,24.65A13.273,13.273,0,0,1,24.651,5.88L38.589,19.818l-18.77,18.77ZM40,21.229,58.773,40,40,58.771,21.231,40ZM24.652,74.121a13.272,13.272,0,0,1-18.77-18.77L19.82,41.413l18.77,18.77ZM74.123,55.35A13.273,13.273,0,0,1,55.353,74.12L41.416,60.184l18.77-18.77ZM60.186,38.587l-18.77-18.77L55.354,5.878A13.273,13.273,0,0,1,74.125,24.649Z\" transform=\"translate(0 0)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_254\" data-name=\"Path 254\" d=\"M288.659,295.536a4.172,4.172,0,0,0,5.028.606l4.4,4.4a4.105,4.105,0,0,0,3.51,6.233,4.105,4.105,0,0,0,4.068-3.56,4.1,4.1,0,1,0-2.659-7.585l-4.41-4.41a4.105,4.105,0,0,0-3.521-6.214,4.1,4.1,0,0,0-4.068,3.56,4.1,4.1,0,0,0-2.352,6.965Zm1.412-4.391a2.08,2.08,0,0,1,1.794-.591,1.008,1.008,0,0,0,.851-.282,1,1,0,0,0,.282-.85,2.093,2.093,0,0,1,.592-1.8,2.155,2.155,0,0,1,2.979,0,2.109,2.109,0,0,1,0,2.979,1,1,0,0,0,0,1.412l5.649,5.649a1,1,0,0,0,1.412,0,2.106,2.106,0,1,1,1.184,3.569,1,1,0,0,0-1.132,1.132,2.093,2.093,0,0,1-.592,1.8,2.155,2.155,0,0,1-2.979,0,2.107,2.107,0,0,1-.012-2.968l.016-.015a1,1,0,0,0,.012-1.423l-5.649-5.649a1,1,0,0,0-.714-.285,1.027,1.027,0,0,0-.714.3,2.155,2.155,0,0,1-2.979,0,2.106,2.106,0,0,1,0-2.977Z\" transform=\"translate(-236.185 -234.173)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+            "title": "<p>E﻿﻿thical No-Kill Philosophy<strong>TM<\/strong><\/p>",
+            "description": "<p>AHS never euthanizes a pet for space or based on the length of time they’ve been at the shelter.<\/p>"
+          }
+        },
+        "e00c8c95-3219-4aeb-8cc0-169ea1ef5ae0": {
+          "type": "image_icon",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/AD000703.jpg",
+            "svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"80\" height=\"80\" viewbox=\"0 0 80 80\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\">\n  <defs>\n    <clippath id=\"clip-path\">\n      <rect id=\"Rectangle_154\" data-name=\"Rectangle 154\" width=\"80\" height=\"80\" transform=\"translate(-0.397 -0.397)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/rect>\n    <\/clippath>\n  <\/defs>\n  <g id=\"Group_157\" data-name=\"Group 157\" transform=\"translate(0.397 0.397)\">\n    <g id=\"Group_156\" data-name=\"Group 156\" clip-path=\"url(#clip-path)\">\n      <path id=\"Path_251\" data-name=\"Path 251\" d=\"M98.878,224.453a6.852,6.852,0,0,0,13.638.95h16.976a6.854,6.854,0,0,0,13.642-.95,6.784,6.784,0,0,0-1.869-4.7,6.782,6.782,0,0,0,1.869-4.7,6.854,6.854,0,0,0-13.637-.99H112.514a6.854,6.854,0,0,0-13.636.99,6.774,6.774,0,0,0,1.869,4.7,6.778,6.778,0,0,0-1.869,4.7Zm3.947-5.492a4.873,4.873,0,1,1,7.781-3.907.99.99,0,0,0,.99.99h18.821a.99.99,0,0,0,.99-.99,4.874,4.874,0,1,1,7.781,3.907.99.99,0,0,0,0,1.586,4.873,4.873,0,1,1-7.78,3.907v-.041a.99.99,0,0,0-.99-.99H111.6a1.025,1.025,0,0,0-.99,1.03,4.874,4.874,0,1,1-7.78-3.907.988.988,0,0,0,0-1.585Z\" transform=\"translate(-81.397 -171.39)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n      <path id=\"Path_252\" data-name=\"Path 252\" d=\"M1.641,35.4l2.825-2.464v45.28a.99.99,0,0,0,.991.99H73.748a.99.99,0,0,0,.99-.99V32.933L77.563,35.4a.99.99,0,1,0,1.3-1.493L65.592,22.332V.989A.991.991,0,0,0,64.6,0H53.216a.99.99,0,0,0-.99.99v9.691L40.252.243a.991.991,0,0,0-1.3,0L.339,33.9a.99.99,0,1,0,1.3,1.492ZM54.2,1.978H63.61V20.6l-9.405-8.2ZM39.6,2.3l33.156,28.9V77.222H6.447V31.206Z\" transform=\"translate(0 0.001)\" fill=\"#93b2aa\" stroke=\"#93b2aa\" stroke-width=\"1\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+            "title": "<p>﻿Supporting Local<\/p>",
+            "description": "<p>AHS doesn’t receive funding from any other humane society or government organization, meaning they rely on the local community and partners like WMP.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "331571a0-8892-45b1-a6b3-8da6d4c608f2",
+        "9a0d6026-03d7-4c54-82ce-0ac00992fd2a",
+        "e00c8c95-3219-4aeb-8cc0-169ea1ef5ae0"
+      ],
+      "settings": {
+        "heading": "why arizona humane society?",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
     "main",
-    "1648663764b67c187c"
+    "1648663764b67c187c",
+    "164873644939871799",
+    "1648741342f656eaed",
+    "164874432480169a38"
   ]
 }

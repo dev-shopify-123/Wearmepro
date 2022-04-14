@@ -471,74 +471,15 @@
                 Loading…
               </span>
             </button>
-
-                                <div class="more-payments-wrapper">
-                                    <div class="title"><span>More payment options</span></div>
-                                    <div class="additional-checkout-buttons more-payments-buttons">
-                                        {{ form | payment_button }}
-                                    </div>
-                                </div>
-
-                                {%- comment -%}
-                                <div class="more-payments-wrapper">
-                                    <div class="title"><span>show more payments</span></div>
-                                    <div class="additional-checkout-buttons more-payments-buttons">
-
-
-                                    </div>
-                                </div>
-                                {%- endcomment -%}
-                                <script>
-                                    // window.onload = function () {
-                                    //     if (window.Shopify && Shopify.StorefrontExpressButtons) {
-                                    //         Shopify.StorefrontExpressButtons.initialize();
-                                    //     }
-                                    // }
-                                    const morePaymentsButtonsLink = document.querySelector('.more-payments-wrapper .title');
-                                    const morePaymentsButtonsBlock = document.querySelector('.more-payments-buttons');
-                                    morePaymentsButtonsLink.addEventListener('click', (e) => {
-                                        morePaymentsButtonsBlock.classList.toggle('showed');
-                                        document.querySelector('.shopify-payment-button__more-options').style.display = 'none';
-                                    })
-                                </script>
           </div>
-          {% else %}
-                <div id="myBtn">
-                    {{ form | payment_button }}
-                </div>
-            {% endif %}
-                        {%- comment -%}
-          <div id="scrollId" class="product-section-form-actions__item lg--mx1 md-dn--my1 product-section-form__dynamic-checkout-buttons">
-            {{ form | payment_button }}
-          </div>
-                        {%- endcomment -%}
+         
+          {% endif %}
         </div>
         
         
         
         <div class="countdown-KT-full-width hide-KT countdownultimate-KT desktop-cc"></div>
         <style>
-                        .more-payments-wrapper .title {
-                            padding: 10px;
-                            text-align: center;
-                        }
-
-                        .more-payments-wrapper .title span {
-
-                        }
-
-                        .more-payments-wrapper .title span:hover {
-                            cursor: pointer;
-                        }
-
-                        .more-payments-buttons {
-                            display: none;
-                        }
-
-                        .more-payments-buttons.showed {
-                            display: block;
-                        }
-
           .desktop-cc { display: none; }
           .mobile-cc { display: none; margin: 0 !important; }
           @media (min-width: 901px) {
