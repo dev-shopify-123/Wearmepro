@@ -3548,7 +3548,6 @@
                         const isSwatch = e.target.closest('.product-section__variant-thumbnail.js-tippy');
                         if(isSwatch) {
                             const newName = isSwatch.getAttribute('data-tippy-content');
-                            console.log('newName(): ', newName);
                             nameVariant.innerText = newName;
                         }
                     })
@@ -4107,7 +4106,8 @@
                 filters: '#collection-filters-' + this.sectionId,
                 mobileFilterToggles: '[data-filter-toggle]',
                 tagCount: 0,
-                tags: []
+                tags: [],
+                selected_urls: []
             };
 
             this.XHRTemplateSuffix = this.$container.data('xhr-template') || 'xhr';
@@ -4318,17 +4318,14 @@
                                 if (!this.proposedTags) {
                                     return [];
                                 }
-                                console.log(this.proposedTags);
                                 var proposedTagHandlesArr = [];
 
                                 for (let group in this.proposedTags) {
                                     for (let tagIndex in this.proposedTags[group]) {
-                                        console.log(tagIndex);
                                         var tag = this.proposedTags[group][tagIndex];
                                         proposedTagHandlesArr.push(tag.handle);
                                     }
                                 }
-                                console.log(proposedTagHandlesArr);
                                 return proposedTagHandlesArr;
                             },
                             proposedTagsFlat: function () {
@@ -4692,11 +4689,10 @@
                 });
             },
             _getProduct: function (tagCount) {
-                var newUrl = window.collectionBaseUrl + '/' + this.selectors.tags[tagCount];
+                var newUrl = window.collectionBaseUrl + '/' + this.selectors.selected_urls[tagCount];
                 var xhrTemplateSuffix = 'xhr-filtered';
                 var xhrUrl = this._getXHRTemplateUrl(newUrl, xhrTemplateSuffix);
                 var self = this;
-                console.log(newUrl)
                 $.ajax({
                     url: xhrUrl,
                     
@@ -4736,10 +4732,7 @@
                         console.warn(error)
                     },
                     complete: function (data) {
-                        
-                        //self._initProductListing(); 
-                        if (tagCount == tagTotalCount) {
-                            console.log('completed ajax')
+                        if (tagCount == tagTotalCount - 1) {
                             self.productListing.initTS();
                             self.$productGridItemPlaceholders.addClass('hide');
                             $(self.selectors.showMoreText, self.$container).removeClass('hide');
@@ -4747,8 +4740,8 @@
                             $(self.selectors.showMoreButton, self.$container).css('min-width', '');
                             self.loadingInfiniteScroll = false;
                             self._checkCompletion(data);
-                        } else if (tagCount < tagTotalCount) {
-                            console.log('again ajax')
+                            self.selectors.selected_urls = [];
+                        } else if (tagCount < tagTotalCount-1) {
                             self._getProduct(tagCount+1);
                         }
                     }
@@ -4769,11 +4762,68 @@
                     );
                 $(this.selectors.showMoreText, this.$container).addClass('hide');
                 $(this.selectors.showMoreStatus, this.$container).removeClass('hide');
-                console.log(url)
+          
                 if (url.path.indexOf('%20') > -1) {
-                    console.log('multi filter')
-                    console.log(this.selectors.tags)
-                    tagTotalCount = this.selectors.tags.length;
+                    var frame_color_arr = ['empty'];
+                    var lens_color_arr = ['empty'];
+                    var frame_material_arr = ['empty'];
+                    var frame_style_arr = ['empty'];
+                    var lens_type_arr = ['empty'];
+                    var selected_group_arr = ['empty'];
+                    for (let index = 0; index <  this.selectors.tags.length; index++) {
+                        var tag = this.selectors.tags[index];
+                        if (tag.indexOf('frame-color') != -1) {
+                            frame_color_arr.push(tag);
+                            if (selected_group_arr.indexOf('frame-color') == -1) {
+                                selected_group_arr.push('frame-color');
+                            }
+                        } else if (tag.indexOf('lens-color') != -1) {
+                            lens_color_arr.push(tag);
+                            if (selected_group_arr.indexOf('lens-color') == -1) {
+                                selected_group_arr.push('lens-color');
+                            }
+                        } else if (tag.indexOf('frame-material') != -1) {
+                            frame_material_arr.push(tag);
+                            if (selected_group_arr.indexOf('frame-material') == -1) {
+                                selected_group_arr.push('frame-material');
+                            }
+                        } else if (tag.indexOf('frame-style') != -1) {
+                            frame_style_arr.push(tag);
+                            if (selected_group_arr.indexOf('frame-style') == -1) {
+                                selected_group_arr.push('frame-style');
+                            }
+                        } else if (tag.indexOf('lens-type') != -1) {
+                            lens_type_arr.push(tag);
+                            if (selected_group_arr.indexOf('lens-type') == -1) {
+                                selected_group_arr.push('lens-type');
+                            }
+                        } 
+                    }
+                    // var new_urls = [];
+                    var new_url = '';
+                    for (let index = 0; index < frame_color_arr.length; index++) {
+                        const frame_color = frame_color_arr[index];
+                        for (let index = 0; index < lens_color_arr.length; index++) {
+                            const lens_color = lens_color_arr[index];
+                            for (let index = 0; index < frame_material_arr.length; index++) {
+                                const frame_material = frame_material_arr[index];
+                                for (let index = 0; index < frame_style_arr.length; index++) {
+                                    const frame_style = frame_style_arr[index];
+                                    for (let index = 0; index < lens_type_arr.length; index++) {
+                                        const lens_type = lens_type_arr[index];
+                                        new_url += '+' + frame_color+ '+'+ lens_color + '+'+frame_material+'+'+frame_style+ '+' + lens_type;
+                                        new_url = new_url.replaceAll('+empty', '')
+                                        var new_urls = new_url.split('+');
+                                        if (selected_group_arr.length == new_urls.length) {
+                                            self.selectors.selected_urls.push(new_url.replace('+',''))
+                                        }
+                                        new_url = '';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    tagTotalCount = this.selectors.selected_urls.length;
                     
                     if (replace === true) {
                         $(self.selectors.productGridItems, this.$container).remove();
@@ -4784,7 +4834,6 @@
                     
                     this._getProduct(0);
                 } else {
-                    console.log('single filter')
                     $.ajax({
                         url: url,
                         beforeSend: function () {
