@@ -3722,11 +3722,11 @@
                     return false;
                 }
 
-                if ($.cookie(this.popupCookieName)) {
-                    if ($.cookie(this.popupCookieName) === this.options.md5) {
-                        return false;
-                    }
-                }
+                // if ($.cookie(this.popupCookieName)) {
+                //     if ($.cookie(this.popupCookieName) === this.options.md5) {
+                //         return false;
+                //     }
+                // }
 
                 return true;
             },
@@ -4316,16 +4316,17 @@
                                 if (!this.proposedTags) {
                                     return [];
                                 }
-
+                                // console.log(this.proposedTags);
                                 var proposedTagHandlesArr = [];
 
                                 for (let group in this.proposedTags) {
                                     for (let tagIndex in this.proposedTags[group]) {
+                                        // console.log(tagIndex);
                                         var tag = this.proposedTags[group][tagIndex];
                                         proposedTagHandlesArr.push(tag.handle);
                                     }
                                 }
-
+                                // console.log(proposedTagHandlesArr);
                                 return proposedTagHandlesArr;
                             },
                             proposedTagsFlat: function () {
@@ -4409,7 +4410,7 @@
                                 return (this.activeGroups.indexOf(group) !== -1);
                             },
                             selectTag: function (tag) {
-                                console.log('select tag here')
+                                // console.log('select tag here')
                                 if (this.tagIsProposed(tag)) {
                                     this.removeProposedTag(tag);
                                 } else {
@@ -4417,26 +4418,30 @@
                                 }
                             },
                             addProposedTag: function (tag) {
-                                // only one tag from a group can be proposed
-                                this.$set(this.proposedTags, tag.group, [tag]);
+                                // console.log(tag)
+                                // only one tag from a group can be proposed: tag.group
+                                // multi tag from a group can be proposed: tag.fullTagName.
+                                this.$set(this.proposedTags, tag.fullTagName, [tag]);
+                                // this.processedTags.push(tag)
                             },
                             removeProposedTag: function (tag) {
-                                this.$delete(this.proposedTags, tag.group);
+                                this.$delete(this.proposedTags, tag.fullTagName);
+                                // this.processedTags.remove(tag)
                             },
                             submitProposedTags: function () {
                                 var currentFilterPath = window.location.href.split(window.collectionBaseUrl)[1].split('?')[0];
-                                var newFilterPath = this.proposedTagHandles.join('+');
-
+                                var newFilterPath = this.proposedTagHandles.join('+OR+');
+                                // console.log(newFilterPath, "here is new path");
                                 var newUrl = window.collectionBaseUrl + '/' + newFilterPath;
 
-                                if($('.collection-filters__filter').hasClass('active')){
+                                // if($('.collection-filters__filter').hasClass('active')){
 
-                                }else {
+                                // }else {
                                      window.location = newUrl;
-                                }
+                                // }
                                
-                                this.refresh(newUrl);
-                                this.shown = false;
+                                // this.refresh(newUrl);
+                                // this.shown = false;
                             },
                             clearProposedTag: function (tag) {
                                 this.removeProposedTag(tag);
@@ -4557,9 +4562,15 @@
                 if (typeof url === 'undefined') {
                     return;
                 }
-
+                // console.log(url, "Xhr url here")
                 var returnUrl = new Url(url);
-
+                // if (returnUrl.path.indexOf('%20OR%20') != -1) {
+                //     let new_str = returnUrl.path.split("%20OR%20");
+                //     console.log(new_str, "Xhr convert url here")
+                //     returnUrl.path = new_str.join('+OR+');
+                //     console.log(returnUrl.path, "Xhr convert url here")
+                // }
+                
                 var templateSuffix = suffix || this.XHRTemplateSuffix;
 
                 // Request the XHR template
@@ -4699,7 +4710,7 @@
                     );
                 $(this.selectors.showMoreText, this.$container).addClass('hide');
                 $(this.selectors.showMoreStatus, this.$container).removeClass('hide');
-
+                        // console.log(url,"ajax url")
                 $.ajax({
                     url: url,
                     beforeSend: function () {
@@ -4711,6 +4722,8 @@
                         self.loadingInfiniteScroll = true;
                     },
                     success: function (data, textStatus, jqXHR) {
+                        self.loadingInfiniteScroll = false;
+                        // console.log(data)
                         var newProductListingEls = $(data).find(self.selectors.productListing).html();
                         var returnUrl = new Url($(data).find(self.selectors.showMoreButton).attr('href'));
                         if (returnUrl.query.page == 1) {
@@ -4730,7 +4743,7 @@
                         } else {
                             // Do not disconnect as it may be needed for
                             // filtered views
-                            // self.infiniteScrollObserver.disconnect();
+                            self.infiniteScrollObserver.disconnect();
                             $(self.selectors.showMoreButton).addClass('hide');
                             $(self.selectors.lastPageNotice).removeClass('hide');
                             theme.state.renderedProducts = $('.product-listing .product-grid-item');
@@ -4752,7 +4765,7 @@
                         $(self.selectors.showMoreButton, self.$container).css('min-width', '');
                         self.loadingInfiniteScroll = false;
                         self._checkCompletion(data);
-                        //self._initProductListing(); 
+                        self._initProductListing(); 
                     }
                 });
             },
@@ -5889,11 +5902,17 @@
                 let testRemove2 = $(this).html().replace('Review', '');
                 $(this).html(testRemove2);
             });
-            // $( ".swatch" ).each(function() {
-            //     if($(this).hasClass('is-selected')){
-            //         $(this).click();
-            //     }
-            // });
+            if ($(window).width() >= 1024) {
+
+            }else {
+                $( ".swatch" ).each(function() {
+                    $('.swatch').click(function () {
+                        $('.swatch').removeClass('active');
+                        $(this).addClass('active');
+                    });               
+                });
+            }
+            
         });
         function prescriptionBtn() {
             let variantUrl = $('.product-section__variant-thumbnail.is-active').data('prescription-btn');

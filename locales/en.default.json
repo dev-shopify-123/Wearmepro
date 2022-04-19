@@ -69,7 +69,7 @@
       "post_error": "Oops, sorry. We were unable to submit your inquiry. Please correct the following and submit again:",
       "post_field_error_html": "The <strong>{{ field }}<\/strong> {{ error }}",
       "send": "Send Message",
-      "error_heading": "Please adjust the you’re almost done!"
+      "error_heading": "Please adjust the following."
     }
   },
   "blogs": {

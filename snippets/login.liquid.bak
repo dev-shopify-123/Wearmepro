@@ -58,21 +58,17 @@
                             placeholder="{{ 'customer.register.password' | t }}"
                             {%- if form.errors contains 'password' -%}
                             aria-invalid="true"
-                            aria-describedby="{{ formId }}-password-error" 
+                            aria-describedby="{{ formId }}-password-error"
                             {%- endif -%}>
-                            <small>*Passwords need to have 8 characters, one uppercase letter, one lowercase letter</small>
                           </div>
-                         
-                        
-
                             <button type="submit" class="btn btn-new btn--color-secondary uppercase ff--heading fw--bold ls06">
                               {{ 'customer.register.submit' | t }}
                             </button>
     
                             <a href="{{ routes.account_login_url }}" class="btn btn-new btn-border">SIGN IN</a>
               
-                            
-                            
+            
+            
               {% endform %}
             
               {% endif %}

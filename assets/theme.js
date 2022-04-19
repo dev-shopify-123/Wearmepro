@@ -2496,9 +2496,9 @@
                                 hasDiscount = true;
                             }
                             var srcset = imageUrlToSrcset(defaultProducts[i].image);
-                            let productLink = `${location.origin}/products/${defaultProducts[i].handle}`;
+                            let productLink = `${location.origin}${defaultProducts[i].url}`.replace(/-1/g,'');
                             if(isFreeCase) {
-                                productLink = `${location.origin}/collections/accessories/products/branded-wmp-zipper-case`;
+                                // productLink = `${location.origin}/collections/accessories/products/branded-wmp-zipper-case`;                                
                                 lineItemEl.find('.js-cart-line-item-image').wrap( `<a href="${productLink}" onclick="window.open(this.href, '_blank')"></a>` );
                             } else {
                             lineItemEl.find('.js-cart-line-item-image').wrap( `<a href="${productLink}" onclick="window.open(this.href, '_blank')"></a>` )
