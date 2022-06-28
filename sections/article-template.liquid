@@ -8,7 +8,7 @@
 <!-- sections/article-template.liquid -->
 <section data-section-id="{{ section.id }}"
          data-section-type="article">
-  <header class="article__header article-header measure--wide px2 my5 md-dn--mb4 mx--auto">
+  {% comment %} <header class="article__header article-header measure--wide px2 my5 md-dn--mb4 mx--auto">
     <div class="article-header__date">
       <time class="article-header-date p2 aspect-ratio-box">
         <div class="f2 lh--reset">{{ article.published_at | date: "%d" }}</div>
@@ -30,9 +30,24 @@
         </a>
       </div>
     </div>
-  </header>
+  </header> {% endcomment %}
+  
+  <div class="article_banner">
+    {% if article.image != blank %}
+      <img src="{{article.image | img_url: '3000x'}}" alt="{{article.image.alt}}">
+    {% else %}
+      <img src="{{section.settings.banner_image | img_url: '3000x'}}" alt="{{section.settings.banner_imange.alt}}">
+    {% endif %}
+    <div class="overlay_text">
+      <a href="{{blog.url}}">{{blog.title}}</a>
+      <div class="title">{{article.title}}</div>
+      <div class="date"> {{ article.published_at | date: "%B %d, %Y" }}</div>
+    </div>
+  </div>
   <main class="article__content rte rte--article measure--wide px2 mx--auto">
+    <div class="article_contents">
     {{ article.content }}
+    </div>
   </main>
   <div class="article__comments measure--wide px2 mx--auto">
     <h2 class="f3 text-center uppercase">{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</h2>
@@ -165,7 +180,13 @@
       align-items: center;
     }
   }
-
+  section {
+    padding: 0 !important;
+  }
+  
+  .breadcrumbs-container {
+    display: none;
+  }
   .article-header-date {
     display: block;
     background-color: var(--color-primary-accent);
@@ -217,3 +238,17 @@
     margin-right: .5em;
   }
 </style>
+
+{% schema %}
+  {
+    "name": "Article template",
+    "class": "article-template",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Default banner image"
+      }
+    ]
+  }
+{% endschema %}

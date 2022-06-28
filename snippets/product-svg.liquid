@@ -1,8 +1,61 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
 <div class="product-section-tabs__dimensions wmp-dimensions" data-product-dimensions>
-    <div class="wmp-dimensions-front">
-        {% render 'product-dimensions-front' %}
-    </div>
-    <div class="wmp-dimensions-side">
-        {% render 'product-dimensions-side' %}
-    </div>
+    
+   
+   
+   
+    
+        {% if current_variant.sku contains '1023' %}
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1023' %}
+            </div>            
+        {% elsif  current_variant.sku contains '1024' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1024' %}
+            </div>
+        {% elsif  current_variant.sku contains '1031' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1031' %} 
+            </div>
+        {% elsif  current_variant.sku contains '1031' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1031' %}
+            </div>
+        {% elsif  current_variant.sku contains '1036' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1036' %}
+            </div>
+        {% elsif  current_variant.sku contains '1037' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1037' %}
+            </div>
+        {% elsif  current_variant.sku contains '1039' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-1039' %}
+            </div>
+        {% elsif  current_variant.sku contains 'Avi002' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-Avi002' %}
+            </div> 
+        {% elsif  current_variant.sku contains 'Avi005' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-Avi005' %}
+            </div> 
+        {% elsif  current_variant.sku contains 'Avi006' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-Avi006' %}
+            </div>
+        {% elsif  current_variant.sku contains 'PoL019' %}                    
+            <div class="product-dimensions-one-img">
+                {% render 'product-dimensions-PoL019' %}
+            </div>    
+        {% else %}        
+            <div class="wmp-dimensions-front">
+                {% render 'product-dimensions-front' %}
+            </div>
+            <div class="wmp-dimensions-side">
+                {% render 'product-dimensions-side' %}
+            </div>            
+        {% endif %}    
+    
 </div>

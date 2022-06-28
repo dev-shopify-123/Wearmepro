@@ -619,8 +619,9 @@ a:active {
   text-decoration: none;
 }
 
-.rte a,
-.rte a:link,
+/* .rte a, */
+/* .rte a:link, */
+.rte a {padding: 0 5px;}
 .rte a:visited,
 .rte a:hover,
 .rte a:focus,
@@ -1105,7 +1106,7 @@ select {
 }
 @media (max-width: 580px) {
   .product-listing {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: var(--space-2);
     grid-row-gap: var(--space-1);
@@ -1115,14 +1116,31 @@ select {
       "fool-col fool-col"
       ". ."
       ". ."
-      ". .";
+      ". ."; */
+      display: flex;
+      flex-wrap: wrap;
+      grid-template-columns: none;
+    grid-column-gap: inherit;
+    grid-row-gap: inherit;
+    justify-content: space-between;
+  }
+ 
+  /* .product-grid-item.grid-item-img {
+    grid-area: fool-col;
+  } */
+
+  .product-grid-item {
+    width: calc(50% - 6px);
   }
   .product-grid-item.grid-item-img {
-    grid-area: fool-col;
+    width: 100%;
   }
  
   .product-grid-item.grid-item-img img {
     position: static;
+  }
+  .product-grid-item.grid-item-img .btn-img {
+    width: 90%;
   }
 }
 .product-grid-item.grid-item-img .btn-img {
@@ -1186,6 +1204,23 @@ select {
 }
 .product-listing .grid-item-img.active  {
   display: block;
+}
+
+.product-listing .descto-grid-img.active  {
+  display: block; 
+}
+
+.product-listing .mob-grid-img.active  {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .product-listing .mob-grid-img.active  {
+    display: block;
+  }
+  .product-listing .descto-grid-img.active  {
+    display: none;
+  }
 }
 
 .product-grid-item__info {
@@ -2209,7 +2244,7 @@ input.search-component-input[type="search"]::-webkit-search-results-decoration {
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  top: calc(100% - 51px);
+  top: calc(100% - 18px);
   /* left: calc(calc(100vw - 90vw) / 2); */
 }
 
@@ -5797,7 +5832,7 @@ a.mobile-nav-link:focus a.mobile-nav-link:active a.mobile-nav-link:hover {
   
 }
 .new-banner img {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -6677,8 +6712,11 @@ padding: 12px 0 !important;
 .user svg {
   width: 20px;
 }
+.user svg path {
+  fill: var(--color-icon-user);
+}
 .user:hover svg path {
-  fill: #93b2aa;
+  fill: var(--color-icon-user-hover);
 }
 .user .holder-user {
   position: absolute;
@@ -6912,7 +6950,7 @@ font-weight: 600;
 .holder-account .holder-nav ul {
   list-style: none;
   margin: 0;
-  padding: 20px 0 0;
+  /* padding: 20px 0 0; */
   font-size: 24px;
 }
 .holder-account .holder-nav ul li {
@@ -7214,6 +7252,9 @@ font-weight: 600;
   display: block;
   overflow: hidden;
   border-radius: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 0fr 1fr;
 }
 #loyaltylion  .lion-rules-list .lion-rule-item__icon {
   width: 80px;
@@ -7245,6 +7286,11 @@ font-weight: 600;
 #loyaltylion  .lion-rules-list  .lion-rule-item__icon-wrap {
   float: left;
   margin: 0 20px 0 0;
+  grid-row-start: 1;
+   grid-column-start: 1;
+
+   grid-row-end: 3;
+   grid-column-end: 2;
 }
 /* #loyaltylion  .lion-rules-list .lion-rule-item__icon {
   background-color: transparent;
@@ -7536,6 +7582,10 @@ font-weight: 600;
   }
   #loyaltylion .lion-rules-list .lion-rule-item__title {
     font-size: 12px;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: 3;
+    grid-column-end: 3;
   }
   #loyaltylion .lion-rules-list .lion-action-button.lion-action-button--completed span:before {
     width: 40px;
@@ -7570,12 +7620,12 @@ font-weight: 600;
 }
 @media screen and (max-width: 1024px) {
   
-  .user svg path { 
+  /* .user svg path { 
     fill: #fff;
   }
   .user:hover svg path {
     fill: #7dcfb6;
-  }
+  } */
   .user .holder-user {
     right: -5px;
     left: auto;
@@ -7665,6 +7715,10 @@ font-weight: 600;
   }
   #loyaltylion .lion-rules-list .lion-rule-item__points {
     font-size: 14px;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 2;
+    grid-column-end: 3;
   }
   #loyaltylion .lion-rules-list .lion-rule-item__title {
     font-size: 12px;
@@ -7792,6 +7846,12 @@ font-weight: 600;
     border: #000 solid 1px;
     padding: 0 15px;
     border-top: none;
+  }
+  .holder-account .holder-nav ul + ul {
+    top: 240px;
+  }
+  .holder-account .holder-nav ul li.out-link {
+    padding: 3px 0;
   }
   
   .rewards {
@@ -7934,5 +7994,27 @@ font-weight: 600;
   }
   #loyaltylion .lion-rules-list .lion-rule-item__title {
     text-align: center;
+  }
+}
+#loyaltylion .lion-rules-list .lion-action-button.lion-action-button--completed span {
+  text-indent: 0;
+}
+.product-dimensions-one-img {
+  width: 100% !important;
+  margin-left: 50px; 
+  background: none !important;
+}
+.product-dimensions-one-img svg {
+  width: 100%; 
+  height: auto;
+}
+@media screen and (min-width: 767px) {
+  .product-dimensions-one-img svg {
+    width: 100%; 
+    height: auto;    
+      margin: 0 auto;
+      display: block;
+      max-width: 400px;
+    
   }
 }

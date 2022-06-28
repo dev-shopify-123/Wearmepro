@@ -74,10 +74,11 @@
     {% render 'critical-styles' %}
 
     {% render 'css-settings' %}
-	{% comment %}
+{% comment %}
       <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}" >
-    {% endcomment %}
+    	 {% endcomment %}
     {% include 'theme-min-css' %}
+   
     <link href="{{ 'custom.scss.css' | asset_url }}" rel="stylesheet">
 
     <!-- scripts -->
@@ -389,17 +390,7 @@
   <script src="{{ 'theme__blog.js' | asset_url }}" defer="defer"></script>
 {% endif %}
 <!-- END Include scripts -->
-<script type="text/javascript">
-    var AddShoppersWidgetOptions = { 'loadCss': false };
-    (!function(){
-        var t=document.createElement("script");
-        t.type="text/javascript",
-        t.async=!0,
-        t.id="AddShoppers",
-        t.src="https://shop.pe/widget/widget_async.js#6176fb6f0ff4c3046555f758",
-        document.getElementsByTagName("head")[0].appendChild(t)
-    }());
-</script>
+
   
       <script async type="text/javascript"
  src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=LBerbd"></script>

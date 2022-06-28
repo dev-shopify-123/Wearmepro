@@ -1,0 +1,96 @@
+{% capture text_content %}
+    <div class="text_content">
+        <div class="text_items">
+            {% if section.settings.subheading != blank %}
+                <div class="subheading">{{ section.settings.subheading }}</div>
+            {% endif %}
+            {% if section.settings.heading != blank %}
+                <div class="heading">{{ section.settings.heading }}</div>
+            {% endif %}
+            {% if section.settings.text != blank %}
+                <div class="text">{{ section.settings.text }}</div>
+            {% endif %}
+            {% if section.settings.show_button == true %}
+                <div class="buttons">
+                    <a href="/account/register">Sign up</a>
+                    <a href="/account/login">Sign in</a>
+                </div>
+                
+            {% endif %}
+        </div>
+    </div>
+{% endcapture %}
+{% capture image_content %}
+    <div class="image_content1">
+        <img src="{{section.settings.image | img_url: '3000x'}}" alt="{{section.settings.image.alt}}">
+    </div>
+{% endcapture %}
+
+<div class="referral_page">
+    {% if section.settings.image_position == 'right' %}
+        {{text_content}} {{image_content}}
+    {% else %}
+        {{image_content}} {{text_content}}
+    {% endif %}
+</div>
+<style>
+    .breadcrumbs-container {
+        display: none;
+    }
+    .referral_page {
+        border-bottom: solid white;
+    }
+</style>
+{% schema %}
+    {
+        "name": "Referral page",
+        "class": "referral-page",
+        "settings": [
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Subheading"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "text",
+                "label": "Text",
+                "default": "<p></p>"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "select",
+                "id": "image_position",
+                "label": "Image position",
+                "options": [
+                    {
+                        "group": "position",
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "group": "position",
+                        "value": "right",
+                        "label": "Right"
+                    }
+                ],
+                "default": "right"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_button",
+                "label": "Show buttons",
+                "default": true
+            }
+        ]
+    }
+{% endschema %}

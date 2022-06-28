@@ -1,182 +1,181 @@
 <div class="mobile-header-and-nav-wrapper"
-     data-section-id="{{ section.id }}"
-     data-section-type="mobile-header-and-nav">
-  <div class="mobile-header-and-nav">
-    <div class="mobile-header-and-nav__item">
-      <button class="btn--plain btn--menu ff--heading" data-mobile-menu-toggle>
-        <span class="material-icons custom-icon-menu btn--menu__icon"></span>
-        <span class="btn--menu__label">Menu</span>
-      </button>
-    </div>
-    {% if section.settings.logo != blank %}
-    {% assign logo_image = section.settings.logo %}
-    <div class="mobile-header-and-nav__item mobile-header-and-nav__item--logo mobile-logo-wrapper">
-      <a href="/" class="ratio-box" style="padding-top:{{ 1 | divided_by: logo_image.aspect_ratio | times: 100}}%;">
-        <img class="header-logo ratio-box-content lazyload"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-srcset="{{ logo_image | img_url: '200x' }} 1x,
-                      {{ logo_image | img_url: '275x', scale: 2 }} 2x,
-                      {{ logo_image | img_url: '350x', scale: 3 }} 3x"
-              alt="WearMe Pro">
-      </a>
-    </div>
-    {% endif %}
-    <div class="mobile-header-and-nav__item mobile-header__tools">
-      <button class="btn--plain mobile-header__icon mobile-header__icon--search" data-search-toggle>
-        <span class="material-icons custom-icon-search"></span>
-      </button>
-      <div class="user">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24.863" height="25" viewBox="0 0 24.863 25">
-          <path id="account" d="M19.112,15.381a7.5,7.5,0,1,0-9.27,0A12.493,12.493,0,0,0,2.072,25.6a1.257,1.257,0,0,0,2.5.275,9.994,9.994,0,0,1,19.863,0,1.249,1.249,0,0,0,1.249,1.112h.137a1.249,1.249,0,0,0,1.1-1.374,12.493,12.493,0,0,0-7.808-10.232Zm-4.635-.887a5,5,0,1,1,5-5A5,5,0,0,1,14.477,14.494Z" transform="translate(-2.064 -1.995)" fill="#282828"/>
-        </svg>
-        <div class="holder-user">
-          {% if customer.id == null %}
-        <a href="{{ routes.account_register_url }}" class="btn btn-new">SIGN IN / SIGN UP</a>
-        <ul>
-          <li><a href="{{ routes.account_register_url }}">Order History</a></li>
-          <li><a href="{{ routes.account_register_url }}">Track My Order</a></li>
-          <li><a href="/pages/rewards">WMP Rewards</a></li>
-        </ul>
-        {% else %}
-        <a href="{{ routes.account_login_url }}" class="btn btn-new">SIGN IN / SIGN UP</a>
-        <ul>
-          <li><a href="{{ routes.account_url }}#orders">Order History</a></li>
-          <li><a href="{{ routes.account_url }}#orders">Track My Order</a></li>          
-          <li><a href="/pages/rewards">WMP Rewards</a></li>
-          <li><a href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a></li>
-        </ul>
-        {% endif %}
-        </div>
-      </div>
-      <button class="btn--plain mobile-header__icon mobile-header__icon--cart mobile-header__icon--cart--bigger" data-cart-toggle>
-        <span class="material-icons custom-icon-shopping_basket"></span>
-        <span class="mobile-header-cart-icon__count ff--body cart-bubble">
-          {{ cart.item_count }}
-        </span>
-      </button>
-    </div>
-  </div>
-  <div class="mobile-menu-container">
-      <div class="mobile-menu-ctrl-row">
-        <button class="btn--plain btn--menu ff--heading" data-mobile-menu-toggle>
-        <span class="material-icons custom-icon-close btn--menu__icon"></span>
-          <span class="btn--menu__label">Close</span>
-        </button>
-      </div>
-      <nav class="mobile-menu__nav">
-        <ul class="mobile-nav ff--heading">
-          {% for link in linklists[section.settings.main_menu].links %}
-          <li class="mobile-nav__item {% if link.links != blank
-          or link.title == 'Women'
-          or link.title == 'Men'
-          or link.title == 'Brand'
-          or link.title == 'Community' %} has-submenu{% endif %}" {% if link.title=='Women' %}data-has-shop-submenu{%
-          endif %}>
-            <div class="mobile-nav__item__inner">
-              <a class="mobile-nav-link" href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-              {% if link.links != blank
-              or link.title == 'Women'
-              or link.title == 'Men'
-              or link.title == 'Brand'
-              or link.title == 'Community' %}
-              <button class="btn btn--plain mobile-nav-more" data-menu-more-toggle>
-              <span class="material-icons custom-icon-expand_more"></span>
-              </button>
-              {% endif %}
-            </div>
-            {% if link.links != blank
-            or link.title == 'Women'
-            or link.title == 'Men'
-            or link.title == 'Brand'
-            or link.title == 'Community' %}
-          <ul id="mobile_shop_submenu" class="mobile-nav mobile-nav__submenu ff--heading" data-menu-submenu {% if
-            link.title=='Women' or link.title=='Men' or link.title=='Brand' or link.title=='Community' %}
-                data-mobile-shop-submenu
-                {% endif %}>
-              {% if link.title == 'Women' %}
-                {% include 'mobile-menu-women' %}
-              {% elsif link.title == 'Men' %}
-                {% include 'mobile-menu-men' %}
-              {% elsif link.title == 'Brand' %}
-                {% include 'mobile-menu-brand' %}
-              {% elsif link.title == 'Community' %}
-                {% include 'mobile-menu-community' %}
-              {% else %}
-                {% for child_link in link.links %}
-                <li class="mobile-nav__item">
-                  <div class="mobile-nav__item__inner mobile-nav__item__inner--submenu">
-                    <a class="mobile-nav-link mobile-nav-link--submenu" href="{{ child_link.url }}">
-                      {{ child_link.title }}
-                    </a>
-                  </div>
-                </li>
-                {% endfor %}
-                {% if link.handle == 'help-desk' %}
-                <li class="mobile-nav__item">
-                  <div class="mobile-nav__item__inner mobile-nav__item__inner--submenu">
-                    <a class="mobile-nav-link mobile-nav-link--submenu" href="{{ routes.account_url }}">
-                      {{ 'layout.customer.account' | t }}
-                    </a>
-                  </div>
-                </li>
-                {% endif %}
-              {% endif %}
-            </ul>
-            {% endif %}
-          </li>
-          {% endfor %}
-          <li class="mobile-nav__account ff--heading">
-            <a class="mobile-nav-link mobile-nav-link--account" href="{{ routes.account_url }}">Account</a>
-          </li>
-        </ul>
-      </nav>
-  </div>
-  {% include 'search-component', search_component_extra_class: 'search-component-container--mobile' %}
+  data-section-id="{{ section.id }}"
+  data-section-type="mobile-header-and-nav">
+<div class="mobile-header-and-nav">
+ <div class="mobile-header-and-nav__item">
+   <button class="btn--plain btn--menu ff--heading" data-mobile-menu-toggle>
+     <span class="material-icons custom-icon-menu btn--menu__icon"></span>
+     <span class="btn--menu__label">Menu</span>
+   </button>
+ </div>
+ {% if section.settings.logo != blank %}
+ {% assign logo_image = section.settings.logo %}
+ <div class="mobile-header-and-nav__item mobile-header-and-nav__item--logo mobile-logo-wrapper">
+   <a href="/" class="ratio-box" style="padding-top:{{ 1 | divided_by: logo_image.aspect_ratio | times: 100}}%;">
+     <img class="header-logo ratio-box-content lazyload"
+       src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" data-srcset="{{ logo_image | img_url: '200x' }} 1x,
+                   {{ logo_image | img_url: '275x', scale: 2 }} 2x,
+                   {{ logo_image | img_url: '350x', scale: 3 }} 3x"
+           alt="WearMe Pro">
+   </a>
+ </div>
+ {% endif %}
+ <div class="mobile-header-and-nav__item mobile-header__tools">
+   <button class="btn--plain mobile-header__icon mobile-header__icon--search" data-search-toggle>
+     <span class="material-icons custom-icon-search"></span>
+   </button>
+   <div class="user">
+     <svg xmlns="http://www.w3.org/2000/svg" width="24.863" height="25" viewBox="0 0 24.863 25">
+       <path id="account" d="M19.112,15.381a7.5,7.5,0,1,0-9.27,0A12.493,12.493,0,0,0,2.072,25.6a1.257,1.257,0,0,0,2.5.275,9.994,9.994,0,0,1,19.863,0,1.249,1.249,0,0,0,1.249,1.112h.137a1.249,1.249,0,0,0,1.1-1.374,12.493,12.493,0,0,0-7.808-10.232Zm-4.635-.887a5,5,0,1,1,5-5A5,5,0,0,1,14.477,14.494Z" transform="translate(-2.064 -1.995)" fill="#282828"/>
+     </svg>
+     <div class="holder-user">
+       {% if customer.id == null %}
+     <a href="{{ routes.account_register_url }}" class="btn btn-new">SIGN IN / SIGN UP</a>
+     <ul>
+       <li><a href="{{ routes.account_register_url }}">Order History</a></li>
+       <li><a href="{{ routes.account_register_url }}">Track My Order</a></li>
+       <li><a href="/pages/rewards">WMP Rewards</a></li>
+     </ul>
+     {% else %}
+     <a href="{{ routes.account_login_url }}" class="btn btn-new">SIGN IN / SIGN UP</a>
+     <ul>
+       <li><a href="{{ routes.account_url }}#orders">Order History</a></li>
+       <li><a href="{{ routes.account_url }}#orders">Track My Order</a></li>          
+       <li><a href="/pages/rewards">WMP Rewards</a></li>
+       <li><a href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a></li>
+     </ul>
+     {% endif %}
+     </div>
+   </div>
+   <button class="btn--plain mobile-header__icon mobile-header__icon--cart mobile-header__icon--cart--bigger" data-cart-toggle>
+     <span class="material-icons custom-icon-shopping_basket"></span>
+     <span class="mobile-header-cart-icon__count ff--body cart-bubble">
+       {{ cart.item_count }}
+     </span>
+   </button>
+ </div>
+</div>
+<div class="mobile-menu-container">
+   <div class="mobile-menu-ctrl-row">
+     <button class="btn--plain btn--menu ff--heading" data-mobile-menu-toggle>
+     <span class="material-icons custom-icon-close btn--menu__icon"></span>
+       <span class="btn--menu__label">Close</span>
+     </button>
+   </div>
+   <nav class="mobile-menu__nav">
+     <ul class="mobile-nav ff--heading">
+       {% for link in linklists[section.settings.main_menu].links %}
+       <li class="mobile-nav__item {% if link.links != blank
+       or link.title == 'Women'
+       or link.title == 'Men'
+       or link.title == 'Brand'
+       or link.title == 'Community' %} has-submenu{% endif %}">
+         <div class="mobile-nav__item__inner">
+           <a class="mobile-nav-link" href="{{ link.url }}">
+             {{ link.title }}
+           </a>
+           {% if link.links != blank
+           or link.title == 'Women'
+           or link.title == 'Men'
+           or link.title == 'Brand'
+           or link.title == 'Community' %}
+           <button class="btn btn--plain mobile-nav-more" data-menu-more-toggle>
+           <span class="material-icons custom-icon-expand_more"></span>
+           </button>
+           {% endif %}
+         </div>
+         {% if link.links != blank
+         or link.title == 'Women'
+         or link.title == 'Men'
+         or link.title == 'Brand'
+         or link.title == 'Community' %}
+       <ul id="" class="mobile-nav mobile-nav__submenu ff--heading" data-menu-submenu {% if
+         link.title=='Women' or link.title=='Men' or link.title=='Brand' or link.title=='Community' %}
+             data-mobile-shop-submenu
+             {% endif %}>
+           {% if link.title == 'Women' %}
+             {% include 'mobile-menu-women' %}
+           {% elsif link.title == 'Men' %}
+             {% include 'mobile-menu-men' %}
+           {% elsif link.title == 'Brand' %}
+             {% include 'mobile-menu-brand' %}
+           {% elsif link.title == 'Community' %}
+             {% include 'mobile-menu-community' %}
+           {% else %}
+             {% for child_link in link.links %}
+             <li class="mobile-nav__item">
+               <div class="mobile-nav__item__inner mobile-nav__item__inner--submenu">
+                 <a class="mobile-nav-link mobile-nav-link--submenu" href="{{ child_link.url }}">
+                   {{ child_link.title }}
+                 </a>
+               </div>
+             </li>
+             {% endfor %}
+             {% if link.handle == 'help-desk' %}
+             <li class="mobile-nav__item">
+               <div class="mobile-nav__item__inner mobile-nav__item__inner--submenu">
+                 <a class="mobile-nav-link mobile-nav-link--submenu" href="{{ routes.account_url }}">
+                   {{ 'layout.customer.account' | t }}
+                 </a>
+               </div>
+             </li>
+             {% endif %}
+           {% endif %}
+         </ul>
+         {% endif %}
+       </li>
+       {% endfor %}
+       <li class="mobile-nav__account ff--heading">
+         <a class="mobile-nav-link mobile-nav-link--account" href="{{ routes.account_url }}">Account</a>
+       </li>
+     </ul>
+   </nav>
+</div>
+{% include 'search-component', search_component_extra_class: 'search-component-container--mobile' %}
 </div>
 
 {% if section.settings.sticky_nav %}
 <style>
-  .mobile-header-and-nav-container {
-    position: -webkit-sticky;
-    position: sticky;
-    border-top: #fff solid 2px;
-    z-index: 82;
-    top: 38px;
-    width: 100%;
-  }
+.mobile-header-and-nav-container {
+ position: -webkit-sticky;
+ position: sticky;
+ border-top: #fff solid 2px;
+ z-index: 82;
+ top: 38px;
+ width: 100%;
+}
 </style>
 {% endif %}
 
 {% schema %}
 {
-  "name": "Mobile Navigation",
-  "class": "mobile-header-and-nav-container",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Logo"
-    },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Mobile Logo"
-    },
-    {
-      "type": "link_list",
-      "id": "main_menu",
-      "label": "Menu"
-    },
-    {
-      "type": "header",
-      "content": "Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "sticky_nav",
-      "label": "Sticky navigation",
-      "default": true
-    }
-  ]
+"name": "Mobile Navigation",
+"class": "mobile-header-and-nav-container",
+"settings": [
+ {
+   "type": "header",
+   "content": "Logo"
+ },
+ {
+   "type": "image_picker",
+   "id": "logo",
+   "label": "Mobile Logo"
+ },
+ {
+   "type": "link_list",
+   "id": "main_menu",
+   "label": "Menu"
+ },
+ {
+   "type": "header",
+   "content": "Settings"
+ },
+ {
+   "type": "checkbox",
+   "id": "sticky_nav",
+   "label": "Sticky navigation",
+   "default": true
+ }
+]
 }
 {% endschema %}

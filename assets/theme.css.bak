@@ -5803,7 +5803,7 @@ a.mobile-nav-link:focus a.mobile-nav-link:active a.mobile-nav-link:hover {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 .new-banner figure {
   margin: 0;
@@ -5873,7 +5873,7 @@ a.mobile-nav-link:focus a.mobile-nav-link:active a.mobile-nav-link:hover {
   }
   .new-banner {
     position: relative;
-  
+    
   }
   .new-banner .holder-btn {
     display: flex;
@@ -6194,7 +6194,7 @@ color: #ff4500;
 
 .product-grid-item .btn,
 .btn-new {
-  background-image: linear-gradient(-180deg #93B2AA 54%,#93B2AA 97%);
+  background-image: linear-gradient(-180deg,#93B2AA 54%,#93B2AA 97%);
   transition: .2s ease;
   border-radius: 0;
   background-color: transparent!important;
@@ -6203,6 +6203,7 @@ color: #ff4500;
   outline: none; 
   -webkit-tap-highlight-color: rgba(0,0,0,0); 
 }
+
 .prescription-btn.btn-new  {
   text-transform: uppercase;
 font-size: 16px !important;
@@ -6225,13 +6226,27 @@ padding: 12px 0 !important;
 }
 .product-grid-item .btn:hover,
 .btn-new:hover {
-  background-image: linear-gradient(-180deg,#7dcfb6 54%,rgba(125,207,182,.25) 97%);
+  background-image: linear-gradient(-180deg,#93b2aa 54%,rgba(125,207,182,.25) 97%);
+}
+.user .btn-new,
+.holder-btn-program .btn-new,
+.banner-login .btn-new:not(.btn-border)  {
+  background-image: linear-gradient(-180deg,#93b2aa 54%,#93b2aa 97%);
+}
+.banner-login .btn-new.btn.btn-border {
+  border: #93b2aa solid 1px;
+    color: #93b2aa;
+}
+.user .btn-new:hover,
+.holder-btn-program .btn-new:hover,
+.banner-login .btn-new:not(.btn-border):hover  {
+  background-image: linear-gradient(-180deg,#93b2aa 54%,rgba(125,207,182,.25) 97%);
 }
 .product-grid-item .btn:active,
 .product-grid-item .btn:focus,
 .btn-new:active,
 .btn-new:focus {
-  background-image: linear-gradient(-180deg,#93b2aa 54%,#93b2aa 100%);
+  background-image: linear-gradient(-180deg,#2c9378 54%,#2c9378 100%);
   animation: gradient 0.2s ease;
   box-shadow: 0px 5px 10px #999;
 
@@ -6269,8 +6284,8 @@ padding: 12px 0 !important;
 .btn::selection,
 .btn::-moz-selection,
 .btn::-webkit-selection {
-    background:#2c9378;
-    border-color: #2c9378;
+    background:#93B2AA;
+    border-color: #93B2AA;
     color:#fff;
 }
 .btn-new [data-loader] {
@@ -6452,7 +6467,7 @@ padding: 12px 0 !important;
   margin: 0 0 40px;
 }
 .banner-program h1 em{
-  color: #FFD361;
+  color: #b47250;
   font-size: 200px;
   font-family: WFHavanaSunset;  
   font-weight: 400;
@@ -6512,7 +6527,7 @@ padding: 12px 0 !important;
   margin: 0;
 }
 .holder-btn-program span {
-  color: #FFD361;
+  color: #d7c1aa;
   font-weight: 900;
 }
 .holder-btn-program small {
@@ -6596,7 +6611,7 @@ padding: 12px 0 !important;
   margin: 0 0 40px;
 }
 .rewards .box {
-  background: #FFD361;
+  background: #d7c1aa;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -6662,8 +6677,11 @@ padding: 12px 0 !important;
 .user svg {
   width: 20px;
 }
+.user svg path {
+  fill: var(--color-icon-user);
+}
 .user:hover svg path {
-  fill: #7dcfb6;
+  fill: var(--color-icon-user-hover);
 }
 .user .holder-user {
   position: absolute;
@@ -6700,7 +6718,7 @@ padding: 12px 0 !important;
   color: #000;
 }
 .user ul li a:hover {
-  color: #6FE2C2;
+  color: #93b2aa;
 } 
 
 /*end loyalty-program*/
@@ -6802,7 +6820,7 @@ font-weight: 600;
   .banner-login .holder-svg span {
     font-size: 26px;
     
-    color: #FFD361;
+    color: #d7c1aa;
     display: block;
   }
   .banner-login .list {
@@ -6970,7 +6988,7 @@ font-weight: 600;
 }
 .holder-account .holder-bar .bar span {
   position: absolute;
-  background: #FFD361;
+  background: #d7c1aa;
   height: 100%;
   left: 0;
   top: 0;
@@ -7007,7 +7025,7 @@ font-weight: 600;
   margin: 0;
 }
 .holder-account .holder-points-sum span {
-  color: #FFD361;
+  color: #d7c1aa;
   font-size: 30px;
   font-weight: 700;
 }
@@ -7239,7 +7257,7 @@ font-weight: 600;
   background-color: #000;
 }
 #loyaltylion .lion-rule-item__limit-reached:before {
-  background-color: #66e1be;
+  background-color: #93b2aa;
 }
 #loyaltylion  .lion-rules-list .lion-rule-item__actions {
   margin: 0;
@@ -7251,8 +7269,8 @@ font-weight: 600;
 #loyaltylion  .lion-rules-list .lion-action-button {
   background: none;
   border: none;
-  color: #66E1BE;
-  border: #66E1BE solid 1px;
+  color: #93b2aa;
+  border: #93b2aa solid 1px;
   font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
@@ -7267,7 +7285,7 @@ font-weight: 600;
   text-indent: -9999px;
 }
 #loyaltylion  .lion-rules-list .lion-action-button.lion-action-button--completed span:before {
-  background-color: #66E1BE;
+  background-color: #93b2aa;
   width: 50px;
     height: 50px;
 }
@@ -7555,12 +7573,12 @@ font-weight: 600;
 }
 @media screen and (max-width: 1024px) {
   
-  .user svg path { 
+  /* .user svg path { 
     fill: #fff;
   }
   .user:hover svg path {
     fill: #7dcfb6;
-  }
+  } */
   .user .holder-user {
     right: -5px;
     left: auto;

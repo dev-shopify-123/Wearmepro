@@ -1,10 +1,10 @@
-{% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender,Lens Type' %}
+{% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender,Lens Type,Head' %}
 {% if collection.handle contains 'men' or collection.handle contains 'women' %}
-  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Lens Type' %}
+  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Lens Type,Head' %}
 {% elsif collection.handle contains 'polarized' %}
-  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender' %}
+  {% assign group_array_string = 'Frame Color,Lens Color,Frame Material,Frame Style,Gender,Head' %}
 {% elsif collection.handle contains 'clear' %}
-  {% assign group_array_string = 'Frame Color,Frame Material,Frame Style,Gender' %}
+  {% assign group_array_string = 'Frame Color,Frame Material,Frame Style,Gender,Head' %}
 {% endif %}
 
 {% assign material_image_metal = 'fm-metal-partial.jpg' | asset_img_url: '1x1' | replace: '1x1.', '{width}x{height}.' %}

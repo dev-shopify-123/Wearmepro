@@ -171,7 +171,7 @@
       {% for product in collection.products %}
 
       {% if collection.handle == 'mens-blue-light' and forloop.index == settings.blue_light_men_number and settings.blue_light_men_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.blue_light_men_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.blue_light_men_link }}">
         <img id="{{ img_id }}"
@@ -183,14 +183,49 @@
                 data-sizes="auto"
                 data-image>
                 {% unless settings.blue_light_men_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_men_btn_text }}</div> 
+                 <div 
+                 style="
+                 background-color: {{settings.blue_light_men_btn_color}};
+                 color: {{settings.blue_light_men_btn_text_color}};
+                 {% if settings.blue_light_men_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_men_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if collection.handle == 'mens-blue-light' and forloop.index == settings.blue_light_men_number_mob and settings.blue_light_men_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.blue_light_men_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.blue_light_men_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+                {% unless settings.blue_light_men_btn_text == empty %}              
+                 <div  
+                 style="
+                 background-color: {{settings.blue_light_men_btn_color}};
+                 color: {{settings.blue_light_men_btn_text_color}};
+                 {% if settings.blue_light_men_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_men_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
     {% endif %}
 
   {% if collection.handle == 'womens-blue-light-glasses' and forloop.index == settings.blue_light_number and settings.blue_light_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.blue_light_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.blue_light_link }}">
         <img id="{{ img_id }}"
@@ -203,14 +238,49 @@
                 data-image>
 
                 {% unless settings.blue_light_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_btn_text }}</div> 
+                 <div  
+                 style="
+                 background-color: {{settings.blue_light_btn_color}};
+                 color: {{settings.blue_light_btn_text_color}};
+                 {% if settings.blue_light_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+    {% if collection.handle == 'womens-blue-light-glasses' and forloop.index == settings.blue_light_number_mob and settings.blue_light_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.blue_light_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.blue_light_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+
+                {% unless settings.blue_light_btn_text == empty %}              
+                 <div
+                 style="
+                 background-color: {{settings.blue_light_btn_color}};
+                 color: {{settings.blue_light_btn_text_color}};
+                 {% if settings.blue_light_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.blue_light_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
     {% endif %}
 
   {% if collection.handle == 'mens-new-arrivals' and forloop.index == settings.men_new_arrivals_number and settings.men_new_arrivals_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.men_new_arrivals_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.men_new_arrivals_link }}">
         <img id="{{ img_id }}"
@@ -222,14 +292,49 @@
                 data-sizes="auto"
                 data-image>
                 {% unless settings.men_new_arrivals_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_new_arrivals_btn_text }}</div> 
+                 <div
+                 style="
+                 background-color: {{settings.men_new_arrivals_btn_color}};
+                 color: {{settings.men_new_arrivals_btn_text_color}};
+                 {% if settings.men_new_arrivals_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_new_arrivals_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if collection.handle == 'mens-new-arrivals' and forloop.index == settings.men_new_arrivals_number_mob and settings.men_new_arrivals_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.men_new_arrivals_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.men_new_arrivals_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+                {% unless settings.men_new_arrivals_btn_text == empty %}              
+                 <div 
+                 style="
+                 background-color: {{settings.men_new_arrivals_btn_color}};
+                 color: {{settings.men_new_arrivals_btn_text_color}};
+                 {% if settings.men_new_arrivals_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_new_arrivals_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
     {% endif %}
 
   {% if collection.handle == 'womens-new-arrivals' and forloop.index == settings.new_arrivals_number and settings.new_arrivals_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.new_arrivals_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.new_arrivals_link }}">
         <img id="{{ img_id }}"
@@ -241,7 +346,42 @@
                 data-sizes="auto"
                 data-image>
                 {% unless settings.new_arrivals_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.new_arrivals_btn_text }}</div> 
+                 <div 
+                 style="
+                 background-color: {{settings.new_arrivals_btn_color}};
+                 color: {{settings.new_arrivals_btn_text_color}};
+                 {% if settings.new_arrivals_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.new_arrivals_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if collection.handle == 'womens-new-arrivals' and forloop.index == settings.new_arrivals_number_mob and settings.new_arrivals_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.new_arrivals_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.new_arrivals_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+                {% unless settings.new_arrivals_btn_text == empty %}              
+                 <div 
+                 style="
+                 background-color: {{settings.new_arrivals_btn_color}};
+                 color: {{settings.new_arrivals_btn_text_color}};
+                 {% if settings.new_arrivals_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.new_arrivals_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
@@ -249,7 +389,7 @@
 
 
   {% if collection.handle == 'men-sunglasses' and forloop.index == settings.men_sunglasses_number and settings.men_sunglasses_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.men_sunglasses_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.men_sunglasses_link }}">
         <img id="{{ img_id }}"
@@ -262,7 +402,43 @@
                 data-image>
 
                 {% unless settings.men_sunglasses_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_sunglasses_btn_text }}</div> 
+                 <div 
+                 style="
+                 background-color: {{settings.men_sunglasses_btn_color}};
+                 color: {{settings.men_sunglasses_btn_text_color}};
+                 {% if settings.men_sunglasses_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_sunglasses_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if collection.handle == 'men-sunglasses' and forloop.index == settings.men_sunglasses_number_mob and settings.men_sunglasses_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.men_sunglasses_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.men_sunglasses_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+
+                {% unless settings.men_sunglasses_btn_text == empty %}              
+                 <div 
+                 style="
+                 background-color: {{settings.men_sunglasses_btn_color}};
+                 color: {{settings.men_sunglasses_btn_text_color}};
+                 {% if settings.men_sunglasses_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.men_sunglasses_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
@@ -270,7 +446,7 @@
 
 
     {% if collection.handle == 'womens-sunglasses' and forloop.index == settings.women_sunglasses_number and settings.women_sunglasses_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.women_sunglasses_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.women_sunglasses_link }}">
         <img id="{{ img_id }}"
@@ -283,16 +459,49 @@
                 data-image>
 
                 {% unless settings.women_sunglasses_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.women_sunglasses_btn_text }}</div> 
+                 <div 
+                 style="
+                 background-color: {{settings.women_sunglasses_btn_color}};
+                 color: {{settings.women_sunglasses_btn_text_color}};
+                 {% if settings.women_sunglasses_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.women_sunglasses_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+    {% if collection.handle == 'womens-sunglasses' and forloop.index == settings.women_sunglasses_number_mob and settings.women_sunglasses_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.women_sunglasses_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.women_sunglasses_link }}">
+        <img id="{{ img_id }}"
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                class="responsive-image__img lazyload case-class"
+                alt="{{ image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-sizes="auto"
+                data-image>
+
+                {% unless settings.women_sunglasses_btn_text == empty %}              
+                 <div 
+                 style="
+                 background-color: {{settings.women_sunglasses_btn_color}};
+                 color: {{settings.women_sunglasses_btn_text_color}};
+                 {% if settings.women_sunglasses_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.women_sunglasses_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
     {% endif %}
 
-
-
     {% if collection.handle == 'rx-frames' and forloop.index == settings.rx_women_image_number and settings.rx_women_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
             {%- assign img_url = settings.rx_women_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.rx_women_image_link }}">
         <img id="{{ img_id }}"
@@ -304,7 +513,43 @@
                  data-sizes="auto"
                  data-image>
                  {% unless settings.rx_women_image_btn_text == empty %}
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.rx_women_image_btn_text }}</div> 
+                 <div 
+                 style="
+                 background-color: {{settings.rx_women_image_btn_color}};
+                 color: {{settings.rx_women_image_btn_text_color}};
+                 {% if settings.rx_women_image_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.rx_women_image_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+        
+      </div>
+    {% endif %}
+
+    {% if collection.handle == 'rx-frames' and forloop.index == settings.rx_women_image_number_mob and settings.rx_women_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+            {%- assign img_url = settings.rx_women_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.rx_women_image_link }}">
+        <img id="{{ img_id }}"
+                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                 class="responsive-image__img lazyload case-class"
+                 alt="{{ image.alt }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-sizes="auto"
+                 data-image>
+                 {% unless settings.rx_women_image_btn_text == empty %}
+                 <div 
+                 style="
+                 background-color: {{settings.rx_women_image_btn_color}};
+                 color: {{settings.rx_women_image_btn_text_color}};
+                 {% if settings.rx_women_image_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.rx_women_image_btn_text }}</div> 
                  {% endunless %}
         </a>
         
@@ -313,7 +558,7 @@
 
 
     {% if collection.handle == 'active-collection' and forloop.index == settings.active_women_image_number and settings.active_women_mage %}
-      <div class="product-grid-item grid-item-img">
+      <div class="product-grid-item grid-item-img descto-grid-img">
         {%- assign img_url = settings.active_women_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
         <a href="{{ settings.active_women_image_link }}">
           <img id="{{ img_id }}"
@@ -325,7 +570,42 @@
                data-sizes="auto"
                data-image>
                {% unless settings.active_women_image_btn_text == empty %}              
-                 <div  class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.active_women_image_btn_text }}</div> 
+                 <div  
+                 style="
+                 background-color: {{settings.active_women_image_btn_color}};
+                 color: {{settings.active_women_image_btn_text_color}};
+                 {% if settings.active_women_image_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.active_women_image_btn_text }}</div> 
+                 {% endunless %}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if collection.handle == 'active-collection' and forloop.index == settings.active_women_image_number_mob and settings.active_women_mage %}
+      <div class="product-grid-item grid-item-img mob-grid-img">
+        {%- assign img_url = settings.active_women_mage | img_url: '1x1' | replace: '_1x1', '_{width}x{height}' -%}
+        <a href="{{ settings.active_women_image_link }}">
+          <img id="{{ img_id }}"
+               src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+               class="responsive-image__img lazyload case-class"
+               alt="{{ image.alt }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-sizes="auto"
+               data-image>
+               {% unless settings.active_women_image_btn_text == empty %}              
+                 <div 
+                 style="
+                 background-color: {{settings.active_women_image_btn_color}};
+                 color: {{settings.active_women_image_btn_text_color}};
+                 {% if settings.active_women_image_btn_shadow %}
+                   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                 {% endif %}
+                 "
+                 class="btn-img ff--heading fw--bold uppercase ls03 btn--color-secondary">{{ settings.active_women_image_btn_text }}</div> 
                  {% endunless %}
         </a>
       </div>
@@ -393,7 +673,7 @@
 
   {% endpaginate %}
   <div class="collection__description mt3">
-    <div class="rte f7 measure--xtra-wide mx--auto">
+    <div class="rte measure--xtra-wide mx--auto">
       {{ collection.description }}
     </div>
   </div>

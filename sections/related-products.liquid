@@ -1,26 +1,52 @@
 <!-- section/related-products.liquid -->
 {% if template != 'product.landing' %}
-<section class="related-products-container mt6 md-dn--mt5 mb4"
-         data-section-id="{{ section.id }}"
-         data-section-type="related-products">
-  {% assign pgi_media_aspect_ratio = 2.3 %}
-  <h2 class="f2 pt6 md-dn--f3 mt0 mb3 fw--bold uppercase text-left md-dn--text-center h-underline h-underline--tight--mb0">
-    {{ 'products.product.related_products' | t }}
-  </h2>
-  <div class="related-products mxn2"
-      data-enable-bis="true"
-      data-product-listing
-      data-related-products="all">
-      {% for i in (1..4) %}
-        {% assign extra_classes = 'mx2 pt1' %}
-        {% if forloop.index > 1 %}
-          {% assign extra_classes = extra_classes | append: ' md-dn--hide' %}
+  <section class="related-products-container mb4"
+           data-section-id="{{ section.id }}"
+           data-section-type="related-products">
+    {% assign pgi_media_aspect_ratio = 2.3 %}
+    <h2 class="f2 pt6 md-dn--f3 md-dn--pt0 mt0 mb3 fw--bold uppercase text-center md-dn--text-center ">
+      {{ 'products.product.related_products' | t }}
+    </h2>
+    {% assign collection_handle = "all" %}
+    {% assign collection_handles = '' %}
+      {% for tag in product.tags %}
+        {% if tag contains 'Style_' %}
+          {% assign tag_arr = tag | split: ' ' %}
+          {% assign change_tag = tag_arr[0] | append: '-' | append: tag_arr[1] | downcase %}
+          {% if collection.handle != blank %}
+            {% assign collection_handle = collection.handle | append: '/' | append: change_tag %}
+          {% else %}
+            {% assign gender = true %}
+            {% if product.tags contains "Gender_Women" or product.tags contains 'Women'  %}
+              {% assign gender = false %}
+            {% endif %}
+            {% if gender == true %}
+              {% assign collection_handle = "men-sunglasses" | append: '/' | append: change_tag %}
+            {% else %}
+              {% assign collection_handle = "womens-sunglasses" | append: '/' | append: change_tag %}
+            {% endif %}
+          {% endif %}
+          {% assign collection_handles = collection_handles | append: "&" | append: collection_handle %}
         {% endif %}
-        {% render 'product-grid-item-placeholder',
-            pgi_media_aspect_ratio: pgi_media_aspect_ratio,
-            extra_classes: extra_classes
-        %}
       {% endfor %}
-  </div>
-</section>
-{% endif %}
+  
+    
+    <div class="related-products mxn2"
+        data-enable-bis="true"
+        data-product-id= "{{product.id}}"
+        data-product-listing
+        data-collection_handles="{{collection_handles}}"
+        data-related-products="{{collection_handle}}">
+        {% for i in (1..4) %}
+          {% assign extra_classes = 'mx2 pt1' %}
+          {% if forloop.index > 1 %}
+            {% assign extra_classes = extra_classes | append: ' md-dn--hide' %}
+          {% endif %}
+          {% render 'product-grid-item-placeholder',
+              pgi_media_aspect_ratio: pgi_media_aspect_ratio,
+              extra_classes: extra_classes
+          %}
+        {% endfor %}
+    </div>
+  </section>
+  {% endif %}

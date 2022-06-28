@@ -62,22 +62,47 @@ theme.Dimensions = (function () {
       var textBasedDimensionEls = [];
 
       dimensionsTitleEl = descriptionEls.filter(':contains("Dimensions")');
-
       frameWidthEl = findLastChild(':contains("width"):contains("frame")');
       lensWidthEl = findLastChild(':contains("width"):contains("lens")');
       lensHeightEl = findLastChild(':contains("height"):contains("lens")');
       templeSizeEl = findLastChild(':contains("temple"):contains("size")');
       bridgeEl = findLastChild(':contains("bridge")');
 
+      
+      
+     
+      
+      frameWidthInch = frameWidthEl.next().text();
+      lensWidthInch = lensWidthEl.next().text();
+      lensHeightInch = lensHeightEl.next().text();
+      templeSizeInch = templeSizeEl.next().text();  
+      bridgeWidthInch = bridgeEl.next().text();
+
 
 
       textBasedDimensionEls.push(dimensionsTitleEl, frameWidthEl, lensWidthEl, lensHeightEl, templeSizeEl, bridgeEl);
+
+      let re = /\((.*?)\)/i;
 
       frameWidth = parseInt(frameWidthEl.text().replace(/[^\d]/g, ''));
       lensWidth = parseInt(lensWidthEl.text().replace(/[^\d]/g, ''));
       lensHeight = parseInt(lensHeightEl.text().replace(/[^\d]/g, ''));
       templeSize = parseInt(templeSizeEl.text().replace(/[^\d]/g, ''));
       bridgeWidth = parseInt(bridgeEl.text().replace(/[^\d]/g, ''));
+
+     
+   
+   
+
+     
+
+      
+      
+
+   
+
+     
+      
 
       if (isUseableDimension(frameWidth) &&
         isUseableDimension(lensWidth) &&
@@ -96,7 +121,9 @@ theme.Dimensions = (function () {
         }
         console.log(bridgeWidth);
         $('text#lens>tspan:first-child').text(lensWidth.toString() + ' mm');
+        
         $('text#width>tspan:first-child').text(frameWidth.toString() + ' mm');
+
         $('text#height>tspan:first-child').text(lensHeight.toString() + ' mm');
 
         if (isNaN(templeSize)) {
@@ -105,9 +132,22 @@ theme.Dimensions = (function () {
         } else {
           $('g#front-height').hide();
           $('text#temple>tspan:first-child').text(templeSize.toString() + ' mm');
+        
         }
 
+       
+
         dimensionsEl.addClass('wmp-dimensions--shown');
+      }
+     
+      if($('div').hasClass('product-dimensions-one-img')){
+
+       
+        $('text#bridge-text>tspan:last-child').text(bridgeWidthInch.toString());        
+        $('text#lens>tspan:last-child').text(lensWidthInch.toString());        
+        $('text#width>tspan:last-child').text(frameWidthInch.toString());
+        $('text#height>tspan:last-child').text(lensHeightInch.toString());
+        $('text#temple>tspan:last-child').text( templeSizeInch.toString());
       }
     }
   });

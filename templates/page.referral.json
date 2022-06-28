@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "referral-page",
+      "settings": {
+        "subheading": "WMP rewards",
+        "heading": "Give $10 Get $10",
+        "text": "<p>Give your friends $10 off on their first order of $30+ and we'll give YOU $10 off your next purchase.<\/p>",
+        "image": "shopify:\/\/shop_images\/4P6A1299edit_1.jpg",
+        "image_position": "right",
+        "show_button": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

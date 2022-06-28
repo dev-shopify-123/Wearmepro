@@ -1,8 +1,32 @@
-<div id="section_content">
-  <ul class="site-nav-megamenu__plain-links site-nav-megamenu-plain-links">    
-	{{ link.title }}
-    {% for child_link in linklists.women.links %}
-    {% if forloop.index > 3 %}
+<div id="section_content" class="megamenu-men" >
+  <ul class="site-nav-megamenu__plain-links site-nav-megamenu-plain-links">
+   
+    {% for child_link in linklists.custom-women.links %}
+    {% if forloop.index > 2 and forloop.index < 12 %}
+    <li class="site-nav-megamenu-plain-links__item">
+      <a href="{{ child_link.url }}" class="fw--bold site-nav-megamenu-plain-links__link">
+        {{ child_link.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <ul class="site-nav-megamenu__plain-links site-nav-megamenu-plain-links">
+    <li class="site-nav-megamenu-plain-links__item"><a class="fw--bold site-nav-megamenu-plain-links__link">shop by shape</a></li>
+    {% for child_link in linklists.custom-women.links %}
+    {% if forloop.index > 11 and forloop.index < 16 %}
+    <li class="site-nav-megamenu-plain-links__item">
+      <a href="{{ child_link.url }}" class="site-nav-megamenu-plain-links__link">
+        {{ child_link.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  <ul class="site-nav-megamenu__plain-links site-nav-megamenu-plain-links">
+    <li class="site-nav-megamenu-plain-links__item"><a class="fw--bold site-nav-megamenu-plain-links__link">shop by trend</a></li>
+    {% for child_link in linklists.custom-women.links %}
+    {% if forloop.index > 15 %}
     <li class="site-nav-megamenu-plain-links__item">
       <a href="{{ child_link.url }}" class="site-nav-megamenu-plain-links__link">
         {{ child_link.title }}
@@ -12,8 +36,8 @@
     {% endfor %}
   </ul>
   <ul class="site-nav-megamenu-image-links site-nav-megamenu__image-links">
-    {% for child_link in linklists.women.links %}
-    {% if forloop.index <= 3 %}
+    {% for child_link in linklists.custom-women.links %}
+    {% if forloop.index <= 2 %}
     <li class="site-nav-megamenu-image-links__item site-nav-megamenu-image-link">
       <a href="{{ child_link.url }}">
         <div class="site-nav-megamenu-image-link__title">

@@ -1,15 +1,15 @@
 {
   "current": {
-    "favicon": "shopify:\/\/shop_images\/WMP_Gradient.png",
+    "favicon": "shopify:\/\/shop_images\/favicon-32x32_3e972880-b28c-4068-8d66-ba4ca2350cf2.png",
     "announcement_bar_bold_text": false,
     "announcement_bar_text_align": "center",
-    "announcement_bar_font_size": 10,
-    "announcement_bar_bg_color": "#d27d60",
+    "announcement_bar_font_size": 11,
+    "announcement_bar_bg_color": "#000000",
     "announcement_bar_text_color": "#ffffff",
     "announcement_bar_textHover_color": "#93b2aa",
     "announcement_bar_arrow_color": "#3be4f5",
-    "announcement_bar_text_1": "This week only: 30% OFF our limited ECO COLLECTION <u>SHOP SALE <\/u>",
-    "announcement_bar_url_1": "shopify:\/\/collections\/all",
+    "announcement_bar_text_1": "FREE 2-DAY SHIPPING ON ALL US ORDERS OVER $65",
+    "announcement_bar_url_1": "shopify:\/\/pages\/us-shipping",
     "announcement_bar_text_2": "",
     "announcement_bar_url_2": "",
     "announcement_bar_text_3": "",
@@ -26,9 +26,9 @@
     "megamenu_mobile_women_image_5": "shopify:\/\/shop_images\/DSC08589.jpg",
     "megamenu_mobile_women_image_6": "shopify:\/\/shop_images\/Aspen_2.jpg",
     "megamenu_mobile_women_image_7": "shopify:\/\/shop_images\/Lennox_JessicaWebb_3_372b7cd8-9405-4cb7-b964-6a56fcfef2ad.jpg",
-    "megamenu_men_image_1": "shopify:\/\/shop_images\/4_f0d8b026-fd1b-4323-bfd9-831cb92e68d7.png",
+    "megamenu_men_image_1": "shopify:\/\/shop_images\/Phoenix-BLKBLK-3-2_c94e83ec-7806-4520-9b7d-a82710e98fc6.jpg",
     "megamenu_men_image_2": "shopify:\/\/shop_images\/Untitled_design-6.png",
-    "megamenu_men_image_3": "shopify:\/\/shop_images\/Untitled_design-5.png",
+    "megamenu_men_image_3": "shopify:\/\/shop_images\/ECO002-GRNGRY.jpg",
     "megamenu_mobile_men_image_1": "shopify:\/\/shop_images\/IMG_0665-4.jpg",
     "megamenu_mobile_men_image_2": "shopify:\/\/shop_images\/DSC05928.jpg",
     "megamenu_mobile_men_image_3": "shopify:\/\/shop_images\/S5A9753_4.jpg",
@@ -51,7 +51,7 @@
     "megamenu_mobile_community_image_2": "shopify:\/\/shop_images\/edite.jpg",
     "megamenu_mobile_community_image_3": "shopify:\/\/shop_images\/4P6A0554edit.jpg",
     "enable_bis": true,
-    "cart_free_pair_enable": true,
+    "cart_free_pair_enable": false,
     "cart_free_pair_product": "premium-foldable-case-1",
     "cart_free_pair_threshold": 50,
     "cart_free_shipping_enable": true,
@@ -59,11 +59,12 @@
     "cart_free_shipping_threshold": 65,
     "cart_free_shipping_enable2": false,
     "cart_free_shipping_text2": "Free 2 Day Express Shipping",
-    "cart_product1": "premium-foldable-case",
+    "cart_product1": "",
+    "hide_in_rx_cart1": false,
     "cart_product2": "protection-plan",
     "hide_in_rx_cart2": false,
-    "cart_product3": "lens-cleaner-spray",
-    "cart_product4": "branded-wmp-zipper-case",
+    "cart_product3": "",
+    "cart_product4": "lens-cleaner-spray",
     "cart_message_heading": "",
     "cart_message_text": "",
     "show_cart_offers": true,
@@ -117,22 +118,31 @@
     "active_women_mage": "shopify:\/\/shop_images\/Chloe-1_1.jpg",
     "active_women_image_link": "shopify:\/\/products\/aspen-square-classic-horn-rimmed-polarized-sunglasses-for-women",
     "active_women_image_number": 5,
+    "active_women_image_number_mob": 1,
     "rx_women_mage": "shopify:\/\/shop_images\/S5A6412-Edit_1.jpg",
     "rx_women_image_link": "shopify:\/\/products\/daisy-women-cat-eye-prescription-glasses-beige-tortoise",
     "rx_women_image_btn_text": "SHOP DAISY",
-    "women_sunglasses_mage": "shopify:\/\/shop_images\/Chloe-TwoProduct-2_1_860ded8b-ada4-481e-b542-edd5591a6f01.jpg",
-    "women_sunglasses_link": "shopify:\/\/products\/cleo-square-oversized-flat-lens-polarized-sunglasses-for-women",
-    "women_sunglasses_btn_text": "SHOP CHLOE",
+    "rx_women_image_btn_text_color": "#ffffff",
+    "rx_women_image_btn_color": "#93b2aa",
+    "rx_women_image_btn_shadow": true,
+    "rx_women_image_number_mob": 3,
+    "women_sunglasses_mage": "shopify:\/\/shop_images\/4P6A0554edit_7bb45e3f-1abf-40cf-8024-fdac2daf9ea4.jpg",
+    "women_sunglasses_link": "shopify:\/\/products\/tate-classic-round-retro-polarized-sunglasses",
+    "women_sunglasses_btn_text": "SHOP TATE",
     "women_sunglasses_number": 4,
-    "men_sunglasses_mage": "shopify:\/\/shop_images\/Nick_CLRG15-1_e3f24daa-857a-425e-8ffc-a6632a906ca1.jpg",
-    "men_sunglasses_link": "https:\/\/shopwearmepro.com\/products\/nick-square-modern-flat-lens-polarized-mirrored-lens-sunglasses?variant=18526608719961",
-    "men_sunglasses_btn_text": "SHOP NICK",
-    "new_arrivals_mage": "shopify:\/\/shop_images\/4P6A0554edit.jpg",
-    "new_arrivals_link": "shopify:\/\/products\/tate-classic-round-retro-polarized-sunglasses",
-    "new_arrivals_btn_text": "SHOP TATE",
-    "men_new_arrivals_mage": "shopify:\/\/shop_images\/Emerson_collection_12a0b256-ff86-40f3-81aa-bd387f3c1e36.jpg",
-    "men_new_arrivals_link": "https:\/\/shopwearmepro.com\/products\/emerson-modern-one-bridge-square-men-retro-aviator-sunglasses?variant=39423779995737",
-    "men_new_arrivals_btn_text": "SHOP EMERSON",
+    "women_sunglasses_number_mob": 3,
+    "men_sunglasses_mage": "shopify:\/\/shop_images\/Emerson-BLUBLU.jpg",
+    "men_sunglasses_link": "shopify:\/\/products\/emerson-modern-one-bridge-square-men-retro-aviator-sunglasses",
+    "men_sunglasses_btn_text": "SHOP EMERSON",
+    "men_sunglasses_btn_color": "#93b2aa",
+    "men_sunglasses_number_mob": 5,
+    "new_arrivals_mage": "shopify:\/\/shop_images\/Sophia-TwoProduct_1.jpg",
+    "new_arrivals_link": "shopify:\/\/products\/sophia-square-cat-eye-shape-metal-frame-fashion-polarized-mirrored-sunglasses",
+    "new_arrivals_btn_text": "SHOP SOPHIA",
+    "men_new_arrivals_mage": "shopify:\/\/shop_images\/Vince_1.jpg",
+    "men_new_arrivals_link": "shopify:\/\/products\/vince-polarized-double-bridge-sunglasses-for-men",
+    "men_new_arrivals_btn_text": "SHOP VINCE",
+    "men_new_arrivals_number_mob": 3,
     "blue_light_mage": "shopify:\/\/shop_images\/2_ea0bf6b2-60e8-4a5d-a508-f5ac957a5174.png",
     "blue_light_link": "shopify:\/\/products\/jules-round-retro-blue-ligh-blocking-glasses",
     "blue_light_btn_text": "Shop Jules",
@@ -150,13 +160,13 @@
     "collection_header_image_show_title_1": false,
     "collection_header_image_show_title_shadow_1": false,
     "collection_header_image_collection_2": "womens-sunglasses",
-    "collection_header_image_image_2": "shopify:\/\/shop_images\/Untitled-1_db425748-7e16-4206-b421-8e8395923211.jpg",
+    "collection_header_image_image_2": "shopify:\/\/shop_images\/WomensBanner.jpg",
     "collection_header_text_2": "",
     "collection_header_color_2": "#000000",
-    "collection_header_text_position_2": "left-text",
+    "collection_header_text_position_2": "right-text",
     "collection_header_text_vertical_position_2": "bottom-text",
     "collection_header_image_font_size_desktop_2": 39,
-    "collection_header_image_font_size_mobile_2": 16,
+    "collection_header_image_font_size_mobile_2": 15,
     "collection_header_image_font_size_text_desktop_2": 59,
     "collection_header_image_font_size_text_mobile_2": 26,
     "header_font_2": "WFHavanaSunset",
@@ -173,12 +183,12 @@
     "collection_header_image_show_title_3": false,
     "collection_header_image_show_title_shadow_3": true,
     "collection_header_image_collection_4": "men-sunglasses",
-    "collection_header_image_image_4": "shopify:\/\/shop_images\/Mens_f411276d-3e8b-4006-a34f-c5606b014366.jpg",
+    "collection_header_image_image_4": "shopify:\/\/shop_images\/Vince_Banner.jpg",
     "collection_header_text_4": "",
     "collection_header_color_4": "#ffffff",
     "collection_header_text_position_4": "left-text",
     "collection_header_text_vertical_position_4": "center-text",
-    "collection_header_image_font_size_desktop_4": 64,
+    "collection_header_image_font_size_desktop_4": 39,
     "collection_header_image_font_size_mobile_4": 15,
     "collection_header_image_font_size_text_desktop_4": 68,
     "collection_header_image_font_size_text_mobile_4": 22,
@@ -221,10 +231,10 @@
     "collection_header_image_show_title_7": false,
     "collection_header_image_show_title_shadow_7": true,
     "collection_header_image_collection_8": "mens-shop-all",
-    "collection_header_image_image_8": "shopify:\/\/shop_images\/MensShopAll_f280cc5a-b2e1-41fc-aa72-d3dfcc8b211b.jpg",
+    "collection_header_image_image_8": "shopify:\/\/shop_images\/Men_Shop_All.jpg",
     "collection_header_text_8": "",
-    "collection_header_color_8": "#ffffff",
-    "collection_header_text_position_8": "right-text",
+    "collection_header_color_8": "#282828",
+    "collection_header_text_position_8": "left-text",
     "collection_header_text_vertical_position_8": "bottom-text",
     "collection_header_image_font_size_desktop_8": 42,
     "collection_header_image_font_size_mobile_8": 17,
@@ -246,15 +256,15 @@
     "collection_header_image_show_title_9": false,
     "collection_header_image_show_title_shadow_9": false,
     "collection_header_image_collection_10": "womens-new-arrivals",
-    "collection_header_image_image_10": "shopify:\/\/shop_images\/WomensNewArrival.jpg",
+    "collection_header_image_image_10": "shopify:\/\/shop_images\/Women_New_Arrivals.jpg",
     "collection_header_text_10": "",
-    "collection_header_color_10": "#ffffff",
-    "collection_header_text_position_10": "right-text",
+    "collection_header_color_10": "#333333",
+    "collection_header_text_position_10": "left-text",
     "collection_header_image_font_size_desktop_10": 34,
     "collection_header_image_font_size_mobile_10": 12,
     "collection_header_image_font_size_text_desktop_10": 104,
     "collection_header_image_show_title_10": false,
-    "collection_header_image_show_title_shadow_10": false,
+    "collection_header_image_show_title_shadow_10": true,
     "collection_header_image_collection_11": "back-in-stock",
     "collection_header_image_image_11": "shopify:\/\/shop_images\/WomensBackInStock.jpg",
     "collection_header_color_11": "#282828",
@@ -265,45 +275,48 @@
     "collection_header_image_show_title_11": false,
     "collection_header_image_show_title_shadow_11": false,
     "collection_header_image_collection_12": "men-i-back-in-stock",
-    "collection_header_image_image_12": "shopify:\/\/shop_images\/MensBackInStock.jpg",
+    "collection_header_image_image_12": "shopify:\/\/shop_images\/Men_Back_In_stock.jpg",
     "collection_header_color_12": "#000000",
-    "collection_header_text_position_12": "right-text",
+    "collection_header_text_position_12": "left-text",
     "collection_header_image_font_size_desktop_12": 56,
     "collection_header_image_font_size_mobile_12": 14,
     "collection_header_image_show_title_12": false,
-    "collection_header_image_show_title_shadow_12": false,
+    "collection_header_image_show_title_shadow_12": true,
     "collection_header_image_collection_13": "mens-new-arrivals",
-    "collection_header_image_image_13": "shopify:\/\/shop_images\/NewArrivals_07c98c52-3458-489b-a676-8a05d3fb38b0.jpg",
+    "collection_header_image_image_13": "shopify:\/\/shop_images\/Jackson-1_1.jpg",
     "collection_header_color_13": "#ffffff",
     "collection_header_text_position_13": "left-text",
     "collection_header_image_font_size_mobile_13": 16,
     "collection_header_image_show_title_13": false,
     "collection_header_image_collection_14": "top-rated-mens",
-    "collection_header_image_image_14": "shopify:\/\/shop_images\/MensBestSeller_204f10dd-be12-4678-b9a4-63fe762b1dd6.jpg",
-    "collection_header_color_14": "#000000",
-    "collection_header_text_position_14": "right-text",
+    "collection_header_image_image_14": "shopify:\/\/shop_images\/Wesley-BRWBRW-3.jpg",
+    "collection_header_text_14": "",
+    "collection_header_color_14": "#ffffff",
+    "collection_header_text_position_14": "left-text",
+    "collection_header_text_vertical_position_14": "center-text",
     "collection_header_image_font_size_desktop_14": 40,
     "collection_header_image_font_size_mobile_14": 12,
     "collection_header_image_show_title_14": false,
-    "collection_header_image_show_title_shadow_14": false,
+    "collection_header_image_show_title_shadow_14": true,
     "collection_header_image_collection_15": "top-rated-womens",
-    "collection_header_image_image_15": "shopify:\/\/shop_images\/WomensTopRated_d1dd0520-61a2-4ea6-8e5b-2e8cc255415a.jpg",
+    "collection_header_image_image_15": "shopify:\/\/shop_images\/Women_Top_Rated_d1541517-1386-4a61-a9cf-10859c00f9ea.jpg",
     "collection_header_color_15": "#000000",
-    "collection_header_text_position_15": "right-text",
+    "collection_header_text_position_15": "left-text",
     "collection_header_text_vertical_position_15": "bottom-text",
     "collection_header_image_font_size_desktop_15": 37,
     "collection_header_image_font_size_mobile_15": 12,
     "collection_header_image_font_size_text_desktop_15": 42,
+    "collection_header_image_font_size_text_mobile_15": 26,
     "collection_header_image_show_title_15": false,
-    "collection_header_image_show_title_shadow_15": false,
-    "collection_header_image_collection_16": "the-pink-collection",
-    "collection_header_image_image_16": "shopify:\/\/shop_images\/PinkCollectionBanner.jpg",
-    "collection_header_color_16": "#ecb6db",
-    "collection_header_text_position_16": "right-text",
+    "collection_header_image_show_title_shadow_15": true,
+    "collection_header_image_collection_16": "the-neutral-collection-1",
+    "collection_header_image_image_16": "shopify:\/\/shop_images\/Clove_Banner.jpg",
+    "collection_header_color_16": "#efebe4",
+    "collection_header_text_position_16": "left-text",
     "collection_header_text_vertical_position_16": "center-text",
-    "collection_header_image_font_size_desktop_16": 72,
-    "collection_header_image_font_size_mobile_16": 22,
-    "collection_header_image_show_title_16": true,
+    "collection_header_image_font_size_desktop_16": 38,
+    "collection_header_image_font_size_mobile_16": 12,
+    "collection_header_image_show_title_16": false,
     "collection_header_image_show_title_shadow_16": false,
     "collection_header_image_collection_17": "eco-collection",
     "collection_header_image_image_17": "shopify:\/\/shop_images\/eco.jpg",
@@ -319,12 +332,13 @@
     "new_items_collection": "mens-new-arrivals",
     "new_items_collection2": "womens-new-arrivals",
     "kind_items_collection": "eco-collection",
-    "kind_items_badge": "shopify:\/\/shop_images\/30__OFF-3_90c8ef14-ccba-4622-b441-ba5b814ddcc8.png",
+    "kind_items_badge": "shopify:\/\/shop_images\/Preview-Black_png.png",
     "blue_light_items_collection": "",
     "enable_sale_badge": false,
     "color_body_bg": "#ffffff",
     "color_body_text": "#282828",
     "color_headings": "#333333",
+    "icon_color_user": "#282828",
     "color_primary_accent": "#efebe4",
     "color_secondary_accent": "#93b2aa",
     "color_on_sale": "#d27d60",
@@ -335,10 +349,10 @@
     "desktop_cart_icon_hover_color": "#050504",
     "desktop_cart_bubble_background_color": "#ff4500",
     "desktop_cart_bubble_color": "#fffdfd",
-    "mobile_nav_bar_background_color": "#000000",
-    "mobile_nav_bar_color": "#ffffff",
+    "mobile_nav_bar_background_color": "#f1f1f1",
+    "mobile_nav_bar_color": "#000000",
     "mobile_nav_bar_cart_bubble_background_color": "#f53b3b",
-    "mobile_nav_bar_cart_bubble_color": "#f9f7f7",
+    "mobile_nav_bar_cart_bubble_color": "#333333",
     "mobile_nav_background_color": "#ffffff",
     "mobile_nav_color": "#000000",
     "mobile_nav_item_background_color": "#efebe4",
@@ -352,16 +366,16 @@
     "pinterest_url": "https:\/\/www.pinterest.com\/wmpeyewear\/",
     "tiktok_url": "https:\/\/www.tiktok.com\/@wmpeyewear?lang=en",
     "enable_bl_promo": false,
-    "bl_promo_text": "This week only: 30% ﻿off added in checkout",
-    "promo_collection": "eco-collection",
-    "countdown_collection": "countdown",
-    "countdown_date": "April 23, 2022",
-    "countdown_text": "15% OF AUSTIN ENDS IN:",
+    "bl_promo_text": "This Week: $25 off your purchase of $75+",
+    "promo_collection": "",
+    "countdown_collection": "",
+    "countdown_date": "June 12, 2022 23:59:59",
+    "countdown_text": "$25 OFF $75 OR MORE SALE ENDS IN:",
     "prism_product": "prizm",
     "checkout_header_image": "shopify:\/\/shop_images\/augustine-wong-oebTM5wHTfw-unsplash_9f6c8787-0647-467d-96e8-5fb3964f0840.jpg",
     "checkout_logo_image": "shopify:\/\/shop_images\/WMP_PrimaryLogo_Black_9a93841e-4411-40ec-b925-84a3dca59add.png",
     "checkout_logo_position": "center",
-    "checkout_logo_size": "medium",
+    "checkout_logo_size": "large",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#ffffff",
     "checkout_input_background_color_mode": "white",
@@ -383,19 +397,10 @@
       "featured-links": {
         "type": "featured-links",
         "blocks": {
-          "f3ce847c-e8cd-421d-8d86-587639aa68da": {
-            "type": "featured_link",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Untitled_design-4.png",
-              "url": "shopify:\/\/collections\/eco-collection",
-              "title": "ECO",
-              "hide_in_mobile_menu": false
-            }
-          },
           "a5910f06-eccd-4e16-91a5-d33a067d9a1b": {
             "type": "featured_link",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Avi005_BRWBRW.jpg",
+              "image": "shopify:\/\/shop_images\/Vince-CRMBRW-1.jpg",
               "url": "shopify:\/\/collections\/men-sunglasses",
               "title": "MEN",
               "hide_in_mobile_menu": false
@@ -404,16 +409,34 @@
           "60cf31b1-787e-4d30-b85a-15acd89bbbb0": {
             "type": "featured_link",
             "settings": {
-              "image": "shopify:\/\/shop_images\/DSC00403.jpg",
+              "image": "shopify:\/\/shop_images\/4P6A0904edit_2.jpg",
               "url": "shopify:\/\/collections\/womens-sunglasses",
               "title": "WOMEN",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "f3ce847c-e8cd-421d-8d86-587639aa68da": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ECO002-GRNGRY_725e2bed-cec8-4e18-bee7-41ddc3671dfd.jpg",
+              "url": "shopify:\/\/collections\/eco-collection",
+              "title": "ECO",
+              "hide_in_mobile_menu": false
+            }
+          },
+          "1565383368664": {
+            "type": "featured_link",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/4P6A0609edit.jpg",
+              "url": "shopify:\/\/collections\/best-sellers",
+              "title": "BEST SELLERS",
               "hide_in_mobile_menu": false
             }
           },
           "1601671617173": {
             "type": "featured_link",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Base_5efa5d81-9873-4aa2-b90f-1990ba215198.jpg",
+              "image": "shopify:\/\/shop_images\/Abner-YWGRN-1_8c3b2e6f-5a19-43ec-a597-15a2617e33bd.jpg",
               "url": "shopify:\/\/collections\/sunglasses",
               "title": "SUNGLASSES",
               "hide_in_mobile_menu": false
@@ -425,15 +448,6 @@
               "image": "shopify:\/\/shop_images\/Copy_of_Alex-TRTGLD-2.jpg",
               "url": "shopify:\/\/collections\/womens-blue-light-glasses",
               "title": "BLUE LIGHT",
-              "hide_in_mobile_menu": false
-            }
-          },
-          "1565383368664": {
-            "type": "featured_link",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Nevada-GLDBLK_660ceada-5e72-4a94-bcf2-50a9307e2776.jpg",
-              "url": "shopify:\/\/collections\/best-sellers",
-              "title": "BEST SELLERS",
               "hide_in_mobile_menu": false
             }
           },
@@ -494,12 +508,12 @@
           }
         },
         "block_order": [
-          "f3ce847c-e8cd-421d-8d86-587639aa68da",
           "a5910f06-eccd-4e16-91a5-d33a067d9a1b",
           "60cf31b1-787e-4d30-b85a-15acd89bbbb0",
+          "f3ce847c-e8cd-421d-8d86-587639aa68da",
+          "1565383368664",
           "1601671617173",
           "1565383452261",
-          "1565383368664",
           "1576282226379",
           "1565380348045",
           "1565383397773",
@@ -515,7 +529,7 @@
       "desktop-header": {
         "type": "desktop-header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/Untitled_300_x_300_px_-2.png",
+          "logo": "shopify:\/\/shop_images\/Logo_1200x1200_website_new.png",
           "main_menu": "new-menu",
           "sticky_nav": false
         }
@@ -530,7 +544,7 @@
       "mobile-header-and-nav": {
         "type": "mobile-header-and-nav",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/crop_copy.png",
+          "logo": "shopify:\/\/shop_images\/Logo_1200x1200_website_new.png",
           "main_menu": "new-menu",
           "sticky_nav": true
         }
@@ -722,7 +736,7 @@
             "type": "item",
             "settings": {
               "collection": "men-sunglasses",
-              "image": "shopify:\/\/shop_images\/web2_03806366-29c4-4178-85c3-f2ee101e5e64.jpg",
+              "image": "shopify:\/\/shop_images\/4_6b844938-c7e2-42b4-a1da-98ee8146563f.png",
               "button_text": "SHOP MEN'S SUNGLASSES"
             }
           },
@@ -730,7 +744,7 @@
             "type": "item",
             "settings": {
               "collection": "womens-sunglasses",
-              "image": "shopify:\/\/shop_images\/367A0235_d9bca2f9-1938-4cd6-b188-61b42a2e96da.jpg",
+              "image": "shopify:\/\/shop_images\/3_6e136d3a-56a9-4a76-89e9-990d23327a1d.png",
               "button_text": "SHOP WOMEN'S SUNGLASSES"
             }
           }
@@ -1494,15 +1508,30 @@
       "160810744488e986dc": {
         "type": "slideshow",
         "blocks": {
+          "160810744488e986dc-2": {
+            "type": "slide",
+            "settings": {
+              "heading": "",
+              "image": "shopify:\/\/shop_images\/4P6A1086.jpg",
+              "text": "BEXLEY",
+              "alignment": "center center",
+              "text_alignment": "right bottom",
+              "url": "shopify:\/\/products\/bexley-polarized-hexagon-geometric-retro-sunglasses",
+              "button_text": "Shop",
+              "heading_color": "secondary-accent",
+              "text_color": "secondary-accent",
+              "button_color": "secondary-accent"
+            }
+          },
           "160810744488e986dc-1": {
             "type": "slide",
             "settings": {
               "heading": "",
-              "image": "shopify:\/\/shop_images\/DSC00717_2.jpg",
-              "text": "TATE",
+              "image": "shopify:\/\/shop_images\/Untitled_design-34.png",
+              "text": "LOLA",
               "alignment": "center center",
               "text_alignment": "center bottom",
-              "url": "shopify:\/\/products\/tate-classic-round-retro-polarized-sunglasses",
+              "url": "shopify:\/\/products\/womens-round-sunglasses-with-modern-metal-temple-1",
               "button_text": "Shop",
               "heading_color": "secondary-accent",
               "text_color": "secondary-accent",
@@ -1513,7 +1542,7 @@
             "type": "slide",
             "settings": {
               "heading": "",
-              "image": "shopify:\/\/shop_images\/Nick_CLRG15-2.jpg",
+              "image": "shopify:\/\/shop_images\/Nick-GRNGRY-1_1.jpg",
               "text": "NICK",
               "alignment": "center center",
               "text_alignment": "right center",
@@ -1523,27 +1552,12 @@
               "text_color": "secondary-accent",
               "button_color": "secondary-accent"
             }
-          },
-          "160810744488e986dc-2": {
-            "type": "slide",
-            "settings": {
-              "heading": "",
-              "image": "shopify:\/\/shop_images\/DSC07593.jpg",
-              "text": "ARIA",
-              "alignment": "center center",
-              "text_alignment": "right bottom",
-              "url": "shopify:\/\/products\/aria-full-flat-lens-mirrored-cateye-sunglasses",
-              "button_text": "Shop",
-              "heading_color": "secondary-accent",
-              "text_color": "secondary-accent",
-              "button_color": "secondary-accent"
-            }
           }
         },
         "block_order": [
+          "160810744488e986dc-2",
           "160810744488e986dc-1",
-          "160810744488e986dc-0",
-          "160810744488e986dc-2"
+          "160810744488e986dc-0"
         ],
         "settings": {
           "heading": "TRENDING NOW",
@@ -1683,29 +1697,6 @@
           "shipping_image": "shopify:\/\/shop_images\/100-sg_2x_79f6c84d-8757-49f0-aea6-84b6aa3485e7.png",
           "mobile_title": "",
           "mobile_text": ""
-        }
-      },
-      "1617898349d988f295": {
-        "type": "banner_with_buttons",
-        "settings": {
-          "image_desctop": "shopify:\/\/shop_images\/shopwearmepro_desktop_banner_03-16-2022.gif",
-          "image_mobile": "shopify:\/\/shop_images\/shopwearmepro_mobile_banner_03-16-2022.gif",
-          "button_position": "customization-right",
-          "button_position_in_block": "btn-center",
-          "show_shadow": false,
-          "top_desktop": 76,
-          "top_mobile": 85,
-          "is_enable_banner_link": false,
-          "banner_link": "",
-          "left_url": "shopify:\/\/collections\/eco-collection",
-          "left_button_text": "Shop Eco Collection",
-          "left_button_color": "#000000",
-          "text_left_button_color": "#ffffff",
-          "right_url": "",
-          "right_button_text": "Shop Men",
-          "right_button_color": "#000000",
-          "text_right_button_color": "#fffdfd",
-          "display": "both"
         }
       },
       "page-landing-template": {
@@ -1956,6 +1947,22 @@
               "team_text": "<p>E-commerce <\/p><p>Developer <\/p>"
             }
           },
+          "b3af50d8-3d51-45c3-86ad-732176584617": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Denis",
+              "team_img": "shopify:\/\/shop_images\/D8D_3756-1_8de4caf2-0584-42cd-bb15-4f6059f2a346.jpg",
+              "team_text": "<p>Digital Advertising<\/p>"
+            }
+          },
+          "01318a85-adc3-4c79-b0d4-57e991e166b1": {
+            "type": "team-blocks",
+            "settings": {
+              "team_name": "Victoria",
+              "team_img": "shopify:\/\/shop_images\/Victoria_Saniukevich_Viden_1_e5f098bd-cb12-436c-9183-badd9fb47324.jpg",
+              "team_text": "<p>Digital Advertising<\/p>"
+            }
+          },
           "36084d00-cfdd-4751-9f61-9c570822213f": {
             "type": "team-blocks",
             "settings": {
@@ -1976,6 +1983,8 @@
           "85bdd7c5-1aac-4273-81de-94fa1c791187",
           "4995972c-0fb9-45af-af69-18a6203a4956",
           "7aa39652-7481-4d24-8857-5ad00f14299a",
+          "b3af50d8-3d51-45c3-86ad-732176584617",
+          "01318a85-adc3-4c79-b0d4-57e991e166b1",
           "36084d00-cfdd-4751-9f61-9c570822213f"
         ],
         "settings": {
@@ -2423,15 +2432,38 @@
       "164971588157889144": {
         "type": "image-with-text",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Vince-TwoProduct-2.jpg",
+          "image": "shopify:\/\/shop_images\/Vince_2.jpg",
           "seamless": false,
           "heading": "New: Vince",
-          "content": "<p>What happens when you take an iconic 70's shape and give it a major modern makeover? You get Vince. This slick square aviator comes complete with glossy double bridge frames coupled with light-as-a-feather stainless steel arms. Choose from unique colors like purple and caramel or stick with forever classics like full black.<\/p>",
+          "content": "<p>What happens when you take an iconic 70's shape and give it a major modern makeover? You get Vince. This slick square aviator comes complete with a double bridge frame coupled with light-as-a-feather stainless steel arms. Choose from unique colors like midnight blue, rich caramel, and crystal brown, or stick with forever classic matte black.<\/p>",
           "url": "shopify:\/\/products\/vince-polarized-double-bridge-sunglasses-for-men",
           "button_text": "Learn more",
           "alignment": "left",
           "color": "default",
           "button_color": "secondary-accent"
+        }
+      },
+      "1617898349d988f295": {
+        "type": "banner_with_buttons",
+        "settings": {
+          "image_desctop": "shopify:\/\/shop_images\/shopwearmepro_desktop_banner_05-17-2022_38fe5f35-ef4e-40b2-ac59-7372077a2758.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/shopwearmepro_mobile_banner_05-17-2022_37badd51-88d1-4d6d-8575-ed1ebdafcac5.jpg",
+          "button_position": "customization-right",
+          "button_position_in_block": "btn-center",
+          "show_shadow": false,
+          "top_desktop": 75,
+          "top_mobile": 87,
+          "is_enable_banner_link": false,
+          "banner_link": "",
+          "left_url": "shopify:\/\/collections\/womens-sunglasses",
+          "left_button_text": "Shop Women",
+          "left_button_color": "#000000",
+          "text_left_button_color": "#ffffff",
+          "right_url": "shopify:\/\/collections\/men-sunglasses",
+          "right_button_text": "Shop Men",
+          "right_button_color": "#000000",
+          "text_right_button_color": "#fffdfd",
+          "display": "both"
         }
       }
     },

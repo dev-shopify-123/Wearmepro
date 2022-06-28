@@ -880,10 +880,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "active_women_image_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "active_women_image_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "active_women_image_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "active_women_image_number",
         "label": "Picture output number",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "active_women_image_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail",
+        "default": 3
       },
       {
         "type": "header",
@@ -905,10 +933,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "rx_women_image_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "rx_women_image_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "rx_women_image_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "rx_women_image_number",
         "label": "Picture output number",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "rx_women_image_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail",
+        "default": 3
       },
       {
         "type": "header",
@@ -930,10 +986,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "women_sunglasses_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "women_sunglasses_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "women_sunglasses_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "women_sunglasses_number",
         "label": "Picture output number",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "women_sunglasses_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail ",
+        "default": 3
       },
       {
         "type": "header",
@@ -955,10 +1039,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "men_sunglasses_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "men_sunglasses_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "men_sunglasses_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "men_sunglasses_number",
         "label": "Picture output number",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "men_sunglasses_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail",
+        "default": 3
       },
       {
         "type": "header",
@@ -980,10 +1092,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "new_arrivals_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "new_arrivals_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "new_arrivals_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "new_arrivals_number",
         "label": "Picture output number",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "new_arrivals_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail",
+        "default": 3
       },
       {
         "type": "header",
@@ -1005,10 +1145,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "men_new_arrivals_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "men_new_arrivals_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "men_new_arrivals_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "men_new_arrivals_number",
-        "label": "Picture output number",
+        "label": "Picture output number ",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "men_new_arrivals_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail ",
+        "default": 3
       },
       {
         "type": "header",
@@ -1030,10 +1198,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "blue_light_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "blue_light_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "blue_light_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "blue_light_number",
-        "label": "Picture output number",
+        "label": "Picture output number ",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "blue_light_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail",
+        "default": 3
       },
       {
         "type": "header",
@@ -1055,10 +1251,38 @@
         "label": "button text"
       },
       {
+        "type": "color",
+        "id": "blue_light_men_btn_text_color",
+        "label": "button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "blue_light_men_btn_color",
+        "label": "button color",
+        "default": "#93b2aa"
+      },
+      {
+        "type": "checkbox",
+        "id": "blue_light_men_btn_shadow",
+        "label": "button shadow",
+        "default": false
+      },
+      {
         "type": "number",
         "id": "blue_light_men_number",
         "label": "Picture output number",
         "default": 4
+      },
+      {
+        "type": "range",
+        "id": "blue_light_men_number_mob",
+        "min": 1,
+        "max": 23,
+        "step": 2,
+        "unit": "col",
+        "label": "Picture output number mobail",
+        "default": 3
       }
     ]
   },
@@ -3447,6 +3671,22 @@
         "id": "color_headings",
         "label": "Titles Color",
         "default": "#333333"
+      },
+      {
+        "type": "header",
+        "content": "Icon colors"
+      },
+      {
+        "type": "color",
+        "id": "icon_color_user",
+        "label": "Account sign in icon",
+        "default": "#282828"
+      },
+      {
+        "type": "color",
+        "id": "icon_color_user_hover",
+        "label": "Account sign in icon hover",
+        "default": "#282828"
       },
       {
         "type": "header",

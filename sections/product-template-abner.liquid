@@ -139,8 +139,7 @@
     }
     .product-section__label {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
     }
   }
@@ -150,7 +149,7 @@
 {% assign styled_class = 'it-styled' %}
 
 
-<section class="{{ classes }} {{ styled_class }}"
+<section class="{{ classes }} {{ styled_class }} template-abner"
 		 data-section-id="{{ section.id }}"
          data-section-type="product"
          data-enable-bis={{ enable_bis | json }}
@@ -177,8 +176,7 @@
   <div class="product-section">
     <div class="product-section__desktop-media lg--px2 lg--pt2 lg--pb0">
       <div id="product-section-desktop-slideshow-{{ section.id }}"
-           class="product-section__desktop-slideshow"
-           data-product-slideshow>
+           class="" >
         {% for media in product.media %}
           {% assign media_alt_dc = media.alt | downcase %}
           {% unless media_alt_dc contains 'styled' %}
@@ -206,7 +204,7 @@
         {% assign styled_images_array = styled_images | strip | split: ' ' %}
         {% assign styled_media_array = styled_video_array | concat: styled_images_array %}
       </div>
-      <div id="product-section-desktop-thumbnails-{{ section.id }}"
+      {% comment %} <div id="product-section-desktop-thumbnails-{{ section.id }}"
            class="product-section__desktop-thumbnails my2"
            data-product-media-thumbnails>
         {% for media in product.media %}
@@ -225,48 +223,16 @@
             </div>
           {% endunless %}
         {% endfor %}
-      </div>
+      </div> {% endcomment %}
     </div>
-    <div class="product-section__info lg--px3 lg--pt3 lg--pb0  md-dn--text-center">       
+    <div class="product-section__info lg--px3 lg--pt3 lg--pb0 ">       
       <h1 class="product-section__title f2 fw--bold uppercase mt0 mb2">
         {{ product_display_title }}
       </h1>
-      <div class="product-section__mobile-media">
-        <div id="product-section-mobile-slideshow-{{ section.id }}"
-             class="product-section__mobile-slideshow"
-             data-product-slideshow>
-          {% for media in product.media %}
-            {% if forloop.first %}
-              {% assign media_preload = true %}
-            {% else %}
-              {% assign media_preload = false %}
-            {% endif %}
-            {% assign media_alt_dc = media.alt | downcase %}
-            {% unless media_alt_dc contains 'styled' %}
-          		{% assign alt_split = media.alt | split: ' || '  %}
-                {% assign filter_alt = alt_split[0] | downcase | replace: ' ', '-' | replace: '/', '-' %}
-                {% assign original_alt = alt_split[1] %}
-              <div class="product-section__media-single {{ filter_alt }}"
-                   data-media-index="{% increment mobile_media_index %}"
-                   {% if product.selected_variant.featured_media and product.selected_variant.featured_media.id == media.id %}
-                   data-initial-media
-                   {% endif %}
-                   data-single-media-id="{{ section.id }}-{{ media.id }}">
-                {% render 'media', media: media,
-                  ratio: media.aspect_ratio,
-                  media_preload: media_preload,
-                  alt: original_alt
-                %}
-              </div>
-            {% endunless %}
-          {% endfor %}
-        </div>
-      </div>
+      {% render 'product-label', product: product, extra_classes: 'mt2 lg--mt1 mb2 lg--hide' %}
+
       <div class="product-section__label">
-        {% if product.id == 9642381324 %}
-<!--         	<span class="show-mob text-new" style="display: none;">Ships September 24th</span> -->
-		{% endif %}
-       
+        
         {% render 'product-label', product: product, extra_classes: 'mt2 lg--mt1 mb2 md-dn--hide' %}
       
         <div class="variation-name">
@@ -292,23 +258,26 @@
                 {% endif %}
             {%- endfor -%}
         {% endif %}
+      
+
+
+      
+      <div class="product-section__stars mb2 lg--text-left ">
+        {% render 'okendo-reviews-product-rating-summary', product: product %}
+      </div>
       <div class="product-section__price ff--heading f3 md-dn--f3   uppercase ">
         {% render 'product-price', variant: current_variant, product: product %}
       </div>
-
-
-      {% if product.id == 9642381324 %}
-
-<!--       	  <span class="show-desctop text-new" style="display: none;">Ships September 24th</span> -->
-
-
-	  {% endif %}
-      <div class="product-section__stars mb2 lg--text-left md-dn--hide ">
-        {% render 'okendo-reviews-product-rating-summary', product: product %}
+      <div class="variation-name-desktop">
+          {% for variant in product.variants %}
+              {% if variant.id == current_variant.id %}
+                  Color: <span>{{ variant.title }}</span>
+              {% endif %}
+          {% endfor %}
       </div>
       {% unless product.template_suffix == 'variant-select' %}
-      <hr class="separator">
-      <div class="product-section__variant-thumbnails mxn2 my2 py2"
+      
+      <div class="product-section__variant-thumbnails mxn2 my2"
            data-variant-thumbnails>
         <div class="md-dn--inline-block mx2">
           <div class="product-section__variant-thumbnails-scroll-container">
@@ -338,14 +307,7 @@
         </div>
       </div>
       {% endunless %}
-      <hr class="separator">
-        <div class="variation-name-desktop">
-            {% for variant in product.variants %}
-                {% if variant.id == current_variant.id %}
-                    Color: <span>{{ variant.title }}</span>
-                {% endif %}
-            {% endfor %}
-        </div>
+      
 
       {% assign show_promo_text = false %}
         {% for loop_collection in product.collections %}
@@ -358,7 +320,7 @@
         <p class="md-dn--mt0 lg--mb0">{{ settings.bl_promo_text }}</p>
       </div>
       {% endif %}
-      <div class="product-section__form lg--mt2 lg--mb3">
+      <div class="product-section__form  ">
         {%- capture form_classes -%}
         {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
         {%- endcapture -%}         
@@ -432,15 +394,7 @@
               </div>
         {% endif %}
 
-        <div class="lg--hide text-right  f6 my2 mob-reviews-product">
-          <div>{% render 'okendo-reviews-product-rating-summary', product: product %}</div>
-          <!-- <a href="#mobile-see-it-styled"
-             class="color--black uppercase underline"
-             data-mobile-see-it-styled-link>
-            See it Styled
-          </a> -->
-          {% render 'product-label', product: product, extra_classes: 'mt2 lg--mt1 mb2' %}
-        </div>
+       
      
         <div class="product-section-form-actions md-dn--mt1 lg--mt2 lg--mxn1{% if enable_bis and current_variant.available == false %} hide{% endif %}"
              data-available-actions>
@@ -543,24 +497,23 @@
         </div>
         {% if product.tags contains 'customer-images' %}
           {% assign output_customer_images = true %}
-          {% assign total_tabs = 4 %}
+          {% assign total_tabs = 5 %}
         {% else %}
           {% assign output_customer_images = false %}
-          {% assign total_tabs = 4 %}
+          {% assign total_tabs = 5 %}
         {% endif %}
         <div style="order: 9;">
           {% if output_customer_images %}
           <div id="foursixty-hideable-container" class="lg--hide ">
                 <h2 class="f2 mt0 mb3 fw--bold uppercase ">STYLE INSPIRATION</h2>
-                <p class="ff--heading ">Shop our best looks, styled by you</p>
                 <div class="  md-dn--mt3  mx--auto">
-                  <script src="//foursixty.com/media/scripts/fs.slider.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="slider_v2_5" data-open-links-in-same-page="true" data-show-okendo-stars="true" data-cell-size="20%" data-has-posts-selector="#foursixty-hideable-container" data-for-url="true"></script>
+                  <script src="//foursixty.com/media/scripts/fs.slider.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="slider_v2_5" data-open-links-in-same-page="true" data-show-okendo-stars="true" data-cell-size="25%" data-has-posts-selector="#foursixty-hideable-container" data-for-url="true"></script>
                 </div>
             </div>
           <style>
            
-            .fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-entry-container { height: 0; width:20% !important; height: 20% !important } path.fs-arrow { stroke: #222 } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:6px }
-            #foursixty-hideable-container h2 { text-align: center;     margin: 30px 0 0;} 
+            .fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-entry-container {  width:25% !important; height: 25% !important } path.fs-arrow { stroke: #222 } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:6px }
+            #foursixty-hideable-container h2 { text-align: center;     margin: 30px 0 60px;} 
             #foursixty-hideable-container p {
                 font-size: 25px;
             text-align: center;
@@ -571,11 +524,36 @@
         </div>
       
       
-      <div class="product-section__tabs md-dn--mb3 md-dn--mt3 product-section-tabs"
+      <div class="product-section__tabs md-dn--mb3 product-section-tabs"
            data-tabs-container>
         
-        {% include 'product-icons' %} 
-        
+        {% comment %} {% include 'product-icons' %}  {% endcomment %}
+        <ul class="custom_icon_lists">
+          <li class="icon_item">
+            <img class="ships_for_free_img" src="{{'ships_for_free1.png' | asset_url}}">
+            <p><strong>{{section.settings.shipping_text}}</strong></p>
+            {% assign days = section.settings.shipping_date | times: 86400 %} 
+            <p>Expected Arrival: <strong>{{ "now" | date: "%s" | plus: days | date: "%a, %d, %b"}} </strong>
+            <span class="tooltip">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17.5" viewBox="0 0 16 17.5">
+                <g id="item_175" data-name="Item 175" transform="translate(-1628 -525)">
+                  <g id="image_13" data-name="image 13" transform="translate(1628 526.5)" fill="none" stroke="#282828" stroke-width="1">
+                    <circle cx="8" cy="8" r="8" stroke="none"/>
+                    <circle cx="8" cy="8" r="7.5" fill="none"/>
+                  </g>
+                  <text id="_" data-name="?" transform="translate(1633 539)" fill="#282828" font-size="13" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">?</tspan></text>
+                </g>
+              </svg>
+              <span class="tooltiptext">{{ section.settings.tooltip_text}}</span>
+            </span>
+            </p>
+            
+          </li>
+          <li class="icon_item">
+            <p><strong>{{ section.settings.eyewear_text}}</strong></p>
+            <p>{{ section.settings.animal_text}}</p>
+          </li>
+        </ul>
         <ul class="product-section-tabs__tabs">
           {% for i in (1..total_tabs) %}
           <li class="tabs__tab ff--heading f5 fw--bold uppercase {% if i == 4 %}lg--hide{% endif %}"
@@ -596,30 +574,37 @@
 
         {% for i in (1..total_tabs) %}
         <div class="tabs__accordion-tab ff--heading f5 fw--bold uppercase"
-             {% if i == 4 %}
+             {% if i == 1 %}
              data-initial-tab
              {% endif %}
              data-accordion-tab
              data-tab="{{ i }}">
             {%- case i -%}
               {%- when 1 -%}
-                Description
+                Fair Pricing
               {%- when 2 -%}
-                Shipping
+                Description
               {%- when 3 -%}
-                Size Chart 
+                Shipping
               {%- when 4 -%}
+                Size Chart 
+              {%- when 5 -%}
                 FIT GUIDE               
             {%- endcase -%}
         </div>
         
         <div class="product-section-tabs__content text-left lh--copy"
-             {% if i == 4 %}
+             {% if i == 1 %}
              data-initial-tab-content
              {% endif %}
              data-tab-content="{{ i }}">
           {% case i %}
             {%- when 1 -%}
+              <div class="product-section-tabs__content-wrapper py3 px4"
+                   data-tab-content-wrapper>
+                <img src="{{section.settings.fair_pricing_img | img_url: 'master'}}" width="100%">
+              </div>
+            {%- when 2 -%}
             <div class="product-section-tabs__content-wrapper py3 px4"
                  data-tab-content-wrapper>
               <div class="rte f5--force product-section__description"
@@ -627,7 +612,7 @@
                 {{ product.description }}
               </div>
             </div>
-            {%- when 2 -%}
+            {%- when 3 -%}
             <div class="product-section-tabs__content-wrapper py3 px3"
                  data-tab-content-wrapper>
               <div class="product-section-tabs__shipping-tab">
@@ -640,7 +625,7 @@
                 </div>
               </div>
             </div>
-            {%- when 3 -%}
+            {%- when 4 -%}
             <div class="product-section-tabs__content-wrapper  py3 px4"
                  data-tab-content-wrapper>
                 {% if product.tags contains "svg_leaf" or  product.tags contains "svg_meadow" or  product.tags contains "svg_willow" %}
@@ -658,7 +643,7 @@
                 {% endif %}
               {% render 'product-dimensions-style' %}
             </div>
-            {%- when 4 -%}
+            {%- when 5 -%}
             <div class="product-section-tabs__content-wrapper py3 px4"
                  data-tab-content-wrapper>
               <div class="rte f5--force product-section__description font-zona"
@@ -690,7 +675,7 @@
   </div><!-- /.product-section -->
 
  
-  {% if has_styled_media %}
+  {% comment %} {% if has_styled_media %}
       <div id="mobile-see-it-styled" class="product-section__mobile-see-it-styled mt3">
         <h2 class="f3 mt0 mb3 fw--bold uppercase" style="text-align: center;">See It Styled</h2>
         <div class="mobile-see-it-styled" data-mobile-see-it-styled>
@@ -705,20 +690,24 @@
           {% endfor %}
         </div>
       </div>
-      {% endif %}
+  {% endif %} {% endcomment %}
 
   {% if output_customer_images %}
-  <div id="foursixty-hideable-container" class="md-dn--hide mt6">
+  <div id="foursixty-hideable-container" class="md-dn--mt3 mt6 mb4">
         <h2 class="f2 mt0 mb3 fw--bold uppercase ">STYLE INSPIRATION</h2>
-        <p class="ff--heading ">Shop our best looks, styled by you</p>
         <div class="desktop-see-it-styled-container  md-dn--mt3  mx--auto">
-        <script src="//foursixty.com/media/scripts/fs.slider.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="slider_v2_5" data-open-links-in-same-page="true" data-show-okendo-stars="true" data-cell-size="20%" data-has-posts-selector="#foursixty-hideable-container" data-for-url="true"></script>
+        <script src="//foursixty.com/media/scripts/fs.slider.v2.5.js" data-feed-id="wearme-pro" data-url-related="true" data-theme="slider_v2_5" data-open-links-in-same-page="true" data-show-okendo-stars="true" data-cell-size="25%" data-has-posts-selector="#foursixty-hideable-container" data-for-url="true"></script>
     </div>
         </div>
   <style>
-     
-            .fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-entry-container { height: 0; width:20% !important; height: 20% !important } path.fs-arrow { stroke: #222 } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:6px }
-    #foursixty-hideable-container h2 { text-align: center;     margin: 30px 0 0;} 
+    .desktop-see-it-styled-container {
+      max-width: 100% !important;
+    }
+            .fs-has-links::after { padding:9px 13.5px; border:1px solid rgba(255,255,255,1); color:rgba(255,255,255,1); content:"SHOP THE LOOK" } .fs-has-links:hover:after { background-color:rgba(255,255,255,1); color:rgba(124,207,182,0.5) } .fs-entry-container { width:25% !important; height: 25% !important } path.fs-arrow { stroke: #222 } .fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title { font-family:Times New Roman, serif; font-style:normal; font-weight:normal; font-size:14px } div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text { font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-style:normal; font-weight:normal; font-size:14px } .fs-wrapper div.fs-text-container * { color:rgba(255,255,255,1) } .fs-wrapper div.fs-text-container { background-color:rgba(124,207,182,0.5); margin:0px } div.fs-entry-date { display:none } div.fs-entry-title { display:none } .fs-wrapper div.fs-timeline-entry { margin:6px }
+    #foursixty-hideable-container h2 { text-align: center;     margin: 30px 0 60px;}
+    @media (max-width: 767px) {
+      #foursixty-hideable-container h2 { margin: 30px 0 24px;}
+    } 
     #foursixty-hideable-container p {
         font-size: 25px;
     text-align: center;
@@ -727,7 +716,7 @@
   </style>
   {% endif %}
 
-  {% if has_styled_media %}
+  {% comment %} {% if has_styled_media %}
   <div class="desktop-see-it-styled-container filter-it-styled mt6 md-dn--mt3 text-center mx--auto md-dn--hide">
     <h2 class="f2 mt0 mb3 fw--bold uppercase">See It Styled</h2>
     <div class="desktop-see-it-styled mxn2"
@@ -743,174 +732,157 @@
       {% endfor %}
     </div>
   </div>
-  {% endif %}
-
-  <div class="product-reviews-header text-center mb5 measure--xtra-wide product-section__trustspot mt6 md-dn--mt3 mx--auto">
-    <h2 id="product-reviews-{{ section.id }}"
-        class="f2 mt0 mb3 fw--bold uppercase">Reviews</h2>
+  {% endif %} {% endcomment %}
+  {% assign variant = product.selected_or_first_available_variant %}
+  {% if variant.metafields.custom.first_title != blank and variant.metafields.custom.second_title != blank %}
+  <div class="product_suspendisse">
+    <div class="item" style="background-color: #F8F8F8;">
+      <div class="text_content desktop">
+        {% if variant.metafields.custom.first_title != blank %}
+          <h2 class="heading uppercase fw--bold">{{variant.metafields.custom.first_title}}</h2>
+        {% endif %}
+        {% if variant.metafields.custom.first_text != blank %}
+          <div class="text">{{variant.metafields.custom.first_text}}</div>
+        {% endif %}
+      </div>
+      <div class="text_content mobile">
+        {% if variant.metafields.custom.first_title != blank %}
+          <h2 class="heading uppercase fw--bold">{{variant.metafields.custom.first_title}}</h2>
+        {% endif %}
+        {% if variant.metafields.custom.first_text != blank %}
+          <div class="text">{{variant.metafields.custom.first_text}}</div>
+        {% endif %}
+      </div>
+      <div class="image_contents">
+        {% if variant.metafields.custom.first_image != blank %}
+          <img src="{{variant.metafields.custom.first_image | img_url: 'master'}}">
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="item">
+      <div class="text_content mobile">
+        {% if variant.metafields.custom.second_title != blank %}
+          <h2 class="heading uppercase fw--bold">{{variant.metafields.custom.second_title}}</h2>
+        {% endif %}
+        {% if variant.metafields.custom.second_text != blank %}
+          <div class="text">{{variant.metafields.custom.second_text}}</div>
+        {% endif %}
+      </div>
+      <div class="image_contents">
+        {% if variant.metafields.custom.second_image != blank %}
+          <img src="{{variant.metafields.custom.second_image | img_url: 'master'}}">
+        {% endif %}
+      </div>
+      <div class="text_content desktop">
+        {% if variant.metafields.custom.second_title != blank %}
+          <h2 class="heading uppercase fw--bold">{{variant.metafields.custom.second_title}}</h2>
+        {% endif %}
+        {% if variant.metafields.custom.second_text != blank %}
+          <div class="text">{{variant.metafields.custom.second_text}}</div>
+        {% endif %}
+      </div>
+    </div>
   </div>
-
-    <script>
-                function getHeightOffset(deviceType = 'desktop') {
-            let resOffset = 0;
-            const heightFeaturedLinks = document.querySelector('#shopify-section-featured-links').clientHeight;
-            const heightReviewsTitle = document.querySelector('#product-reviews-product-template').clientHeight;
-            const reviewsBlock = document.getElementById('product-reviews-product-template');
-            const reviewsBlockOffsetTop = reviewsBlock.offsetTop;
-            if(deviceType === 'desktop') {
-                const heightHeaderMenu = document.querySelector('#shopify-section-desktop-header').clientHeight;
-                resOffset = reviewsBlockOffsetTop - heightFeaturedLinks - heightHeaderMenu - heightReviewsTitle;
-            } else if (deviceType === 'mobile') {
-                const heightHeaderMenu = document.querySelector('#shopify-section-mobile-header-and-nav').clientHeight;
-                resOffset = reviewsBlockOffsetTop - heightFeaturedLinks - heightHeaderMenu - heightReviewsTitle;
-            }
-            return resOffset - 30;
-        }
-        function listenerScrollToReviews() {
-            const linkEl = document.querySelector('.product-section__stars.md-dn--hide .okeReviews.oke-sr');
-            const linksElMobile = document.querySelectorAll('.mob-reviews-product .product-section__stars .okeReviews.oke-sr');
-
-            if(linkEl) {
-                linkEl.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const resOffset = getHeightOffset('desktop');
-                    console.log('resOffset() desktop: ', resOffset);
-                    if(!isNaN(resOffset)) {
-                        window.scrollTo({
-                            top: resOffset,
-                        });
-                    }
-                })
-            }
-
-            if(linksElMobile && window.innerWidth <= 1024) {
-                console.log('linksElMobile(): ', linksElMobile);
-                linksElMobile.forEach((link) => {
-                    link.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const resOffset = getHeightOffset('mobile');
-                        console.log('resOffset mobile: ', resOffset);
-                        if(!isNaN(resOffset)) {
-                            window.scrollTo({
-                                top: resOffset,
-                            });
-                        }
-                    })
-                })
-
-            }
-        }
-        window.onload = function () {
-            listenerScrollToReviews();
-        }
-
-        
-        window.addEventListener('load', function (event) {
-            const variantsSection = document.querySelector('.product-section__variant-thumbnails');
-            var text = document.querySelector('.product-section__info .show-mob.text-new');
-            var textDesktop = document.querySelector('.product-section__info .show-desctop.text-new');
-            if (location && location.search === '?variant=33964779788') {
-                if (window.innerWidth < 900) {
-                    if(text){
-                      document.querySelector('.product-section__info .show-mob.text-new').style.display = 'block';
-                    }
-                }
-                if (window.innerWidth > 900) {
-                    if(textDesktop) {
-                        textDesktop.style.display = 'block';
-                    }
-
-                }
-            } else {
-                if(text && textDesktop) {
-                    text.style.display = 'none';
-                    textDesktop.style.display = 'none';
-                }
-
-            }
-            if (variantsSection) {
-                variantsSection.addEventListener('click', () => {
-                    if (location.search === '?variant=33964779788') {
-                        if (window.innerWidth > 900) {
-                            let showDesktop = document.querySelector('.product-section__info .show-desctop.text-new');
-                            if(showDesktop) {
-                                showDesktop.style.display = 'block';
-                            }
-                        }
-                        if (window.innerWidth < 900) {
-                            let showMob = document.querySelector('.product-section__info .show-mob.text-new');
-                            if(showMob) {
-                                showMob.style.display = 'block';
-                            }
-                        }
-                    } else {
-                        let showDesktop = document.querySelector('.product-section__info .show-desctop.text-new');
-                        let showMob = document.querySelector('.product-section__info .show-mob.text-new');
-                        if(showDesktop && showMob) {
-                            showDesktop.style.display = 'none';
-                            showMob.style.display = 'none';
-                        }
-
-                    }
-                })
-            }
-        });
-
-        
-        var countDownDate = "{{ settings.countdown_date }}";
-        const isTimer = document.querySelector('.js-timer-days');
-        if(isTimer && countDownDate) {
-            var second = 1000,
-                minute = second * 60,
-                hour = minute * 60,
-                day = hour * 24;
-            var countDown = new Date(countDownDate).getTime();
-            var    x = setInterval(function() {
-              function changeTimeZone(date, timeZone) {
-                if (typeof date === 'string') {
-                  return new Date(
-                    new Date(date).toLocaleString('en-US', {
-                      timeZone,
-                    }),
-                  );
-                }
-
-                return new Date(
-                  date.toLocaleString('en-US', {
-                    timeZone,
-                  }),
-                );
-              }
-               	
-              var now = changeTimeZone(new Date(), 'America/Los_Angeles');
-
-
-                  var  distance = countDown - now; 
-                  if(countDown < now ){
-                    $('.timer').hide();
-                  }
-                document.querySelector('.js-timer-days').innerText = Math.floor(distance / (day)),
-                    document.querySelector('.js-timer-hours').innerText = Math.floor((distance % (day)) / (hour)),
-                    document.querySelector('.js-timer-minutes').innerText = Math.floor((distance % (hour)) / (minute)),
-                    document.querySelector('.js-timer-seconds').innerText = Math.floor((distance % (minute)) / second);
-            }, second)
-        }
-    </script>
-
-      {% render 'okendo-reviews-widget', product: product %}
+{% endif %}
+  
 
   
-  {% unless product == empty %}
-  <script type="application/json" id="ProductJson-{{ section.id }}">
-    {{ product | json }}
-  </script>
-  {% endunless %}
 </section>
+<style>
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  .tooltip .tooltiptext {
+    width: 200px;
+    top: 100%;
+    left: 50%;
+    margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  }
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  </style>
+  {% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+      {{ product | json }}
+    </script>
+  {% endunless %}
+
+
 {% schema %}
 {
   "name": "Product",
   "class": "template template--product",
   "settings": [
+    {
+      "type": "header",
+      "content": "Shipping",
+      "info": "You can set shipping date and text"
+    },
+    {
+      "type": "text",
+      "id": "shipping_text",
+      "label": "Shipping text",
+      "default": "FREE 2-Day Shipping With Orders Over $65"
+    },
+    {
+      "type": "range",
+      "id": "shipping_date",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "day",
+      "label": "Shipping date",
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "tooltip_text",
+      "label": "Tooltip text",
+      "default": "After your qualifying order over $65 has been processed (1-2 business days), you can expect to receive your package by the end of the second business day. Shipping data is based on shipments within the US."
+    },
+    {
+      "type": "text",
+      "id": "eyewear_text",
+      "label": "Eyewar text",
+      "default": "WMP EYEWEAR: WORN & MADE WITH PURPOSE"
+    },
+    {
+      "type": "text",
+      "id": "animal_text",
+      "label": "Animal text",
+      "default": "Each order helps an animal in need"
+    },
+    {
+      "type": "header",
+      "content": "Fair Pricing tab"
+    },
+    
+    {
+      "type": "image_picker",
+      "id": "fair_pricing_img",
+      "label": "Fair pricing image"
+    },
     {
       "type": "header",
       "content": "Shipping tab"
@@ -940,7 +912,32 @@
         "id": "mobile_image",
         "label": "Image for Jules and Alex"
     }
+  ],
+  "blocks": [
+    {
+      "type": "suspendisse",
+      "name": "Image with text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Suspendisse fermentum"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
   ]
+  
 }
 {% endschema %}
 

@@ -3943,7 +3943,7 @@
 
                     $link.blur();
 
-                    if ($link.closest(self.selectors.submenuParents).find(self.selectors.menuMoreToggle).length === 1) {
+                    if ($link.closest(self.selectors.submenuParents).find(self.selectors.menuMoreToggle).length > 0) {
                         $link.closest(self.selectors.submenuParents).find(self.selectors.menuMoreToggle).click();
                     }
                 });
@@ -4186,7 +4186,8 @@
                         currentTags[group] = currentTags[group] || [];
                         currentTags[group].push(processedTag);
                     }
-                }
+                    
+                } 
 
                 if (groupOrderArray && groupOrderArray.length > 0) {
                     var sortedProcessedTags = {};
@@ -4487,7 +4488,8 @@
                                                 rawTagsData,
                                                 window.groupArrayString.split(',')
                                             );
-
+                                                console.log(tagsData, 'tags_Data')
+                                                console.log(rawTagsData, "tags")
                                             _vm.allTags = tagsData.all_tags;
                                             _vm.currentTags = tagsData.current_tags;
                                             // initialize proposedTags to currentTags without passing it by reference
@@ -4722,11 +4724,19 @@
                             theme.state.renderedProducts = $('.product-listing .product-grid-item');
                             theme.collectionTemplate === 'infinity-scroll' && self._checkSelectedVariants();
                         }
-                        $('.product-listing .product-grid-item.grid-item-img').each((idx, item) => {
-                            if(idx === 0) {
-                                $(item).addClass('active');
-                            }
-                        })
+                        if ($(window).width() > 768) {
+                            $('.product-listing .product-grid-item.grid-item-img.descto-grid-img').each((idx, item) => {
+                                if(idx === 0) {
+                                    $(item).addClass('active');
+                                }
+                            })
+                        }else {
+                            $('.product-listing .product-grid-item.grid-item-img.mob-grid-img').each((idx, item) => {
+                                if(idx === 0) {
+                                    $(item).addClass('active');
+                                }
+                            })
+                        }
                     },
                     error: function (error) {
                         console.warn(error)
@@ -4769,6 +4779,7 @@
                     var frame_material_arr = ['empty'];
                     var frame_style_arr = ['empty'];
                     var lens_type_arr = ['empty'];
+                    var head_arr = ['empty'];
                     var selected_group_arr = ['empty'];
                     for (let index = 0; index <  this.selectors.tags.length; index++) {
                         var tag = this.selectors.tags[index];
@@ -4797,6 +4808,11 @@
                             if (selected_group_arr.indexOf('lens-type') == -1) {
                                 selected_group_arr.push('lens-type');
                             }
+                        } else if (tag.indexOf('head') != -1) {
+                            head_arr.push(tag);
+                            if (selected_group_arr.indexOf('head') == -1) {
+                                selected_group_arr.push('head');
+                            }
                         } 
                     }
                     // var new_urls = [];
@@ -4811,13 +4827,16 @@
                                     const frame_style = frame_style_arr[index];
                                     for (let index = 0; index < lens_type_arr.length; index++) {
                                         const lens_type = lens_type_arr[index];
-                                        new_url += '+' + frame_color+ '+'+ lens_color + '+'+frame_material+'+'+frame_style+ '+' + lens_type;
-                                        new_url = new_url.replaceAll('+empty', '')
-                                        var new_urls = new_url.split('+');
-                                        if (selected_group_arr.length == new_urls.length) {
-                                            self.selectors.selected_urls.push(new_url.replace('+',''))
+                                        for (let index = 0; index < head_arr.length; index++) {
+                                            const head = head_arr[index];
+                                            new_url += '+' + frame_color+ '+'+ lens_color + '+'+frame_material+'+'+frame_style+ '+' + lens_type+ '+'+head;
+                                            new_url = new_url.replaceAll('+empty', '')
+                                            var new_urls = new_url.split('+');
+                                            if (selected_group_arr.length == new_urls.length) {
+                                                self.selectors.selected_urls.push(new_url.replace('+',''))
+                                            }
+                                            new_url = '';
                                         }
-                                        new_url = '';
                                     }
                                 }
                             }
@@ -4870,11 +4889,19 @@
                                 theme.state.renderedProducts = $('.product-listing .product-grid-item');
                                 theme.collectionTemplate === 'infinity-scroll' && self._checkSelectedVariants();
                             }
-                            $('.product-listing .product-grid-item.grid-item-img').each((idx, item) => {
-                                if(idx === 0) {
-                                    $(item).addClass('active');
-                                }
-                            })
+                            if ($(window).width() > 768) {
+                                $('.product-listing .product-grid-item.grid-item-img.descto-grid-img').each((idx, item) => {
+                                    if(idx === 0) {
+                                        $(item).addClass('active');
+                                    }
+                                })
+                            }else {
+                                $('.product-listing .product-grid-item.grid-item-img.mob-grid-img').each((idx, item) => {
+                                    if(idx === 0) {
+                                        $(item).addClass('active');
+                                    }
+                                })
+                            }
                         },
                         error: function (error) {
                             console.warn(error)
@@ -5604,39 +5631,110 @@
             _init: function () {
                 this.$relatedProducts = $(this.selectors.relatedProducts, this.$container);
                 var collectionHandle = this.$relatedProducts.data('related-products');
+                var collection_handles = this.$relatedProducts.data('collection_handles');
+                var product_id = this.$relatedProducts.data('product-id');
+                
+                console.log(collection_handles)
                 var self = this;
 
                 $.get({
                     url: '/collections/' + collectionHandle + '?view=async-related',
                 })
-                    .done(function (data) {
-                        var $content = $(data);
-                        self.$relatedProducts.empty();
-                        self.$relatedProducts.append($content);
-
-                        var options = {
-                            arrows: true,
-                            dots: false,
-                            slidesToShow: 4,
-                            responsive: [
-                                {
-                                    breakpoint: 900,
-                                    settings: {
-                                        arrows: true,
-                                        slidesToShow: 1
-                                    }
-                                },
-                            ],
-                        };
-
+                .done(function (data1) {
+                    
+                    self.$relatedProducts.empty();
+                    for(var i = 0; i < $(data1).children().length; i++) {
+                        if($(data1).children().eq(i).data('product-id') != product_id) {
+                        
+                            self.$relatedProducts.append($(data1).children().eq(i));
+                        }
+                    }
+                    if (collection_handles != '') {
+                        var collectionHandles = collection_handles.split('&');
+                        var collectionHandle1 = collectionHandles[1];
+                        $.get({
+                            url: '/collections/' + collectionHandle1 + '?view=async-related',
+                        }).done(function (data) {
+                            for(var i = 0; i < $(data).children().length; i++) {
+                                if($(data).children().eq(i).data('product-id') != product_id) {
+                                    self.$relatedProducts.append($(data).children().eq(i));
+                                }
+                            }
+                            if($(data).children().length < 4) {
+                                var options = {
+                                    arrows: true,
+                                    dots: false,
+                                    slidesToShow: $(data).children().length,
+                                    responsive: [
+                                        {
+                                            breakpoint: 900,
+                                            settings: {
+                                                arrows: true,
+                                                slidesToShow: 1
+                                            }
+                                        },
+                                    ],
+                                };
+                            } else {
+                                var options = {
+                                    arrows: true,
+                                    dots: false,
+                                    slidesToShow: 4,
+                                    responsive: [
+                                        {
+                                            breakpoint: 900,
+                                            settings: {
+                                                arrows: true,
+                                                slidesToShow: 1
+                                            }
+                                        },
+                                    ],
+                                };
+                            }
+                            self.$relatedProducts.slick(options);
+                            self.relatedProductsProductListing = new theme.ProductListing(self.$relatedProducts);
+                        });
+                    } else {
+                        if($(data1).children().length < 4) {
+                            var options = {
+                                arrows: true,
+                                dots: false,
+                                slidesToShow: $(data).children().length,
+                                responsive: [
+                                    {
+                                        breakpoint: 900,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 1
+                                        }
+                                    },
+                                ],
+                            };
+                        } else {
+                            var options = {
+                                arrows: true,
+                                dots: false,
+                                slidesToShow: 4,
+                                responsive: [
+                                    {
+                                        breakpoint: 900,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 1
+                                        }
+                                    },
+                                ],
+                            };
+                        }
                         self.$relatedProducts.slick(options);
-
                         self.relatedProductsProductListing = new theme.ProductListing(self.$relatedProducts);
-                    })
-                    .fail(function () {
-                        self.$relatedProducts.hide();
-                        console.warn('Could not load related products');
-                    });
+                    }
+                    
+                })
+                .fail(function () {
+                    self.$relatedProducts.hide();
+                    console.warn('Could not load related products');
+                });
             },
             onUnload: function () {
                 this.$relatedProducts.slick('unslick');
@@ -6035,6 +6133,8 @@
                     });               
                 });
             }
+
+            
             
         });
         function prescriptionBtn() {
@@ -6089,6 +6189,13 @@
             let points_sum = numStrToNum($('.points-sum').text());        
             let points_percent = 100 * points_sum / 3000;
             $('.holder-account .holder-bar .bar span').css('width' , points_percent +'%');
+
+            $("body").on('DOMSubtreeModified', ".points-sum", function() {
+                let points_sum = numStrToNum($('.points-sum').text());        
+                let points_percent = 100 * points_sum / 3000;
+                $('.holder-account .holder-bar .bar span').css('width' , points_percent +'%');
+                });
+                
     
             if (window.location.href.indexOf("orders") != -1) {
                 $('.holder-account .holder-content-tab').removeClass('active');
@@ -6103,17 +6210,36 @@
               
             
             });
-            $("#loyaltylion .lion-rules-list .lion-rule-item__content").each(function(){
-                $(this).find('.lion-rule-item__title, .lion-rule-item__points').wrapAll('<div class="holder-rules-text">');                 
-            });
             $(".lion-rule-item--instagram-follow button.lion-instagram-follow__button").text('Follow Us');
 
             
 
-            let str = $('.lion-rule-item--pageview button.lion-action-button--tile div').text();
-            let newstr = str.replace(/Wait/i, '');
+            // let str = $('.lion-rule-item--pageview button.lion-action-button--tile div').text();
+            // let newstr = str.replace(/Wait/i, '');
 
-            $('.lion-rule-item--pageview button.lion-action-button--tile div').text(newstr) 
+            // $('.lion-rule-item--pageview button.lion-action-button--tile div').text(newstr);
+        });
+
+        $('#RegisterForm').submit(function(e) {
+            var err = false,
+              current=$(this);
+                  current.find('#RegisterForm-password').each(function() {
+                      var patternPas = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+                      if(!patternPas.test($(this).val()) || $(this).val()==''){
+                          err = true;
+                          $(this).addClass('form__input--error');
+                          $('form#RegisterForm').removeAttr("onsubmit");
+                      } else {
+                          $(this).removeClass('form__input--error');
+                          //window.Shopify.recaptchaV3.addToken(this, "create_customer");
+                          $('form#RegisterForm').attr('onsubmit','window.Shopify.recaptchaV3.addToken(this, "create_customer"); return false;');
+                        
+                      } 
+                  });
+                  
+                  if (err) {
+                      e.preventDefault(); 
+                  }
         });
     });
 })(j341);

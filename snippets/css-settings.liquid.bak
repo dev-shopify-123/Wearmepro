@@ -37,6 +37,61 @@
       font-style: normal;
   }
 
+
+
+
+  @font-face {
+	font-family: 'Proximanova';
+  src: url('{{'proximanova-regular-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-regular-webfont.woff' | asset_url }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proximanova';
+    src: url('{{'proximanovat-thin-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanovat-thin-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 100;
+    font-style: normal;
+
+}
+
+
+@font-face {
+  font-family: 'Proximanova';
+    src: url('{{'proxima_nova_medium-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proxima_nova_medium-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 500;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Proximanova';
+    src: url('{{'proximanova-semibold-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-semibold-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 600;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Proximanova';
+    src: url('{{'proximanova-bold-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-bold-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 700;
+    font-style: normal;
+
+}
+@font-face {
+  font-family: 'Proximanova';
+    src: url('{{'proximanova-extrabld-webfont.woff2' | asset_url }}') format('woff2'),
+         url('{{'proximanova-extrabld-webfont.woff' | asset_url }}') format('woff');
+    font-weight: 900;
+    font-style: normal;
+
+}
+
+
   {% assign primary_font = settings.primary_font %}
   {% assign secondary_font = settings.secondary_font %}
   {% comment %}

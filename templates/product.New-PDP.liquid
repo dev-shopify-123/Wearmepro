@@ -1,0 +1,56 @@
+{% render 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
+{% unless product.price == 0 %}
+  {% section 'product-template-abner' %}
+  {% comment %} 
+    Why WearMe Pro section – being reworked
+  {% section 'why-buy' %}
+  {% endcomment %}
+  {% section 'related-products' %}
+  {% section 'product-review'%}  
+{% endunless %}
+
+
+{{product.metafields.shogun.below}}
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+  Name: {{ product.title|json }},
+  ProductID: {{ product.id|json }},
+  Categories: {{ product.collections|map:'title'|json }},
+  ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url | within: collection }}",
+  Brand: {{ product.vendor|json }},
+  Price: {{ product.price|money|json }},
+  CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+  Title: item.Name,
+  ItemId: item.ProductID,
+  Categories: item.Categories,
+  ImageUrl: item.ImageURL,
+  Url: item.URL,
+  Metadata: {
+  Brand: item.Brand,
+  Price: item.Price,
+  CompareAtPrice: item.CompareAtPrice
+  }
+  }]);
+</script>
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  var classname = document.getElementsByClassName("btn--product-section-form");
+  var addToCartEvent = function() {
+    _learnq.push(['track', 'Added to Cart', classname]);
+  };
+  for (var i = 0; i < classname.length; i++) {
+    classname[i].addEventListener('click', addToCartEvent, false);
+  }
+</script>
+
+

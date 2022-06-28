@@ -1,0 +1,172 @@
+
+<div class="product-reviews-header text-center  measure--xtra-wide product-section__trustspot mt6 md-dn--mt3 mx--auto">
+    <h2 id="product-reviews-{{ section.id }}"
+        class="f2 md-dn--f3 mt0 mb0 fw--bold uppercase">RATINGS AND REVIEWS</h2>
+  </div>
+
+    <script>
+                function getHeightOffset(deviceType = 'desktop') {
+            let resOffset = 0;
+            const heightFeaturedLinks = document.querySelector('#shopify-section-featured-links').clientHeight;
+            const heightReviewsTitle = document.querySelector('#product-reviews-product-template').clientHeight;
+            const reviewsBlock = document.getElementById('product-reviews-product-template');
+            const reviewsBlockOffsetTop = reviewsBlock.offsetTop;
+            if(deviceType === 'desktop') {
+                const heightHeaderMenu = document.querySelector('#shopify-section-desktop-header').clientHeight;
+                resOffset = reviewsBlockOffsetTop - heightFeaturedLinks - heightHeaderMenu - heightReviewsTitle;
+            } else if (deviceType === 'mobile') {
+                const heightHeaderMenu = document.querySelector('#shopify-section-mobile-header-and-nav').clientHeight;
+                resOffset = reviewsBlockOffsetTop - heightFeaturedLinks - heightHeaderMenu - heightReviewsTitle;
+            }
+            return resOffset - 30;
+        }
+        function listenerScrollToReviews() {
+            const linkEl = document.querySelector('.product-section__stars.md-dn--hide .okeReviews.oke-sr');
+            const linksElMobile = document.querySelectorAll('.mob-reviews-product .product-section__stars .okeReviews.oke-sr');
+
+            if(linkEl) {
+                linkEl.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const resOffset = getHeightOffset('desktop');
+                    console.log('resOffset() desktop: ', resOffset);
+                    if(!isNaN(resOffset)) {
+                        window.scrollTo({
+                            top: resOffset,
+                        });
+                    }
+                })
+            }
+
+            if(linksElMobile && window.innerWidth <= 1024) {
+                console.log('linksElMobile(): ', linksElMobile);
+                linksElMobile.forEach((link) => {
+                    link.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const resOffset = getHeightOffset('mobile');
+                        console.log('resOffset mobile: ', resOffset);
+                        if(!isNaN(resOffset)) {
+                            window.scrollTo({
+                                top: resOffset,
+                            });
+                        }
+                    })
+                })
+
+            }
+        }
+        window.onload = function () {
+            listenerScrollToReviews();
+        }
+
+        
+        window.addEventListener('load', function (event) {
+            const variantsSection = document.querySelector('.product-section__variant-thumbnails');
+            var text = document.querySelector('.product-section__info .show-mob.text-new');
+            var textDesktop = document.querySelector('.product-section__info .show-desctop.text-new');
+            if (location && location.search === '?variant=33964779788') {
+                if (window.innerWidth < 900) {
+                    if(text){
+                      document.querySelector('.product-section__info .show-mob.text-new').style.display = 'block';
+                    }
+                }
+                if (window.innerWidth > 900) {
+                    if(textDesktop) {
+                        textDesktop.style.display = 'block';
+                    }
+
+                }
+            } else {
+                if(text && textDesktop) {
+                    text.style.display = 'none';
+                    textDesktop.style.display = 'none';
+                }
+
+            }
+            if (variantsSection) {
+                variantsSection.addEventListener('click', () => {
+                    if (location.search === '?variant=33964779788') {
+                        if (window.innerWidth > 900) {
+                            let showDesktop = document.querySelector('.product-section__info .show-desctop.text-new');
+                            if(showDesktop) {
+                                showDesktop.style.display = 'block';
+                            }
+                        }
+                        if (window.innerWidth < 900) {
+                            let showMob = document.querySelector('.product-section__info .show-mob.text-new');
+                            if(showMob) {
+                                showMob.style.display = 'block';
+                            }
+                        }
+                    } else {
+                        let showDesktop = document.querySelector('.product-section__info .show-desctop.text-new');
+                        let showMob = document.querySelector('.product-section__info .show-mob.text-new');
+                        if(showDesktop && showMob) {
+                            showDesktop.style.display = 'none';
+                            showMob.style.display = 'none';
+                        }
+
+                    }
+                })
+            }
+        });
+
+        
+        var countDownDate = "{{ settings.countdown_date }}";
+        const isTimer = document.querySelector('.js-timer-days');
+        if(isTimer && countDownDate) {
+            var second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+            var countDown = new Date(countDownDate).getTime();
+            var    x = setInterval(function() {
+              function changeTimeZone(date, timeZone) {
+                if (typeof date === 'string') {
+                  return new Date(
+                    new Date(date).toLocaleString('en-US', {
+                      timeZone,
+                    }),
+                  );
+                }
+
+                return new Date(
+                  date.toLocaleString('en-US', {
+                    timeZone,
+                  }),
+                );
+              }
+               	
+              var now = changeTimeZone(new Date(), 'America/Los_Angeles');
+
+
+                  var  distance = countDown - now; 
+                  if(countDown < now ){
+                    $('.timer').hide();
+                  }
+                document.querySelector('.js-timer-days').innerText = Math.floor(distance / (day)),
+                    document.querySelector('.js-timer-hours').innerText = Math.floor((distance % (day)) / (hour)),
+                    document.querySelector('.js-timer-minutes').innerText = Math.floor((distance % (hour)) / (minute)),
+                    document.querySelector('.js-timer-seconds').innerText = Math.floor((distance % (minute)) / second);
+            }, second)
+        }
+    </script>
+
+      {% render 'okendo-reviews-widget', product: product %}
+
+  
+  {% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+  {% endunless %}
+{% schema %}
+    {
+        "name": "Product review",
+        "class": "product-review",
+        "presets": [
+            {
+                "name": "Product review"
+            }
+        ]
+    }
+{% endschema %}

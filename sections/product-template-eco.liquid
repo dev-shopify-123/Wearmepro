@@ -870,8 +870,29 @@
                 day = hour * 24;
             var countDown = new Date(countDownDate).getTime();
             var    x = setInterval(function() {
-                var now = new Date().getTime(),
-                    distance = countDown - now;
+              function changeTimeZone(date, timeZone) {
+                if (typeof date === 'string') {
+                  return new Date(
+                    new Date(date).toLocaleString('en-US', {
+                      timeZone,
+                    }),
+                  );
+                }
+
+                return new Date(
+                  date.toLocaleString('en-US', {
+                    timeZone,
+                  }),
+                );
+              }
+               	
+              var now = changeTimeZone(new Date(), 'America/Los_Angeles');
+
+
+                  var  distance = countDown - now; 
+                  if(countDown < now ){
+                    $('.timer').hide();
+                  }
                 document.querySelector('.js-timer-days').innerText = Math.floor(distance / (day)),
                     document.querySelector('.js-timer-hours').innerText = Math.floor((distance % (day)) / (hour)),
                     document.querySelector('.js-timer-minutes').innerText = Math.floor((distance % (hour)) / (minute)),

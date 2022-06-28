@@ -2,7 +2,7 @@
     {% assign image_address = 'megamenu_mobile_brand_image_' | append: forloop.index %}
     {% assign the_image = settings[image_address] %}
     {% if the_image %}
-<li>
+    <li>
         <div class="mobile-shop-submenu__image-wrappers">
             {%- assign img_url = the_image | img_url: '748x748', crop: 'center' | replace: '_1x1', '_{width}x{height}' -%}
             {%- assign widths = '[180, 200, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]' -%}
@@ -21,6 +21,6 @@
               <span>{{ child_link.title }}</span>
             </a>
         </div>
-</li>
+    </li>
     {% endif %}
 {% endfor %}
